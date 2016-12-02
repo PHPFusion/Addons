@@ -41,6 +41,7 @@ if (isset($_POST['savesettings'])) {
 }
 
 $cvqr_settings = get_settings("cv_qr_code_panel");
+
 opentable($locale['cvqr_1000']);
 echo "<div class='well'>".$locale['cvqr_1001']."</div>";
 
@@ -51,13 +52,13 @@ echo "<div class='col-xs-12 col-sm-12 col-md-12'>\n";
 
 openside($locale['cvqr_1002']);
 echo "<div class='pull-right m-b-10'><span class='small2'>".$locale['663']."</span></div>\n";
-echo form_colorpicker('main_color', $locale['cvqr_1011'], $cvqr_settings['main_color '], array('required' => true));
-echo form_colorpicker('bg_color', $locale['cvqr_1012'], $cvqr_settings['bg_color '], array('required' => true));
+echo form_colorpicker('main_color', $locale['cvqr_1011'], $cvqr_settings['main_color'], array('required' => true));
+echo form_colorpicker('bg_color', $locale['cvqr_1012'], $cvqr_settings['bg_color'], array('required' => true));
 closeside();
 
 openside($locale['cvqr_1003']);
-echo form_text('square_size', $locale['cvqr_1016'], $cvqr_settings['square_size '], array('type' => 'number', 'number_min' => 1, 'number_max' => 25, 'required' => true));
-echo form_text('margin_size', $locale['cvqr_1016'], $cvqr_settings['margin_size '], array('type' => 'number', 'number_min' => 0, 'number_max' => 12, 'required' => true));
+echo form_text('square_size', $locale['cvqr_1016'], $cvqr_settings['square_size'], array('type' => 'number', 'number_min' => 1, 'number_max' => 25, 'required' => true));
+echo form_text('margin_size', $locale['cvqr_1017'], $cvqr_settings['margin_size'], array('type' => 'number', 'number_min' => 0, 'number_max' => 12, 'required' => true));
 closeside();
 
 openside($locale['cvqr_1004']);

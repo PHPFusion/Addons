@@ -5,7 +5,7 @@
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: infusion.php
-| Author: Chubaty Vitalij (Rizado)
+| Author: Chubatyj Vitalij (Rizado)
 | web: http://chubatyj.ru/
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -28,7 +28,7 @@ if (file_exists(INFUSIONS . "cv_qr_code_panel/locale/".$settings['locale'].".php
 }
 
 $inf_title = $locale['cvqr_title'];
-$inf_description = ['cvqr_descr'];
+$inf_description = $locale['cvqr_descr'];
 $inf_version = "0.1";
 $inf_developer = "Chubatyj Vitalij (Rizado)";
 $inf_email = "v.chubatyj@yandex.ru";
@@ -37,7 +37,7 @@ $inf_folder = "cv_qr_code_panel";
 $inf_image = "cv_qr_code.png";
 
 // Automatic enable of the qr code panel
-$inf_insertdbrow[] = DB_PANELS." (panel_name, panel_filename, panel_content, panel_side, panel_order, panel_type, panel_access, panel_display, panel_status, panel_url_list, panel_restriction) VALUES('".$locale['cvqr_title']."', 'cv_qr_code_panel', '', '1', '5', 'file', '0', '0', '1', '', '0')";
+$inf_insertdbrow[] = DB_PANELS." (panel_name, panel_filename, panel_content, panel_side, panel_order, panel_type, panel_access, panel_display, panel_status, panel_url_list, panel_restriction) VALUES('".$locale['cvqr_title']."', 'cv_qr_code_panel', '', '1', '5', 'file', '0', '0', '1', '', '3')";
 
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('main_color', '#601117', 'cv_qr_code_panel')";
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('bg_color', '#ffffff', 'cv_qr_code_panel')";

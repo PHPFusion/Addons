@@ -32,9 +32,9 @@ $inf_description = ['cvqr_descr'];
 $inf_version = "0.1";
 $inf_developer = "Chubatyj Vitalij (Rizado)";
 $inf_email = "v.chubatyj@yandex.ru";
-$inf_weburl = "http://www.php-fusion.co.uk";
+$inf_weburl = "http://chubatyj.ru/";
 $inf_folder = "cv_qr_code_panel";
-$inf_image = "cvqr_code.png";
+$inf_image = "cv_qr_code.png";
 
 // Automatic enable of the qr code panel
 $inf_insertdbrow[] = DB_PANELS." (panel_name, panel_filename, panel_content, panel_side, panel_order, panel_type, panel_access, panel_display, panel_status, panel_url_list, panel_restriction) VALUES('".$locale['cvqr_title']."', 'cv_qr_code_panel', '', '1', '5', 'file', '0', '0', '1', '', '0')";
@@ -46,7 +46,7 @@ $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('corr_level', '1', 'cv_qr_code_panel')";
 
 $inf_adminpanel[] = array(
-	"image" => "articles.png",
+	"image" => "cv_qr_code.png",
 	"page" => 5,
 	"rights" => "CVQR",
 	"title" => $locale['cvqr_title'],

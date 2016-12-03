@@ -24,7 +24,7 @@ if (!defined("IN_FUSION")) {
 if (file_exists(INFUSIONS . "cv_qr_code_panel/locale/".$settings['locale'].".php")) {
 	include INFUSIONS . "cv_qr_code_panel/locale/".$settings['locale'].".php";
 } else {
-	INFUSIONS . "cv_qr_code_panel/locale/English.php";
+	include INFUSIONS . "cv_qr_code_panel/locale/English.php";
 }
 
 $inf_title = $locale['cvqr_title'];

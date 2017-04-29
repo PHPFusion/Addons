@@ -124,7 +124,7 @@ class PHPSecure {
         closeside();
     }
 
-    public static function display_form() {		add_to_title(self::$locale['001']);
+    public static function display_form() {		add_to_title(self::$locale['SEC_0000']);
 		if (iMEMBER || !fusion_get_settings("enable_registration")) { redirect(fusion_get_settings('opening_page')); }
 
 		if (isset($_COOKIE['secure'])) {

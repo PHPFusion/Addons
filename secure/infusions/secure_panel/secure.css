@@ -1,0 +1,23 @@
+.secque-intro {
+	border: 1px solid;
+	margin: 1px 0px;
+	padding: 10px 10px 14px 40px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	color: #6D1818;
+	vertical-align:middle;
+	background-color: #FFBABA;
+	background-image: url(images/stop.png);
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.secure-question {
+	font-size:19px;
+	color:#336600;
+	font-family: 'Over the Rainbow', cursive, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	text-shadow: #6374AB 4px -2px 2px;
+	font-weight: bold;
+}

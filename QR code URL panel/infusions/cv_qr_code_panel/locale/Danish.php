@@ -16,23 +16,23 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 $locale['cvqr_title'] = "QR kode";
-$locale['cvqr_descr'] = "Element, der viser QR kode med link til den nuværende side";
+$locale['cvqr_descr'] = "Element, der viser QR kode med link til den nuvï¿½rende side";
 
 $locale['cvqr_1000'] = "QR-kode indstillinger";
-$locale['cvqr_1001'] = "Du kan ændre disse værdier for bedre visning af QR kode på siderne på din hjemmeside";
+$locale['cvqr_1001'] = "Du kan ï¿½ndre disse vï¿½rdier for bedre visning af QR kode pï¿½ siderne pï¿½ din hjemmeside";
 $locale['cvqr_1002'] = "Farver";
-$locale['cvqr_1003'] = "Størrelser";
-$locale['cvqr_1004'] = "Pålidelighed";
+$locale['cvqr_1003'] = "Stï¿½rrelser";
+$locale['cvqr_1004'] = "Pï¿½lidelighed";
 
 $locale['cvqr_1011'] = "Billede";
 $locale['cvqr_1012'] = "Baggrund";
-$locale['cvqr_1016'] = "Firkant størrelse (i pixels)";
+$locale['cvqr_1016'] = "Firkant stï¿½rrelse (i pixels)";
 $locale['cvqr_1017'] = "Padding (i firkanter)";
 $locale['cvqr_1021'] = "Korrektionsniveau";
 $locale['cvqr_1022'] = "Lav";
 $locale['cvqr_1023'] = "Mellem";
 $locale['cvqr_1024'] = "Kvalitet";
-$locale['cvqr_1025'] = "Høj";
+$locale['cvqr_1025'] = "Hï¿½j";
 
 // Save Settings
 $locale['cvqr_1100'] = "Gem indstillinger";

@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: infusion.php
 | Author: karrak
-| verzió: 1.01
+| verziï¿½: 1.01
 | web: http://fusionjatek.hu
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -18,9 +18,9 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 if (!defined("IN_FUSION")) { die("Access Denied"); }
-//Nyelv betöltése
+//Nyelv betï¿½ltï¿½se
 $locale = fusion_get_locale("", SCR_LOCALE);
-//Alap adatok megadása
+//Alap adatok megadï¿½sa
 $inf_title = $locale['SEC_0000'];
 $inf_description = $locale['SEC_0001'];
 $inf_version = "1.0";
@@ -29,7 +29,7 @@ $inf_email = "admin@fusionjatek.hu";
 $inf_weburl = "http://www.fusionjatek.hu";
 $inf_folder = "secure_panel";
 $inf_image = "secure.png";
-// Adminisztrációs oldal adatai
+// Adminisztrï¿½ciï¿½s oldal adatai
 $inf_adminpanel[] = array(
 	"title" => $locale['SEC_0000'],
 	"image" => $inf_image,
@@ -37,7 +37,7 @@ $inf_adminpanel[] = array(
 	"rights" => "SCR",
 	"page" => 5
 );
-//Többnyelvû tábla adata
+//Tï¿½bbnyelvï¿½ tï¿½bla adata
 $inf_mlt[] = array(
 	"title" => $locale['SEC_0000'],
 	"rights" => "SCR"

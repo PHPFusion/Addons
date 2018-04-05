@@ -15,5 +15,5 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-$locale['btp_001'] = "Fødselsdage i dag";
-$locale['btp_002'] = "Ingen har fødselsdag i dag...";
+$locale['btp_001'] = "Fï¿½dselsdage i dag";
+$locale['btp_002'] = "Ingen har fï¿½dselsdag i dag...";

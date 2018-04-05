@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: infusion_db.php
 | Author: karrak
-| verzió: 1.01
+| verziï¿½: 1.01
 | web: http://fusionjatek.hu
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -18,9 +18,9 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 if (!defined("IN_FUSION")) { die("Access Denied"); }
-//Admin icon megjelenítése
+//Admin icon megjelenï¿½tï¿½se
 \PHPFusion\Admins::getInstance()->setAdminPageIcons("SCR", "<i class='fa fa-commenting fa-lg'></i>");
-//Nyelvi file betöltése
+//Nyelvi file betï¿½ltï¿½se
 if (!defined("SCR_LOCALE")) {
     if (file_exists(INFUSIONS."secure_panel/locale/".LANGUAGE.".php")) {
         define("SCR_LOCALE", INFUSIONS."secure_panel/locale/".LANGUAGE.".php");

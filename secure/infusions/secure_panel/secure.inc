@@ -22,7 +22,8 @@ class PHPSecure {
         return self::$instance;
     }
 
-    protected function securCod() {		srand ((double)microtime()*1000000);
+    protected function securCod() {
+		srand ((double)microtime()*1000000);
 		$a = RAND(1,99);
 		$b = RAND(1,99);
 		$muv = array(" ", self::$locale['SEC_0005'], self::$locale['SEC_0006'], self::$locale['SEC_0007']);
@@ -35,15 +36,18 @@ class PHPSecure {
 			'ckod' => $a.",".$b.",".$el,
 			);
 
-    	return self::$cod;    }
+    	return self::$cod;
+    }
 
-    private function set_Secure() {		if(!empty(self::$setup['secure_aktiv'])) {
+    private function set_Secure() {
+		if(!empty(self::$setup['secure_aktiv'])) {
 			if (isset($_POST['secure_submit'])) {
 			$error = "";
 
 			$secure_answer = form_sanitizer($_POST['secure_answer'], '', 'secure_answer');
 			$scarr = form_sanitizer($_POST['secure_question'], '', 'secure_question');
-				if (\defender::safe()){				$secur = explode(',', $scarr);
+				if (\defender::safe()){
+				$secur = explode(',', $scarr);
 				$abc = array('', ($secur[0] + $secur[1]), ($secur[0] - $secur[1]), ($secur[0] * $secur[1]));
 				$error .= empty($secure_answer) ? self::$locale['error1'] : "";
 				$error .= $abc[$secur[2]] != $secure_answer ? self::$locale['error2'] : "";
@@ -58,7 +62,8 @@ class PHPSecure {
     	        redirect((fusion_get_settings("site_seo") ? FUSION_ROOT.BASEDIR."register.php" : BASEDIR."register.php"));
 				}
 			}
-		}        if (isset($_POST['secure_btn'])) {
+		}
+        if (isset($_POST['secure_btn'])) {
             $inputArray = array(
                 'secure_aktiv' => form_sanitizer($_POST['stsecure'], 0, "stsecure"),
                 'secure_time' => form_sanitizer($_POST['stsecure_time'], 0, "stsecure_time")*60,
@@ -78,7 +83,8 @@ class PHPSecure {
 
     }
 
-    public static function display_members($akt = FALSE) {		if(preg_match('/register.php/i', $_SERVER['PHP_SELF']) || preg_match('/registration/i', $_SERVER['REQUEST_URI']) AND !isset($_COOKIE['secure']) AND !empty(self::$setup['secure_aktiv'])) {
+    public static function display_members($akt = FALSE) {
+		if(preg_match('/register.php/i', $_SERVER['PHP_SELF']) || preg_match('/registration/i', $_SERVER['REQUEST_URI']) AND !isset($_COOKIE['secure']) AND !empty(self::$setup['secure_aktiv'])) {
 
 		    if (fusion_get_settings("site_seo")) {
     	        redirect(FUSION_ROOT.BASEDIR."secure.php");
@@ -124,7 +130,8 @@ class PHPSecure {
         closeside();
     }
 
-    public static function display_form() {		add_to_title(self::$locale['SEC_0000']);
+    public static function display_form() {
+		add_to_title(self::$locale['SEC_0000']);
 		if (iMEMBER || !fusion_get_settings("enable_registration")) { redirect(fusion_get_settings('opening_page')); }
 
 		if (isset($_COOKIE['secure'])) {
@@ -162,4 +169,5 @@ class PHPSecure {
 		    '{%close_form%}'   => $info['closeform']
 		]);
     }
-}
+
+}

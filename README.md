@@ -1,2 +1,2 @@
-# Themes
-Development for PHP-Fusion 9 Themes
+# Addons
+Development for PHP-Fusion 9 Addons

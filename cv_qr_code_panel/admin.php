@@ -22,10 +22,13 @@ pageAccess('CVQR');
 require_once THEMES."templates/admin_header.php";
 require_once INCLUDES."infusions_include.php";
 
+$settings = fusion_get_settings();
+$locale = fusion_get_locale();
+
 if (file_exists(INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php")) {
     include INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php";
 } else {
-    INFUSIONS."cv_qr_code_panel/locale/English.php";
+    include INFUSIONS."cv_qr_code_panel/locale/English.php";
 }
 
 if (isset($_POST['savesettings'])) {
@@ -62,7 +65,6 @@ echo "<div class='row'>\n";
 echo "<div class='col-xs-12 col-sm-12 col-md-12'>\n";
 
 openside($locale['cvqr_1002']);
-echo "<div class='pull-right m-b-10'><span class='small2'>".$locale['663']."</span></div>\n";
 echo form_colorpicker('main_color', $locale['cvqr_1011'], $cvqr_settings['main_color'], ['required' => TRUE]);
 echo form_colorpicker('bg_color', $locale['cvqr_1012'], $cvqr_settings['bg_color'], ['required' => TRUE]);
 closeside();

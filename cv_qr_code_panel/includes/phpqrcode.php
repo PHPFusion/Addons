@@ -2939,7 +2939,7 @@ class QRrawcode {
 
     //----------------------------------------------------------------------
     public function getCode() {
-        $ret;
+        $ret = '';
 
         if ($this->count < $this->dataLength) {
             $row = $this->count % $this->blocks;

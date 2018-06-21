@@ -16,13 +16,12 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-
 if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
 
-if (file_exists(INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php")) {
-    include INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php";
+if (file_exists(INFUSIONS."cv_qr_code_panel/locale/".LANGUAGE.".php")) {
+    include INFUSIONS."cv_qr_code_panel/locale/".LANGUAGE.".php";
 } else {
     include INFUSIONS."cv_qr_code_panel/locale/English.php";
 }

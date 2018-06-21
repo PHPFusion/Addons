@@ -4,8 +4,8 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: templates/secure_panel.php
-| Author: karrak
+| Filename: cookiebar_panel/consentcookies.php
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -15,22 +15,8 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) {
-    die("Access Denied");
+require_once __DIR__.'/../../maincore.php';
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')) {
+    setcookie(COOKIE_PREFIX."cookieconsent", "yes", time() + 31536000, "/", "", "0");
 }
-
-if (!function_exists('render_secure_panel')) {
-    function render_secure_panel(array $info = []) {
-        echo opentable('{%tablename%}');
-        echo '{%intro%}';
-        echo '<div class="text-center well">{%prmessages%}</div>';
-        echo '{%open_form%}';
-        echo '{%prmessages_1%}';
-        echo '{%seccode%}';
-        echo '{%mail_name%}';
-        echo '{%question%}';
-        echo '<div class="text-center">{%send_button%}</div>';
-        echo '{%close_form%}';
-        echo closetable();
-    }
-}
+exit;

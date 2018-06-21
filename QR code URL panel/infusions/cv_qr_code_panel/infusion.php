@@ -18,13 +18,13 @@
 +--------------------------------------------------------*/
 
 if (!defined("IN_FUSION")) {
-	die("Access Denied");
+    die("Access Denied");
 }
 
-if (file_exists(INFUSIONS . "cv_qr_code_panel/locale/".$settings['locale'].".php")) {
-	include INFUSIONS . "cv_qr_code_panel/locale/".$settings['locale'].".php";
+if (file_exists(INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php")) {
+    include INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php";
 } else {
-	include INFUSIONS . "cv_qr_code_panel/locale/English.php";
+    include INFUSIONS."cv_qr_code_panel/locale/English.php";
 }
 
 $inf_title = $locale['cvqr_title'];
@@ -45,13 +45,13 @@ $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('margin_size', '2', 'cv_qr_code_panel')";
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('corr_level', '1', 'cv_qr_code_panel')";
 
-$inf_adminpanel[] = array(
-	"image" => "cv_qr_code.png",
-	"page" => 5,
-	"rights" => "CVQR",
-	"title" => $locale['cvqr_title'],
-	"panel" => "admin.php",
-);
+$inf_adminpanel[] = [
+    "image"  => "cv_qr_code.png",
+    "page"   => 5,
+    "rights" => "CVQR",
+    "title"  => $locale['cvqr_title'],
+    "panel"  => "admin.php",
+];
 
 $inf_deldbrow[] = DB_PANELS." WHERE panel_filename='cv_qr_code_panel'";
 $inf_deldbrow[] = DB_SETTINGS_INF." WHERE settings_inf='cv_qr_code_panel'";

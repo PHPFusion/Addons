@@ -2,9 +2,9 @@
 $locale['SEC_0000'] = "Security Question";
 $locale['SEC_0001'] = "You can register after answering a security question.";
 
-$locale['SEC_0005'] = array("", " + ", " Plus ");
-$locale['SEC_0006'] = array("", " - ", " Minus ");
-$locale['SEC_0007'] = array("", " * ", " Multiplied ");
+$locale['SEC_0005'] = ["", " + ", " Plus "];
+$locale['SEC_0006'] = ["", " - ", " Minus "];
+$locale['SEC_0007'] = ["", " * ", " Multiplied "];
 $locale['SEC_0010'] = "Due to an increased volume of spam registrations you are required to answer a simple security question before proceeding with registration.";
 $locale['SEC_0011'] = "Please enter the result.";
 

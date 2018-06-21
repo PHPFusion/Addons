@@ -17,20 +17,20 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 
-require_once __DIR__ . "/includes/qrlib.php";
+require_once __DIR__."/includes/qrlib.php";
 
-if (file_exists(INFUSIONS . "cv_qr_code_panel/locale/" . $settings['locale'] . ".php")) {
-	include INFUSIONS . "cv_qr_code_panel/locale/" . $settings['locale'] . ".php";
+if (file_exists(INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php")) {
+    include INFUSIONS."cv_qr_code_panel/locale/".$settings['locale'].".php";
 } else {
-	include INFUSIONS . "cv_qr_code_panel/locale/English.php";
+    include INFUSIONS."cv_qr_code_panel/locale/English.php";
 }
 
-require_once INCLUDES . "infusions_include.php";
+require_once INCLUDES."infusions_include.php";
 $opts = get_settings("cv_qr_code_panel");
 
 openside($locale['cvqr_title']);
 
-$target = base64_encode($settings['siteurl'] . substr(FUSION_REQUEST, 1));
+$target = base64_encode($settings['siteurl'].substr(FUSION_REQUEST, 1));
 
-echo "<img src='" . INFUSIONS . "cv_qr_code_panel/outimg.php?target=" . $target . "' />";
+echo "<img src='".INFUSIONS."cv_qr_code_panel/outimg.php?target=".$target."' />";
 closeside();

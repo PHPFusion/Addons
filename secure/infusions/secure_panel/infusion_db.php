@@ -17,7 +17,9 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) { die("Access Denied"); }
+if (!defined("IN_FUSION")) {
+    die("Access Denied");
+}
 //Admin icon megjelen�t�se
 \PHPFusion\Admins::getInstance()->setAdminPageIcons("SCR", "<i class='fa fa-commenting fa-lg'></i>");
 //Nyelvi file bet�lt�se

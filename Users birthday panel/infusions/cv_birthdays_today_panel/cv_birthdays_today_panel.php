@@ -18,26 +18,28 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) { die("Access Denied"); }
+if (!defined("IN_FUSION")) {
+    die("Access Denied");
+}
 
 if (file_exists(INFUSIONS."cv_birthdays_today_panel/locale/".$settings['locale'].".php")) {
-	include INFUSIONS."cv_birthdays_today_panel/locale/".$settings['locale'].".php";
+    include INFUSIONS."cv_birthdays_today_panel/locale/".$settings['locale'].".php";
 } else {
-	include INFUSIONS."cv_birthdays_today_panel/locale/English.php";
+    include INFUSIONS."cv_birthdays_today_panel/locale/English.php";
 }
 
 openside($locale['btp_001']);
 $result = dbquery("SELECT user_id, user_name, user_birthdate FROM ".DB_USERS." WHERE user_birthdate LIKE '%-".showdate("%m-%d", time())."' ORDER BY user_level DESC, user_id");
 if (dbrows($result)) {
-	$birthdays = "";
-	while ($data = dbarray($result)) {
-		$birthdays .= $birthdays ? ", " : "";
-		$bdate = explode("-", $data['user_birthdate']);
-		$birthdays .= "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'>".$data['user_name']." (".(showdate("%Y", time()) - $bdate[0]).")</a>";
-	}
-	echo $birthdays;
+    $birthdays = "";
+    while ($data = dbarray($result)) {
+        $birthdays .= $birthdays ? ", " : "";
+        $bdate = explode("-", $data['user_birthdate']);
+        $birthdays .= "<a href='".BASEDIR."profile.php?lookup=".$data['user_id']."'>".$data['user_name']." (".(showdate("%Y", time()) - $bdate[0]).")</a>";
+    }
+    echo $birthdays;
 } else {
-	echo $locale['btp_002'];
+    echo $locale['btp_002'];
 }
 closeside();
 ?>

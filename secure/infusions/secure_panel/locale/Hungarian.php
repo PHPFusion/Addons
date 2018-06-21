@@ -2,9 +2,9 @@
 $locale['SEC_0000'] = "Biztonsági kérdés";
 $locale['SEC_0001'] = "Biztonsági kérdés megválaszolása után lehet regisztrlálni.";
 
-$locale['SEC_0005'] = array("", " + ", " Plusz ");
-$locale['SEC_0006'] = array("", " - ", " Minusz ");
-$locale['SEC_0007'] = array("", " * ", " Szor ");
+$locale['SEC_0005'] = ["", " + ", " Plusz "];
+$locale['SEC_0006'] = ["", " - ", " Minusz "];
+$locale['SEC_0007'] = ["", " * ", " Szor "];
 $locale['SEC_0010'] = "A megnövekedett mennyiségű spam regisztrációk miatt szükségessé vált, hogy válaszoljon egy egyszerű biztonsági kérdésre mielőtt a regisztráció elindul.";
 $locale['SEC_0011'] = "Kérlek írd be az eredményt. ";
 

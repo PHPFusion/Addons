@@ -4,8 +4,8 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: templates/secure_panel.php
-| Author: karrak
+| Filename: infusion_db.php
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -19,18 +19,10 @@ if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
 
-if (!function_exists('render_secure_panel')) {
-    function render_secure_panel(array $info = []) {
-        echo opentable('{%tablename%}');
-        echo '{%intro%}';
-        echo '<div class="text-center well">{%prmessages%}</div>';
-        echo '{%open_form%}';
-        echo '{%prmessages_1%}';
-        echo '{%seccode%}';
-        echo '{%mail_name%}';
-        echo '{%question%}';
-        echo '<div class="text-center">{%send_button%}</div>';
-        echo '{%close_form%}';
-        echo closetable();
+if (!defined("COOKIE_LOCALE")) {
+    if (file_exists(INFUSIONS."cookiebar_panel/locale/".LANGUAGE.".php")) {
+        define("COOKIE_LOCALE", INFUSIONS."cookiebar_panel/locale/".LANGUAGE.".php");
+    } else {
+        define("COOKIE_LOCALE", INFUSIONS."cookiebar_panel/locale/English.php");
     }
 }

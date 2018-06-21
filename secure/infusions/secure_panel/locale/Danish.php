@@ -18,9 +18,9 @@
 $locale['SEC_0000'] = "Sikkerhedsspørgsmål";
 $locale['SEC_0001'] = "Du kan registrere dig efter du har besvaret et sikkerhedsspørgsmål.";
 
-$locale['SEC_0005'] = array("", " + ", " Plus ");
-$locale['SEC_0006'] = array("", " - ", " Minus ");
-$locale['SEC_0007'] = array("", " * ", " Ganget ");
+$locale['SEC_0005'] = ["", " + ", " Plus "];
+$locale['SEC_0006'] = ["", " - ", " Minus "];
+$locale['SEC_0007'] = ["", " * ", " Ganget "];
 $locale['SEC_0010'] = "På grund af en øget mængde af spam registreringer er du nødt til at besvare et simpelt sikkerhedsspørgsmål før du kan fortsætte med registreringsproceduren.";
 $locale['SEC_0011'] = "Indtast venligst resultatet.";
 

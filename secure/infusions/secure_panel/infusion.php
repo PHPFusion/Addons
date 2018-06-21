@@ -17,7 +17,9 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) { die("Access Denied"); }
+if (!defined("IN_FUSION")) {
+    die("Access Denied");
+}
 //Nyelv bet�lt�se
 $locale = fusion_get_locale("", SCR_LOCALE);
 //Alap adatok megad�sa
@@ -30,18 +32,18 @@ $inf_weburl = "http://www.fusionjatek.hu";
 $inf_folder = "secure_panel";
 $inf_image = "secure.png";
 // Adminisztr�ci�s oldal adatai
-$inf_adminpanel[] = array(
-	"title" => $locale['SEC_0000'],
-	"image" => $inf_image,
-	"panel" => "admin.php",
-	"rights" => "SCR",
-	"page" => 5
-);
+$inf_adminpanel[] = [
+    "title"  => $locale['SEC_0000'],
+    "image"  => $inf_image,
+    "panel"  => "admin.php",
+    "rights" => "SCR",
+    "page"   => 5
+];
 //T�bbnyelv� t�bla adata
-$inf_mlt[] = array(
-	"title" => $locale['SEC_0000'],
-	"rights" => "SCR"
-);
+$inf_mlt[] = [
+    "title"  => $locale['SEC_0000'],
+    "rights" => "SCR"
+];
 
 
 $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('secure_aktiv', '1', '".$inf_folder."')";
@@ -51,4 +53,4 @@ $inf_insertdbrow[] = DB_PANELS." (panel_name, panel_filename, panel_content, pan
 $inf_deldbrow[] = DB_PANELS." WHERE panel_filename='".$inf_folder."'";
 $inf_deldbrow[] = DB_SETTINGS_INF." WHERE settings_inf='".$inf_folder."'";
 $inf_deldbrow[] = DB_ADMIN." WHERE admin_rights='SCR'";
-$inf_deldbrow[] = DB_LANGUAGE_TABLES." WHERE mlt_rights='SCR'";?>
+$inf_deldbrow[] = DB_LANGUAGE_TABLES." WHERE mlt_rights='SCR'"; ?>

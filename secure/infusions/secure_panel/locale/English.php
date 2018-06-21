@@ -16,4 +16,4 @@ $locale['SEC_0024'] = "Enter in minutes how long to wait for Registration. (1 ho
 $locale['SEC_0025'] = "Settings Updated.";
 $locale['error1'] = "You did not respond to the Security Question!<br />Please enter an answer!";
 $locale['error2'] = "Your response to the Security Question is wrong!<br />Please try again!";
-$locale['error3'] = "Kötelező kitölteni<br />";
+$locale['error3'] = "Required to fill out<br />";

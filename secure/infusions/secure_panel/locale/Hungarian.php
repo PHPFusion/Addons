@@ -17,10 +17,3 @@ $locale['SEC_0025'] = "Beállítások Módosítva.";
 $locale['error1'] = "Nem válaszolt a Biztonsági kérdésre!<br />Kérjük, adja meg a választ!<br />";
 $locale['error2'] = "Rossz választ adott a biztonsági kérdésre!<br />Kérjük, próbálja újra!<br />";
 $locale['error3'] = "Kötelező kitölteni<br />";
-/*
-$locale['001'] = "Biztonsági kérdés";
-$locale['004'] = "Beküldés";
-$locale['error4'] = "Hibás beküldés<br />";
-
-$locale['SEC_021'] = "Beállítások";
-*/

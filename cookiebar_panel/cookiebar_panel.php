@@ -25,6 +25,7 @@ if (!isset($_COOKIE[COOKIE_PREFIX.'cookieconsent'])) {
     $locale = fusion_get_locale("", COOKIE_LOCALE);
 
     add_to_head("<link rel='stylesheet' type='text/css' href='".INFUSIONS."cookiebar_panel/cookiebar_panel.css' />");
+
     add_to_footer("<script type='text/javascript' src='".INCLUDES."jquery/colorbox/jquery.colorbox.js'></script>");
 
     add_to_jquery("
@@ -36,7 +37,7 @@ if (!isset($_COOKIE[COOKIE_PREFIX.'cookieconsent'])) {
             data: $('#consentcookieform').serialize(),
             dataType:'html',
             success:function(data) {
-                $('#Cookiebar').slideUp();
+                $('#cookiebar').slideUp();
             }
         });
         evt.preventDefault();
@@ -44,19 +45,17 @@ if (!isset($_COOKIE[COOKIE_PREFIX.'cookieconsent'])) {
     $('.cookieoverlay').colorbox({height:'100%',width:'100%',maxWidth:'800px',maxHeight:'700px',scrolling:true,overlayClose:false,transition:'elastic'});
     ");
 
-    echo "<div id='Cookiebar'>\n";
-    echo "<div class='container'>\n";
-
-    echo openform('consentcookieform', 'post', FUSION_REQUEST, ['remote_url' => fusion_get_settings('site_path').'infusions/cookiebar_panel/consentcookies.php', 'class' => 'pull-right m-l-15']);
-    echo form_button('consentcookies', $locale['CBP100'], 'consentcookies', ['class' => 'btn-primary', 'icon' => 'fa fa-check-circle']);
-    echo closeform();
-
-    echo "<div class='overflow-hide'>\n";
+    echo "<div id='cookiebar'>\n";
+    echo "<div class='row'>\n";
+    echo "<div class='col-xs-12 col-sm-8 col-md-10 m-t-15 m-b-15'>";
     echo $locale['CBP101']."<br/>\n".$locale['CBP103'];
     echo "<a class='cookieoverlay' href='".INFUSIONS."cookiebar_panel/cookiesinfo.php'>".$locale['CBP102']."</a>\n";
     echo "</div>\n";
-
+    echo "<div class='col-xs-12 col-sm-4 col-md-2 m-t-10 m-b-10'>\n";
+    echo openform('consentcookieform', 'post', FUSION_REQUEST, ['remote_url'=>fusion_get_settings('site_path').'infusions/cookiebar_panel/consentcookies.php', 'class'=>'pull-right m-l-15']);
+    echo form_button('consentcookies', $locale['CBP100'], 'consentcookies', ['class'=>'btn-primary', 'icon' => 'fa fa-check-circle']);
+    echo closeform();
     echo "</div>\n";
     echo "</div>\n";
-
+    echo "</div>\n";
 }

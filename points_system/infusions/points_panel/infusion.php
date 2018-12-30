@@ -6,7 +6,6 @@
 +--------------------------------------------------------+
 | Filename: infusion.php
 | Author: karrak
-| web: http://fusionjatek.hu
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -25,7 +24,7 @@ $locale = fusion_get_locale("", POINT_LOCALE);
 //Alap adatok megadása
 $inf_title = $locale['PNT_I01'];
 $inf_description = $locale['PNT_I02'];
-$inf_version = "0.00.1";
+$inf_version = "1.01";
 $inf_developer = "karrak";
 $inf_email = "admin@fusionjatek.hu";
 $inf_weburl = "http://www.fusionjatek.hu";

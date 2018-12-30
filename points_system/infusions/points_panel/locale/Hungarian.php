@@ -15,7 +15,27 @@ $locale['PONT_010'] = "Napi jóváírás.";
 $locale['PONT_011'] = "A PontRendszer jelenleg Kikapcsolva.";
 $locale['PONT_012'] = "Nincs bejegyzés.";
 
-/*
+$locale['PONT_100'] = "PontRendszer";
+$locale['PONT_101'] = "Beállítások";
+$locale['PONT_102'] = "Napló";
+
+$locale['PONT_110'] = "Pont Rendszer";
+$locale['PONT_111'] = "Aktív Vagy Inaktív a Rendszer";
+$locale['PONT_112'] = "Induló Pont";
+$locale['PONT_113'] = "Első Belépéskor kapható pont";
+$locale['PONT_114'] = "Pont Növelés";
+$locale['PONT_115'] = "Pont növekedési idő Napban";
+$locale['PONT_116'] = "Napi Pont";
+$locale['PONT_117'] = "Naponta adható pont";
+$locale['PONT_118'] = "Lista oldalanként";
+$locale['PONT_300'] = "Beállítások módosítva";
+/*$locale['krd_333'] = "Aktiváló kód mai napra:<br /><b>%s</b><br /><span class='small2'>(A napi kód %s karakter.)</span>\n";
+
+$locale['krd_340'] = "Összes bónusz játékok száma: ";
+$locale['krd_341'] = "Utolsó akció nap: ";
+$locale['krd_342'] = "Bónuszt aktiválók száma: ";
+
+
 $locale['krd_020'] = "Az ünnepi szorzó ( %sx ) aktív.";
 $locale['krd_021'] = "A rendszer egyáras, minden <b>%s</b> pont.";
 $locale['krd_023'] = "Kivéve: Banki tevékenységek, Napi jóváírások, Egyes vásárlások.";

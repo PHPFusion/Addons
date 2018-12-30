@@ -14,3 +14,18 @@ $locale['PONT_007'] = "Mod";
 $locale['PONT_010'] = "Daily credit.";
 $locale['PONT_011'] = "The Point System is currently Off.";
 $locale['PONT_012'] = "No entries.";
+
+$locale['PONT_100'] = "Point System";
+$locale['PONT_101'] = "Settings";
+$locale['PONT_102'] = "Diary";
+
+$locale['PONT_110'] = "Point System";
+$locale['PONT_111'] = "Active or Inactive is the System";
+$locale['PONT_112'] = "First Point";
+$locale['PONT_113'] = "First login given point";
+$locale['PONT_114'] = "Point Increase";
+$locale['PONT_115'] = "Point Increase (Day)";
+$locale['PONT_116'] = "Day Point";
+$locale['PONT_117'] = "Daily Point Increase";
+$locale['PONT_118'] = "Items per Page";
+$locale['PONT_300'] = "Settings successfully updated";

@@ -1,7 +1,7 @@
 <?php
 namespace PHPFusion\Points;
 
-class UserPoint {
+class UserPoint extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
     private $points = [];
@@ -23,7 +23,7 @@ class UserPoint {
        return self::$instance;
     }
 
-	public static function CurrentSetup() {
+/*	public static function CurrentSetup() {
         $bind = [
             ':language' => LANGUAGE
 			];
@@ -36,7 +36,7 @@ class UserPoint {
 
         return $settings;
 	}
-
+*/
     public static function GetCurrentUser($uid = NULL) {
 
 	    $def_point = [
@@ -126,13 +126,7 @@ class UserPoint {
 
 	private function PontMessage($user = NULL, array $options = []) {
 
-        $default_options = [
-            'mod'      => 1, //1 = add point, 2 = remov point
-            'point'    => 0,
-            'messages' => ''
-        ];
-
-        $options += $default_options;
+        $options += $this->default_options;
 		$diary = [
 			'log_id'        => '',
 			'log_user_id'   => $user,
@@ -148,18 +142,11 @@ class UserPoint {
 
 		$user = ($user ? $user : fusion_get_userdata('user_id'));
 
-        $default_options = [
-            'mod'      => 1, //1 = add point, 2 = remov point
-            'point'    => 0,
-            'messages' => ''
-        ];
-
-        $options += $default_options;
-
+        $options += $this->default_options;
 		$pointmod = self::GetCurrentUser($user);
 		if (!empty($this->settings['ps_activ'])) { //Ha aktív a rendszer..
 			//if (!self::PONT_ban($usr)) {  //Ha nem bannolt felhasználó
-			//if (self::pointTime($user, $messages, $addtime, $mod) == 0) { //idõ vizsgálat, ha nincs itt az idõ nem ment
+			if ($this->pointTime($user, $options) == 0) { //idõ vizsgálat, ha nincs itt az idõ nem ment
                /* if (!empty($this->settings['ps_games']) && $mod == 1) {
 		            $pnt_game = FALSE;
                     $pont_game = explode(',', $this->settings['ps_games']);
@@ -174,8 +161,27 @@ class UserPoint {
 				dbquery_insert(DB_POINT, $pointmod, "update");
 				self::PontMessage($user, $options);
 				//($stat ? self::addStat($stat, $user) : "");
-			//}
+			}
 		}
+	}
+
+    private function pointTime($user, $options) {
+        $options += $this->default_options;
+        $bind = [
+            ':userid'   => $user,
+            ':mod'      => $options['mod'],
+            ':date'     => (time() - $options['addtime']),
+            ':addnaplo' => $options['messages'],
+        ];
+
+        $resultQuery = "SELECT log_id
+            FROM ".DB_POINT_LOG."
+            WHERE log_user_id=:userid AND log_pmod=:mod AND log_date>:date AND log_descript=:addnaplo
+            ORDER BY log_date DESC
+        ";
+
+		$result = dbquery($resultQuery, $bind);
+		return $hanyadik = dbrows($result);
 	}
 
     public function DisplayPoint() {
@@ -219,7 +225,6 @@ class UserPoint {
     		    'data'   => "<span style='color:".($message['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($message['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>\n",
             ],
     	];
-    	//print_p($info);
         pointPanelItem($info);
     }
 

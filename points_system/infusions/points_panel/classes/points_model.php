@@ -4,8 +4,8 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: autoloader.php
-| Author: PHP-Fusion Development Team
+| Filename: points_panel/classes/points_model.php
+| Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -15,18 +15,25 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-spl_autoload_register(function ($className) {
+namespace PHPFusion\Points;
 
-    $autoload_register_paths = [
-        'PHPFusion\\Points\\UserPoint'           => POINT_CLASS."classes/points.php",
-        "PHPFusion\\Points\\PointsSettingsAdmin" => POINT_CLASS."classes/admin/points_settings.php",
-        "PHPFusion\\Points\\PointsModel"         => POINT_CLASS."classes/points_model.php",
+class PointsModel {
+
+    protected $default_options = [
+        'mod'      => 1, //1 = add point, 2 = remov point
+        'point'    => 0,
+        'messages' => '',
+        'addtime'  => ''
     ];
 
-    if (isset($autoload_register_paths[$className])) {
-        $fullPath = $autoload_register_paths[$className];
-        if (is_file($fullPath)) {
-            require $fullPath;
-        }
-    }
-});
+	public static function CurrentSetup() {
+
+        $result = dbquery("SELECT *
+            FROM ".DB_POINT_ST."
+            ".(multilang_table("PSP") ? " WHERE ps_language=:language" : ''), [':language' => LANGUAGE]);
+
+        $settings = dbarray($result);
+
+        return $settings;
+	}
+}

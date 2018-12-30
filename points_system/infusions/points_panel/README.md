@@ -11,16 +11,16 @@ Point info:
 
 add point
 
- PHPFusion\Points\UserPoint::getInstance()->setPoint(user id, ["mod" => 1 = add point, 2 remov point, "point" => number 200, "messages" => "message text"]);<br />
- PHPFusion\Points\UserPoint::getInstance()->setPoint("", ["mod" => 1, "point" => 200, "messages" => "message text"]);//I increase it 200 point<br />
- PHPFusion\Points\UserPoint::getInstance()->setPoint(3, ["mod" => 1, "point" => 200, "messages" => "message text"]); // 3 id user increase 200 point<br />
+ PHPFusion\Points\UserPoint::getInstance()->setPoint(user id, ["mod" => 1 = add point, 2 remov point, "point" => number 200, "messages" => "message text"]);
+ PHPFusion\Points\UserPoint::getInstance()->setPoint("", ["mod" => 1, "point" => 200, "messages" => "message text"]);//I increase it 200 point
+ PHPFusion\Points\UserPoint::getInstance()->setPoint(3, ["mod" => 1, "point" => 200, "messages" => "message text"]); // 3 id user increase 200 point
 
 remov point
- PHPFusion\Points\UserPoint::getInstance()->setPoint(3, ["mod" => 2, "point" => 200, "messages" => "message text"]); // 3 id user remov 200 point<br />
- PHPFusion\Points\UserPoint::getInstance()->setPoint("", ["mod" => 2, "point" => 200, "messages" => "message text"]); // I remov 200 point<br />
+ PHPFusion\Points\UserPoint::getInstance()->setPoint(3, ["mod" => 2, "point" => 200, "messages" => "message text"]); // 3 id user remov 200 point
+ PHPFusion\Points\UserPoint::getInstance()->setPoint("", ["mod" => 2, "point" => 200, "messages" => "message text"]); // I remov 200 point
 
 example:
-infusions/shoutbox_panel/shoutbox.inc<br />
+infusions/shoutbox_panel/shoutbox.inc
  line 147
 
                 if (\defender::safe()) {

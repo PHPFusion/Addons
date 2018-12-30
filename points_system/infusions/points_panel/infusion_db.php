@@ -5,9 +5,7 @@
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: infusion_db.php
-| CVS Version: 1.00
 | Author: karrak
-| web: http://fusionjatek.hu
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -45,9 +43,7 @@ if (!defined("POINT_LOCALE")) {
     }
 }
 
-if (db_exists(DB_POINT)) {    include_once POINT_CLASS."autoload.php"; //require __DIR__ . '/../../user_point_panel/autoload.php';
+if (db_exists(DB_POINT)) {
+    include_once POINT_CLASS."autoload.php";
     PHPFusion\Points\UserPoint::getInstance()->GetPoint();
-//PHPFusion\Doze\DozeNumber::getInstance()->displaygame();
 }
-
-

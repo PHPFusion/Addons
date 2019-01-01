@@ -4,8 +4,8 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: autoloader.php
-| Author: PHP-Fusion Development Team
+| Filename: points_bestof.php
+| Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -15,19 +15,11 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-spl_autoload_register(function ($className) {
+require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../maincore.php";
 
-    $autoload_register_paths = [
-        'PHPFusion\\Points\\UserPoint'           => POINT_CLASS."classes/points.php",
-        "PHPFusion\\Points\\PointsSettingsAdmin" => POINT_CLASS."classes/admin/points_settings.php",
-        "PHPFusion\\Points\\PointsModel"         => POINT_CLASS."classes/points_model.php",
-        "PHPFusion\\Points\\PointDiary"          => POINT_CLASS."classes/diary.php",
-    ];
+if (!db_exists(DB_POINT)) { redirect(BASEDIR."error.php?code=404"); }
 
-    if (isset($autoload_register_paths[$className])) {
-        $fullPath = $autoload_register_paths[$className];
-        if (is_file($fullPath)) {
-            require $fullPath;
-        }
-    }
-});
+require_once THEMES."templates/header.php";
+//require_once POINT_CLASS."templates.php";
+PHPFusion\Points\PointDiary::getInstance()->CurrentList();
+require_once THEMES."templates/footer.php";

@@ -33,6 +33,9 @@ if (!defined("DB_POINT_ST")) {
 if (!defined("DB_POINT_BAN")) {
 	define("DB_POINT_BAN", DB_PREFIX."points_ban");
 }
+if (!defined("DB_POINT_INF")) {
+	define("DB_POINT_INF", DB_PREFIX."points_inf");
+}
 
 if (!defined("POINT_CLASS")) {
     define("POINT_CLASS", INFUSIONS."points_panel/");

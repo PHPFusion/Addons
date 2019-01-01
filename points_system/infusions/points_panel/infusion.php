@@ -73,6 +73,16 @@ $inf_newtable[] = DB_POINT_BAN." (
 	PRIMARY KEY (ban_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
 
+$inf_newtable[] = DB_POINT_INF." (
+	pi_id          INT(11)      UNSIGNED NOT NULL AUTO_INCREMENT,
+	pi_user_id     INT(11)               NOT NULL DEFAULT '0',
+	pi_user_access TINYINT(4)            NOT NULL DEFAULT '0',
+	pi_link        VARCHAR(255),
+	pi_title       VARCHAR(255),
+	pi_language    VARCHAR(50)           NOT NULL DEFAULT '".LANGUAGE."',
+PRIMARY KEY (pi_id)
+) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
+
 $inf_newtable[] = DB_POINT_ST." (
 	ps_id INT (1) UNSIGNED NOT NULL AUTO_INCREMENT,
 	ps_activ ENUM('0','1') DEFAULT '0',
@@ -94,13 +104,18 @@ if (!empty($enabled_languages)) {
     foreach($enabled_languages as $language) {
         $locale = fusion_get_locale("", INFUSIONS.$inf_folder."/locale/".$language.".php");
 		$mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".$language."')";
+		$mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
+			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['PNT_I04']."', '".$language."')";
 
 		$mlt_deldbrow[$language][] = DB_POINT." WHERE point_language='".$language."'";
 		$mlt_deldbrow[$language][] = DB_POINT_BAN." WHERE ban_language='".$language."'";
 		$mlt_deldbrow[$language][] = DB_POINT_ST." WHERE ps_language='".$language."'";
+		$mlt_deldbrow[$language][] = DB_POINT_INF." WHERE pi_language='".$language."'";
     }
 } else {
 	$inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".LANGUAGE."')";
+	$inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
+	('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['krd_217']."', '".LANGUAGE."')";
 
 }
 
@@ -108,6 +123,7 @@ $inf_droptable[] = DB_POINT;
 $inf_droptable[] = DB_POINT_LOG;
 $inf_droptable[] = DB_POINT_ST;
 $inf_droptable[] = DB_POINT_BAN;
+$inf_droptable[] = DB_POINT_INF;
 
 $inf_deldbrow[] = DB_PANELS." WHERE panel_filename='".$inf_folder."'";
 $inf_deldbrow[] = DB_ADMIN." WHERE admin_rights='PSP'";

@@ -2,6 +2,7 @@
 $locale['PNT_I01'] = "Pontrendszer";
 $locale['PNT_I02'] = "Felhasználói Pont rendszer";
 $locale['PNT_I03'] = "Pont Bónusz";
+$locale['PNT_I04'] = "Helyezésem";
 $locale['PNT_P01'] = "PontRendszer";
 
 $locale['PONT_001'] = "Új regisztráció. Indulásnak %s pontot írtunk jóvá. További pont jóváírások %s óránként lesznek.";
@@ -28,9 +29,15 @@ $locale['PONT_115'] = "Pont növekedési idő Napban";
 $locale['PONT_116'] = "Napi Pont";
 $locale['PONT_117'] = "Naponta adható pont";
 $locale['PONT_118'] = "Lista oldalanként";
+$locale['PONT_130'] = "Pont Statisztika";
+$locale['PONT_131'] = "Helyezés";
+$locale['PONT_132'] = "Avatar";
+$locale['PONT_133'] = "Össz. Pont";
+$locale['PONT_134'] = "<b>Helyezés mutatása %s csoportosításban.</b>";
 $locale['PONT_300'] = "Beállítások módosítva";
 $locale['PONT_301'] = "Felhasználó Bannolva.";
 $locale['PONT_302'] = "Bannolás Feloldva.";
+$locale['PONT_303'] = "Nincs Pont kiosztva!";
 /*$locale['krd_333'] = "Aktiváló kód mai napra:<br /><b>%s</b><br /><span class='small2'>(A napi kód %s karakter.)</span>\n";
 
 $locale['krd_340'] = "Összes bónusz játékok száma: ";
@@ -56,12 +63,7 @@ $locale['krd_041'] = "Nincs még napló bejegyzés.";
 $locale['krd_042'] = "Törölhetem a teljes napló tartalmát?";
 $locale['krd_043'] = "Összes bejegyzés törlése";
 $locale['krd_044'] = "Válassz a menűből";
-$locale['krd_050'] = "Pont Statisztika";
-$locale['krd_051'] = "<b>Helyezés mutatása %s csoportosításban.</b>";
-$locale['krd_052'] = "Helyezés";
-$locale['krd_053'] = "Avatar";
 $locale['krd_054'] = "Felhasználó";
-$locale['krd_055'] = "Össz. Pont";
 $locale['krd_056'] = "Nincs Pont kiosztva!";
 
 $locale['PNT_B01'] = "Bank";

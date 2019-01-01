@@ -231,6 +231,48 @@ class UserPoint extends PointsModel {
 		return $hanyadik = dbrows($result);
 	}
 
+	private function pointListMenu(){
+
+        $lstmn = [];
+
+        $bind = [
+            ':level'    => fusion_get_userdata('user_level'),
+            ':level1'   => fusion_get_userdata('user_level'),
+            ':userId'   => fusion_get_userdata('user_id'),
+            ':language' => LANGUAGE
+        ];
+
+        $listQuery = "SELECT *
+            FROM ".DB_POINT_INF."
+            WHERE ".(multilang_table("PSP") ? "pi_language=:language AND " : '')."
+            (pi_user_id='0' AND pi_user_access >= :level) OR
+            (pi_user_id = :userId AND pi_user_access >= :level1)
+            ORDER BY pi_user_id ASC, pi_title ASC";
+
+        $result = dbquery($listQuery, $bind);
+
+        while ($gmenu = dbarray($result)) {
+            $lstmn[$gmenu['pi_link']] = ($gmenu['pi_title'] == self::$locale['krd_215'] ? ($this->settings['ps_bank'] == 1 ? $gmenu['pi_title'] : "") : $gmenu['pi_title']);
+	    }
+
+		$top = form_select('pont_jump', '', '', [
+		    'options'     => $lstmn,
+		    'inline'      => TRUE,
+		    'inner_width' => '170px',
+		    'allowclear'  => TRUE,
+		    'placeholder' => self::$locale['choose'],
+		    'class'       => 'pull-center'
+		]);
+
+        add_to_jquery("
+            $('#pont_jump').change(function() {
+                window.location.href = $(this).val();
+            });
+	    ");
+
+	    return $top;
+	}
+
     public function DisplayPoint() {
 		$diary = [
 			'where' => 'log_user_id=:userid',
@@ -271,6 +313,7 @@ class UserPoint extends PointsModel {
     		    'locale' => self::$locale['PONT_007'],
     		    'data'   => "<span style='color:".($message['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($message['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>\n",
             ],
+            'listmenu'  => self::pointListMenu(),
     	];
         pointPanelItem($info);
     }

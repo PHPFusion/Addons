@@ -252,7 +252,7 @@ class UserPoint extends PointsModel {
         $result = dbquery($listQuery, $bind);
 
         while ($gmenu = dbarray($result)) {
-            $lstmn[$gmenu['pi_link']] = ($gmenu['pi_title'] == self::$locale['krd_215'] ? ($this->settings['ps_bank'] == 1 ? $gmenu['pi_title'] : "") : $gmenu['pi_title']);
+            $lstmn[$gmenu['pi_link']] = $gmenu['pi_title'];
 	    }
 
 		$top = form_select('pont_jump', '', '', [

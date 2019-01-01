@@ -26,6 +26,13 @@ class PointsModel {
         'addtime'  => ''
     ];
 
+    protected $default_ban = [
+        'ban_mod'   => 1, //1 = add ban, 2 = remov bann
+        'ban_start' => 0,
+        'ban_stop'  => 0,
+        'ban_text'  => ''
+    ];
+
 	public static function CurrentSetup() {
 
         $result = dbquery("SELECT *

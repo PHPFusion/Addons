@@ -83,7 +83,53 @@ class UserPoint extends PointsModel {
         self::PontMessage(fusion_get_userdata('user_id'), ['point' => $daypoint, 'mod' => 1, 'messages' => $message]);
     }
 
-	public static function PointPlace($user = 0) {        $user = ((isnum($user) && $user != 0) ? $user : fusion_get_userdata("user_id"));
+    private function PointBan($user) {
+
+        if (isnum($user)) {
+            $result = dbquery("SELECT *
+                FROM ".DB_POINT_BAN."
+                WHERE ban_user_id=:user && (ban_time_start<=:bstart && ban_time_stop>=:bstop) || (ban_time_start<=:b2start && ban_time_stop=:b2stop)"
+            , [':user' => $user, ':bstart' => time(), ':bstop' => time(), ':b2start' => time(), ':b2stop' => 0]);
+		    if (dbrows($result) || $user == 0 || !iMEMBER) {
+                return TRUE;
+		    } else {
+                return FALSE;
+            }
+        } else {
+		    return TRUE;
+        }
+    }
+    //add user Bann or remov user bann
+    //Bann 1 id user
+    //SetPointBan(1, ['ban_mod' => 1, 'ban_start' => '1546421200', 'ban_stop' => '1546423200', 'ban_text' => 'messages'])
+    //Un Bann 1 id user
+    //SetPointBan(1, ['ban_mod' => 2, 'ban_stop' => '1546422200'])
+    public function SetPointBan($user, array $options = []) {
+
+	    if (isnum($user) && $user != 0) {
+            $options += $this->default_ban;
+	    	$banuser = [
+	    	    'ban_id'         => '',
+	    	    'ban_user_id'    => $user,
+	    	    'ban_time_start' => $options['ban_start'],
+	    	    'ban_time_stop'  => $options['ban_stop'],
+	    	    'ban_text'       => $options['ban_text'],
+	    	    'ban_language'   => LANGUAGE
+	    	];
+            if ($options['ban_mod'] == 2) {
+            	$banus = dbarray(dbquery("SELECT * FROM ".DB_POINT_BAN." WHERE ban_user_id='".$user."'"));
+            	$banuser['ban_id'] = $banus['ban_id'];
+            	$banuser['ban_time_stop'] = (time() - 2);
+            	$banuser['ban_text'] = $banus['ban_text'];
+            }
+
+	    	dbquery_insert(DB_POINT_BAN, $banuser, $options['ban_mod'] == 1 ? 'save' : 'update');
+	    	addNotice('success', $options['ban_mod'] == 1 ? self::$locale['PONT_301'] : self::$locale['PONT_302']);
+	    }
+    }
+
+	public static function PointPlace($user = 0) {
+        $user = ((isnum($user) && $user != 0) ? $user : fusion_get_userdata("user_id"));
         $bind = [
             ':point'    => self::PointInfo($user, ""),
             ':language' => LANGUAGE
@@ -141,12 +187,12 @@ class UserPoint extends PointsModel {
 	public function setPoint($user = NULL, array $options = []) {
 
 		$user = ($user ? $user : fusion_get_userdata('user_id'));
-
+        print_p($this->PointBan($user));
         $options += $this->default_options;
 		$pointmod = self::GetCurrentUser($user);
 		if (!empty($this->settings['ps_activ'])) { //Ha aktív a rendszer..
-			//if (!self::PONT_ban($usr)) {  //Ha nem bannolt felhasználó
-			if ($this->pointTime($user, $options) == 0) { //idõ vizsgálat, ha nincs itt az idõ nem ment
+			if (!$this->PointBan($user)) {  //Ha nem bannolt felhasználó
+			    if ($this->pointTime($user, $options) == 0) { //idõ vizsgálat, ha nincs itt az idõ nem ment
                /* if (!empty($this->settings['ps_games']) && $mod == 1) {
 		            $pnt_game = FALSE;
                     $pont_game = explode(',', $this->settings['ps_games']);
@@ -156,11 +202,12 @@ class UserPoint extends PointsModel {
 		        //$messages .= ($this->settings['ps_szorzo'] > 1 && $mod == 1 && empty($pnt_game) ? self::$locale['krd_209'] : "");
 				//$pnt = (empty($this->settings['ps_artipus']) ? $point : $this->settings['ps_egyar']);
 				//$pontom = $pnt * ($mod == 1 && empty($pnt_game) ? $this->settings['ps_szorzo'] : 1);
-                $pointmod['point_point'] = $pointmod['point_point'] + ($options['mod'] == 1 ? $options['point'] : $options['point'] * (-1));
+                    $pointmod['point_point'] = $pointmod['point_point'] + ($options['mod'] == 1 ? $options['point'] : $options['point'] * (-1));
 
-				dbquery_insert(DB_POINT, $pointmod, "update");
-				self::PontMessage($user, $options);
+                    dbquery_insert(DB_POINT, $pointmod, "update");
+                    self::PontMessage($user, $options);
 				//($stat ? self::addStat($stat, $user) : "");
+			    }
 			}
 		}
 	}

@@ -30,3 +30,14 @@ infusions/shoutbox_panel/shoutbox.inc
 
                     addNotice("success", empty($this->data['shout_id']) ? self::$locale['SB_shout_added'] : self::$locale['SB_shout_updated']);
                 }
+
+Bann 1 id user
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(user Id, ['ban_mod' => 1, 'ban_start' => Start Ban (time), 'ban_stop' => Stop Ban (time), 'ban_text' => 'messages'])
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(1, ['ban_mod' => 1, 'ban_start' => '1546421200', 'ban_stop' => '1546423200', 'ban_text' => 'messages'])
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(3, ['ban_mod' => 1, 'ban_start' => '1546421200', 'ban_stop' => '1546423200', 'ban_text' => 'messages']); // 3 id user Bann
+
+
+Remove or Stop Ban:
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(1, ['ban_mod' => 2, 'ban_stop' => Stop Ban (time - 5)])
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(1, ['ban_mod' => 2, 'ban_stop' => '1546423200'])
+ \PHPFusion\Points\UserPoint::getInstance()->SetPointBan(3, ['ban_mod' => 2, 'ban_stop' => '1546423200']); // 3 id user Stop Bann

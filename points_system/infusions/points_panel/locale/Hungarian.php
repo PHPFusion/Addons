@@ -29,6 +29,8 @@ $locale['PONT_116'] = "Napi Pont";
 $locale['PONT_117'] = "Naponta adható pont";
 $locale['PONT_118'] = "Lista oldalanként";
 $locale['PONT_300'] = "Beállítások módosítva";
+$locale['PONT_301'] = "Felhasználó Bannolva.";
+$locale['PONT_302'] = "Bannolás Feloldva.";
 /*$locale['krd_333'] = "Aktiváló kód mai napra:<br /><b>%s</b><br /><span class='small2'>(A napi kód %s karakter.)</span>\n";
 
 $locale['krd_340'] = "Összes bónusz játékok száma: ";

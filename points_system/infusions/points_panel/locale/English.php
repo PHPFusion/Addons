@@ -29,3 +29,5 @@ $locale['PONT_116'] = "Day Point";
 $locale['PONT_117'] = "Daily Point Increase";
 $locale['PONT_118'] = "Items per Page";
 $locale['PONT_300'] = "Settings successfully updated";
+$locale['PONT_301'] = "User Ban.";
+$locale['PONT_302'] = "Ban unlocked.";

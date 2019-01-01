@@ -30,6 +30,9 @@ if (!defined("DB_POINT_LOG")) {
 if (!defined("DB_POINT_ST")) {
 	define("DB_POINT_ST", DB_PREFIX."points_setup");
 }
+if (!defined("DB_POINT_BAN")) {
+	define("DB_POINT_BAN", DB_PREFIX."points_ban");
+}
 
 if (!defined("POINT_CLASS")) {
     define("POINT_CLASS", INFUSIONS."points_panel/");

@@ -72,9 +72,11 @@ if (!function_exists('DiaryItem')) {
         echo "<tbody class='text-smaller'>";
 
         if (!empty($info['max_row'])) {
+            $i = 0;
             foreach ($info['item'] as $key => $data) {
+                $i++;
                 echo "<tr id='diary_".$data['point_id']."' class='warning'>";
-                echo "<td><strong>".($key+1)."</strong></td>";
+                echo "<td><strong>".(PHPFusion\Points\UserPoint::PointPlace(fusion_get_userdata('user_id')) != ($info['helyezes'] + $i) ? $info['helyezes'] + $i : "<span style='color:#FF0000'>".($info['helyezes'] + $i))."</span>"."</strong></td>";
                 echo "<td><div class='clearfix'>
                     <div class='pull-left m-r-10'>".$data['avatar']."</div>
                     <div class='overflow-hide'>

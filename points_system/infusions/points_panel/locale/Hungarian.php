@@ -2,7 +2,7 @@
 $locale['PNT_I01'] = "Pontrendszer";
 $locale['PNT_I02'] = "Felhasználói Pont rendszer";
 $locale['PNT_I03'] = "Pont Bónusz";
-$locale['PNT_I04'] = "Helyezésem";
+//$locale['PNT_I04'] = "Helyezésem";
 $locale['PNT_P01'] = "PontRendszer";
 
 $locale['PONT_001'] = "Új regisztráció. Indulásnak %s pontot írtunk jóvá. További pont jóváírások %s óránként lesznek.";
@@ -38,6 +38,9 @@ $locale['PONT_300'] = "Beállítások módosítva";
 $locale['PONT_301'] = "Felhasználó Bannolva.";
 $locale['PONT_302'] = "Bannolás Feloldva.";
 $locale['PONT_303'] = "Nincs Pont kiosztva!";
+$locale['PONT_M01'] = "Adminisztráció";
+$locale['PONT_M02'] = "Bann menű";
+$locale['PONT_M03'] = "Helyezésem";
 /*$locale['krd_333'] = "Aktiváló kód mai napra:<br /><b>%s</b><br /><span class='small2'>(A napi kód %s karakter.)</span>\n";
 
 $locale['krd_340'] = "Összes bónusz játékok száma: ";

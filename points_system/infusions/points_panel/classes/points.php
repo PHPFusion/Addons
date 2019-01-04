@@ -252,7 +252,8 @@ class UserPoint extends PointsModel {
         $result = dbquery($listQuery, $bind);
 
         while ($gmenu = dbarray($result)) {
-            $lstmn[$gmenu['pi_link']] = $gmenu['pi_title'];
+        	$plink = iADMIN && ($gmenu['pi_user_access'] == USER_LEVEL_SUPER_ADMIN || $gmenu['pi_user_access'] == USER_LEVEL_ADMIN) ? $gmenu['pi_link'].fusion_get_aidlink() : $gmenu['pi_link'];
+            $lstmn[$plink] = $gmenu['pi_title'];
 	    }
 
 		$top = form_select('pont_jump', '', '', [

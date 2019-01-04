@@ -38,3 +38,6 @@ $locale['PONT_300'] = "Settings successfully updated";
 $locale['PONT_301'] = "User Ban.";
 $locale['PONT_302'] = "Ban unlocked.";
 $locale['PONT_303'] = "No points!";
+$locale['PONT_M01'] = "Administration";
+$locale['PONT_M02'] = "Bann";
+$locale['PONT_M03'] = "Ranking";

@@ -105,7 +105,9 @@ if (!empty($enabled_languages)) {
         $locale = fusion_get_locale("", INFUSIONS.$inf_folder."/locale/".$language.".php");
 		$mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".$language."')";
 		$mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
-			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['PNT_I04']."', '".$language."')";
+			('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".$language."'),
+			('0', ".USER_LEVEL_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PONT_M02']."', '".$language."'),
+			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['PONT_M03']."', '".$language."')";
 
 		$mlt_deldbrow[$language][] = DB_POINT." WHERE point_language='".$language."'";
 		$mlt_deldbrow[$language][] = DB_POINT_BAN." WHERE ban_language='".$language."'";
@@ -115,6 +117,8 @@ if (!empty($enabled_languages)) {
 } else {
 	$inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".LANGUAGE."')";
 	$inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
+	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".LANGUAGE."'),
+	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/pont_ban.php', '".$locale['PONT_M02']."', '".LANGUAGE."'),
 	('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['krd_217']."', '".LANGUAGE."')";
 
 }

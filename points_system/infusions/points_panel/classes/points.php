@@ -119,11 +119,15 @@ class UserPoint extends PointsModel {
             if ($options['ban_mod'] == 2) {
             	$banus = dbarray(dbquery("SELECT * FROM ".DB_POINT_BAN." WHERE ban_user_id='".$user."'"));
             	$banuser['ban_id'] = $banus['ban_id'];
+            	$banuser['ban_time_start'] = $banus['ban_time_start'];
             	$banuser['ban_time_stop'] = (time() - 2);
             	$banuser['ban_text'] = $banus['ban_text'];
             }
 
 	    	dbquery_insert(DB_POINT_BAN, $banuser, $options['ban_mod'] == 1 ? 'save' : 'update');
+	    	$subject = self::$locale['PONT_160'];
+	    	$message = $options['ban_mod'] == 1 ? showdate("%Y.%m.%d - %H:%M", $banuser['ban_time_stop']).self::$locale['PONT_161'] : showdate("%Y.%m.%d - %H:%M", $banuser['ban_time_stop']).self::$locale['PONT_162'];
+	    	send_pm($user, 1, $subject, $message, $smileys = "y");
 	    	addNotice('success', $options['ban_mod'] == 1 ? self::$locale['PONT_301'] : self::$locale['PONT_302']);
 	    }
     }

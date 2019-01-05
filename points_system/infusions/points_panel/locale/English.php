@@ -2,7 +2,7 @@
 $locale['PNT_I01'] = "Point System";
 $locale['PNT_I02'] = "User Point System";
 $locale['PNT_I03'] = "Pont Bónusz";
-$locale['PNT_I04'] = "Ranking";
+//$locale['PNT_I04'] = "Ranking";
 $locale['PNT_P01'] = "Point System";
 
 $locale['PONT_001'] = "New registration. %s points were awarded for departure. Additional point credits will be made every %s hours.";
@@ -19,6 +19,7 @@ $locale['PONT_012'] = "No entries.";
 $locale['PONT_100'] = "Point System";
 $locale['PONT_101'] = "Settings";
 $locale['PONT_102'] = "Diary";
+$locale['PONT_103'] = "Bann Settings";
 
 $locale['PONT_110'] = "Point System";
 $locale['PONT_111'] = "Active or Inactive is the System";
@@ -34,6 +35,23 @@ $locale['PONT_131'] = "Rank";
 $locale['PONT_132'] = "Avatar";
 $locale['PONT_133'] = "All points";
 $locale['PONT_134'] = "<b>Show Rank %s group.</b>";
+
+$locale['PONT_160'] = "Bann System";
+$locale['PONT_161'] = " the system has been activate Disable Points System.";
+$locale['PONT_162'] = " the system has been activate Enable Points System.\nNext time, avoid the prohibitions.";
+$locale['PONT_163'] = "Active Bann users";
+$locale['PONT_164'] = "All list active Bann users.";
+$locale['PONT_165'] = "Nick";
+$locale['PONT_166'] = "Start";
+$locale['PONT_167'] = "Subject";
+$locale['PONT_168'] = "Solve";
+$locale['PONT_169'] = "Are you sure you want to delete this entry?";
+$locale['PONT_170'] = "The active Bann users is currently empty.";
+$locale['PONT_171'] = "Bann users";
+$locale['PONT_172'] = "All list Bann users.";
+$locale['PONT_173'] = "Stop";
+$locale['PONT_174'] = "The Bann users is currently empty.";
+
 $locale['PONT_300'] = "Settings successfully updated";
 $locale['PONT_301'] = "User Ban.";
 $locale['PONT_302'] = "Ban unlocked.";

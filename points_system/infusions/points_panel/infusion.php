@@ -60,6 +60,7 @@ $inf_newtable[] = DB_POINT_LOG." (
 	log_date       INT(11)                  NOT NULL DEFAULT '0',
 	log_descript   VARCHAR(1000),
 	log_point      INT(10)                  NOT NULL DEFAULT '0',
+	log_active     ENUM('0','1')                     DEFAULT '0',
 	PRIMARY KEY (log_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
 
@@ -107,7 +108,8 @@ if (!empty($enabled_languages)) {
 		$mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
 			('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".$language."'),
 			('0', ".USER_LEVEL_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PONT_M02']."', '".$language."'),
-			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['PONT_M03']."', '".$language."')";
+			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_diary.php', '".$locale['PONT_M04']."', '".$language."'),
+			('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_place.php', '".$locale['PONT_M03']."', '".$language."')";
 
 		$mlt_deldbrow[$language][] = DB_POINT." WHERE point_language='".$language."'";
 		$mlt_deldbrow[$language][] = DB_POINT_BAN." WHERE ban_language='".$language."'";
@@ -118,8 +120,9 @@ if (!empty($enabled_languages)) {
 	$inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".LANGUAGE."')";
 	$inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
 	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".LANGUAGE."'),
-	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/pont_ban.php', '".$locale['PONT_M02']."', '".LANGUAGE."'),
-	('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_bestof.php', '".$locale['krd_217']."', '".LANGUAGE."')";
+	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PONT_M02']."', '".LANGUAGE."'),
+	('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_diary.php', '".$locale['PONT_M04']."', '".LANGUAGE."'),
+	('0', ".USER_LEVEL_MEMBER.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_place.php', '".$locale['PONT_M03']."', '".LANGUAGE."')";
 
 }
 

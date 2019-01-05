@@ -1,7 +1,7 @@
 <?php
 namespace PHPFusion\Points;
 
-class PointDiary extends PointsModel {
+class PointsPlace extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
     private $info = [];

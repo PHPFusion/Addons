@@ -52,7 +52,7 @@ class PointsAdmin {
                 //PHPFusion\Points\PointsDiaryAdmin::getInstance()->displayDiaryAdmin();
                 break;
             case "bann":
-                PHPFusion\Points\PointBanAdmin::getInstance()->CurrentList();
+                PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
                 break;
             default:
                 PHPFusion\Points\PointsSettingsAdmin::getInstance()->displayPointsAdmin();

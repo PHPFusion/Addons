@@ -1,7 +1,7 @@
 <?php
 namespace PHPFusion\Points;
 
-class PointBanAdmin extends PointsModel {
+class PointsBanAdmin extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
     private $info = [];

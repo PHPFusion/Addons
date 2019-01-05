@@ -187,4 +187,47 @@ if (!function_exists('BanItem')) {
 
 }
 
+if (!function_exists('Display_Diary')) {
+    function Display_Diary($info) {
+    	$locale = fusion_get_locale();
+    	opentable("<i class='fa fa-globe fa-lg m-r-10'></i>".$locale['PONT_200']);
+        if ($info['diaryfilter']) {
+        	echo "<div class='clearfix'>";
+        	echo "<div class='display-inline-block pull-right'>".$info['diaryfilter']."</div>";
+        	echo "<div class='display-inline-block pull-left'>".$info['ittem']['pagenav']."</div>";
+        	echo "</div>";
+        }
 
+        if (!empty($info['ittem']['diary'])) {
+        	echo "<div class='table-responsive m-t-20'><table class='table table-responsive table-striped'>";
+        	echo "<thead>";
+        	echo "<tr>";
+        	echo "<td>".$locale['PONT_205']."</td>";
+        	echo "<td>".$locale['PONT_206']."</td>";
+        	echo "<td>".$locale['PONT_207']."</td>";
+        	echo "<td>".$locale['PONT_208']."</td>";
+        	echo "<td>".$locale['PONT_209']."</td>";
+        	echo "</tr>";
+            echo "</thead>";
+            echo "<tbody class='text-smaller'>";
+            foreach ($info['ittem']['diary'] as $st) {
+            	$emotikum = "<span style='color:".($st['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($st['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>";
+            	echo "<tr>";
+            	echo "<td>".showdate("%Y.%m.%d - %H:%M",$st['log_date'])."</td>";
+            	echo "<td>".number_format($st['log_point'])."</td>";
+            	echo "<td>".$emotikum."</td>\n";
+            	echo "<td>".nl2br(parseubb(parsesmileys($st['log_descript'])))."</td>";
+            	echo "<td><a href='".FUSION_SELF.$info['ittem']['link']."&amp;del=delete&amp;log_id=".$st['log_id']."' onclick=\"return confirm('".$locale['PONT_305']."');\"><i class='fa fa-trash'></i></a></td>";
+            	echo "</tr>";
+            }
+            echo "</tbody>";
+            echo "</table></div>";
+        } else {
+        	echo "<div class='alert alert-danger text-center well'>".$locale['PONT_303']."</div>\n";
+        }
+        echo "<div class='text-center'>".$info['ittem']['delall']."</div>\n";
+        echo !empty($info['ittem']['pagenav']) ? "<div class='pull-right m-r-10'>".$info['ittem']['pagenav']."</div>\n" : '';
+
+        closetable();
+    }
+}

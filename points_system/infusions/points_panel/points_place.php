@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_bestof.php
+| Filename: points_panel/points_place.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -20,6 +20,5 @@ require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../main
 if (!db_exists(DB_POINT)) { redirect(BASEDIR."error.php?code=404"); }
 
 require_once THEMES."templates/header.php";
-//require_once POINT_CLASS."templates.php";
-PHPFusion\Points\PointDiary::getInstance()->CurrentList();
+PHPFusion\Points\PointsPlace::getInstance()->CurrentList();
 require_once THEMES."templates/footer.php";

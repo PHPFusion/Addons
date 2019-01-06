@@ -181,7 +181,7 @@ class PointsPointsAdmin extends PointsModel {
         	}
         }
 
-        if (count($csop) > 1) {
+        if (count($group) > 1) {
         	openside(self::$locale['PONT_242']);
         	echo openform('group_form', 'post', FUSION_REQUEST);
         	echo form_select('group', self::$locale['PONT_243'], 0, [

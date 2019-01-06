@@ -21,6 +21,8 @@ spl_autoload_register(function ($className) {
         'PHPFusion\\Points\\UserPoint'           => POINT_CLASS."classes/points.php",
         'PHPFusion\\Points\\PointsSettingsAdmin' => POINT_CLASS."classes/admin/points_settings.php",
         'PHPFusion\\Points\\PointsBanAdmin'      => POINT_CLASS."classes/admin/points_ban.php",
+        'PHPFusion\\Points\\PointsDiaryAdmin'    => POINT_CLASS."classes/admin/points_diary.php",
+        'PHPFusion\\Points\\PointsPointsAdmin'   => POINT_CLASS."classes/admin/points_points.php",
         'PHPFusion\\Points\\PointsModel'         => POINT_CLASS."classes/points_model.php",
         'PHPFusion\\Points\\PointsPlace'         => POINT_CLASS."classes/points_place.php",
         'PHPFusion\\Points\\PointsDiary'         => POINT_CLASS."classes/points_diary.php",

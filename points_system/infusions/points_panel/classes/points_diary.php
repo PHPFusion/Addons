@@ -75,13 +75,13 @@ class PointsDiary extends PointsModel {
         $page_nav = makepagenav($_GET['rowstart'], $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_diary.php".$this->nplink."&diary_filter=".$this->diary_filter."&");
 
         $bind = [
-            ':active'   => 0,
+            ':active'   => '0',
             ':rowstart' => $_GET['rowstart'],
             ':limit'    => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pu.user_id, pu.user_name, pu.user_status, pu.user_avatar, pu.user_joined, pu.user_level, pl.*
-	        FROM ".DB_POINT_LOG." pl
-	        LEFT JOIN ".DB_USERS." pu ON pu.user_id= pl.log_user_id
+	        FROM ".DB_POINT_LOG." AS pl
+	        LEFT JOIN ".DB_USERS." AS pu ON pu.user_id = pl.log_user_id
 	        WHERE log_user_id='".fusion_get_userdata('user_id')."' AND log_active=:active".$sql_condition."
 	        ORDER BY log_date DESC
             LIMIT :rowstart, :limit", $bind);

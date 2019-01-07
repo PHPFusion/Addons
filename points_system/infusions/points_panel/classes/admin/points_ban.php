@@ -23,7 +23,7 @@ class PointsBanAdmin extends PointsModel {
 	public function CurrentList() {
         set_title(self::$locale['PONT_103']);
 		if (isset($_GET['ban_id']) && isnum($_GET['ban_id'])) {
-		    $unban = dbarray(dbquery("SELECT ban_user_id FROM ".DB_POINT_BAN." WHERE ban_id='".intval($_GET['ban_id'])."'"));
+		    $unban = dbarray(dbquery("SELECT ban_user_id FROM ".DB_POINT_BAN." WHERE ban_id=:banid", [':banid' => intval($_GET['ban_id'])));
 		    if (!empty($unban)) {
                 \PHPFusion\Points\UserPoint::getInstance()->SetPointBan($unban['ban_user_id'], ['ban_mod' => 2, 'ban_stop' => (time() - 10)]);
 		    }
@@ -45,8 +45,8 @@ class PointsBanAdmin extends PointsModel {
             ':limit'         => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pbu.*, pb.*
-	        FROM ".DB_POINT_BAN." pb
-	        LEFT JOIN ".DB_USERS." pbu ON pbu.user_id= pb.ban_user_id
+	        FROM ".DB_POINT_BAN." AS pb
+	        LEFT JOIN ".DB_USERS." AS pbu ON pbu.user_id= pb.ban_user_id
 	        WHERE $sql_condition
             ".(multilang_table("PSP") ? " AND pb.ban_language=:language" : "")."
             LIMIT :rowstart, :limit", $bind);

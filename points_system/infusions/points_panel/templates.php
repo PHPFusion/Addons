@@ -48,8 +48,8 @@ if (!function_exists('pointPanelItem')) {
     }
 }
 
-if (!function_exists('DiaryItem')) {
-    function DiaryItem($info) {
+if (!function_exists('PlaceItem')) {
+    function PlaceItem($info) {
         $locale = fusion_get_locale("", POINT_LOCALE);
         echo opentable($info['opentable']);
         if (!empty($info['message'])) {

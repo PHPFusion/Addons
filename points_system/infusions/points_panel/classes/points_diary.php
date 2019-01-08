@@ -70,7 +70,7 @@ class PointsDiary extends PointsModel {
 
 	private function DiaryData() {
 		$sql_condition = !empty($this->diary_filter) ? " AND log_pmod='".$this->diary_filter."'" : "";
-        $max_rows = dbcount("(log_id)", DB_POINT_LOG, "log_user_id='".fusion_get_userdata('user_id')."' AND log_active=0".$sql_condition);
+        $max_rows = dbcount("(log_id)", DB_POINT_LOG, "log_user_id='".fusion_get_userdata('user_id')."' AND log_active='0'".$sql_condition);
         $_GET['rowstart'] = (isset($_GET['rowstart']) && isnum($_GET['rowstart']) && $_GET['rowstart'] <= $max_rows) ? $_GET['rowstart'] : 0;
         $page_nav = makepagenav($_GET['rowstart'], $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_diary.php".$this->nplink."&diary_filter=".$this->diary_filter."&");
 

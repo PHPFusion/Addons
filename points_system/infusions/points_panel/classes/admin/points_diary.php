@@ -78,10 +78,10 @@ class PointsDiaryAdmin extends PointsModel {
     private function Diaryfilter() {
         $author_opts = [0 => self::$locale['PONT_212']];
         $result = dbquery("SELECT pl.*, pu.user_id, pu.user_name, pu.user_status
-            FROM ".DB_POINT_LOG." pl
-            LEFT JOIN ".DB_USERS." pu on pl.log_user_id = pu.user_id
+            FROM ".DB_POINT_LOG." AS pl
+            LEFT JOIN ".DB_USERS." AS pu ON pl.log_user_id = pu.user_id
             GROUP BY pu.user_id
-            ORDER BY user_name ASC
+            ORDER BY pu.user_name ASC
         ");
 
         if (dbrows($result) > 0) {
@@ -115,7 +115,7 @@ class PointsDiaryAdmin extends PointsModel {
             );
         }
 
-        if (!empty($_POST['log_user_id'])) {
+        if (!empty($_POST['points_user'])) {
             $search_string['log_user_id'] = array(
                 "input" => form_sanitizer($_POST['points_user'], "", "points_user"), "operator" => "="
             );
@@ -137,10 +137,10 @@ class PointsDiaryAdmin extends PointsModel {
             ':limit'    => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pu.user_id, pu.user_name, pu.user_status, pu.user_avatar, pu.user_joined, pu.user_level, pl.*
-	        FROM ".DB_POINT_LOG." pl
-	        LEFT JOIN ".DB_USERS." pu ON pu.user_id= pl.log_user_id
-	        ".($sql_condition ? " WHERE ".$sql_condition : "")."
-	        ORDER BY log_date DESC
+	        FROM ".DB_POINT_LOG." AS pl
+	        LEFT JOIN ".DB_USERS." AS pu ON pu.user_id = pl.log_user_id
+	        ".($sql_condition ? "WHERE ".$sql_condition : "")."
+	        ORDER BY pl.log_date DESC
             LIMIT :rowstart, :limit", $bind);
 
         $inf = [];

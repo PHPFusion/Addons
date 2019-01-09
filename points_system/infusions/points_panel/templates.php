@@ -48,8 +48,8 @@ if (!function_exists('pointPanelItem')) {
     }
 }
 
-if (!function_exists('DiaryItem')) {
-    function DiaryItem($info) {
+if (!function_exists('PlaceItem')) {
+    function PlaceItem($info) {
         $locale = fusion_get_locale("", POINT_LOCALE);
         echo opentable($info['opentable']);
         if (!empty($info['message'])) {
@@ -104,6 +104,12 @@ if (!function_exists('DiaryItem')) {
 if (!function_exists('BanItem')) {
     function BanItem($info) {
     	$locale = fusion_get_locale();
+        if (!empty($info['banuser'])) {
+    	openside($locale['PONT_163']);
+        echo $info['banuser'];
+        closeside();
+        }
+
     	opentable($locale['PONT_163']);
         echo "<div class='well text-center'>".$locale['PONT_164']."</div>";
         if (!empty($info['aktivban']['ittem'])) {

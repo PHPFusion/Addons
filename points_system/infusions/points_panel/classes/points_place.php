@@ -61,7 +61,7 @@ class PointsPlace extends PointsModel {
             'item'      => $inf
         ];
 
-        DiaryItem($info);
+        PlaceItem($info);
 	}
 
 

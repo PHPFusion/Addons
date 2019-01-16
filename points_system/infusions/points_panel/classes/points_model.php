@@ -15,15 +15,17 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
+
 namespace PHPFusion\Points;
 
 class PointsModel {
 
     protected $default_options = [
-        'mod'      => 1, //1 = add point, 2 = remov point
-        'point'    => 0,
-        'messages' => '',
-        'addtime'  => ''
+        'mod'       => 1, //1 = add point, 2 = remov point
+        'point'     => 0,
+        'messages'  => '',
+        'addtime'   => '',
+        'pricetype' => 0  //0 = pricetype , 1 = more price
     ];
 
     protected $default_ban = [
@@ -33,7 +35,18 @@ class PointsModel {
         'ban_text'  => ''
     ];
 
-	public static function CurrentSetup() {
+    public function globinf() {
+        //$this->diary_filter = 0;
+        //$this->save = (string)filter_input(INPUT_POST, 'savesettings', FILTER_DEFAULT);
+        $this->diary_filter = filter_input(INPUT_POST, 'diary_filter', FILTER_DEFAULT);
+        $this->deleteall = filter_input(INPUT_GET, 'deleteall', FILTER_DEFAULT);
+        $this->del = filter_input(INPUT_GET, 'del', FILTER_DEFAULT);
+        $this->np = filter_input(INPUT_GET, 'np', FILTER_DEFAULT);
+        $this->logid = filter_input(INPUT_GET, 'log_id', FILTER_VALIDATE_INT);
+        $this->rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_VALIDATE_INT);
+    }
+
+    public static function CurrentSetup() {
 
         $result = dbquery("SELECT *
             FROM ".DB_POINT_ST."
@@ -42,5 +55,5 @@ class PointsModel {
         $settings = dbarray($result);
 
         return $settings;
-	}
+    }
 }

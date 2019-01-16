@@ -1,4 +1,5 @@
 <?php
+
 namespace PHPFusion\Points;
 
 class UserPoint extends PointsModel {
@@ -9,9 +10,9 @@ class UserPoint extends PointsModel {
 
     public function __construct() {
         include_once POINT_CLASS."templates.php";
-	    add_to_head("<script type='text/javascript' src='".fusion_get_settings('siteurl')."infusions/points_panel/counts.js'></script>");
+        add_to_head("<script type='text/javascript' src='".fusion_get_settings('siteurl')."infusions/points_panel/counts.js'></script>");
         self::$locale = fusion_get_locale("", POINT_LOCALE);
-        iMEMBER ? define("iNP", substr(md5(fusion_get_userdata('user_password').USER_IP), 16, 26)) : "";
+        iMEMBER ? define("iNP", hash('md5', fusion_get_userdata('user_name'))) : "";
     }
 
     public static function getInstance() {
@@ -23,20 +24,6 @@ class UserPoint extends PointsModel {
        return self::$instance;
     }
 
-/*	public static function CurrentSetup() {
-        $bind = [
-            ':language' => LANGUAGE
-			];
-
-        $result = dbquery("SELECT *
-            FROM ".DB_POINT_ST."
-            ".(multilang_table("PSP") ? " WHERE ps_language=:language" : ''), $bind);
-
-        $settings = dbarray($result);
-
-        return $settings;
-	}
-*/
     public static function GetCurrentUser($uid = NULL) {
 
 	    $def_point = [
@@ -83,7 +70,7 @@ class UserPoint extends PointsModel {
         self::PontMessage(fusion_get_userdata('user_id'), ['point' => $daypoint, 'mod' => 1, 'messages' => $message]);
     }
 
-    private function PointBan($user) {
+    private static function PointBan($user) {
 
         if (isnum($user)) {
             $result = dbquery("SELECT *
@@ -92,12 +79,10 @@ class UserPoint extends PointsModel {
             , [':user' => $user, ':bstart' => time(), ':bstop' => time(), ':b2start' => time(), ':b2stop' => 0]);
 		    if (dbrows($result) || $user == 0 || !iMEMBER) {
                 return TRUE;
-		    } else {
-                return FALSE;
-            }
-        } else {
-		    return TRUE;
+		    }
+            return FALSE;
         }
+        return TRUE;
     }
     //add user Bann or remov user bann
     //Bann 1 id user
@@ -106,7 +91,7 @@ class UserPoint extends PointsModel {
     //SetPointBan(1, ['ban_mod' => 2, 'ban_stop' => '1546422200'])
     public function SetPointBan($user, array $options = []) {
 
-	    if (isnum($user) && $user != 0) {
+	    if (isnum($user) && $user > 0) {
             $options += $this->default_ban;
 	    	$banuser = [
 	    	    'ban_id'         => '',
@@ -117,7 +102,7 @@ class UserPoint extends PointsModel {
 	    	    'ban_language'   => LANGUAGE
 	    	];
             if ($options['ban_mod'] == 2) {
-            	$banus = dbarray(dbquery("SELECT * FROM ".DB_POINT_BAN." WHERE ban_user_id='".$user."'"));
+            	$banus = dbarray(dbquery("SELECT * FROM ".DB_POINT_BAN." WHERE ban_user_id=:userid", [':userid' => (int)$user]));
             	$banuser['ban_id'] = $banus['ban_id'];
             	$banuser['ban_time_start'] = $banus['ban_time_start'];
             	$banuser['ban_time_stop'] = (time() - 2);
@@ -127,7 +112,7 @@ class UserPoint extends PointsModel {
 	    	dbquery_insert(DB_POINT_BAN, $banuser, $options['ban_mod'] == 1 ? 'save' : 'update');
 	    	$subject = self::$locale['PONT_160'];
 	    	$message = $options['ban_mod'] == 1 ? showdate("%Y.%m.%d - %H:%M", $banuser['ban_time_stop']).self::$locale['PONT_161'] : showdate("%Y.%m.%d - %H:%M", $banuser['ban_time_stop']).self::$locale['PONT_162'];
-	    	send_pm($user, 1, $subject, $message, $smileys = "y");
+	    	send_pm($user, 1, $subject, $message, "y");
 	    	addNotice('success', $options['ban_mod'] == 1 ? self::$locale['PONT_301'] : self::$locale['PONT_302']);
 	    }
     }
@@ -138,31 +123,39 @@ class UserPoint extends PointsModel {
             ':point'    => self::PointInfo($user, ""),
             ':language' => LANGUAGE
         ];
-
-        $place = dbcount("(*)+1", DB_POINT, "point_point>:point".(multilang_table("PSP") ? " AND point_language=:language" : '')."", $bind);
-        return $place;
+        if (!self::PointBan($user)) {
+            $place = dbcount("(*)+1", DB_POINT, "point_point>:point".(multilang_table("PSP") ? " AND point_language=:language" : '')."", $bind);
+            return $place;
+        }
+        return FALSE;
 	}
 
 	public static function PointInfo($user, $pont = 0) {
-		$bind = [
-			':userid'   => $user,
-			':language' => LANGUAGE
-		];
+        $bind = [
+            ':userid'   => $user,
+            ':language' => LANGUAGE
+        ];
 
-		$result = dbquery("SELECT point_point
-			FROM ".DB_POINT."
-			WHERE point_user=:userid
-			".(multilang_table("PSP") ? " AND point_language=:language" : '')."
-			LIMIT 0,1", $bind);
+        $result = dbquery("SELECT point_point
+            FROM ".DB_POINT."
+            WHERE point_user = :userid
+            ".(multilang_table("PSP") ? " AND point_language = :language" : '')."
+            LIMIT 0,1", $bind
+        );
 
-		if (dbrows($result)) {
-			$pont = dbresult($result, 0) - $pont;
-			return $pont;
-		} else {
-			return FALSE;
-		}
+        if (dbrows($result)) {
+            $pont = dbresult($result, 0) - $pont;
 
-	}
+            if (!self::PointBan($user)){
+                //if not banned user
+                return $pont;
+            }
+            //if banned user
+            return FALSE;
+        }
+        //if not user
+        return FALSE;
+    }
 
 	protected static function PontDiary($inf) {
         $resultQuery = "SELECT *
@@ -171,46 +164,40 @@ class UserPoint extends PointsModel {
             $inf['order'].
             $inf['limit'];
         $result = dbquery($resultQuery, $inf['bind']);
-        return $diary = dbarray($result);
+        return dbarray($result);
 	}
 
 	private function PontMessage($user = NULL, array $options = []) {
 
         $options += $this->default_options;
-		$diary = [
-			'log_id'        => '',
-			'log_user_id'   => $user,
-			'log_pmod'      => $options['mod'],
-			'log_date'      => time(),
-			'log_descript'  => $options['messages'],
-			'log_point'     => $options['point']
-			];
-		dbquery_insert(DB_POINT_LOG, $diary, 'save');
-	}
+        $diary = [
+            'log_id'        => '',
+            'log_user_id'   => $user,
+            'log_pmod'      => $options['mod'],
+            'log_date'      => time(),
+            'log_descript'  => $options['messages'],
+            'log_point'     => $options['point']
+        ];
+        dbquery_insert(DB_POINT_LOG, $diary, 'save');
+    }
 
 	public function setPoint($user = NULL, array $options = []) {
 
 		$user = ($user ? $user : fusion_get_userdata('user_id'));
-        print_p($this->PointBan($user));
+
         $options += $this->default_options;
 		$pointmod = self::GetCurrentUser($user);
-		if (!empty($this->settings['ps_activ'])) { //Ha aktív a rendszer..
-			if (!$this->PointBan($user)) {  //Ha nem bannolt felhasználó
-			    if ($this->pointTime($user, $options) == 0) { //idõ vizsgálat, ha nincs itt az idõ nem ment
-               /* if (!empty($this->settings['ps_games']) && $mod == 1) {
-		            $pnt_game = FALSE;
-                    $pont_game = explode(',', $this->settings['ps_games']);
-                    $pnt_game = (in_array($stat, $pont_game) ? TRUE : FALSE);
-                } */
+		if (!empty($this->settings['ps_activ'])) { //activ a system..
+			if (!$this->PointBan($user)) {  //if not banned user
+			    if ($this->pointTime($user, $options) == 0) { //time test,if there is no time here did not go
+                    if (empty($this->settings['ps_pricetype']) && empty($options['pricetype']) && $this->settings['ps_unitprice'] > 0) { //unit price
+                        $options['point'] = $this->settings['ps_unitprice'];
+                    }
 
-		        //$messages .= ($this->settings['ps_szorzo'] > 1 && $mod == 1 && empty($pnt_game) ? self::$locale['krd_209'] : "");
-				//$pnt = (empty($this->settings['ps_artipus']) ? $point : $this->settings['ps_egyar']);
-				//$pontom = $pnt * ($mod == 1 && empty($pnt_game) ? $this->settings['ps_szorzo'] : 1);
                     $pointmod['point_point'] = $pointmod['point_point'] + ($options['mod'] == 1 ? $options['point'] : $options['point'] * (-1));
 
-                    dbquery_insert(DB_POINT, $pointmod, "update");
+                    dbquery_insert(DB_POINT, $pointmod, 'update');
                     self::PontMessage($user, $options);
-				//($stat ? self::addStat($stat, $user) : "");
 			    }
 			}
 		}
@@ -232,7 +219,7 @@ class UserPoint extends PointsModel {
         ";
 
 		$result = dbquery($resultQuery, $bind);
-		return $hanyadik = dbrows($result);
+		return dbrows($result);
 	}
 
 	private function pointListMenu(){
@@ -294,6 +281,7 @@ class UserPoint extends PointsModel {
     	    'id'        => $this->points['point_user'],
     		'aktiv'     => $this->settings['ps_activ'],
     		'message'   => empty($this->settings['ps_activ']) ? self::$locale['PONT_011'] : '',
+    		'pricetype' => empty($this->settings['ps_pricetype']) ? sprintf(self::$locale['PONT_013'], ($this->settings['ps_unitprice'])) : '',
         ];
 
     	$info['item'] = [

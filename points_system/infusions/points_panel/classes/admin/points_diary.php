@@ -3,18 +3,14 @@ namespace PHPFusion\Points;
 
 class PointsDiaryAdmin extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
-    private $points_settings = [];
+    private $locale = [];
     public $diary_filter = '';
     public $diary_user = '';
 
     public function __construct() {
         $this->settings = self::CurrentSetup();
-        self::$locale = fusion_get_locale("", POINT_LOCALE);
-		$this->diary_filter = (isset($_POST['log_pmod']) && isnum($_POST['log_pmod']) ? $_POST['log_pmod'] : 0);
-		$this->diary_filter = empty($this->diary_filter) ? (isset($_GET['log_pmod']) && isnum($_GET['log_pmod']) ? $_GET['log_pmod'] : 0) : $this->diary_filter;
-		$this->diary_user = (isset($_POST['points_user']) && isnum($_POST['points_user']) ? $_POST['points_user'] : 0);
-		$this->diary_user = empty($this->diary_user) ? (isset($_GET['points_user']) && isnum($_GET['points_user']) ? $_GET['points_user'] : 0) : $this->diary_user;
+        $this->locale = fusion_get_locale("", POINT_LOCALE);
+        self::InputFilter();
     }
 
     public static function getInstance() {
@@ -33,50 +29,65 @@ class PointsDiaryAdmin extends PointsModel {
     	self::displayData($info);
     }
 
+    private function InputFilter() {
+        $this->plog_pmod = filter_input(INPUT_POST, 'log_pmod', FILTER_VALIDATE_INT);
+        $this->glog_pmod = filter_input(INPUT_GET, 'log_pmod', FILTER_VALIDATE_INT);
+        $this->ppoints_user = filter_input(INPUT_POST, 'points_user', FILTER_VALIDATE_INT);
+        $this->gpoints_user = filter_input(INPUT_GET, 'points_user', FILTER_VALIDATE_INT);
+
+		$this->diary_filter = (!empty($this->plog_pmod) && isnum($this->plog_pmod) ? $this->plog_pmod : 0);
+		$this->diary_filter = empty($this->diary_filter) ? (!empty($this->glog_pmod) && isnum($this->glog_pmod) ? $this->glog_pmod : 0) : $this->diary_filter;
+		$this->diary_user = (!empty($this->ppoints_user) && isnum($this->ppoints_user) ? $this->ppoints_user : 0);
+		$this->diary_user = empty($this->diary_user) ? (!empty($this->gpoints_user) && isnum($this->gpoints_user) ? $this->gpoints_user : 0) : $this->diary_user;
+    }
+
     private function Diaryform() {
-		if (isset($_POST['diarydel'])) {
+        $this->diarydel = filter_input(INPUT_POST, 'diarydel', FILTER_DEFAULT);
+		if (!empty($this->diarydel)) {
             $dellog = (isset($_POST['dellog_id'])) ? explode(",", form_sanitizer($_POST['dellog_id'], '', 'dellog_id')) : '';
             if (!empty($dellog)&& \defender::safe()) {
                 foreach ($dellog as $dellog_id) {
-                    dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => intval($dellog_id)]);
+                    dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => (int)$dellog_id]);
                 }
-                addNotice('success', self::$locale['PONT_306']);
+                addNotice('success', $this->locale['PONT_306']);
                 redirect(FUSION_REQUEST);
             }
-            addNotice('warning', self::$locale['PONT_202']);
+            addNotice('warning', $this->locale['PONT_202']);
             redirect(FUSION_REQUEST);
 		}
 
-		if (isset($_POST['diaryrevoke'])) {
+        $this->diaryrevoke = filter_input(INPUT_POST, 'diaryrevoke', FILTER_DEFAULT);
+		if (!empty($this->diaryrevoke)) {
             $backlog = (isset($_POST['backlog_id'])) ? explode(",", form_sanitizer($_POST['backlog_id'], '', 'backlog_id')) : '';
             if (!empty($backlog) && \defender::safe()) {
-            	$messages = self::$locale['PONT_210'];
+            	$messages = $this->locale['PONT_210'];
 
                 foreach ($backlog as $backlog_id) {
-                	$data = dbarray(dbquery("SELECT * FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => intval($backlog_id)]));
+                	$data = dbarray(dbquery("SELECT * FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => (int)$backlog_id]));
                     \PHPFusion\Points\UserPoint::getInstance()->setPoint($data['log_user_id'], ["mod" => $data['log_pmod'] == 1 ? 2 : 1, "point" => $data['log_point'], "messages" => $messages]);
                 }
-                addNotice('success', self::$locale['PONT_307']);
+                addNotice('success', $this->locale['PONT_307']);
                 redirect(FUSION_REQUEST);
             }
-            addNotice('warning', self::$locale['PONT_211']);
+            addNotice('warning', $this->locale['PONT_211']);
             redirect(FUSION_REQUEST);
 		}
 
-		if (isset($_POST['deletemod'])) {
-			$delmod = form_sanitizer($_POST['deletemod'], 0, 'deletemod');
+        $this->deletemod = filter_input(INPUT_POST, 'deletemod', FILTER_DEFAULT);
+		if (!empty($this->deletemod)) {
+			$delmod = form_sanitizer($this->deletemod, 0, 'deletemod');
 			$limit = (empty($delmod) ? time() : (time() - ($delmod * 86400)));
-            $max_rows = dbcount("(log_id)", DB_POINT_LOG, "log_date<='".$limit."'");
+            $max_rows = dbcount("(log_id)", DB_POINT_LOG, "log_date<=:limit", [':limit' => $limit]);
             if ($max_rows && \defender::safe()) {
-            	$result = dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_date<=:log_date", [':log_date' => intval($limit)]);
-            	addNotice('success', sprintf(self::$locale['PONT_308'], showdate("%Y.%m.%d - %H:%M",$limit)));
+            	dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_date<=:log_date", [':log_date' => $limit]);
+            	addNotice('success', sprintf($this->locale['PONT_308'], showdate("%Y.%m.%d - %H:%M", $limit)));
             	redirect(FUSION_REQUEST);
             }
 		}
     }
 
     private function Diaryfilter() {
-        $author_opts = [0 => self::$locale['PONT_212']];
+        $author_opts = [0 => $this->locale['PONT_212']];
         $result = dbquery("SELECT pl.*, pu.user_id, pu.user_name, pu.user_status
             FROM ".DB_POINT_LOG." AS pl
             LEFT JOIN ".DB_USERS." AS pu ON pl.log_user_id = pu.user_id
@@ -98,27 +109,29 @@ class PointsDiaryAdmin extends PointsModel {
         ])."</div>".
         "<div class='display-inline-block pull-right'>".form_select('log_pmod', '', $this->diary_filter, [
             'allowclear' => TRUE,
-            'options'    => self::$locale['adm038'],
+            'options'    => $this->locale['adm038'],
             'onchange'   => 'document.diary_form.submit()'
         ])."</div></div>".
 		closeform();
         return $info;
-
     }
 
 	private function DiaryData() {
+        $this->rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_DEFAULT);
         $sql_condition = '';
-        $search_string = array();
-        if (!empty($_POST['log_pmod'])) {
-            $search_string['log_pmod'] = array(
-                "input" => form_sanitizer($_POST['log_pmod'], "", "log_pmod"), "operator" => "="
-            );
+        $search_string = [];
+        $this->log_pmod = filter_input(INPUT_POST, 'log_pmod', FILTER_DEFAULT);
+        if (!empty($this->log_pmod)) {
+            $search_string['log_pmod'] = [
+                'input' => form_sanitizer($this->log_pmod, '', 'log_pmod'), 'operator' => '='
+            ];
         }
 
-        if (!empty($_POST['points_user'])) {
-            $search_string['log_user_id'] = array(
-                "input" => form_sanitizer($_POST['points_user'], "", "points_user"), "operator" => "="
-            );
+        $this->points_user = filter_input(INPUT_POST, 'points_user', FILTER_DEFAULT);
+        if (!empty($this->points_user)) {
+            $search_string['log_user_id'] = [
+                'input' => form_sanitizer($this->points_user, '', 'points_user'), 'operator' => '='
+            ];
         }
 
         if (!empty($search_string)) {
@@ -129,11 +142,10 @@ class PointsDiaryAdmin extends PointsModel {
         }
 
         $max_rows = dbcount("(log_id)", DB_POINT_LOG, $sql_condition);
-        $_GET['rowstart'] = (isset($_GET['rowstart']) && isnum($_GET['rowstart']) && $_GET['rowstart'] <= $max_rows) ? $_GET['rowstart'] : 0;
-        $page_nav = makepagenav($_GET['rowstart'], $this->settings['ps_page'], $max_rows, 3, FUSION_SELF.fusion_get_aidlink()."&section=diary&log_pmod=".$this->diary_filter."&points_user=".$this->diary_user."&");
+        $this->rowstart = (!empty($this->rowstart) && isnum($this->rowstart) && $this->rowstart <= $max_rows) ? $this->rowstart : 0;
 
         $bind = [
-            ':rowstart' => $_GET['rowstart'],
+            ':rowstart' => $this->rowstart,
             ':limit'    => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pu.user_id, pu.user_name, pu.user_status, pu.user_avatar, pu.user_joined, pu.user_level, pl.*
@@ -151,79 +163,89 @@ class PointsDiaryAdmin extends PointsModel {
 	    $info = [
 	        'diary'   => $inf,
             'max_row' => $max_rows,
-            'pagenav' => $page_nav
+            'pagenav' => makepagenav($this->rowstart, $this->settings['ps_page'], $max_rows, 3, FUSION_SELF.fusion_get_aidlink()."&section=diary&log_pmod=".$this->diary_filter."&points_user=".$this->diary_user."&")
 	    ];
         return $info;
 
 	}
 
-    private function displayData($info) {
+    private function displayData($dinfo) {
+    	opentable("<i class='fa fa-book fa-lg m-r-10'></i>".$this->locale['PONT_200']);
+    	?>
+            <div class='display-inline-block pull-left'><?php echo $dinfo['fdata']['pagenav'] ?></div>
+    	<?php
+        if ($dinfo['filter']) {
 
-    	opentable("<i class='fa fa-book fa-lg m-r-10'></i>".self::$locale['PONT_200']);
-        echo "<div class='display-inline-block pull-left'>".$info['fdata']['pagenav']."</div>";
-        if ($info['filter']) {
-        	echo $info['filter'];
+        	echo $dinfo['filter'];
         }
-        if (!empty($info['fdata']['diary'])) {
-        	echo "<div class='table-responsive m-t-20'><table class='table table-responsive table-striped'>";
-        	echo "<thead>";
-        	echo "<tr>";
-        	echo "<td></td>";
-        	echo "<td>".self::$locale['PONT_213']."</td>";
-        	echo "<td>".self::$locale['PONT_214']."</td>";
-        	echo "<td>".self::$locale['PONT_215']."</td>";
-        	echo "<td>".self::$locale['PONT_216']."</td>";
-        	echo "<td>".self::$locale['PONT_217']."</td>";
-        	echo "<td>".self::$locale['delete']."</td>";
-        	echo "<td>".self::$locale['PONT_218']."</td>";
-        	echo "</tr>";
-            echo "</thead>";
-            echo "<tbody class='text-smaller'>";
-            echo openform('diarycheck_form', 'post', FUSION_REQUEST);
-            $i = 0;
-            foreach ($info['fdata']['diary'] as $st) {
-            	$i++;
-            	$emotikum = "<span style='color:".($st['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($st['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>";
-            	echo "<tr>";
-            	echo "<td>".($_GET['rowstart'] + $i)."</td>";
-            	echo "<td>".showdate("%Y.%m.%d - %H:%M",$st['log_date'])."</td>";
-            	echo "<td>".trimlink($st['user_name'],20)."</td>";
-            	echo "<td>".number_format($st['log_point'])."</td>\n";
-            	echo "<td>".$emotikum."</td>\n";
-            	echo "<td>".nl2br(parseubb(parsesmileys($st['log_descript'])))."</td>";
-            	echo "<td>".form_checkbox('dellog_id[]', '', '', ['value' => $st['log_id'], 'class' => 'm-0'])."</td>\n";
-            	echo "<td>".form_checkbox('backlog_id[]', '', '', ['value' => $st['log_id'], 'class' => 'm-0'])."</td>\n";
-            	echo "</tr>";
-            }
-            echo "</tbody>";
-            echo "</table></div>";
+
+        if (!empty($dinfo['fdata']['diary'])) {
+            ?>
+            <div class='table-responsive m-t-20'><table class='table table-responsive table-striped'>
+        	    <thead>
+        	    <tr>
+        	    <td></td>
+        	    <td><?php echo $this->locale['PONT_213'] ?></td>
+        	    <td><?php echo $this->locale['PONT_214'] ?></td>
+        	    <td><?php echo $this->locale['PONT_215'] ?></td>
+        	    <td><?php echo $this->locale['PONT_216'] ?></td>
+        	    <td><?php echo $this->locale['PONT_217'] ?></td>
+        	    <td><?php echo $this->locale['delete'] ?></td>
+        	    <td><?php echo $this->locale['PONT_218'] ?></td>
+        	    </tr>
+        	    </thead>
+        	    <tbody class='text-smaller'>
+        	    <?php echo openform('diarycheck_form', 'post', FUSION_REQUEST);
+        	    $pdi = 0;
+        	    foreach ($dinfo['fdata']['diary'] as $std) {
+        	        $pdi++;
+        	        $emotikum = "<span style='color:".($std['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($std['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>";
+        	        ?>
+        	        <tr>
+        	        <td><?php echo ($this->rowstart + $pdi) ?></td>
+        	        <td><?php echo showdate("%Y.%m.%d - %H:%M", $std['log_date']) ?></td>
+        	        <td><?php echo trimlink($std['user_name'],20) ?></td>
+        	        <td><?php echo number_format($std['log_point']) ?></td>
+        	        <td><?php echo $emotikum ?></td>
+        	        <td><?php echo nl2br(parseubb(parsesmileys($std['log_descript']))) ?></td>
+        	        <td><?php echo form_checkbox('dellog_id[]', '', '', ['value' => $std['log_id'], 'class' => 'm-0']) ?></td>
+        	        <td><?php echo form_checkbox('backlog_id[]', '', '', ['value' => $std['log_id'], 'class' => 'm-0']) ?></td>
+        	        </tr>
+        	    <?php
+        	    }
+        	    ?>
+        	    </tbody>
+        	    </table></div>
+        	    <?php
         } else {
-        	echo "<div class='alert alert-danger text-center well'>".self::$locale['PONT_303']."</div>\n";
+        	?>
+        	    <div class='alert alert-danger text-center well'><?php echo $this->locale['PONT_303'] ?></div>
+        	<?php
         }
-        echo "<div class='text-center'>".(dbcount("(log_id)", DB_POINT_LOG, "") ?
-        form_button('diarydel', self::$locale['PONT_219'], self::$locale['PONT_219'])."&nbsp;&nbsp;".
-        form_button('diaryrevoke', self::$locale['PONT_220'], self::$locale['PONT_220']) : '');
-        echo "</div>";
-        echo closeform();
+        ?>
+            <div class='text-center'><?php echo (dbcount("(log_id)", DB_POINT_LOG, "") ?
+        form_button('diarydel', $this->locale['PONT_219'], $this->locale['PONT_219'])."&nbsp;&nbsp;".
+        form_button('diaryrevoke', $this->locale['PONT_220'], $this->locale['PONT_220']) : ''); ?>
+        </div>
+        <?php echo closeform();
 
         $listadeletemod = [0 => '', 30 => 30, 20 => 20, 14 => 14, 7 => 7];
         foreach ($listadeletemod as $key => $data) {
-        	$listadelete[$key] = ($key == 0 ? self::$locale['PONT_309'] : $data.self::$locale['PONT_310']);
+        	$listadelete[$key] = ($key == 0 ? $this->locale['PONT_309'] : $data.$this->locale['PONT_310']);
         }
-
         echo openform('listadel_form', 'post', FUSION_REQUEST);
         echo form_select('deletemod', '', 0, [
             'allowclear' => TRUE,
             'options'    => $listadelete,
         ]);
-        echo form_button('del_naplo', self::$locale['PONT_221'], self::$locale['PONT_221'], ['class' => 'btn-success']);
+        echo form_button('del_naplo', $this->locale['PONT_221'], $this->locale['PONT_221'], ['class' => 'btn-success']);
         echo closeform();
     	closetable();
     	add_to_jquery("$('#naplodeljel').bind('click', function() {
-    		return confirm('".self::$locale['PONT_311']."');
+    		return confirm('".$this->locale['PONT_311']."');
     		});
     		$('#naplovissz').bind('click', function() {
-    			return confirm('".self::$locale['PONT_312']."');
+    			return confirm('".$this->locale['PONT_312']."');
     			});
     		");
     }

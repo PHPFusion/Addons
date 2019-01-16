@@ -18,7 +18,7 @@
 if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
-//Admin icon megjelenítése
+//Admin icon
 \PHPFusion\Admins::getInstance()->setAdminPageIcons("PSP", "<i class='admin-ico fa fa-fw fa-commenting'></i>");
 
 if (!defined("DB_POINT")) {
@@ -40,7 +40,7 @@ if (!defined("DB_POINT_INF")) {
 if (!defined("POINT_CLASS")) {
     define("POINT_CLASS", INFUSIONS."points_panel/");
 }
-//Nyelvi file betöltése, ez külön könyvtárból a felhasználóknak
+//Nyelvi file
 if (!defined("POINT_LOCALE")) {
     if (file_exists(POINT_CLASS."locale/".LANGUAGE.".php")) {
         define("POINT_LOCALE", POINT_CLASS."locale/".LANGUAGE.".php");

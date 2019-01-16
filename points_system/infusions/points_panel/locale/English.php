@@ -15,6 +15,7 @@ $locale['PONT_007'] = "Mod";
 $locale['PONT_010'] = "Daily credit.";
 $locale['PONT_011'] = "The Point System is currently Off.";
 $locale['PONT_012'] = "No entries.";
+$locale['PONT_013'] = "The system is One Point, all <b>%s</b> points.";
 
 $locale['PONT_100'] = "Point System";
 $locale['PONT_101'] = "Settings";
@@ -36,6 +37,10 @@ $locale['PONT_131'] = "Rank";
 $locale['PONT_132'] = "Avatar";
 $locale['PONT_133'] = "All points";
 $locale['PONT_134'] = "<b>Show Rank %s group.</b>";
+$locale['PONT_135'] = "Price Type";
+$locale['PONT_136'] = "Price";
+$locale['PONT_137'] = "Unit price";
+$locale['PONT_138'] = "Separate price";
 
 $locale['PONT_160'] = "Bann System";
 $locale['PONT_161'] = " the system has been activate Disable Points System.";

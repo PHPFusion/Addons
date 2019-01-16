@@ -29,12 +29,14 @@ class PointsAdmin {
     }
 
     public function DisplayAdmin() {
+
         BreadCrumbs::getInstance()->addBreadCrumb(['link' => INFUSIONS.'points_panel/admin.php'.fusion_get_aidlink(), 'title' => $this->locale['PONT_100']]);
         add_to_title($this->locale['PONT_100']);
         opentable($this->locale['PONT_100']);
 
+    	$section = filter_input(INPUT_GET, 'section', FILTER_DEFAULT);
         $allowed_section = ['diary', 'settings', 'pointst', 'bann'];
-        $_GET['section'] = isset($_GET['section']) && in_array($_GET['section'], $allowed_section) ? $_GET['section'] : 'settings';
+        $section = isset($section) && in_array($section, $allowed_section) ? $section : 'settings';
 
         $tab['title'][] = $this->locale['PONT_101'];
         $tab['id'][]    = 'settings';
@@ -49,8 +51,8 @@ class PointsAdmin {
         $tab['id'][]    = 'bann';
         $tab['icon'][]  = 'fa fa-fw fa-ban';
 
-        echo opentab($tab, $_GET['section'], "points_admin", TRUE, "", "section", ['points_user', 'rowstart', 'log_pmod']);
-        switch ($_GET['section']) {
+        echo opentab($tab, $section, 'points_admin', TRUE, '', 'section', ['points_user', 'rowstart', 'log_pmod']);
+        switch ($section) {
             case "diary":
                 PHPFusion\Points\PointsDiaryAdmin::getInstance()->displayDiaryAdmin();
                 break;
@@ -71,6 +73,4 @@ class PointsAdmin {
 $vid = new PointsAdmin();
 $vid->DisplayAdmin();
 
-//require_once ARTICLE_CLASS."autoloader.php";
-//PHPFusion\Articles\ArticlesServer::ArticlesAdmin()->display_admin();
 require_once THEMES."templates/footer.php";

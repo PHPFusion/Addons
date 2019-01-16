@@ -15,6 +15,7 @@ $locale['PONT_007'] = "Mód";
 $locale['PONT_010'] = "Napi jóváírás.";
 $locale['PONT_011'] = "A PontRendszer jelenleg Kikapcsolva.";
 $locale['PONT_012'] = "Nincs bejegyzés.";
+$locale['PONT_013'] = "A rendszer Egyáras, minden <b>%s</b> pont.";
 
 $locale['PONT_100'] = "PontRendszer";
 $locale['PONT_101'] = "Beállítások";
@@ -36,6 +37,10 @@ $locale['PONT_131'] = "Helyezés";
 $locale['PONT_132'] = "Avatar";
 $locale['PONT_133'] = "Össz. Pont";
 $locale['PONT_134'] = "<b>Helyezés mutatása %s csoportosításban.</b>";
+$locale['PONT_135'] = "Ártipus";
+$locale['PONT_136'] = "Ár";
+$locale['PONT_137'] = "Egyáras";
+$locale['PONT_138'] = "Különáras";
 
 $locale['PONT_160'] = "Bannolás";
 $locale['PONT_161'] = " kor a rendszer Aktiválta a Tiltásod Pont Rendszerhez.";
@@ -109,7 +114,11 @@ $locale['PONT_M01'] = "Adminisztráció";
 $locale['PONT_M02'] = "Bann menű";
 $locale['PONT_M03'] = "Helyezésem";
 $locale['PONT_M04'] = "Naplóm";
+$locale['PONT_PL0'] = "Összes mutatása";
+$locale['PONT_PL1'] = "Név Szerint";
+$locale['PONT_PL2'] = "Pont Szerint";
 $locale['adm038'] = array("Összes mutatása", "Csak jóváírások listázása", "Csak levonások mutatása");
+$locale['adm040'] = array("Összes mutatása", "Név Szerint", "Pont Szerint");
 /*$locale['krd_333'] = "Aktiváló kód mai napra:<br /><b>%s</b><br /><span class='small2'>(A napi kód %s karakter.)</span>\n";
 
 $locale['krd_340'] = "Összes bónusz játékok száma: ";

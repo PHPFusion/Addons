@@ -5,6 +5,7 @@ if (!function_exists('pointPanelItem')) {
 
         opentable($info['opentable']);
         if ($info['aktiv'] == 1) {
+            echo (!empty($info['pricetype']) ? "<div class='m-t-5 text-center'><small>".$info['pricetype']."</small></div>\n" : "");
         	echo "<table class='table table-responsive table-striped'>
         	    <tbody class='text-smaller'>
         	    <tr id='point_{%id%}'>
@@ -56,10 +57,11 @@ if (!function_exists('PlaceItem')) {
             echo "<div class='well text-center'><strong>".$info['message']."</strong></div>";
         }
 
-        if ($info['pagenav']) {
+        if ($info['placefilter']) {
         	echo "<div class='clearfix'>";
-        	echo "<div class='display-inline-block pull-right'>".$info['pagenav']."</div>";
-            echo "</div>";
+        	echo "<div class='display-inline-block pull-right'>".$info['placefilter']."</div>";
+        	echo "<div class='display-inline-block pull-left'>".$info['pagenav']."</div>";
+        	echo "</div>";
         }
         echo "<div class='table-responsive m-t-20'><table class='table table-bordered clear'>";
         echo "<thead>";
@@ -72,11 +74,11 @@ if (!function_exists('PlaceItem')) {
         echo "<tbody class='text-smaller'>";
 
         if (!empty($info['max_row'])) {
-            $i = 0;
-            foreach ($info['item'] as $key => $data) {
-                $i++;
+            $pli = 0;
+            foreach ($info['item'] as $data) {
+                $pli++;
                 echo "<tr id='diary_".$data['point_id']."' class='warning'>";
-                echo "<td><strong>".(PHPFusion\Points\UserPoint::PointPlace(fusion_get_userdata('user_id')) != ($info['helyezes'] + $i) ? $info['helyezes'] + $i : "<span style='color:#FF0000'>".($info['helyezes'] + $i))."</span>"."</strong></td>";
+                echo "<td><strong>".(PHPFusion\Points\UserPoint::PointPlace(fusion_get_userdata('user_id')) != ($info['helyezes'] + $pli) ? $info['helyezes'] + $pli : "<span style='color:#FF0000'>".($info['helyezes'] + $pli))."</span>"."</strong></td>";
                 echo "<td><div class='clearfix'>
                     <div class='pull-left m-r-10'>".$data['avatar']."</div>
                     <div class='overflow-hide'>
@@ -128,7 +130,7 @@ if (!function_exists('BanItem')) {
             echo "</tr>";
             echo "</thead>";
             echo "<tbody class='text-smaller'>";
-            foreach ($info['aktivban']['ittem'] as $key => $data) {
+            foreach ($info['aktivban']['ittem'] as $data) {
                 echo "<tr>";
                 echo "<td><div class='clearfix'>
                     <div class='pull-left m-r-10'>".display_avatar($data, '50px', '', TRUE, 'img-rounded')."</div>
@@ -168,7 +170,7 @@ if (!function_exists('BanItem')) {
             echo "</tr>";
             echo "</thead>";
             echo "<tbody class='text-smaller'>";
-            foreach ($info['allban']['ittem'] as $key => $data) {
+            foreach ($info['allban']['ittem'] as $data) {
                 echo "<tr>";
                 echo "<td><div class='clearfix'>
                     <div class='pull-left m-r-10'>".display_avatar($data, '50px', '', TRUE, 'img-rounded')."</div>

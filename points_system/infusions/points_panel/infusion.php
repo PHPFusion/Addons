@@ -85,15 +85,17 @@ PRIMARY KEY (pi_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
 
 $inf_newtable[] = DB_POINT_ST." (
-	ps_id INT (1) UNSIGNED NOT NULL AUTO_INCREMENT,
-	ps_activ ENUM('0','1') DEFAULT '0',
-	ps_naplodel ENUM('0','1') DEFAULT '0',
-	ps_dateadd INT(11) NOT NULL default '0',
-	ps_day DOUBLE,
-	ps_default INT(11) NOT NULL default '0',
-	ps_page INT(2) NOT NULL default '0',
-	ps_dailycheck INT(11) NOT NULL default '0',
-	ps_language VARCHAR(50) NOT NULL DEFAULT '".LANGUAGE."',
+	ps_id         INT(1)        UNSIGNED NOT NULL AUTO_INCREMENT,
+	ps_activ      ENUM('0','1')                   DEFAULT '0',
+	ps_pricetype  ENUM('0','1')                   DEFAULT '1',
+	ps_unitprice  INT(5)                 NOT NULL DEFAULT '0',
+	ps_naplodel   ENUM('0','1')                   DEFAULT '0',
+	ps_dateadd    INT(11)                NOT NULL DEFAULT '0',
+	ps_day        DOUBLE,
+	ps_default    INT(11)                NOT NULL DEFAULT '0',
+	ps_page       INT(2)                 NOT NULL DEFAULT '0',
+	ps_dailycheck INT(11)                NOT NULL DEFAULT '0',
+	ps_language   VARCHAR(50)            NOT NULL DEFAULT '".LANGUAGE."',
 	PRIMARY KEY (ps_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
 
@@ -104,7 +106,7 @@ $enabled_languages = makefilelist(LOCALE, ".|..", TRUE, "folders");
 if (!empty($enabled_languages)) {
     foreach($enabled_languages as $language) {
         $locale = fusion_get_locale("", INFUSIONS.$inf_folder."/locale/".$language.".php");
-		$mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".$language."')";
+		$mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '10', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".$language."')";
 		$mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
 			('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".$language."'),
 			('0', ".USER_LEVEL_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PONT_M02']."', '".$language."'),
@@ -117,7 +119,7 @@ if (!empty($enabled_languages)) {
 		$mlt_deldbrow[$language][] = DB_POINT_INF." WHERE pi_language='".$language."'";
     }
 } else {
-	$inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".LANGUAGE."')";
+	$inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_dailycheck, ps_language) VALUES ('1', '1', '10', '1', '86400', '500', '5000', '20', '".$tomorrow."', '".LANGUAGE."')";
 	$inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
 	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PONT_M01']."', '".LANGUAGE."'),
 	('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PONT_M02']."', '".LANGUAGE."'),

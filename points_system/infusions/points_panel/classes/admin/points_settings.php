@@ -41,6 +41,7 @@ class PointsSettingsAdmin extends PointsModel {
             $this->ps_page = filter_input(INPUT_POST, 'ps_page', FILTER_DEFAULT);
             $this->ps_pricetype = filter_input(INPUT_POST, 'ps_pricetype', FILTER_DEFAULT);
             $this->ps_unitprice = filter_input(INPUT_POST, 'ps_unitprice', FILTER_DEFAULT);
+            $this->ps_autogroup = filter_input(INPUT_POST, 'ps_autogroup', FILTER_DEFAULT);
             $datead = (!empty($this->ps_dateadd) ? form_sanitizer($this->ps_dateadd, 0, "ps_dateadd") : $points_settings['ps_dateadd']);
 
             $points_settings = [
@@ -51,6 +52,7 @@ class PointsSettingsAdmin extends PointsModel {
                 'ps_default'    => form_sanitizer($this->ps_default, 0, 'ps_default'),
                 'ps_dateadd'    => $datead * 86400,
                 'ps_day'        => form_sanitizer($this->ps_day, 0, 'ps_day'),
+                'ps_autogroup'  => form_sanitizer($this->ps_autogroup, 0, 'ps_autogroup'),
                 'ps_page'       => form_sanitizer($this->ps_page, 0, 'ps_page')
             ];
 
@@ -103,6 +105,12 @@ class PointsSettingsAdmin extends PointsModel {
                 'number_min'  => 1,
                 'max_length'  => 4,
                 'ext_tip'     => $locale['PONT_117']
+            ]).
+            form_select('ps_autogroup', $locale['PONT_139'], $points_settings['ps_autogroup'], [
+                'options' => $opts,
+                'inline'  => TRUE,
+                'width'   => '100%',
+                'ext_tip' => $locale['PONT_140']
             ]).
             form_text('ps_page', $locale['PONT_118'], $points_settings['ps_page'], [
                 'inline'      => TRUE,

@@ -46,6 +46,49 @@ class PointsModel {
         $this->rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_VALIDATE_INT);
     }
 
+    public function PointsGroups() {
+        $groups_cache = [];
+        $result = dbquery("SELECT pg.*, g.group_name
+            FROM ".DB_USER_GROUPS." AS g
+            LEFT JOIN ".DB_POINT_GROUP." AS pg ON pg.pg_group_id = g.group_id
+            ORDER BY group_id ASC");
+        while ($data = dbarray($result)) {
+            $groups_cache[$data['pg_group_id']] = $data;
+        }
+        return $groups_cache;
+    }
+
+    public function PointsGroupsform(array $user = [], $groups, $point) {
+        foreach ($groups as $key => $group) {
+            if (!preg_match("(^\.{$group['pg_group_id']}$|\.{$group['pg_group_id']}\.|\.{$group['pg_group_id']}$)", $user['point_group'])) {
+                if ($point >= $group['pg_group_points']) {
+                    self::addautogroup($user, $group['pg_group_id'], $groups);
+                    return TRUE;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static function addautogroup(array $user = [], $groupid, $groups) {
+        if (!in_array($groupid, explode(".", $user['point_group']))) {
+            $bind = [
+                ':groups'   => $user['point_group'].".".$groupid,
+                ':users'    => $user['point_user'],
+                ':language' => LANGUAGE
+            ];
+        	$autgroupuser = fusion_get_userdata();
+            $userbind = [
+                ':group' => $autgroupuser['user_groups'].".".$groupid,
+                ':user'  => $autgroupuser['user_id']
+            ];
+            dbquery("UPDATE ".DB_POINT." SET point_group=:groups WHERE point_user=:users".(multilang_table("PSP") ? " AND point_language=:language" : ''), $bind);
+            dbquery("UPDATE ".DB_USERS." SET user_groups=:group WHERE user_id=:user", $userbind);
+            $messages = sprintf(fusion_get_locale('PONT_313', ''), $groups[$groupid]['group_name']);
+            addNotice('success', $messages);
+        }
+    }
+
     public static function CurrentSetup() {
 
         $result = dbquery("SELECT *

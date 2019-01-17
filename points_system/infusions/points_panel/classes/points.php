@@ -12,6 +12,7 @@ class UserPoint extends PointsModel {
         include_once POINT_CLASS."templates.php";
         add_to_head("<script type='text/javascript' src='".fusion_get_settings('siteurl')."infusions/points_panel/counts.js'></script>");
         self::$locale = fusion_get_locale("", POINT_LOCALE);
+        $this->group_cache = self::PointsGroups();
         iMEMBER ? define("iNP", hash('md5', fusion_get_userdata('user_name'))) : "";
     }
 
@@ -31,6 +32,7 @@ class UserPoint extends PointsModel {
 	        'point_user'      => $uid,
 	        'point_point'     => 0,
 	        'point_increase'  => 0,
+	        'point_group'     => 0,
 	        'point_language'  => LANGUAGE,
         ];
 
@@ -197,6 +199,10 @@ class UserPoint extends PointsModel {
                     $pointmod['point_point'] = $pointmod['point_point'] + ($options['mod'] == 1 ? $options['point'] : $options['point'] * (-1));
 
                     dbquery_insert(DB_POINT, $pointmod, 'update');
+
+                    if ($this->settings['ps_autogroup']) {
+                    	self::PointsGroupsform($pointmod, $this->group_cache, $pointmod['point_point']);
+                    }
                     self::PontMessage($user, $options);
 			    }
 			}

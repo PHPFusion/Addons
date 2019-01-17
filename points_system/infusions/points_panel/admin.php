@@ -35,12 +35,17 @@ class PointsAdmin {
         opentable($this->locale['PONT_100']);
 
     	$section = filter_input(INPUT_GET, 'section', FILTER_DEFAULT);
-        $allowed_section = ['diary', 'settings', 'pointst', 'bann'];
+        $allowed_section = ['diary', 'settings', 'pointst', 'bann', 'autogroup'];
         $section = isset($section) && in_array($section, $allowed_section) ? $section : 'settings';
 
         $tab['title'][] = $this->locale['PONT_101'];
         $tab['id'][]    = 'settings';
         $tab['icon'][]  = 'fa fa-fw fa-cogs';
+        //if ($points_settings['ps_autogroup']) {
+            $tab['title'][] = $this->locale['PONT_105'];
+            $tab['id'][]    = 'autogroup';
+            $tab['icon'][]  = 'fa fa-fw fa-cogs';
+        //}
         $tab['title'][] = $this->locale['PONT_102'];
         $tab['id'][]    = 'diary';
         $tab['icon'][]  = 'fa fa-fw fa-book';
@@ -56,6 +61,9 @@ class PointsAdmin {
             case "diary":
                 PHPFusion\Points\PointsDiaryAdmin::getInstance()->displayDiaryAdmin();
                 break;
+            case "autogroup":
+                PHPFusion\Points\PointsAutogroupAdmin::getInstance()->displayAdmin();
+                break;
             case "pointst":
                 PHPFusion\Points\PointsPointsAdmin::getInstance()->displayPointsAdmin();
                 break;
@@ -68,7 +76,6 @@ class PointsAdmin {
         echo closetab();
         closetable();
     }
-
 }
 $vid = new PointsAdmin();
 $vid->DisplayAdmin();

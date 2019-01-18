@@ -31,6 +31,7 @@ $locale['PONT_007'] = "Mod";
 $locale['PONT_010'] = "Daglig credit.";
 $locale['PONT_011'] = "Pointsystemer er i øjeblikket deaktiveret.";
 $locale['PONT_012'] = "Ingen indlæg.";
+$locale['PONT_013'] = "Systemet er One Point, alle <b>%s</b> points.";
 
 $locale['PONT_100'] = "Pointsystem";
 $locale['PONT_101'] = "Indstillinger";
@@ -52,6 +53,10 @@ $locale['PONT_131'] = "Rang";
 $locale['PONT_132'] = "Avatar";
 $locale['PONT_133'] = "Alle points";
 $locale['PONT_134'] = "<b>Vis rang %s gruppe.</b>";
+$locale['PONT_135'] = "Pristype";
+$locale['PONT_136'] = "Pris";
+$locale['PONT_137'] = "Enhedspris";
+$locale['PONT_138'] = "Separat pris";
 
 $locale['PONT_160'] = "Udeluk system";
 $locale['PONT_161'] = " systemet har aktiveret Deaktiver pointssystem.";

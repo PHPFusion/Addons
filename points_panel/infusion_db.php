@@ -45,10 +45,10 @@ if (!defined("POINT_CLASS")) {
 }
 //Nyelvi file
 if (!defined("POINT_LOCALE")) {
-    if (file_exists(POINT_CLASS."locale/".LANGUAGE.".php")) {
-        define("POINT_LOCALE", POINT_CLASS."locale/".LANGUAGE.".php");
+    if (file_exists(POINT_CLASS."locale/".LOCALESET."points.php")) {
+        define("POINT_LOCALE", POINT_CLASS."locale/".LOCALESET."points.php");
     } else {
-        define("POINT_LOCALE", POINT_CLASS."locale/Hungarian.php");
+        define("POINT_LOCALE", POINT_CLASS."locale/English/points.php");
     }
 }
 

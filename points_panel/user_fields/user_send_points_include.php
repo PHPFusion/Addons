@@ -19,6 +19,8 @@ if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
 
+require_once(INFUSIONS.'points_panel/user_fields/user_send_points_include.php');
+
 if ($profile_method == "input") {
     $user_fields = '';
     if (defined('ADMIN_PANEL')) {
@@ -32,7 +34,7 @@ if ($profile_method == "input") {
         $this->point_point = filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT);
         $error = '';
         $sendpoints = form_sanitizer($this->point_point, 0, 'point_point');
-        $frompointinf = \PHPFusion\Points\UserPoint::getInstance()->PointInfo($userid, $sendpoints); //küldõ
+        $frompointinf = \PHPFusion\Points\UserPoint::getInstance()->PointInfo($userid, $sendpoints); //kï¿½ldï¿½
         $error .= \PHPFusion\Points\UserPoint::getInstance()->PointInfo($userid, $sendpoints) < 0 ? $locale['uf_sendpoints_002'] : '';
         $error .= empty(\PHPFusion\Points\UserPoint::getInstance()->PointInfo($this->lookup, '')) ? $locale['uf_sendpoints_003'] : '';//kapo
         $error .= (fusion_get_userdata('user_ip') == $user_data['user_ip']) ? $locale['uf_sendpoints_004'] : '';

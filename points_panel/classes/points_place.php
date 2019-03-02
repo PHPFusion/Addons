@@ -5,12 +5,12 @@ class PointsPlace extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
     public $settings = [];
+    public $place_filter = '';
 
     public function __construct() {
         include_once POINT_CLASS."templates.php";
         $this->settings = self::CurrentSetup();
         self::$locale = fusion_get_locale("", POINT_LOCALE);
-        $this->rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_VALIDATE_INT);
         $this->place_filter = filter_input(INPUT_POST, 'place_filter', FILTER_VALIDATE_INT);
         $this->place_filter = empty($this->place_filter) ? filter_input(INPUT_GET, 'place_filter', FILTER_VALIDATE_INT) : $this->place_filter;
     }
@@ -41,7 +41,7 @@ class PointsPlace extends PointsModel {
     }
 
     private function Placefilter() {
-        $placeinf = [0 => self::$locale['PONT_PL0'], 1 => self::$locale['PONT_PL1'], 2 => self::$locale['PONT_PL2']];
+        $placeinf = [0 => self::$locale['PSP_PL0'], 1 => self::$locale['PSP_PL1'], 2 => self::$locale['PSP_PL2']];
         $info = openform('place_form', 'post', FUSION_SELF).
         form_select('place_filter', '', $this->place_filter, [
             'allowclear' => TRUE,
@@ -55,13 +55,14 @@ class PointsPlace extends PointsModel {
 
     public function CurrentList() {
 
-        set_title(self::$locale['PONT_130']);
+        set_title(self::$locale['PSP_P00']);
+        $rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_VALIDATE_INT);
         $max_rows = dbcount("(point_id)", DB_POINT, (multilang_table("PSP") ? "point_language='".LANGUAGE."'" : ''));
-        $this->rowstart = (!empty($this->rowstart) && isnum($this->rowstart) && $this->rowstart <= $max_rows) ? $this->rowstart : 0;
+        $rowstart = (!empty($rowstart) && isnum($rowstart) && $rowstart <= $max_rows) ? $rowstart : 0;
 
         $bind = [
             ':language' => LANGUAGE,
-            ':rowstart' => $this->rowstart,
+            ':rowstart' => $rowstart,
             ':limit'    => $this->settings['ps_page']
         ];
 
@@ -71,7 +72,7 @@ class PointsPlace extends PointsModel {
             ".(multilang_table("PSP") ? "WHERE p.point_language=:language" : "")."
             ORDER BY ".self::checkPlaceFilter()."
             LIMIT :rowstart, :limit", $bind);
-
+        $inf = [];
         while ($data = dbarray($result)){
             $inf[] = [
                 'point_id'   => $data['point_id'],
@@ -83,13 +84,13 @@ class PointsPlace extends PointsModel {
 	    }
 
         $info = [
-            'opentable'   => "<i class='fa fa-pie-chart fa-lg m-r-10'></i>".self::$locale['PONT_130'],
+            'opentable'   => "<i class='fa fa-pie-chart fa-lg m-r-10'></i>".self::$locale['PSP_P00'],
 		    'placefilter' => self::Placefilter(),
-            'message'     => sprintf(self::$locale['PONT_134'], $this->settings['ps_page']),
+            'message'     => sprintf(self::$locale['PSP_P01'], $this->settings['ps_page']),
             'max_row'     => $max_rows,
             'stat_rows'   => dbrows($result),
-            'pagenav'     => makepagenav($this->rowstart, $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_place.php?place_filter=".$this->place_filter."&"),
-            'helyezes'    => $this->rowstart,
+            'pagenav'     => makepagenav($rowstart, $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_place.php?place_filter=".$this->place_filter."&"),
+            'helyezes'    => $rowstart,
             'item'        => $inf
         ];
 

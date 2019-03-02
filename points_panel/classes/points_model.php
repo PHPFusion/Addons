@@ -20,6 +20,13 @@ namespace PHPFusion\Points;
 
 class PointsModel {
 
+    protected $autogroup = [
+        'pg_id'           => '',
+        'pg_group_id'     => 0,
+        'pg_group_points' => 0,
+        'group_name'      => ''
+    ];
+
     protected $default_options = [
         'mod'       => 1, //1 = add point, 2 = remov point
         'point'     => 0,
@@ -35,31 +42,54 @@ class PointsModel {
         'ban_text'  => ''
     ];
 
-    public function globinf() {
-        //$this->diary_filter = 0;
-        //$this->save = (string)filter_input(INPUT_POST, 'savesettings', FILTER_DEFAULT);
-        $this->diary_filter = filter_input(INPUT_POST, 'diary_filter', FILTER_DEFAULT);
-        $this->deleteall = filter_input(INPUT_GET, 'deleteall', FILTER_DEFAULT);
-        $this->del = filter_input(INPUT_GET, 'del', FILTER_DEFAULT);
-        $this->np = filter_input(INPUT_GET, 'np', FILTER_DEFAULT);
-        $this->logid = filter_input(INPUT_GET, 'log_id', FILTER_VALIDATE_INT);
-        $this->rowstart = filter_input(INPUT_GET, 'rowstart', FILTER_VALIDATE_INT);
+	public static function PointsBank($userid) {
+	    $userid = (isnum($userid) ? $userid : 0);
+	    $result = dbquery("SELECT *
+	        FROM ".DB_POINT_BANK."
+	        WHERE pb_user_id = :userid
+			".(multilang_table("PSP") ? " AND pb_language = :language" : ''), [':userid' => $userid, ':language' => LANGUAGE]
+        );
+        if (dbrows($result)) {
+            $data = [];
+            while ($bank = dbarray($result)) {
+                if (!empty($bank['pb_loan_activ'])) {
+                	$data['loan'][] = $bank;
+                }
+                if (!empty($bank['pb_interest_activ'])) {
+               	    $data['interest'][] = $bank;
+                }
+            }
+            return $data;
+        }
+        return FALSE;
     }
 
-    public function PointsGroups() {
+    public function Pointscachegroups() {
+    static $groups_cache = NULL;
+    if ($groups_cache === NULL) {
         $groups_cache = [];
-        $result = dbquery("SELECT pg.*, g.group_name
-            FROM ".DB_USER_GROUPS." AS g
-            LEFT JOIN ".DB_POINT_GROUP." AS pg ON pg.pg_group_id = g.group_id
+        $result = dbquery("SELECT group_id, group_name FROM ".DB_USER_GROUPS." ORDER BY group_id ASC");
+        while ($data = dbarray($result)) {
+            $groups_cache[$data['group_id']] = $data['group_name'];
+        }
+    }
+
+    return $groups_cache;
+}
+    public function PointsGroups() {
+
+        $groups_cache = [];
+        $result = dbquery("SELECT group_id, group_name
+            FROM ".DB_USER_GROUPS."
             ORDER BY group_id ASC");
         while ($data = dbarray($result)) {
-            $groups_cache[$data['pg_group_id']] = $data;
+            $groups_cache[$data['group_id']] = $data['group_name'];
         }
         return $groups_cache;
     }
 
     public function PointsGroupsform(array $user = [], $groups, $point) {
-        foreach ($groups as $key => $group) {
+        foreach ($groups as $group) {
             if (!preg_match("(^\.{$group['pg_group_id']}$|\.{$group['pg_group_id']}\.|\.{$group['pg_group_id']}$)", $user['point_group'])) {
                 if ($point >= $group['pg_group_points']) {
                     self::addautogroup($user, $group['pg_group_id'], $groups);
@@ -93,10 +123,9 @@ class PointsModel {
 
         $result = dbquery("SELECT *
             FROM ".DB_POINT_ST."
-            ".(multilang_table("PSP") ? " WHERE ps_language=:language" : ''), [':language' => LANGUAGE]);
+            ".(multilang_table("PSP") ? "WHERE ps_language=:language" : ''), [':language' => LANGUAGE]
+        );
 
-        $settings = dbarray($result);
-
-        return $settings;
+        return dbarray($result);
     }
 }

@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_ban.php
+| Filename: points_panel/points_ban.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -17,9 +17,11 @@
 +--------------------------------------------------------*/
 require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../maincore.php";
 
-if (!db_exists(DB_POINT)) { redirect(BASEDIR."error.php?code=404"); }
+if (!db_exists(DB_POINT)) {
+    redirect(BASEDIR."error.php?code=404");
+}
 
 require_once THEMES."templates/header.php";
 pageAccess('PSP');
-PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
+\PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
 require_once THEMES."templates/footer.php";

@@ -17,8 +17,10 @@
 +--------------------------------------------------------*/
 require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../maincore.php";
 
-if (!db_exists(DB_POINT)) { redirect(BASEDIR."error.php?code=404"); }
+if (!db_exists(DB_POINT)) {
+    redirect(BASEDIR."error.php?code=404");
+}
 
 require_once THEMES."templates/header.php";
-PHPFusion\Points\PointsDiary::getInstance()->DisplayList();
+\PHPFusion\Points\PointsDiary::getInstance()->DisplayList();
 require_once THEMES."templates/footer.php";

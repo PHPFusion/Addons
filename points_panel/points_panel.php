@@ -18,4 +18,4 @@
 if (!defined("IN_FUSION")) {
     die("Access Denied");
 }
-PHPFusion\Points\UserPoint::getInstance()->DisplayPoint();
+\PHPFusion\Points\UserPoint::getInstance()->DisplayPoint();

@@ -1,9 +1,11 @@
 <?php
 namespace PHPFusion\Points;
 
+
 class PointsPointsAdmin extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
+    public $settings = [];
 
     public function __construct() {
         $this->settings = self::CurrentSetup();
@@ -18,61 +20,57 @@ class PointsPointsAdmin extends PointsModel {
     }
 
 	public function displayPointsAdmin() {
-        set_title(self::$locale['PONT_104']);
+        set_title(self::$locale['PSP_M10']);
         self::PointsForm();
         self::PointsDisplay();
 	}
 
     private function PointsForm() {
-        $this->send_plus = filter_input(INPUT_POST, 'send_plus', FILTER_DEFAULT);
-        $this->send_minus = filter_input(INPUT_POST, 'send_minus', FILTER_DEFAULT);
+        $send_plus = filter_input(INPUT_POST, 'send_plus', FILTER_DEFAULT);
+        $send_minus = filter_input(INPUT_POST, 'send_minus', FILTER_DEFAULT);
 
-        if (!empty($this->send_plus) or !empty($this->send_minus)) {
-            self::PointsFormSend();
+        if (!empty($send_plus) || !empty($send_minus)) {
+		    $mod = (!empty($send_plus) ? 1 : (!empty($send_minus) ? 2 : 0));
+            self::PointsFormSend($mod);
         }
 
-        $this->all_plus = filter_input(INPUT_POST, 'all_plus', FILTER_DEFAULT);
-        $this->all_minus = filter_input(INPUT_POST, 'all_minus', FILTER_DEFAULT);
-        if (!empty($this->all_plus) or !empty($this->all_minus)) {
-            self::PointsFormAllSend();
+        $all_plus = filter_input(INPUT_POST, 'all_plus', FILTER_DEFAULT);
+        $all_minus = filter_input(INPUT_POST, 'all_minus', FILTER_DEFAULT);
+        if (!empty($all_plus) || !empty($all_minus)) {
+		    $mod = (!empty($all_plus) ? 1 : (!empty($all_minus) ? 2 : 0));
+            self::PointsFormAllSend($mod);
         }
 
-        $this->group_plus = filter_input(INPUT_POST, 'group_plus', FILTER_DEFAULT);
-        $this->group_minus = filter_input(INPUT_POST, 'group_minus', FILTER_DEFAULT);
-        if (!empty($this->group_plus) or !empty($this->group_minus)) {
-            self::PointsFormGroupSend();
+        $group_plus = filter_input(INPUT_POST, 'group_plus', FILTER_DEFAULT);
+        $group_minus = filter_input(INPUT_POST, 'group_minus', FILTER_DEFAULT);
+        if (!empty($group_plus) || !empty($group_minus)) {
+		    $mod = (!empty($group_plus) ? 1 : (!empty($group_minus) ? 2 : 0));
+            self::PointsFormGroupSend($mod);
         }
     }
 
-    private function PointsFormSend() {
-        $this->point_user = filter_input(INPUT_POST, 'point_user', FILTER_VALIDATE_INT);
-        $this->point_point = filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT);
-        $this->log_descript = filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT);
+    private function PointsFormSend($mod = NULL) {
 
-        $point_user = form_sanitizer($this->point_user, 0, 'point_user');
-        $point_point = form_sanitizer($this->point_point, 0, 'point_point');
-        $log_descript = form_sanitizer($this->log_descript, '', 'log_descript');
-        $mod = (!empty($this->send_plus) ? 1 : (!empty($this->send_minus) ? 2 : 0));
-        $pointinfo = $mod == '2' ? \PHPFusion\Points\UserPoint::getInstance()->PointInfo($point_user, $point_point) : 10;
+        $point_user = form_sanitizer(filter_input(INPUT_POST, 'point_user', FILTER_VALIDATE_INT), 0, 'point_user');
+        $point_point = form_sanitizer(filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT), 0, 'point_point');
+        $log_descript = form_sanitizer(filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT), '', 'log_descript');
+        $pointinfo = ($mod == '2' ? UserPoint::getInstance()->PointInfo($point_user, $point_point) : 10);
 
-        $max_rows = dbcount("(user_id)", DB_USERS, "user_id=:userid", [':userid' => $point_user]);
+        $max_rows = dbcount("(user_id)", DB_USERS, "user_id = :userid", [':userid' => $point_user]);
         if ($max_rows && $mod > 0 && $pointinfo > 0 && \defender::safe()) {
-            \PHPFusion\Points\UserPoint::getInstance()->setPoint($point_user, ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
+            UserPoint::getInstance()->setPoint($point_user, ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
             addNotice('success', $log_descript);
             redirect(FUSION_REQUEST);
         }
     }
 
-    private function PointsFormAllSend() {
-        $this->point_point = filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT);
-        $this->log_descript = filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT);
+    private function PointsFormAllSend($mod = NULL) {
 
-        $point_point = form_sanitizer($this->point_point, 0, 'point_point');
-        $log_descript = form_sanitizer($this->log_descript, '', 'log_descript');
-        $mod = (!empty($this->all_plus) ? 1 : (!empty($this->all_minus) ? 2 : 0));
+        $point_point = form_sanitizer(filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT), 0, 'point_point');
+        $log_descript = form_sanitizer(filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT), '', 'log_descript');
 
         if (\defender::safe()) {
-            $messages = $mod == 1 ? self::$locale['PONT_231'] : self::$locale['PONT_230'];
+            $messages = $mod == 1 ? self::$locale['PSP_021'] : self::$locale['PSP_020'];
             $result = dbquery("SELECT p.*, pu.*
                 FROM ".DB_POINT." AS p
                 LEFT JOIN ".DB_USERS." AS pu ON pu.user_id = p.point_user
@@ -82,9 +80,9 @@ class PointsPointsAdmin extends PointsModel {
 
             if (dbrows($result)){
                 while($data = dbarray($result)){
-                	$pointinfo = $mod == '2' ? \PHPFusion\Points\UserPoint::getInstance()->PointInfo($data['point_user'], $point_point) : 10;
+                	$pointinfo = $mod == '2' ? UserPoint::getInstance()->PointInfo($data['point_user'], $point_point) : 10;
                     if ($mod > 0 && $pointinfo > 0) {
-                        \PHPFusion\Points\UserPoint::getInstance()->setPoint($data['point_user'], ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
+                        UserPoint::getInstance()->setPoint($data['point_user'], ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
                     }
                 }
                 addNotice('success', $messages);
@@ -93,15 +91,11 @@ class PointsPointsAdmin extends PointsModel {
         }
     }
 
-    private function PointsFormGroupSend() {
-        $this->group = filter_input(INPUT_POST, 'group', FILTER_VALIDATE_INT);
-        $this->point_point = filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT);
-        $this->log_descript = filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT);
+    private function PointsFormGroupSend($mod = NULL) {
 
-        $group = form_sanitizer($this->group, 0, 'group');
-        $point_point = form_sanitizer($this->point_point, 0, 'point_point');
-        $log_descript = form_sanitizer($this->log_descript, '', 'log_descript');
-        $mod = (!empty($this->group_plus) ? 1 : (!empty($this->group_minus) ? 2 : 0));
+        $group = form_sanitizer(filter_input(INPUT_POST, 'group', FILTER_VALIDATE_INT), 0, 'group');
+        $point_point = form_sanitizer(filter_input(INPUT_POST, 'point_point', FILTER_VALIDATE_INT), 0, 'point_point');
+        $log_descript = form_sanitizer(filter_input(INPUT_POST, 'log_descript', FILTER_DEFAULT), '', 'log_descript');
 
         if (\defender::safe()) {
             $messages = $mod == 1 ? self::$locale['PONT_233'] : self::$locale['PONT_232'];
@@ -113,9 +107,9 @@ class PointsPointsAdmin extends PointsModel {
             ");
             if (dbrows($result)) {
                 while($data = dbarray($result)) {
-                    $pointinfo = $mod == '2' ? \PHPFusion\Points\UserPoint::getInstance()->PointInfo($data['point_user'], $point_point) : 10;
+                    $pointinfo = $mod == '2' ? UserPoint::getInstance()->PointInfo($data['point_user'], $point_point) : 10;
                     if ($mod > 0 && $pointinfo > 0) {
-                        \PHPFusion\Points\UserPoint::getInstance()->setPoint($data['point_user'], ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
+                        UserPoint::getInstance()->setPoint($data['point_user'], ["mod" => $mod, "point" => $point_point, "messages" => $log_descript]);
                     }
                 }
                 addNotice('success', $messages);
@@ -143,17 +137,17 @@ class PointsPointsAdmin extends PointsModel {
 
     private function PointsDisplay() {
 
-    	opentable(self::$locale['PONT_104']);
-    	openside(self::$locale['PONT_234']);
+    	opentable(self::$locale['PSP_M10']);
+    	openside(self::$locale['PSP_022']);
     	echo openform('point_form', 'post', FUSION_REQUEST);
-    	echo form_select('point_user', self::$locale['PONT_235'], 0, [
+    	echo form_select('point_user', self::$locale['PSP_023'], 0, [
             'required'    => TRUE,
     	    'inline'      => TRUE,
     	    'allowclear'  => TRUE,
     	    'options'     => self::Pointsfilter()
     	]);
 
-    	echo form_text('point_point', self::$locale['PONT_236'], 0, [
+    	echo form_text('point_point', self::$locale['PSP_024'], 0, [
             'required'    => TRUE,
     	    'type'        => 'number',
     	    'max_length'  => 5,
@@ -162,22 +156,22 @@ class PointsPointsAdmin extends PointsModel {
     	    'inline'      => TRUE
     	]);
 
-        echo form_text('log_descript', self::$locale['PONT_237'], '', [
+        echo form_text('log_descript', self::$locale['PSP_025'], '', [
             'required'   => TRUE,
             'max_length' => 200,
             'inline'     => TRUE
         ]);
 
-    	echo "<div class='text-center'>".(form_button('send_plus', self::$locale['PONT_238'], self::$locale['PONT_238'])."&nbsp;&nbsp;".
-        form_button('send_minus', self::$locale['PONT_239'], self::$locale['PONT_239']));
+    	echo "<div class='text-center'>".(form_button('send_plus', self::$locale['PSP_026'], self::$locale['PSP_026'])."&nbsp;&nbsp;".
+        form_button('send_minus', self::$locale['PSP_027'], self::$locale['PSP_027']));
         echo "</div>";
 
         echo closeform();
         closeside();
 
-        openside(self::$locale['PONT_240']);
+        openside(self::$locale['PSP_028']);
         echo openform('alluser_form', 'post', FUSION_REQUEST);
-    	echo form_text('point_point', self::$locale['PONT_236'], 0, [
+    	echo form_text('point_point', self::$locale['PSP_024'], 0, [
             'required'    => TRUE,
     	    'type'        => 'number',
     	    'max_length'  => 5,
@@ -186,19 +180,19 @@ class PointsPointsAdmin extends PointsModel {
     	    'inline'      => TRUE
             ]);
 
-        echo form_text('log_descript', self::$locale['PONT_237'], '', [
+        echo form_text('log_descript', self::$locale['PSP_025'], '', [
             'required'   => TRUE,
             'max_length' => 200,
             'inline'     => TRUE
         ]);
 
-        echo "<div class='text-center'>".(form_button('all_plus', self::$locale['PONT_238'], self::$locale['PONT_238'])."&nbsp;&nbsp;".
-        form_button('all_minus', self::$locale['PONT_239'], self::$locale['PONT_239']));
+        echo "<div class='text-center'>".(form_button('all_plus', self::$locale['PSP_026'], self::$locale['PSP_026'])."&nbsp;&nbsp;".
+        form_button('all_minus', self::$locale['PSP_027'], self::$locale['PSP_027']));
         echo "</div>";
         echo closeform();
         closeside();
 
-        $group = [0 => self::$locale['PONT_241']];
+        $group = [0 => self::$locale['PSP_029']];
         $result = dbquery("SELECT group_id, group_name FROM ".DB_USER_GROUPS." ORDER BY group_name ASC ");
         if (dbrows($result)){
         	while ($groupdata = dbarray($result)){
@@ -207,15 +201,15 @@ class PointsPointsAdmin extends PointsModel {
         }
 
         if (count($group) > 1) {
-        	openside(self::$locale['PONT_242']);
+        	openside(self::$locale['PSP_030']);
         	echo openform('group_form', 'post', FUSION_REQUEST);
-        	echo form_select('group', self::$locale['PONT_243'], 0, [
+        	echo form_select('group', self::$locale['PSP_031'], 0, [
                 'required'    => TRUE,
                 'inline'      => TRUE,
                 'allowclear'  => TRUE,
                 'options'     => $group
             ]);
-            echo form_text('point_point', self::$locale['PONT_236'], 0, [
+            echo form_text('point_point', self::$locale['PSP_024'], 0, [
                 'required'    => TRUE,
                 'type'        => 'number',
                 'max_length'  => 5,
@@ -224,13 +218,13 @@ class PointsPointsAdmin extends PointsModel {
                 'inline'      => TRUE
             ]);
 
-            echo form_text('log_descript', self::$locale['PONT_237'], '', [
+            echo form_text('log_descript', self::$locale['PSP_025'], '', [
                 'required'   => TRUE,
                 'max_length' => 200,
                 'inline'     => TRUE
             ]);
-            echo "<div class='text-center'>".(form_button('group_plus', self::$locale['PONT_238'], self::$locale['PONT_238'])."&nbsp;&nbsp;".
-            form_button('group_minus', self::$locale['PONT_239'], self::$locale['PONT_239']));
+            echo "<div class='text-center'>".(form_button('group_plus', self::$locale['PSP_026'], self::$locale['PSP_026'])."&nbsp;&nbsp;".
+            form_button('group_minus', self::$locale['PSP_027'], self::$locale['PSP_027']));
             echo "</div>";
             echo closeform();
             closeside();

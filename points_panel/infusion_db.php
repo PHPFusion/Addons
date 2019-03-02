@@ -39,16 +39,19 @@ if (!defined("DB_POINT_INF")) {
 if (!defined("DB_POINT_GROUP")) {
 	define("DB_POINT_GROUP", DB_PREFIX."points_group");
 }
+if (!defined("DB_POINT_BANK")) {
+	define("DB_POINT_BANK", DB_PREFIX."points_bank");
+}
 
 if (!defined("POINT_CLASS")) {
     define("POINT_CLASS", INFUSIONS."points_panel/");
 }
-//Nyelvi file
+//locale file
 if (!defined("POINT_LOCALE")) {
     if (file_exists(POINT_CLASS."locale/".LOCALESET."points.php")) {
         define("POINT_LOCALE", POINT_CLASS."locale/".LOCALESET."points.php");
     } else {
-        define("POINT_LOCALE", POINT_CLASS."locale/English/points.php");
+        define("POINT_LOCALE", POINT_CLASS."locale/Hungarian/points.php");
     }
 }
 

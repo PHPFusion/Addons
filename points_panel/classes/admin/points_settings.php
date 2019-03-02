@@ -19,6 +19,14 @@ namespace PHPFusion\Points;
 
 class PointsSettingsAdmin extends PointsModel {
     private static $instance = NULL;
+    private $ps_dateadd;
+    private $ps_activ;
+    private $ps_default;
+    private $ps_day;
+    private $ps_page;
+    private $ps_pricetype;
+    private $ps_unitprice;
+    private $ps_autogroup;
 
     public static function getInstance() {
         if (self::$instance == NULL) {
@@ -32,8 +40,8 @@ class PointsSettingsAdmin extends PointsModel {
 
         $locale = fusion_get_locale("", POINT_LOCALE);
         $points_settings = self::CurrentSetup();
-        $this->savesettings = filter_input(INPUT_POST, 'savesettings', FILTER_DEFAULT);
-        if (!empty($this->savesettings)) {
+        $savesettings = filter_input(INPUT_POST, 'savesettings', FILTER_DEFAULT);
+        if (!empty($savesettings)) {
             $this->ps_dateadd = filter_input(INPUT_POST, 'ps_dateadd', FILTER_DEFAULT);
             $this->ps_activ = filter_input(INPUT_POST, 'ps_activ', FILTER_DEFAULT);
             $this->ps_default = filter_input(INPUT_POST, 'ps_default', FILTER_DEFAULT);
@@ -58,61 +66,61 @@ class PointsSettingsAdmin extends PointsModel {
 
             if (\defender::safe()) {
             	dbquery_insert(DB_POINT_ST, $points_settings, 'update');
-            	addNotice('success', $locale['PONT_300']);
+            	addNotice('success', $locale['PSP_E14']);
             }
         }
 
         $opts = ['1' => $locale['on'], '0' => $locale['off']];
-        $options = [0 => $locale['PONT_137'], 1 => $locale['PONT_138']];
+        $options = [0 => $locale['PSP_S00'], 1 => $locale['PSP_S01']];
         echo openform("settingsform", "post", FUSION_REQUEST, ['class' => 'spacer-sm']).
-            form_select('ps_activ', $locale['PONT_110'], $points_settings['ps_activ'], [
+            form_select('ps_activ', $locale['PSP_S02'], $points_settings['ps_activ'], [
                 'options' => $opts,
                 'inline'  => TRUE,
                 'width'   => '100%',
-                'ext_tip' => $locale['PONT_111']
+                'ext_tip' => $locale['PSP_S03']
             ]).
-            form_select('ps_pricetype', $locale['PONT_135'], $points_settings['ps_pricetype'], [
+            form_select('ps_pricetype', $locale['PSP_S04'], $points_settings['ps_pricetype'], [
                 'options' => $options,
                 'inline' => TRUE
             ]).
-            form_text('ps_unitprice', $locale['PONT_136'], $points_settings['ps_unitprice'], [
+            form_text('ps_unitprice', $locale['PSP_S05'], $points_settings['ps_unitprice'], [
                 'inline'      => TRUE,
                 'type'        => 'number',
                 'inner_width' => '150px',
                 'number_min'  => 1,
                 'max_length'  => 4
             ]).
-            form_text('ps_default', $locale['PONT_112'], $points_settings['ps_default'], [
+            form_text('ps_default', $locale['PSP_S06'], $points_settings['ps_default'], [
                 'inline'      => TRUE,
                 'type'        => 'number',
                 'inner_width' => '150px',
                 'number_min'  => 1,
                 'max_length'  => 4,
-                'ext_tip'     => $locale['PONT_113']
+                'ext_tip'     => $locale['PSP_S07']
             ]).
-            form_text('ps_dateadd', $locale['PONT_114'], ($points_settings['ps_dateadd'] / 86400), [
+            form_text('ps_dateadd', $locale['PSP_S08'], ($points_settings['ps_dateadd'] / 86400), [
                 'inline'      => TRUE,
                 'type'        => 'number',
                 'inner_width' => '150px',
                 'number_min'  => 1,
                 'max_length'  => 4,
-                'ext_tip'     => $locale['PONT_115']
+                'ext_tip'     => $locale['PSP_S09']
             ]).
-            form_text('ps_day', $locale['PONT_116'], $points_settings['ps_day'], [
+            form_text('ps_day', $locale['PSP_S10'], $points_settings['ps_day'], [
                 'inline'      => TRUE,
                 'type'        => 'number',
                 'inner_width' => '150px',
                 'number_min'  => 1,
                 'max_length'  => 4,
-                'ext_tip'     => $locale['PONT_117']
+                'ext_tip'     => $locale['PSP_S11']
             ]).
-            form_select('ps_autogroup', $locale['PONT_139'], $points_settings['ps_autogroup'], [
+            form_select('ps_autogroup', $locale['PSP_S12'], $points_settings['ps_autogroup'], [
                 'options' => $opts,
                 'inline'  => TRUE,
                 'width'   => '100%',
-                'ext_tip' => $locale['PONT_140']
+                'ext_tip' => $locale['PSP_S13']
             ]).
-            form_text('ps_page', $locale['PONT_118'], $points_settings['ps_page'], [
+            form_text('ps_page', $locale['PSP_S14'], $points_settings['ps_page'], [
                 'inline'      => TRUE,
                 'type'        => 'number',
                 'inner_width' => '150px',

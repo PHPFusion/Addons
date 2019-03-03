@@ -38,6 +38,7 @@ $locale['PSP_028'] = "Send Points <b>All</b> Users";
 $locale['PSP_029'] = "- Select Group -";
 $locale['PSP_030'] = "Send Points <b>One</b> Group.";
 $locale['PSP_031'] = "Select Group";
+$locale['PSP_032'] = "The holiday multiplier (%s) is active.";
 
 $locale['PSP_A00'] = "Bann";
 $locale['PSP_A01'] = "User Bann.";
@@ -199,6 +200,10 @@ $locale['PSP_S11'] = "Points can be awarded daily";
 $locale['PSP_S12'] = "Group automatic increase";
 $locale['PSP_S13'] = "Automatically switches to Group.";
 $locale['PSP_S14'] = "List per page";
+$locale['PSP_S15'] = "Holiday multiplier";
+$locale['PSP_S16'] = "If greater than 1 then Enabled";
+$locale['PSP_S17'] = "Holidays";
+$locale['PSP_S18'] = "(MonthDay, PL.: 0101,0102)";
 
 $locale['PSP_PL0'] = "Show All";
 $locale['PSP_PL1'] = "Show User Name";

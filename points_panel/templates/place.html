@@ -1,0 +1,47 @@
+{%opentable%}
+    <div class='text-center well'>{%message%}</div>
+    <div class='clearfix'>
+        <div class='display-inline-block pull-right'>{%placefilter%}</div>
+    {pagenav_a.{
+        <div class='display-inline-block pull-left'>{%navigation%}</div>
+    }}
+    </div>
+    <div class='table-responsive'><table class='table table-bordered clear'>
+        <thead>
+            <tr>
+                <th>
+                    <small><strong>{[PSP_P02]}</strong></small>
+                </th>
+                <th>
+                    <small><strong>{[PSP_P03]}</strong></small>
+                </th>
+                <th>
+                    <small><strong>{[PSP_P04]}</strong></small>
+                </th>
+            </tr>
+        </thead>
+        <tbody class='text-smaller'>
+            {items.{
+            <tr id='diary_{%point_id%}'>
+                <td><strong>{%place%}</strong></td>
+                <td>
+                    <div class='clearfix'>
+                        <div class='pull-left m-r-10'>{%avatar%}</div>
+                        <div class='overflow-hide'>
+                            <span class='m-l-10 m-r-10'>{%profile%}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>{%point%}</td>
+            </tr>
+            }}
+        </tbody>
+    </table></div>
+    {pagenav_b.{
+    <div class='clearfix'>
+        <div class='pull-right'>
+            <div class='text-right'>{%navigation_2%}</div>
+        </div>
+    </div>
+    }}
+{%closetable%}

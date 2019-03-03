@@ -20,103 +20,81 @@ defined('IN_FUSION') || exit;
 if (!function_exists('pointPanelItem')) {
     function pointPanelItem($info) {
 
-        opentable($info['opentable']);
-        if ($info['aktiv'] == 1) {
-            echo (!empty($info['pricetype']) ? "<div class='m-t-5 text-center'><small>".$info['pricetype']."</small></div>\n" : "");
-        	echo "<table class='table table-responsive table-striped'>
-        	    <tbody class='text-smaller'>
-        	    <tr id='point_{%id%}'>
-        	        <td>".$info['item']['UserPont']['locale']."</td>
-        	        <td>".$info['item']['UserPont']['data']."</td>
-        	     </tr>
-        	     <tr id='place_{%id%}'>
-        	         <td>".$info['item']['UserHely']['locale']."</td>
-        	         <td>".$info['item']['UserHely']['data']."</td>
-        	      </tr>
-        	      <tr id='increase_{%id%}' class='success'>
-        	          <td colspan='2' class='text-center'>".$info['item']['increase']."</td>
-        	      </tr>
-        	      </tbody>
-        	      </table>
-        	      <table class='table table-responsive table-striped'>
-        	      <thead>
-        	      <tr>
-        	          <th><small><strong>".$info['item']['udate']['locale']."</strong></small></th>
-        	          <th><small><strong>".$info['item']['upont']['locale']."</strong></small></th>
-        	          <th><small><strong>".$info['item']['umod']['locale']."</strong></small></th>
-        	      </tr>
-        	      </thead>
-        	      <tbody class='text-smaller'>
-        	      <tr id='point_".$info['id']."'>
-        	          <td>".$info['item']['udate']['data']."</td>
-        	          <td>".$info['item']['upont']['data']."</td>
-        	          <td>".$info['item']['umod']['data']."</td>
-        	      </tr>
-        	      </tbody>
-        	</table>";
+        $html = \PHPFusion\Template::getInstance('point_panel');
+        $html->set_template(__DIR__.'/templates/point_panel.html');
 
-        	if (!empty($info['item']['listmenu'])) {
-        		echo "<div id='point_' class='text-center'>".$info['item']['listmenu']."</div>";
+        $html->set_tag('opentable', fusion_get_function('opentable', $info['opentable']));
+        $html->set_tag('closetable', fusion_get_function('closetable'));
+
+        if ($info['activ'] == 1) {
+            if (!empty($info['holiday'])) {
+                $html->set_block('holiday', ['holiday' => $info['holiday']]);
+            }
+            if (!empty($info['pricetype'])) {
+                $html->set_block('pricetype', ['pricetype' => $info['pricetype']]);
+            }
+            if (!empty($info['item']['listmenu'])) {
+                $html->set_block('listmenu', ['listmenu' => $info['item']['listmenu']]);
             }
 
+            $html->set_block('pointpanel', [
+                'id'        => $info['id'],
+                'allpointl' => $info['item']['UserPont']['locale'],
+                'allpoint'  => $info['item']['UserPont']['data'],
+                'placel'    => $info['item']['UserHely']['locale'],
+                'place'     => $info['item']['UserHely']['data'],
+                'increase'  => $info['item']['increase'],
+                'udatel'    => $info['item']['udate']['locale'],
+                'udate'     => $info['item']['udate']['data'],
+                'upontl'    => $info['item']['upont']['locale'],
+                'upont'     => $info['item']['upont']['data'],
+                'umodl'     => $info['item']['umod']['locale'],
+                'umod'      => $info['item']['umod']['data'],
+            ]);
+
         } else {
-            echo "<div class='text-center'>".$info['message']."</div>";
+            $html->set_block('no_item', ['message' => $info['message']]);
         }
-        closetable();
+
+        echo $html->get_output();
     }
 }
 
 if (!function_exists('PlaceItem')) {
     function PlaceItem($info) {
-        $locale = fusion_get_locale("", POINT_LOCALE);
-        echo opentable($info['opentable']);
-        if (!empty($info['message'])) {
-            echo "<div class='well text-center'><strong>".$info['message']."</strong></div>";
+        $html = \PHPFusion\Template::getInstance('place');
+        $html->set_template(POINT_CLASS.'templates/place.html');
+        $html->set_tag('opentable', fusion_get_function('opentable', $info['opentable']));
+        $html->set_tag('closetable', fusion_get_function('closetable'));
+        $html->set_locale(fusion_get_locale());
+
+        if (!empty($info['placefilter'])) {
+            $html->set_block('pagenav_a', ['navigation' => $info['pagenav']]);
+            $html->set_tag('placefilter', $info['placefilter']);
         }
 
-        if ($info['placefilter']) {
-        	echo "<div class='clearfix'>";
-        	echo "<div class='display-inline-block pull-right'>".$info['placefilter']."</div>";
-        	echo "<div class='display-inline-block pull-left'>".$info['pagenav']."</div>";
-        	echo "</div>";
-        }
-        echo "<div class='table-responsive m-t-20'><table class='table table-bordered clear'>";
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th><small><strong>".$locale['PSP_P02']."</strong></small></th>";
-        echo "<th><small><strong>".$locale['PSP_P03']."</strong></small></th>";
-        echo "<th><small><strong>".$locale['PSP_P04']."</strong></small></th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody class='text-smaller'>";
+        $html->set_tag('message', $info['message']);
 
-        if (!empty($info['max_row'])) {
+        if (!empty($info['item'])) {
             $pli = 0;
-            foreach ($info['item'] as $data) {
+            foreach ($info['item'] as $cdata) {
                 $pli++;
-                echo "<tr id='diary_".$data['point_id']."'>";
-                echo "<td><strong>".(\PHPFusion\Points\UserPoint::PointPlace(fusion_get_userdata('user_id')) != ($info['helyezes'] + $pli) ? $info['helyezes'] + $pli : "<span style='color:#FF0000'>".($info['helyezes'] + $pli))."</span>"."</strong></td>";
-                echo "<td><div class='clearfix'>
-                    <div class='pull-left m-r-10'>".$data['avatar']."</div>
-                    <div class='overflow-hide'>
-                        <span class='m-l-10 m-r-10'>".$data['profile']."</span>
-                    </div>
-                    </div>
-                </td>";
-                echo "<td>".$data['point']."</td>";
-                echo "</tr>";
+                $html->set_block('items', [
+                    'point_id' => $cdata['point_id'],
+                    'place'    => \PHPFusion\Points\UserPoint::PointPlace(fusion_get_userdata('user_id')) != ($info['place'] + $pli) ? $info['place'] + $pli : "<span style='color:#FF0000'>".($info['place'] + $pli)."</span>",
+                    'avatar'   => $cdata['avatar'],
+                    'profile'  => $cdata['profile'],
+                    'point'    => $cdata['point']
+                ]);
             }
+        } else {
+            $html->set_block('no_item', ['message' => $info['nostat']]);
         }
-        echo "</tbody>";
-        echo "</table></div>";
-
-        if ($info['pagenav']) {
-        	echo "<div class='clearfix'>";
-        	echo "<div class='display-inline-block pull-right'>".$info['pagenav']."</div>";
-            echo "</div>";
+        if (!empty($info['pagenav'])) {
+            $html->set_block('pagenav_b', ['navigation_2' => $info['pagenav']]);
         }
 
-        echo closetable();
+        echo $html->get_output();
     }
 }
 

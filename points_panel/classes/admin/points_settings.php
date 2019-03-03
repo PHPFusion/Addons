@@ -19,14 +19,8 @@ namespace PHPFusion\Points;
 
 class PointsSettingsAdmin extends PointsModel {
     private static $instance = NULL;
-    private $ps_dateadd;
-    private $ps_activ;
-    private $ps_default;
-    private $ps_day;
-    private $ps_page;
-    private $ps_pricetype;
-    private $ps_unitprice;
-    private $ps_autogroup;
+    private static $locale = [];
+    private $points_settings;
 
     public static function getInstance() {
         if (self::$instance == NULL) {
@@ -42,26 +36,21 @@ class PointsSettingsAdmin extends PointsModel {
         $points_settings = self::CurrentSetup();
         $savesettings = filter_input(INPUT_POST, 'savesettings', FILTER_DEFAULT);
         if (!empty($savesettings)) {
-            $this->ps_dateadd = filter_input(INPUT_POST, 'ps_dateadd', FILTER_DEFAULT);
-            $this->ps_activ = filter_input(INPUT_POST, 'ps_activ', FILTER_DEFAULT);
-            $this->ps_default = filter_input(INPUT_POST, 'ps_default', FILTER_DEFAULT);
-            $this->ps_day = filter_input(INPUT_POST, 'ps_day', FILTER_DEFAULT);
-            $this->ps_page = filter_input(INPUT_POST, 'ps_page', FILTER_DEFAULT);
-            $this->ps_pricetype = filter_input(INPUT_POST, 'ps_pricetype', FILTER_DEFAULT);
-            $this->ps_unitprice = filter_input(INPUT_POST, 'ps_unitprice', FILTER_DEFAULT);
-            $this->ps_autogroup = filter_input(INPUT_POST, 'ps_autogroup', FILTER_DEFAULT);
-            $datead = (!empty($this->ps_dateadd) ? form_sanitizer($this->ps_dateadd, 0, "ps_dateadd") : $points_settings['ps_dateadd']);
+            $ps_dateadd = filter_input(INPUT_POST, 'ps_dateadd', FILTER_DEFAULT);
+            $datead = (!empty($ps_dateadd) ? form_sanitizer($ps_dateadd, 0, "ps_dateadd") : $points_settings['ps_dateadd']);
 
             $points_settings = [
                 'ps_id'         => $points_settings['ps_id'],
-                'ps_activ'      => form_sanitizer($this->ps_activ, 0, 'ps_activ'),
-                'ps_pricetype'  => form_sanitizer($this->ps_pricetype, 0, 'ps_pricetype'),
-                'ps_unitprice'  => form_sanitizer($this->ps_unitprice, 0, 'ps_unitprice'),
-                'ps_default'    => form_sanitizer($this->ps_default, 0, 'ps_default'),
+                'ps_activ'      => form_sanitizer(filter_input(INPUT_POST, 'ps_activ', FILTER_DEFAULT), 0, 'ps_activ'),
+                'ps_pricetype'  => form_sanitizer(filter_input(INPUT_POST, 'ps_pricetype', FILTER_DEFAULT), 0, 'ps_pricetype'),
+                'ps_holiday'    => form_sanitizer(filter_input(INPUT_POST, 'ps_holiday', FILTER_DEFAULT), 0, 'ps_holiday'),
+                'ps_unitprice'  => form_sanitizer(filter_input(INPUT_POST, 'ps_unitprice', FILTER_DEFAULT), 0, 'ps_unitprice'),
+                'ps_default'    => form_sanitizer(filter_input(INPUT_POST, 'ps_default', FILTER_DEFAULT), 0, 'ps_default'),
                 'ps_dateadd'    => $datead * 86400,
-                'ps_day'        => form_sanitizer($this->ps_day, 0, 'ps_day'),
-                'ps_autogroup'  => form_sanitizer($this->ps_autogroup, 0, 'ps_autogroup'),
-                'ps_page'       => form_sanitizer($this->ps_page, 0, 'ps_page')
+                'ps_day'        => form_sanitizer(filter_input(INPUT_POST, 'ps_day', FILTER_DEFAULT), 0, 'ps_day'),
+                'ps_autogroup'  => form_sanitizer(filter_input(INPUT_POST, 'ps_autogroup', FILTER_DEFAULT), 0, 'ps_autogroup'),
+                'ps_holidays'   => form_sanitizer(filter_input(INPUT_POST, 'ps_holidays', FILTER_DEFAULT), '', 'ps_holidays'),
+                'ps_page'       => form_sanitizer(filter_input(INPUT_POST, 'ps_page', FILTER_DEFAULT), 0, 'ps_page')
             ];
 
             if (\defender::safe()) {
@@ -78,6 +67,14 @@ class PointsSettingsAdmin extends PointsModel {
                 'inline'  => TRUE,
                 'width'   => '100%',
                 'ext_tip' => $locale['PSP_S03']
+            ]).
+            form_text('ps_holiday', $locale['PSP_S15'], $points_settings['ps_holiday'], [
+                'inline'      => TRUE,
+                'type'        => 'number',
+                'inner_width' => '150px',
+                'number_min'  => 1,
+                'max_length'  => 4,
+                'ext_tip'     => $locale['PSP_S16']
             ]).
             form_select('ps_pricetype', $locale['PSP_S04'], $points_settings['ps_pricetype'], [
                 'options' => $options,
@@ -119,6 +116,12 @@ class PointsSettingsAdmin extends PointsModel {
                 'inline'  => TRUE,
                 'width'   => '100%',
                 'ext_tip' => $locale['PSP_S13']
+            ]).
+            form_textarea('ps_holidays', $locale['PSP_S17'], $points_settings['ps_holidays'], [
+                'inline'   => TRUE,
+                'autosize' => TRUE,
+                'tinymce'  => 'simple',
+                'ext_tip'  => $locale['PSP_S18']
             ]).
             form_text('ps_page', $locale['PSP_S14'], $points_settings['ps_page'], [
                 'inline'      => TRUE,

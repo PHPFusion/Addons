@@ -38,6 +38,7 @@ $locale['PSP_028'] = "Pont küldése az <b>összes</b> felhasználónak";
 $locale['PSP_029'] = "- Válassz egy csoportot -";
 $locale['PSP_030'] = "Pont küldés <b>egy</b> Csoportoknak.";
 $locale['PSP_031'] = "Csoport Kiválasztása";
+$locale['PSP_032'] = "Az ünnepi szorzó ( %sx ) aktív.";
 
 $locale['PSP_A00'] = "Bannolás";
 $locale['PSP_A01'] = "Felhasználó Bannolva.";
@@ -200,6 +201,10 @@ $locale['PSP_S11'] = "Naponta adható pont";
 $locale['PSP_S12'] = "Autómatikus Csoport növelés";
 $locale['PSP_S13'] = "Autómatikusan Csoportot vált.";
 $locale['PSP_S14'] = "Lista oldalanként";
+$locale['PSP_S15'] = "Ünnepi Szorzó";
+$locale['PSP_S16'] = "Ha Nagyobb 1 nél akkor Bekapcsolva";
+$locale['PSP_S17'] = "Ünnepnapok";
+$locale['PSP_S18'] = "(HóNap, PL.: 0101,0102)";
 
 $locale['PSP_PL0'] = "Összes mutatása";
 $locale['PSP_PL1'] = "Név Szerint";

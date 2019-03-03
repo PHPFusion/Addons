@@ -117,6 +117,7 @@ $inf_newtable[] = DB_POINT_ST." (
     ps_id               INT(1)        UNSIGNED NOT NULL AUTO_INCREMENT,
     ps_activ            ENUM('0','1')                   DEFAULT '0',
     ps_pricetype        ENUM('0','1')                   DEFAULT '1',
+	ps_holiday          INT(5)                 NOT NULL DEFAULT '0',
     ps_unitprice        INT(5)                 NOT NULL DEFAULT '0',
     ps_naplodel         ENUM('0','1')                   DEFAULT '0',
     ps_dateadd          INT(11)                NOT NULL DEFAULT '0',
@@ -134,6 +135,7 @@ $inf_newtable[] = DB_POINT_ST." (
     ps_deposit_max      INT(5)                 NOT NULL DEFAULT '0',
     ps_deposit_interest INT(3)                 NOT NULL DEFAULT '0',
     ps_dailycheck       INT(11)                NOT NULL DEFAULT '0',
+	ps_holidays         TEXT                   NOT NULL,
     ps_language         VARCHAR(50)            NOT NULL DEFAULT '".LANGUAGE."',
     PRIMARY KEY (ps_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=UTF8 COLLATE=utf8_unicode_ci";
@@ -144,9 +146,9 @@ $tomorrow = mktime(0, 0, 0, date("m"), date("d")+1, date("Y"));
 $enabled_languages = makefilelist(LOCALE, ".|..", TRUE, "folders");
 if (!empty($enabled_languages)) {
     foreach($enabled_languages as $language) {
-        include INFUSIONS.$inf_folder."/locale/".$language."/Hungarian.php";
+        include INFUSIONS.$inf_folder."/locale/".$language."/points.php";
 
-        $mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_language) VALUES ('1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '".$language."')";
+        $mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_holiday, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_holidays, ps_language) VALUES ('1', '1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '0101,0315,0420,0421,0501,0608,0609,0920,1023,1101,1224,1225,1226', '".$language."')";
         $mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
             ('0', '".USER_LEVEL_SUPER_ADMIN."', '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PSP_M01']."', '".$language."'),
             ('0', '".USER_LEVEL_ADMIN."', '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PSP_M02']."', '".$language."'),
@@ -161,7 +163,7 @@ if (!empty($enabled_languages)) {
         $mlt_deldbrow[$language][] = DB_POINT_BANK." WHERE pb_language='".$language."'";
     }
 } else {
-    $inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_language) VALUES ('1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '".LANGUAGE."')";
+    $inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_holiday, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_holidays, ps_language) VALUES ('1', '1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '0101,0315,0420,0421,0501,0608,0609,0920,1023,1101,1224,1225,1226', '".LANGUAGE."')";
     $inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
         ('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PSP_M01']."', '".LANGUAGE."'),
         ('0', ".USER_LEVEL_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/points_ban.php', '".$locale['PSP_M02']."', '".LANGUAGE."'),

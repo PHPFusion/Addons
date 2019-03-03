@@ -90,7 +90,7 @@ class PointsPlace extends PointsModel {
             'max_row'     => $max_rows,
             'stat_rows'   => dbrows($result),
             'pagenav'     => makepagenav($rowstart, $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_place.php?place_filter=".$this->place_filter."&"),
-            'helyezes'    => $rowstart,
+            'place'       => $rowstart,
             'item'        => $inf
         ];
 

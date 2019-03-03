@@ -32,7 +32,8 @@ class PointsModel {
         'point'     => 0,
         'messages'  => '',
         'addtime'   => '',
-        'pricetype' => 0  //0 = pricetype , 1 = more price
+        'pricetype' => 0,  //0 = pricetype , 1 = more price
+        'hollyday'  => FALSE  //TRUE = hollyday not multiplier , FALSE = hollyday multiplier
     ];
 
     protected $default_ban = [

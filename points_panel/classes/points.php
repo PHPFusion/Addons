@@ -280,6 +280,11 @@ class UserPoint extends PointsModel {
                         $options['point'] = $this->settings['ps_unitprice'];
                     }
 
+                    $multiplier = $this->pointHollyday();
+                    if ($multiplier > 1 && empty($options['hollyday'])) {
+                        $options['messages'] = $options['messages'].self::$locale['PONT_317'];
+                        $options['point'] = ($options['point'] * ($options['mod'] == 1 ? $multiplier : 1));
+                    }
                     $pointmod['point_point'] = $pointmod['point_point'] + ($options['mod'] == 1 ? $options['point'] : $options['point'] * (-1));
 
                     dbquery_insert(DB_POINT, $pointmod, 'update');
@@ -292,6 +297,12 @@ class UserPoint extends PointsModel {
 			}
 		}
 	}
+
+    private function pointHollyday() {
+        $point_hollyday = explode(',', $this->settings['ps_holidays']);
+        $multiplier = ($this->settings['ps_holiday'] > 1 ? (in_array(date("m").date("d"), $point_hollyday) ? $this->settings['ps_holiday'] : 1) : 1);
+    	return $multiplier;
+    }
 
     private function pointTime($user, $options) {
         $options += $this->default_options;
@@ -356,6 +367,7 @@ class UserPoint extends PointsModel {
 	}
 
     public function DisplayPoint() {
+        $multiplier = $this->pointHollyday();
 		$diary = [
 			'where' => 'log_user_id=:userid',
 			'order' => ' ORDER BY log_date DESC',
@@ -369,9 +381,10 @@ class UserPoint extends PointsModel {
         $info = [
     		'opentable' => "<i class='fa fa-star-o fa-lg m-r-10'></i>".self::$locale['PSP_M10'],
     	    'id'        => $this->points['point_user'],
-    		'aktiv'     => $this->settings['ps_activ'],
+    		'activ'     => $this->settings['ps_activ'],
     		'message'   => empty($this->settings['ps_activ']) ? self::$locale['PSP_009'] : '',
     		'pricetype' => empty($this->settings['ps_pricetype']) ? sprintf(self::$locale['PSP_010'], ($this->settings['ps_unitprice'])) : '',
+    		'holiday'   => ($this->settings['ps_holiday'] > 1 && $multiplier > 1) ? sprintf(self::$locale['PSP_032'], $this->settings['ps_holiday']) : ''
         ];
 
     	$info['item'] = [

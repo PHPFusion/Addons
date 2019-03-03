@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: admin.php
+| Filename: points_panel/admin.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -28,9 +28,6 @@ class PointsAdmin {
         $this->locale = fusion_get_locale('', POINT_LOCALE);
     }
 
-    /**
-     *
-     */
     public function DisplayAdmin() {
 
         BreadCrumbs::getInstance()->addBreadCrumb(['link' => INFUSIONS.'points_panel/admin.php'.fusion_get_aidlink(), 'title' => $this->locale['PSP_M00']]);

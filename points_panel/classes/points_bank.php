@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_bank.php
+| Filename: points_panel/classes/points_bank.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -16,8 +16,6 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 namespace PHPFusion\Points;
-
-//use PHPFusion\Points\UserPoint;
 
 class PointsBankDeposit extends PointsModel {
     private static $instance = NULL;

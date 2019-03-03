@@ -15,9 +15,8 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) {
-    die("Access Denied");
-}
+defined('IN_FUSION') || exit;
+
 //Admin icon
 \PHPFusion\Admins::getInstance()->setAdminPageIcons("PSP", "<i class='admin-ico fa fa-fw fa-commenting'></i>");
 
@@ -55,7 +54,7 @@ if (!defined("POINT_LOCALE")) {
     }
 }
 
-if (db_exists(DB_POINT)) {
+if (defined('POINTS_PANEL_EXIST')) {
     include_once POINT_CLASS."autoload.php";
     PHPFusion\Points\UserPoint::getInstance()->GetPoint();
 }

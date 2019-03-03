@@ -19,6 +19,7 @@ spl_autoload_register(function ($className) {
 
     $autoload_register_paths = [
         'PHPFusion\\Points\\UserPoint'            => POINT_CLASS."classes/points.php",
+        'PHPFusion\\Points\\PointsPanel'          => POINT_CLASS."classes/points_panel.php",
         'PHPFusion\\Points\\PointsSettingsAdmin'  => POINT_CLASS."classes/admin/points_settings.php",
         'PHPFusion\\Points\\PointsBanAdmin'       => POINT_CLASS."classes/admin/points_ban.php",
         'PHPFusion\\Points\\PointsDiaryAdmin'     => POINT_CLASS."classes/admin/points_diary.php",

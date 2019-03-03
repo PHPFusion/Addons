@@ -243,7 +243,7 @@ class UserPoint extends PointsModel {
         return FALSE;
     }
 
-	protected static function PontDiary($inf) {
+	public static function PontDiary($inf) {
         $resultQuery = "SELECT *
             FROM ".DB_POINT_LOG."
             WHERE ".$inf['where'].
@@ -298,7 +298,7 @@ class UserPoint extends PointsModel {
 		}
 	}
 
-    private function pointHollyday() {
+    public function pointHollyday() {
         $point_hollyday = explode(',', $this->settings['ps_holidays']);
         $multiplier = ($this->settings['ps_holiday'] > 1 ? (in_array(date("m").date("d"), $point_hollyday) ? $this->settings['ps_holiday'] : 1) : 1);
     	return $multiplier;
@@ -323,7 +323,7 @@ class UserPoint extends PointsModel {
 		return dbrows($result);
 	}
 
-	private function pointListMenu(){
+	public static function pointListMenu(){
 
         $lstmn = [];
 
@@ -366,53 +366,5 @@ class UserPoint extends PointsModel {
 	    return $top;
 	}
 
-    public function DisplayPoint() {
-        $multiplier = $this->pointHollyday();
-		$diary = [
-			'where' => 'log_user_id=:userid',
-			'order' => ' ORDER BY log_date DESC',
-			'limit' => ' LIMIT 0,1',
-			'bind' => [
-				':userid'   => fusion_get_userdata('user_id'),
-				],
-			];
-		$message = self::PontDiary($diary);
-
-        $info = [
-    		'opentable' => "<i class='fa fa-star-o fa-lg m-r-10'></i>".self::$locale['PSP_M10'],
-    	    'id'        => $this->points['point_user'],
-    		'activ'     => $this->settings['ps_activ'],
-    		'message'   => empty($this->settings['ps_activ']) ? self::$locale['PSP_009'] : '',
-    		'pricetype' => empty($this->settings['ps_pricetype']) ? sprintf(self::$locale['PSP_010'], ($this->settings['ps_unitprice'])) : '',
-    		'holiday'   => ($this->settings['ps_holiday'] > 1 && $multiplier > 1) ? sprintf(self::$locale['PSP_032'], $this->settings['ps_holiday']) : ''
-        ];
-
-    	$info['item'] = [
-    		'UserPont'  => [
-    		    'locale' => self::$locale['PSP_003'],
-    		    'data'   => number_format($this->points['point_point'])
-    		],
-    		'UserHely'  => [
-    		    'locale' => self::$locale['PSP_004'],
-    		    'data'   => number_format(self::PointPlace($this->points['point_user']))
-    		],
-    		'increase'  => sprintf(self::$locale['PSP_005'], showdate("%Y.%m.%d - %H:%M", $this->points['point_increase'])),
-    		'udate'     => [
-    		    'locale' => self::$locale['PSP_006'],
-    		    'data'   => showdate("%d-%H:%M", $message['log_date']),
-            ],
-            'upont'     => [
-    		    'locale' => self::$locale['PSP_007'],
-    		    'data'   => "<abbr title='".$message['log_descript']."' class='initialism'>".number_format($message['log_point'])."</abbr>\n",
-            ],
-    		'umod'      => [
-    		    'locale' => self::$locale['PSP_008'],
-    		    'data'   => "<span style='color:".($message['log_pmod'] == 1 ? '#5CB85C' : '#FF0000')."'><i class='".($message['log_pmod'] == 1 ? "fa fa-plus-square" : "fa fa-minus-square")."'></i></span>\n",
-            ],
-            'listmenu'  => self::pointListMenu(),
-    	];
-
-        pointPanelItem($info);
-    }
 
 }

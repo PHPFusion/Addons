@@ -15,9 +15,7 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) {
-    die("Access Denied");
-}
+defined('IN_FUSION') || exit;
 
 //load language
 $locale = fusion_get_locale("", POINT_LOCALE);
@@ -30,14 +28,6 @@ $inf_email = "admin@fusionjatek.hu";
 $inf_weburl = "http://www.fusionjatek.hu";
 $inf_folder = "points_panel";
 $inf_image = "points.png";
-// Admin data
-$inf_adminpanel[] = [
-    'title'  => $locale['PSP_I03'],
-    'image'  => $inf_image,
-    'panel'  => 'admin.php',
-    'rights' => 'PSP',
-    'page'   => 5
-];
 //multilang table
 $inf_mlt[] = [
     'title'  => $inf_title,
@@ -148,6 +138,15 @@ if (!empty($enabled_languages)) {
     foreach($enabled_languages as $language) {
         include INFUSIONS.$inf_folder."/locale/".$language."/points.php";
 
+        $mlt_adminpanel[$language][] = [
+            'title'    => $locale['PSP_I03'],
+            'image'    => $inf_image,
+            'panel'    => "admin.php",
+            'rights'   => "PSP",
+            'page'     => 5,
+            'language' => $language
+        ];
+
         $mlt_insertdbrow[$language][] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_holiday, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_holidays, ps_language) VALUES ('1', '1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '0101,0315,0420,0421,0501,0608,0609,0920,1023,1101,1224,1225,1226', '".$language."')";
         $mlt_insertdbrow[$language][] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
             ('0', '".USER_LEVEL_SUPER_ADMIN."', '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PSP_M01']."', '".$language."'),
@@ -161,8 +160,18 @@ if (!empty($enabled_languages)) {
         $mlt_deldbrow[$language][] = DB_POINT_ST." WHERE ps_language='".$language."'";
         $mlt_deldbrow[$language][] = DB_POINT_INF." WHERE pi_language='".$language."'";
         $mlt_deldbrow[$language][] = DB_POINT_BANK." WHERE pb_language='".$language."'";
+        $mlt_deldbrow[$language][] = DB_ADMIN." WHERE admin_rights='PSP' AND admin_language='".$language."'";
     }
 } else {
+    $inf_adminpanel[] = [
+        'title'    => $locale['PSP_I03'],
+        'image'    => $inf_image,
+        'panel'    => "admin.php",
+        'rights'   => "PSP",
+        'page'     => 5,
+        'language' => LANGUAGE
+    ];
+
     $inf_insertdbrow[] = DB_POINT_ST." (ps_activ, ps_pricetype, ps_holiday, ps_unitprice, ps_naplodel, ps_dateadd, ps_day, ps_default, ps_page, ps_autogroup, ps_bank, ps_loan, ps_interest, ps_loan_day, ps_loan_max, ps_loan_interest, ps_deposit_day, ps_deposit_max, ps_deposit_interest, ps_dailycheck, ps_holidays, ps_language) VALUES ('1', '1', '1', '10', '1', '86400', '500', '5000', '20', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '".$tomorrow."', '0101,0315,0420,0421,0501,0608,0609,0920,1023,1101,1224,1225,1226', '".LANGUAGE."')";
     $inf_insertdbrow[] = DB_POINT_INF." (pi_user_id, pi_user_access, pi_link, pi_title, pi_language) VALUES
         ('0', ".USER_LEVEL_SUPER_ADMIN.", '".fusion_get_settings('site_path')."infusions/".$inf_folder."/admin.php', '".$locale['PSP_M01']."', '".LANGUAGE."'),

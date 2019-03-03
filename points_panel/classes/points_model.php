@@ -77,6 +77,7 @@ class PointsModel {
 
     return $groups_cache;
 }
+
     public function PointsGroups() {
 
         $groups_cache = [];

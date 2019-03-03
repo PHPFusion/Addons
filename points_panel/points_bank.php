@@ -18,7 +18,7 @@
 namespace PHPFusion\Points;
 require_once file_exists('maincore.php') ? 'maincore.php' : __DIR__."/../../maincore.php";
 
-if (!db_exists(DB_POINT)) {
+if (!defined('POINTS_PANEL_EXIST')) {
     redirect(BASEDIR."error.php?code=404");
 }
 

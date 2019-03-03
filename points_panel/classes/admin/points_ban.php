@@ -1,13 +1,26 @@
 <?php
+/*-------------------------------------------------------+
+| PHP-Fusion Content Management System
+| Copyright (C) PHP-Fusion Inc
+| https://www.php-fusion.co.uk/
++--------------------------------------------------------+
+| Filename: points_panel/classes/admin/points_ban.php
+| Author: karrak
++--------------------------------------------------------+
+| This program is released as free software under the
+| Affero GPL license. You can redistribute it and/or
+| modify it under the terms of this license which you
+| can read by viewing the included agpl.txt or online
+| at www.gnu.org/licenses/agpl.html. Removal of this
+| copyright header is strictly prohibited without
+| written permission from the original author(s).
++--------------------------------------------------------*/
 namespace PHPFusion\Points;
-
 
 class PointsBanAdmin extends PointsModel {
     private static $instance = NULL;
     private static $locale = [];
     public $settings = [];
-    private $rwstart;
-    private $rowstart;
 
     public function __construct() {
         include_once POINT_CLASS."templates.php";
@@ -53,13 +66,13 @@ class PointsBanAdmin extends PointsModel {
 	private function Currentdata($condition = FALSE) {
 		$sql_condition = empty($condition) ? "(ban_time_start<='".time()."' AND ban_time_stop>='".time()."') || (ban_time_start<='".time()."' AND ban_time_stop='0')" : "ban_time_stop!=0";
         $max_rows = dbcount("(ban_id)", DB_POINT_BAN, $sql_condition.(multilang_table("PSP") ? " AND ban_language='".LANGUAGE."'" : ''));
-		$this->rwstart = empty($condition) ? "banstart" : "defstart";
-        $this->rowstart = filter_input(INPUT_GET, $this->rwstart, FILTER_DEFAULT);
-        $this->rowstart = (!empty($this->rowstart) && isnum($this->rowstart) && $this->rowstart <= $max_rows) ? $this->rowstart : 0;
+		$rwstart = empty($condition) ? "banstart" : "defstart";
+        $rowstart = filter_input(INPUT_GET, $rwstart, FILTER_DEFAULT);
+        $rowstart = (!empty($rowstart) && isnum($rowstart) && $rowstart <= $max_rows) ? $rowstart : 0;
 
         $bind = [
             ':language'      => LANGUAGE,
-            ':rowstart'      => $this->rowstart,
+            ':rowstart'      => $rowstart,
             ':limit'         => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pbu.*, pb.*
@@ -76,7 +89,7 @@ class PointsBanAdmin extends PointsModel {
 	    $info = [
 	        'ittem'   => $inf,
             'max_row' => $max_rows,
-            'pagenav' => makepagenav($this->rowstart, $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_ban.php".fusion_get_aidlink()."&", $this->rwstart)
+            'pagenav' => makepagenav($rowstart, $this->settings['ps_page'], $max_rows, 3, POINT_CLASS."points_ban.php".fusion_get_aidlink()."&", $rwstart)
 	    ];
         return $info;
 	}

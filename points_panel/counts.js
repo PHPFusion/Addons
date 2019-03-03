@@ -1,5 +1,5 @@
-function display_cr(startr,cd_idr,mn,lnk){
-    var lnk = lnk;
+function display_cr(startr,cd_idr,mn,link){
+    var lnk = link;
     var end = 0; // change this to stop the counter at a higher value
     var refresh=1000; // Refresh rate in milli seconds
 
@@ -12,8 +12,8 @@ function display_cr(startr,cd_idr,mn,lnk){
 
 }
 
-function display_ctr(startr,cd_idr,mn,lnk) {
-	var lnk = lnk;
+function display_ctr(startr,cd_idr,mn,link) {
+	var lnk = link;
     // Calculate the number of days left
     var days=Math.floor(startr / 86400);
     // After deducting the days calculate the number of hours left
@@ -28,10 +28,10 @@ function display_ctr(startr,cd_idr,mn,lnk) {
 
     var xx = minutes + ' : ' + secs;
     if (mn === 1) {
-    var xx = days + ' . ' + hours + ' : ' + minutes + ' : ' + secs;
+    xx = days + ' . ' + hours + ' : ' + minutes + ' : ' + secs;
 
     } else if (mn === 0) {
-    var xx = hours + ' : ' + minutes + ' : ' + secs;
+    xx = hours + ' : ' + minutes + ' : ' + secs;
 
     }
 

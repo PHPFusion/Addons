@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/points_model.php
+| Filename: classes/points_model.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -31,7 +31,7 @@ class PointsModel {
         'mod'       => 1, //1 = add point, 2 = remov point
         'point'     => 0,
         'messages'  => '',
-        'addtime'   => '',
+        'addtime'   => 0,
         'pricetype' => 0,  //0 = pricetype , 1 = more price
         'hollyday'  => FALSE  //TRUE = hollyday not multiplier , FALSE = hollyday multiplier
     ];
@@ -48,7 +48,7 @@ class PointsModel {
 	    $result = dbquery("SELECT *
 	        FROM ".DB_POINT_BANK."
 	        WHERE pb_user_id = :userid
-			".(multilang_table("PSP") ? " AND pb_language = :language" : ''), [':userid' => $userid, ':language' => LANGUAGE]
+			".(multilang_table("PSP") ? " AND pb_language = '".LANGUAGE."'" : ''), [':userid' => $userid]
         );
         if (dbrows($result)) {
             $data = [];
@@ -66,24 +66,22 @@ class PointsModel {
     }
 
     public function Pointscachegroups() {
-    static $groups_cache = NULL;
-    if ($groups_cache === NULL) {
-        $groups_cache = [];
-        $result = dbquery("SELECT group_id, group_name FROM ".DB_USER_GROUPS." ORDER BY group_id ASC");
-        while ($data = dbarray($result)) {
-            $groups_cache[$data['group_id']] = $data['group_name'];
+        static $groups_cache = NULL;
+        if ($groups_cache === NULL) {
+            $groups_cache = [];
+            $result = dbquery("SELECT group_id, group_name FROM ".DB_USER_GROUPS." ORDER BY group_id ASC");
+            while ($data = dbarray($result)) {
+                $groups_cache[$data['group_id']] = $data['group_name'];
+            }
         }
+        return $groups_cache;
     }
-
-    return $groups_cache;
-}
 
     public function PointsGroups() {
 
         $groups_cache = [];
-        $result = dbquery("SELECT group_id, group_name
-            FROM ".DB_USER_GROUPS."
-            ORDER BY group_id ASC");
+        $result = dbquery("SELECT group_id, group_name FROM ".DB_USER_GROUPS." ORDER BY group_id ASC");
+
         while ($data = dbarray($result)) {
             $groups_cache[$data['group_id']] = $data['group_name'];
         }
@@ -107,15 +105,14 @@ class PointsModel {
             $bind = [
                 ':groups'   => $user['point_group'].".".$groupid,
                 ':users'    => $user['point_user'],
-                ':language' => LANGUAGE
             ];
         	$autgroupuser = fusion_get_userdata();
             $userbind = [
                 ':group' => $autgroupuser['user_groups'].".".$groupid,
                 ':user'  => $autgroupuser['user_id']
             ];
-            dbquery("UPDATE ".DB_POINT." SET point_group=:groups WHERE point_user=:users".(multilang_table("PSP") ? " AND point_language=:language" : ''), $bind);
-            dbquery("UPDATE ".DB_USERS." SET user_groups=:group WHERE user_id=:user", $userbind);
+            dbquery("UPDATE ".DB_POINT." SET point_group = :groups WHERE point_user = :users".(multilang_table("PSP") ? " AND point_language = '".LANGUAGE."'" : ''), $bind);
+            dbquery("UPDATE ".DB_USERS." SET user_groups = :group WHERE user_id = :user", $userbind);
             $messages = sprintf(fusion_get_locale('PONT_313', ''), $groups[$groupid]['group_name']);
             addNotice('success', $messages);
         }
@@ -123,11 +120,39 @@ class PointsModel {
 
     public static function CurrentSetup() {
 
+        $settings = dbarray(dbquery("SELECT * FROM ".DB_POINT_ST."
+            ".(multilang_table("PSP") ? "WHERE ps_language = '".LANGUAGE."'" : '')
+        ));
+        return $settings;
+    }
+
+    public static function GetCurrentUser($uid = NULL) {
+
+	    $def_point = [
+	        'point_id'        => '',
+	        'point_user'      => $uid,
+	        'point_point'     => 0,
+	        'point_increase'  => 0,
+	        'point_group'     => '',
+	        'point_language'  => LANGUAGE
+        ];
+
         $result = dbquery("SELECT *
-            FROM ".DB_POINT_ST."
-            ".(multilang_table("PSP") ? "WHERE ps_language=:language" : ''), [':language' => LANGUAGE]
+            FROM ".DB_POINT."
+            WHERE point_user = :userid
+            ".(multilang_table("PSP") ? " AND point_language = '".LANGUAGE."'" : '')."
+            LIMIT 0,1", [':userid' => $uid]
         );
 
-        return dbarray($result);
+        $point = [];
+        if (dbrows($result)) {
+            $point = dbarray($result);
+        }
+
+        $points = array_merge($def_point, $point);
+
+        return $points;
     }
+
+
 }

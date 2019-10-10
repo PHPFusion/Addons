@@ -15,50 +15,18 @@ class UserPoint extends PointsModel {
         include_once POINT_CLASS."templates.php";
         add_to_head("<script type='text/javascript' src='".fusion_get_settings('siteurl')."infusions/points_panel/counts.js'></script>");
         self::$locale = fusion_get_locale("", POINT_LOCALE);
+        $this->settings = self::CurrentSetup();
         $this->group_cache = self::PointsGroups();
+        $this->bank = self::PointsBank(fusion_get_userdata('user_id'));
+        $this->points = self::GetCurrentUser(fusion_get_userdata('user_id'));
         iMEMBER ? define("iNP", hash('md5', fusion_get_userdata('user_name'))) : '';
     }
 
     public static function getInstance() {
         if (self::$instance === NULL) {
             self::$instance = new static();
-            self::$instance->points = self::$instance->GetCurrentUser(fusion_get_userdata('user_id'));
-            self::$instance->settings = self::$instance->CurrentSetup();
-            self::$instance->bank = self::$instance->PointsBank(fusion_get_userdata('user_id'));
         }
        return self::$instance;
-    }
-
-    public static function GetCurrentUser($uid = NULL) {
-
-	    $def_point = [
-	        'point_id'        => '',
-	        'point_user'      => $uid,
-	        'point_point'     => 0,
-	        'point_increase'  => 0,
-	        'point_group'     => '',
-	        'point_language'  => LANGUAGE
-        ];
-
-        $bind = [
-            ':userid'   => $uid,
-            ':language' => LANGUAGE
-        ];
-
-        $result = dbquery("SELECT *
-            FROM ".DB_POINT."
-            WHERE point_user=:userid
-            ".(multilang_table("PSP") ? " AND point_language=:language" : '')."
-            LIMIT 0,1", $bind);
-
-        $point =[];
-        if (dbrows($result)){
-            $point = dbarray($result);
-        }
-
-        $points = array_merge($def_point, $point);
-
-        return $points;
     }
 
     //Add interest if the system and the Bank are active.
@@ -206,27 +174,22 @@ class UserPoint extends PointsModel {
 	public static function PointPlace($user = 0) {
         $user = ((isnum($user) && $user != 0) ? $user : fusion_get_userdata("user_id"));
         $bind = [
-            ':point'    => self::PointInfo($user, 0),
-            ':language' => LANGUAGE
+            ':point'    => self::PointInfo($user, 0)
         ];
         if (!self::PointBan($user)) {
-            $place = dbcount("(*)+1", DB_POINT, "point_point>:point".(multilang_table("PSP") ? " AND point_language=:language" : '')."", $bind);
+            $place = dbcount("(*)+1", DB_POINT, "point_point>:point".(multilang_table("PSP") ? " AND point_language = '".LANGUAGE."'" : '')."", $bind);
             return $place;
         }
         return FALSE;
 	}
 
 	public static function PointInfo($user, $pont = 0) {
-        $bind = [
-            ':userid'   => $user,
-            ':language' => LANGUAGE
-        ];
 
         $result = dbquery("SELECT point_point
             FROM ".DB_POINT."
             WHERE point_user = :userid
-            ".(multilang_table("PSP") ? " AND point_language = :language" : '')."
-            LIMIT 0,1", $bind
+            ".(multilang_table("PSP") ? " AND point_language = '".LANGUAGE."'" : '')."
+            LIMIT 0,1", [':userid' => $user]
         );
 
         if (dbrows($result)) {
@@ -315,7 +278,7 @@ class UserPoint extends PointsModel {
 
         $resultQuery = "SELECT log_id
             FROM ".DB_POINT_LOG."
-            WHERE log_user_id=:userid AND log_pmod=:mod AND log_date>:date AND log_descript=:addnaplo
+            WHERE log_user_id = :userid AND log_pmod = :mod AND log_date > :date AND log_descript = :addnaplo
             ORDER BY log_date DESC
         ";
 
@@ -330,13 +293,12 @@ class UserPoint extends PointsModel {
         $bind = [
             ':level'    => fusion_get_userdata('user_level'),
             ':level1'   => fusion_get_userdata('user_level'),
-            ':userId'   => fusion_get_userdata('user_id'),
-            ':language' => LANGUAGE
+            ':userId'   => fusion_get_userdata('user_id')
         ];
 
         $listQuery = "SELECT *
             FROM ".DB_POINT_INF."
-            WHERE ".(multilang_table("PSP") ? "pi_language=:language AND " : '')."
+            WHERE ".(multilang_table("PSP") ? "pi_language = '".LANGUAGE."' AND " : '')."
             (pi_user_id='0' AND pi_user_access >= :level) OR
             (pi_user_id = :userId AND pi_user_access >= :level1)
             ORDER BY pi_user_id ASC, pi_title ASC";

@@ -27,12 +27,12 @@ class PointsPanel extends PointsModel {
         include_once POINT_CLASS."templates.php";
         $this->settings = self::CurrentSetup();
         self::$locale = fusion_get_locale("", POINT_LOCALE);
+        $this->points = self::GetCurrentUser(fusion_get_userdata('user_id'));
     }
 
     public static function getInstance() {
         if (self::$instance === NULL) {
             self::$instance = new static();
-            self::$instance->points = self::$instance->GetCurrentUser(fusion_get_userdata('user_id'));
         }
         return self::$instance;
     }

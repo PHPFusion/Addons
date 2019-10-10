@@ -206,7 +206,7 @@ class UserPoint extends PointsModel {
 	public static function PointPlace($user = 0) {
         $user = ((isnum($user) && $user != 0) ? $user : fusion_get_userdata("user_id"));
         $bind = [
-            ':point'    => self::PointInfo($user, ""),
+            ':point'    => self::PointInfo($user, 0),
             ':language' => LANGUAGE
         ];
         if (!self::PointBan($user)) {

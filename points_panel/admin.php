@@ -15,72 +15,72 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
+namespace PHPFusion\Points;
 require_once "../../maincore.php";
 require_once THEMES."templates/admin_header.php";
-pageAccess('PSP');
 
 use \PHPFusion\BreadCrumbs;
 
-class PointsAdmin {
-    private $locale = [];
+class PointsAdmin extends PointsModel {
+    private $allowed_section = ['diary', 'settings', 'pointst', 'bann', 'autogroup', 'bank'];
 
     public function __construct() {
-        $this->locale = fusion_get_locale('', POINT_LOCALE);
+        pageAccess('PSP');
+        self::$locale = fusion_get_locale('', POINT_LOCALE);
     }
 
     public function DisplayAdmin() {
 
-        BreadCrumbs::getInstance()->addBreadCrumb(['link' => INFUSIONS.'points_panel/admin.php'.fusion_get_aidlink(), 'title' => $this->locale['PSP_M00']]);
-        add_to_title($this->locale['PSP_M00']);
-        opentable($this->locale['PSP_M00']);
+        BreadCrumbs::getInstance()->addBreadCrumb(['link' => INFUSIONS.'points_panel/admin.php'.fusion_get_aidlink(), 'title' => self::$locale['PSP_M00']]);
+        add_to_title(self::$locale['PSP_M00']);
+        opentable(self::$locale['PSP_M00']);
 
     	$section = filter_input(INPUT_GET, 'section', FILTER_DEFAULT);
-        $allowed_section = ['diary', 'settings', 'pointst', 'bann', 'autogroup', 'bank'];
-        $section = isset($section) && in_array($section, $allowed_section) ? $section : 'settings';
+        $section = isset($section) && in_array($section, $this->allowed_section) ? $section : 'settings';
 
-        $tab['title'][] = $this->locale['PSP_M06'];
+        $tab['title'][] = self::$locale['PSP_M06'];
         $tab['id'][]    = 'settings';
         $tab['icon'][]  = 'fa fa-fw fa-cogs';
 
-        $tab['title'][] = $this->locale['PSP_M07'];
+        $tab['title'][] = self::$locale['PSP_M07'];
         $tab['id'][]    = 'autogroup';
         $tab['icon'][]  = 'fa fa-fw fa-group';
 
-        $tab['title'][] = $this->locale['PSP_M08'];
+        $tab['title'][] = self::$locale['PSP_M08'];
         $tab['id'][]    = 'bank';
         $tab['icon'][]  = 'fa fa-fw fa-cogs';
 
-        $tab['title'][] = $this->locale['PSP_M09'];
+        $tab['title'][] = self::$locale['PSP_M09'];
         $tab['id'][]    = 'diary';
         $tab['icon'][]  = 'fa fa-fw fa-book';
 
-        $tab['title'][] = $this->locale['PSP_M10'];
+        $tab['title'][] = self::$locale['PSP_M10'];
         $tab['id'][]    = 'pointst';
         $tab['icon'][]  = 'fa fa-fw fa-plus-circle';
 
-        $tab['title'][] = $this->locale['PSP_M11'];
+        $tab['title'][] = self::$locale['PSP_M11'];
         $tab['id'][]    = 'bann';
         $tab['icon'][]  = 'fa fa-fw fa-ban';
 
         echo opentab($tab, $section, 'points_admin', TRUE, '', 'section', ['points_user', 'rowstart', 'log_pmod', 'bank', 'ref']);
         switch ($section) {
             case "diary":
-                PHPFusion\Points\PointsDiaryAdmin::getInstance()->displayDiaryAdmin();
+                \PHPFusion\Points\PointsDiaryAdmin::getInstance()->displayDiaryAdmin();
                 break;
             case "autogroup":
-                PHPFusion\Points\PointsAutogroupAdmin::getInstance()->displayAdmin();
+                \PHPFusion\Points\PointsAutogroupAdmin::getInstance()->displayAdmin();
                 break;
             case "bank":
-                PHPFusion\Points\PointsBankAdmin::getInstance()->displayAdmin();
+                \PHPFusion\Points\PointsBankAdmin::getInstance()->displayAdmin();
                 break;
             case "pointst":
-                PHPFusion\Points\PointsPointsAdmin::getInstance()->displayPointsAdmin();
+                \PHPFusion\Points\PointsPointsAdmin::getInstance()->displayPointsAdmin();
                 break;
             case "bann":
-                PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
+                \PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
                 break;
             default:
-                PHPFusion\Points\PointsSettingsAdmin::getInstance()->displayPointsAdmin();
+                \PHPFusion\Points\PointsSettingsAdmin::getInstance()->displayPointsAdmin();
         }
         echo closetab();
         closetable();

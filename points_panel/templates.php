@@ -22,6 +22,8 @@ if (!function_exists('pointPanelItem')) {
 
         $html = \PHPFusion\Template::getInstance('point_panel');
         $html->set_template(__DIR__.'/templates/point_panel.html');
+        $locale = fusion_get_locale();
+        $html->set_locale($locale);
 
         $html->set_tag('opentable', fusion_get_function('opentable', $info['opentable']));
         $html->set_tag('closetable', fusion_get_function('closetable'));
@@ -39,17 +41,12 @@ if (!function_exists('pointPanelItem')) {
 
             $html->set_block('pointpanel', [
                 'id'        => $info['id'],
-                'allpointl' => $info['item']['UserPont']['locale'],
-                'allpoint'  => $info['item']['UserPont']['data'],
-                'placel'    => $info['item']['UserHely']['locale'],
-                'place'     => $info['item']['UserHely']['data'],
+                'allpoint'  => $info['item']['UserPont'],
+                'place'     => $info['item']['UserHely'],
                 'increase'  => $info['item']['increase'],
-                'udatel'    => $info['item']['udate']['locale'],
-                'udate'     => $info['item']['udate']['data'],
-                'upontl'    => $info['item']['upont']['locale'],
-                'upont'     => $info['item']['upont']['data'],
-                'umodl'     => $info['item']['umod']['locale'],
-                'umod'      => $info['item']['umod']['data'],
+                'udate'     => $info['item']['udate'],
+                'upont'     => $info['item']['upont'],
+                'umod'      => $info['item']['umod'],
             ]);
 
         } else {

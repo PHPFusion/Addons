@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/points_place.php
+| Filename: classes/points_place.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsPlace extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     public $settings = [];
     public $place_filter = '';
 
@@ -77,7 +76,6 @@ class PointsPlace extends PointsModel {
         $rowstart = (!empty($rowstart) && isnum($rowstart) && $rowstart <= $max_rows) ? $rowstart : 0;
 
         $bind = [
-            ':language' => LANGUAGE,
             ':rowstart' => $rowstart,
             ':limit'    => $this->settings['ps_page']
         ];
@@ -85,7 +83,7 @@ class PointsPlace extends PointsModel {
         $result = dbquery("SELECT p.*, pu.user_id, pu.user_name, pu.user_status, pu.user_avatar, pu.user_joined, pu.user_level
             FROM ".DB_POINT." AS p
             LEFT JOIN ".DB_USERS." AS pu ON pu.user_id = p.point_user
-            ".(multilang_table("PSP") ? "WHERE p.point_language=:language" : "")."
+            ".(multilang_table("PSP") ? "WHERE p.point_language = '".LANGUAGE."'" : "")."
             ORDER BY ".self::checkPlaceFilter()."
             LIMIT :rowstart, :limit", $bind);
         $inf = [];

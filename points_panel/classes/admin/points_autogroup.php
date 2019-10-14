@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_autogroup.php
+| Filename: classes/admin/points_autogroup.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsAutogroupAdmin extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     public $settings = [];
     public $group_cache = [];
     private $link;

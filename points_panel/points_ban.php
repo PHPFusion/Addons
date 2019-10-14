@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/points_ban.php
+| Filename: points_ban.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -22,6 +22,5 @@ if (!defined('POINTS_PANEL_EXIST')) {
 }
 
 require_once THEMES."templates/header.php";
-pageAccess('PSP');
 \PHPFusion\Points\PointsBanAdmin::getInstance()->CurrentList();
 require_once THEMES."templates/footer.php";

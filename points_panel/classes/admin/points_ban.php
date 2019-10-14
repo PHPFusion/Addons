@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_ban.php
+| Filename: classes/admin/points_ban.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,10 +19,10 @@ namespace PHPFusion\Points;
 
 class PointsBanAdmin extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     public $settings = [];
 
     public function __construct() {
+        pageAccess('PSP');
         include_once POINT_CLASS."templates.php";
         $this->settings = self::CurrentSetup();
         self::$locale = fusion_get_locale("", POINT_LOCALE);
@@ -71,15 +71,14 @@ class PointsBanAdmin extends PointsModel {
         $rowstart = (!empty($rowstart) && isnum($rowstart) && $rowstart <= $max_rows) ? $rowstart : 0;
 
         $bind = [
-            ':language'      => LANGUAGE,
-            ':rowstart'      => $rowstart,
-            ':limit'         => $this->settings['ps_page']
+            ':rowstart' => $rowstart,
+            ':limit'    => $this->settings['ps_page']
         ];
 	    $result = dbquery("SELECT pbu.*, pb.*
 	        FROM ".DB_POINT_BAN." AS pb
-	        LEFT JOIN ".DB_USERS." AS pbu ON pbu.user_id= pb.ban_user_id
+	        LEFT JOIN ".DB_USERS." AS pbu ON pbu.user_id = pb.ban_user_id
 	        WHERE $sql_condition
-            ".(multilang_table("PSP") ? " AND pb.ban_language=:language" : "")."
+            ".(multilang_table("PSP") ? " AND pb.ban_language = '".LANGUAGE."'" : "")."
             LIMIT :rowstart, :limit", $bind);
         $inf = [];
 

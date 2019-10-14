@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/points_bank.php
+| Filename: classes/points_bank.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsBankDeposit extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     private $pointmod = [];
     private $bank = [];
     public $settings = [];
@@ -44,26 +43,6 @@ class PointsBankDeposit extends PointsModel {
             self::$instance = new static();
         }
        return self::$instance;
-    }
-
-    public static function GetCurrentUser($uid = NULL) {
-
-        $bind = [
-            ':userid'   => $uid,
-            ':language' => LANGUAGE
-        ];
-
-        $result = dbquery("SELECT *
-            FROM ".DB_POINT."
-            WHERE point_user = :userid
-            ".(multilang_table("PSP") ? " AND point_language=:language" : '')."
-            LIMIT 0,1", $bind
-        );
-
-        if (dbrows($result)){
-            return dbarray($result);
-        }
-        return FALSE;
     }
 
     public function displayDeposit() {
@@ -274,7 +253,7 @@ class PointsBankDeposit extends PointsModel {
             UserPoint::getInstance()->setPoint(fusion_get_userdata('user_id'), ["mod" => 2, "point" => $this->amount, "messages" => $messages]);
             addNotice('success', self::$locale['PSP_B12']);
         }
-        $this->bank = array_merge($this->bank, $deposit);
+        !empty($this->bank) ? $this->bank = array_merge($this->bank, $deposit) : '';
     }
 
     private function BankLoanForm() {
@@ -402,7 +381,7 @@ class PointsBankDeposit extends PointsModel {
         </script>";
     }
 
-    private function checkLoan(){
+    private function checkLoan() {
         $error = '';
 
         $this->amount = form_sanitizer(filter_input(INPUT_POST, 'amount', FILTER_VALIDATE_INT), 0, 'amount');
@@ -445,7 +424,7 @@ class PointsBankDeposit extends PointsModel {
             addNotice('success', self::$locale['PSP_B21']);
         }
 
-        $this->bank = array_merge($this->bank, $loan);
+        !empty($this->bank) ? $this->bank = array_merge($this->bank, $loan) : '';
     }
 
     private function BankInfoForm() {

@@ -1,11 +1,26 @@
 <?php
+/*-------------------------------------------------------+
+| PHP-Fusion Content Management System
+| Copyright (C) PHP-Fusion Inc
+| https://www.php-fusion.co.uk/
++--------------------------------------------------------+
+| Filename: classes/points.php
+| Author: karrak
++--------------------------------------------------------+
+| This program is released as free software under the
+| Affero GPL license. You can redistribute it and/or
+| modify it under the terms of this license which you
+| can read by viewing the included agpl.txt or online
+| at www.gnu.org/licenses/agpl.html. Removal of this
+| copyright header is strictly prohibited without
+| written permission from the original author(s).
++--------------------------------------------------------*/
 namespace PHPFusion\Points;
 
 use PHPFusion\Points\UserPoint as UserPoints;
 
 class UserPoint extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     private $points = [];
     private $bank = [];
     private $group_cache = [];
@@ -79,6 +94,11 @@ class UserPoint extends PointsModel {
                             } else {
                                 //loan day.
                                 if (empty($baninfo)) {
+                                    $savebet = [
+                                        'pb_id' => $value['pb_id'],
+                                        'pb_loan_activ' => $loanend == 0 ? 0 : 1,
+                                    ];
+
                                     $betet_ki['pb_id'] = $value['pb_id'];
                                     $betet_ki['pb_loan_activ'] = $loanend == 0 ? 0 : 1;
                                     $betet_ki['pb_loan_levont'] = $value['pb_loan_levont']+($tan * 86400);
@@ -276,34 +296,31 @@ class UserPoint extends PointsModel {
             ':addnaplo' => $options['messages']
         ];
 
-        $resultQuery = "SELECT log_id
+        $result = dbquery("SELECT log_id
             FROM ".DB_POINT_LOG."
             WHERE log_user_id = :userid AND log_pmod = :mod AND log_date > :date AND log_descript = :addnaplo
-            ORDER BY log_date DESC
-        ";
+            ORDER BY log_date DESC", $bind);
 
-		$result = dbquery($resultQuery, $bind);
+
 		return dbrows($result);
 	}
 
 	public static function pointListMenu(){
 
         $lstmn = [];
-
+        $listuser = fusion_get_userdata();
         $bind = [
-            ':level'    => fusion_get_userdata('user_level'),
-            ':level1'   => fusion_get_userdata('user_level'),
-            ':userId'   => fusion_get_userdata('user_id')
+            ':level'    => $listuser['user_level'],
+            ':level1'   => $listuser['user_level'],
+            ':userId'   => $listuser['user_id']
         ];
 
-        $listQuery = "SELECT *
+        $result = dbquery("SELECT *
             FROM ".DB_POINT_INF."
             WHERE ".(multilang_table("PSP") ? "pi_language = '".LANGUAGE."' AND " : '')."
-            (pi_user_id='0' AND pi_user_access >= :level) OR
+            (pi_user_id = '0' AND pi_user_access >= :level) OR
             (pi_user_id = :userId AND pi_user_access >= :level1)
-            ORDER BY pi_user_id ASC, pi_title ASC";
-
-        $result = dbquery($listQuery, $bind);
+            ORDER BY pi_user_id ASC, pi_title ASC", $bind);
 
         while ($gmenu = dbarray($result)) {
         	$plink = iADMIN && ($gmenu['pi_user_access'] == USER_LEVEL_SUPER_ADMIN || $gmenu['pi_user_access'] == USER_LEVEL_ADMIN) ? $gmenu['pi_link'].fusion_get_aidlink() : $gmenu['pi_link'];

@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_points.php
+| Filename: classes/admin/points_points.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsPointsAdmin extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     public $settings = [];
 
     public function __construct() {
@@ -165,7 +164,7 @@ class PointsPointsAdmin extends PointsModel {
     	echo form_text('point_point', self::$locale['PSP_024'], 0, [
             'required'    => TRUE,
     	    'type'        => 'number',
-    	    'max_length'  => 5,
+    	    'max_length'  => 6,
     	    'number_min'  => 1,
     	    'inner_width' => '100px',
     	    'inline'      => TRUE
@@ -189,7 +188,7 @@ class PointsPointsAdmin extends PointsModel {
     	echo form_text('point_point', self::$locale['PSP_024'], 0, [
             'required'    => TRUE,
     	    'type'        => 'number',
-    	    'max_length'  => 5,
+    	    'max_length'  => 6,
     	    'number_min'  => 1,
     	    'inner_width' => '100px',
     	    'inline'      => TRUE
@@ -227,7 +226,7 @@ class PointsPointsAdmin extends PointsModel {
             echo form_text('point_point', self::$locale['PSP_024'], 0, [
                 'required'    => TRUE,
                 'type'        => 'number',
-                'max_length'  => 5,
+                'max_length'  => 6,
                 'number_min'  => 1,
                 'inner_width' => '100px',
                 'inline'      => TRUE

@@ -19,7 +19,7 @@ namespace PHPFusion\Points;
 
 class PointsDiary extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
+    //private static $locale = [];
     public $settings = [];
     public $diary_filter = '';
     public $nplink = '';

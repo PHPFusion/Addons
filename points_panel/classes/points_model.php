@@ -15,10 +15,30 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-
 namespace PHPFusion\Points;
 
 class PointsModel {
+    protected static $locale = [];
+
+    /*protected $bank = [
+        'pb_id' => '',
+        'pb_user_id' => 0,
+        'pb_loan_activ' => 0,
+        'pb_interest_activ' => 0,
+        'pb_loan_start' => 0,
+        'pb_loan_tor_start' => 0,
+        'pb_loan_end' => 0,
+        'pb_loan_day' => 0,
+        'pb_loan_amount' => 0,
+        'pb_loan_reszlet' => 0,
+        'pb_loan_levont' => 0,
+        'pb_interest_start' => 0,
+        'pb_interest_end' => 0,
+        'pb_interest_amount' => 0,
+        'pb_interest_szaz' => 0,
+        'pb_interest_get' => 0,
+        'pb_language' => LANGUAGE
+    ]; */
 
     protected $autogroup = [
         'pg_id'           => '',

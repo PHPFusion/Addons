@@ -185,7 +185,6 @@ $locale['PSP_P02'] = "Helyezés";
 $locale['PSP_P03'] = "Avatar";
 $locale['PSP_P04'] = "Össz. Pont";
 
-
 $locale['PSP_S00'] = "Egyáras";
 $locale['PSP_S01'] = "Különáras";
 $locale['PSP_S02'] = "Pont Rendszer";

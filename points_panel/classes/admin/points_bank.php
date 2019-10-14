@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_bank.php
+| Filename: classes/admin/points_bank.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsBankAdmin extends PointsModel {
     private static $instance = NULL;
-    private static $locale = [];
     public $settings = [];
 
     public function __construct() {
@@ -35,8 +34,7 @@ class PointsBankAdmin extends PointsModel {
     }
 
     public function displayAdmin() {
-
-    self::BankSettings();
+        self::BankSettings();
     }
 
     private function BankSettings() {
@@ -64,7 +62,7 @@ class PointsBankAdmin extends PointsModel {
         }
 
         $opts = ['1' => self::$locale['on'], '0' => self::$locale['off']];
-    	opentable(self::$locale['PSP_P01']);
+    	opentable(self::$locale['PSP_M08']);
         echo openform('loanform', 'post', FUSION_REQUEST, ['class' => 'm-t-20']).
         form_hidden('ps_id', '', $this->settings['ps_id']).
         form_select('ps_bank', self::$locale['PSP_B50'], $this->settings['ps_bank'], [
@@ -128,6 +126,4 @@ class PointsBankAdmin extends PointsModel {
         closeform();
     	closetable();
     }
-
-
 }

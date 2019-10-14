@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/points_diary.php
+| Filename: points_diary.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the

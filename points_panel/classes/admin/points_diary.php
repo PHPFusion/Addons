@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/classes/admin/points_diary.php
+| Filename: classes/admin/points_diary.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -19,7 +19,6 @@ namespace PHPFusion\Points;
 
 class PointsDiaryAdmin extends PointsModel {
     private static $instance = NULL;
-    private $locale = [];
     public $diary_filter = '';
     public $diary_user = '';
     private $settings;
@@ -27,7 +26,7 @@ class PointsDiaryAdmin extends PointsModel {
 
     public function __construct() {
         $this->settings = self::CurrentSetup();
-        $this->locale = fusion_get_locale("", POINT_LOCALE);
+        self::$locale = fusion_get_locale("", POINT_LOCALE);
         self::InputFilter();
     }
 
@@ -65,10 +64,10 @@ class PointsDiaryAdmin extends PointsModel {
                 foreach ($dellog as $dellog_id) {
                     dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => (int)$dellog_id]);
                 }
-                addNotice('success', $this->locale['PSP_D20']);
+                addNotice('success', self::$locale['PSP_D20']);
                 redirect(FUSION_REQUEST);
             }
-            addNotice('warning', $this->locale['PSP_D01']);
+            addNotice('warning', self::$locale['PSP_D01']);
             redirect(FUSION_REQUEST);
 		}
 
@@ -76,16 +75,16 @@ class PointsDiaryAdmin extends PointsModel {
 		if (!empty($diaryrevoke)) {
             $backlog = (isset($_POST['backlog_id'])) ? explode(",", form_sanitizer($_POST['backlog_id'], '', 'backlog_id')) : '';
             if (!empty($backlog) && \defender::safe()) {
-            	$messages = $this->locale['PSP_D21'];
+            	$messages = self::$locale['PSP_D21'];
 
                 foreach ($backlog as $backlog_id) {
                 	$data = dbarray(dbquery("SELECT * FROM ".DB_POINT_LOG." WHERE log_id=:log_id", [':log_id' => (int)$backlog_id]));
                     UserPoint::getInstance()->setPoint($data['log_user_id'], ["mod" => $data['log_pmod'] == 1 ? 2 : 1, "point" => $data['log_point'], "messages" => $messages]);
                 }
-                addNotice('success', $this->locale['PSP_D22']);
+                addNotice('success', self::$locale['PSP_D22']);
                 redirect(FUSION_REQUEST);
             }
-            addNotice('warning', $this->locale['PSP_D23']);
+            addNotice('warning', self::$locale['PSP_D23']);
             redirect(FUSION_REQUEST);
 		}
 
@@ -96,14 +95,14 @@ class PointsDiaryAdmin extends PointsModel {
             $max_rows = dbcount("(log_id)", DB_POINT_LOG, "log_date<=:limit", [':limit' => $limit]);
             if ($max_rows && \defender::safe()) {
             	dbquery("DELETE FROM ".DB_POINT_LOG." WHERE log_date<=:log_date", [':log_date' => $limit]);
-            	addNotice('success', sprintf($this->locale['PSP_D24'], showdate("%Y.%m.%d - %H:%M", $limit)));
+            	addNotice('success', sprintf(self::$locale['PSP_D24'], showdate("%Y.%m.%d - %H:%M", $limit)));
             	redirect(FUSION_REQUEST);
             }
 		}
     }
 
     private function Diaryfilter() {
-        $author_opts = [0 => $this->locale['PSP_D25']];
+        $author_opts = [0 => self::$locale['PSP_D25']];
         $result = dbquery("SELECT pl.*, pu.user_id, pu.user_name, pu.user_status
             FROM ".DB_POINT_LOG." AS pl
             LEFT JOIN ".DB_USERS." AS pu ON pl.log_user_id = pu.user_id
@@ -125,7 +124,7 @@ class PointsDiaryAdmin extends PointsModel {
         ])."</div>".
         "<div class='display-inline-block pull-right'>".form_select('log_pmod', '', $this->diary_filter, [
             'allowclear' => TRUE,
-            'options'    => $this->locale['PSP_LST'],
+            'options'    => self::$locale['PSP_LST'],
             'onchange'   => 'document.diary_form.submit()'
         ])."</div></div>".
 		closeform();
@@ -192,7 +191,7 @@ class PointsDiaryAdmin extends PointsModel {
 	}
 
     private function displayData($dinfo) {
-    	opentable("<i class='fa fa-book fa-lg m-r-10'></i>".$this->locale['PSP_D00']);
+    	opentable("<i class='fa fa-book fa-lg m-r-10'></i>".self::$locale['PSP_D00']);
     	?>
             <div class='display-inline-block pull-left'><?php echo $dinfo['fdata']['pagenav'] ?></div>
     	<?php
@@ -207,13 +206,13 @@ class PointsDiaryAdmin extends PointsModel {
         	    <thead>
         	    <tr>
         	    <th></th>
-        	    <th><?php echo $this->locale['PSP_D26'] ?></th>
-        	    <th><?php echo $this->locale['PSP_D27'] ?></th>
-        	    <th><?php echo $this->locale['PSP_D28'] ?></th>
-        	    <th><?php echo $this->locale['PSP_D29'] ?></th>
-        	    <th><?php echo $this->locale['PSP_D30'] ?></th>
-        	    <th><?php echo $this->locale['delete'] ?></th>
-        	    <th><?php echo $this->locale['PSP_D31'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D26'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D27'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D28'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D29'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D30'] ?></th>
+        	    <th><?php echo self::$locale['delete'] ?></th>
+        	    <th><?php echo self::$locale['PSP_D31'] ?></th>
         	    </tr>
         	    </thead>
         	    <tbody class='text-smaller'>
@@ -241,34 +240,34 @@ class PointsDiaryAdmin extends PointsModel {
         	    <?php
         } else {
         	?>
-        	    <div class='text-center well'><?php echo $this->locale['PSP_D12'] ?></div>
+        	    <div class='text-center well'><?php echo self::$locale['PSP_D12'] ?></div>
         	<?php
         }
         ?>
             <div class='text-center'><?php echo (dbcount("(log_id)", DB_POINT_LOG, "") ?
-        form_button('diarydel', $this->locale['PSP_D32'], $this->locale['PSP_D32'])."&nbsp;&nbsp;".
-        form_button('diaryrevoke', $this->locale['PSP_D33'], $this->locale['PSP_D33']) : ''); ?>
+        form_button('diarydel', self::$locale['PSP_D32'], self::$locale['PSP_D32'])."&nbsp;&nbsp;".
+        form_button('diaryrevoke', self::$locale['PSP_D33'], self::$locale['PSP_D33']) : ''); ?>
         </div>
         <?php echo closeform();
 
         $listadeletemod = [0 => '', 30 => 30, 20 => 20, 14 => 14, 7 => 7];
         $listadelete = [];
         foreach ($listadeletemod as $key => $data) {
-        	$listadelete[$key] = ($key == 0 ? $this->locale['PSP_D34'] : $data.$this->locale['PSP_D35']);
+        	$listadelete[$key] = ($key == 0 ? self::$locale['PSP_D34'] : $data.self::$locale['PSP_D35']);
         }
         echo openform('listadel_form', 'post', FUSION_REQUEST);
         echo form_select('deletemod', '', 0, [
             'allowclear' => TRUE,
-            'options'    => $listadelete,
+            'options'    => $listadelete
         ]);
-        echo form_button('del_naplo', $this->locale['PSP_D36'], $this->locale['PSP_D36'], ['class' => 'btn-success']);
+        echo form_button('del_naplo', self::$locale['PSP_D36'], self::$locale['PSP_D36'], ['class' => 'btn-success']);
         echo closeform();
     	closetable();
     	add_to_jquery("$('#diarydel').bind('click', function() {
-    		return confirm('".$this->locale['PSP_D37']."');
+    		return confirm('".self::$locale['PSP_D37']."');
     		});
     		$('#diaryrevoke').bind('click', function() {
-    			return confirm('".$this->locale['PSP_D38']."');
+    			return confirm('".self::$locale['PSP_D38']."');
     			});
     		");
     }

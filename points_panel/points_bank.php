@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
-| Filename: points_panel/points_bank.php
+| Filename: points_bank.php
 | Author: karrak
 +--------------------------------------------------------+
 | This program is released as free software under the
@@ -23,48 +23,47 @@ if (!defined('POINTS_PANEL_EXIST')) {
 }
 
 require_once THEMES."templates/header.php";
-use \PHPFusion\BreadCrumbs;
 
 class PointsBankSystem extends PointsModel {
-    private $locale = [];
+    //private $locale = [];
+    private $allowed_section = ['bank', 'deposit', 'loan', 'borrowers', 'depositors'];
     public $settings = [];
 
     public function __construct() {
         $this->settings = self::CurrentSetup();
-        $this->locale = fusion_get_locale('', POINT_LOCALE);
+        self::$locale = fusion_get_locale('', POINT_LOCALE);
     }
 
     public function DisplayBank() {
-        set_title($this->locale['PSP_M08']);
+        set_title(self::$locale['PSP_M08']);
 
-        opentable($this->locale['PSP_M08']);
+        opentable(self::$locale['PSP_M08']);
 
         if (iMEMBER && !empty($this->settings['ps_bank'])) {
             $section = filter_input(INPUT_GET, 'section', FILTER_DEFAULT);
-            $allowed_section = ['bank', 'deposit', 'loan', 'borrowers', 'depositors'];
-            $tab_active = isset($section) && in_array($section, $allowed_section) ? $section : 'bank';
+            $tab_active = isset($section) && in_array($section, $this->allowed_section) ? $section : 'bank';
 
-            $master_title['title'][] = $this->locale['PSP_B00'];
+            $master_title['title'][] = self::$locale['PSP_B00'];
             $master_title['id'][] = 'bank';
             $master_title['icon'][] = '';
 
             if (iMEMBER && !empty($this->settings['ps_interest'])) {
-                $master_title['title'][] = $this->locale['PSP_B01'];
+                $master_title['title'][] = self::$locale['PSP_B01'];
                 $master_title['id'][] = 'deposit';
                 $master_title['icon'][] = '';
             }
             if (iMEMBER && !empty($this->settings['ps_loan'])) {
-                $master_title['title'][] = $this->locale['PSP_B02'];
+                $master_title['title'][] = self::$locale['PSP_B02'];
                 $master_title['id'][] = 'loan';
                 $master_title['icon'][] = '';
             }
 
             if (iADMIN) {
-                $master_title['title'][] = $this->locale['PSP_B03'];
+                $master_title['title'][] = self::$locale['PSP_B03'];
                 $master_title['id'][] = 'depositors';
                 $master_title['icon'][] = '';
 
-                $master_title['title'][] = $this->locale['PSP_B04'];
+                $master_title['title'][] = self::$locale['PSP_B04'];
                 $master_title['id'][] = 'borrowers';
                 $master_title['icon'][] = '';
             }
@@ -88,7 +87,7 @@ class PointsBankSystem extends PointsModel {
             }
             echo closetab();
         } else {
-        	echo "<div class='text-center well'>".$this->locale['PSP_E00']."</div>\n";
+        	echo "<div class='text-center well'>".self::$locale['PSP_E00']."</div>\n";
         }
         closetable();
     }

@@ -26,7 +26,7 @@ $inf_version = '1.0';
 $inf_developer = 'YOUR NAME HERE';
 $inf_email = 'YOUR EMAIL HERE (optional)';
 $inf_weburl = 'YOUR WEBSITE HERE (optional)';
-$inf_folder = "infusionname"; // The folder in which the infusion resides.
+$inf_folder = "infusion_name"; // The folder in which the infusion resides.
 $inf_image = 'icon.svg'; // (optional) Icon name, icon must be placed in infusion folder. Recommended size is 48x48px
 
 // Create tables
@@ -54,14 +54,14 @@ foreach ($settings as $name => $value) {
     $inf_insertdbrow[] = DB_SETTINGS_INF." (settings_name, settings_value, settings_inf) VALUES('".$name."', '".$value."', '".$inf_folder."')";
 }
 
-/*$inf_adminpanel[] = [
+$inf_adminpanel[] = [
     'rights'   => 'XXX',
     'image'    => $inf_image,
     'title'    => $locale['xxx_admin1'],
     'panel'    => 'new_infusion_admin.php',
     'page'     => 5, // admin section
     'language' => LANGUAGE
-];*/
+];
 
 // Multilanguage table
 $inf_mlt[] = [
@@ -79,38 +79,22 @@ if (!empty($enabled_languages)) {
             include $inf_folder.'locale/English.php';
         }
 
-        $mlt_adminpanel[$language][] = [
-            'rights'   => 'XXX',
-            'image'    => $inf_image,
-            'title'    => $locale['xxx_admin1'],
-            'panel'    => 'new_infusion_admin.php',
-            'page'     => 5, // admin section
-            'language' => $language
-        ];
-
         // Add
-        $mlt_insertdbrow[$language][] = DB_SITE_LINKS." (link_name, link_url, link_visibility, link_position, link_window, link_order, link_status, link_language) VALUES('".$locale['xxx_link1']."', 'infusions/infusionname/file.php', '0', '2', '0', '2', '1', '".$language."')";
+        $mlt_insertdbrow[$language][] = DB_SITE_LINKS." (link_name, link_url, link_visibility, link_position, link_window, link_order, link_status, link_language) VALUES('".$locale['xxx_link1']."', 'infusions/infusion_name/file.php', '0', '2', '0', '2', '1', '".$language."')";
 
         // Delete
-        $mlt_deldbrow[$language][] = DB_SITE_LINKS." WHERE link_url='infusions/infusionname/file.php' AND link_language='".$language."'";
+        $mlt_deldbrow[$language][] = DB_SITE_LINKS." WHERE link_url='infusions/infusion_name/file.php' AND link_language='".$language."'";
         $mlt_deldbrow[$language][] = DB_ADMIN." WHERE admin_rights='XXX' AND admin_language='".$language."'";
     }
 } else {
-    $inf_adminpanel[] = [
-        'rights'   => 'XXX',
-        'image'    => $inf_image,
-        'title'    => $locale['xxx_admin1'],
-        'panel'    => 'new_infusion_admin.php',
-        'page'     => 5, // admin section
-        'language' => LANGUAGE
-    ];
-
-    $inf_insertdbrow[] = DB_SITE_LINKS." (link_name, link_url, link_visibility, link_position, link_window, link_order, link_status, link_language) VALUES('".$locale['xxx_link1']."', 'infusions/infusionname/file.php', '0', '2', '0', '2', '1', '".LANGUAGE."')";
+    $inf_insertdbrow[] = DB_SITE_LINKS." (link_name, link_url, link_visibility, link_position, link_window, link_order, link_status, link_language) VALUES('".$locale['xxx_link1']."', 'infusions/infusion_name/file.php', '0', '2', '0', '2', '1', '".LANGUAGE."')";
 }
 
 // Uninstallation
 $inf_droptable[] = DB_INFUSION_TABLE;
 $inf_deldbrow[] = DB_ADMIN." WHERE admin_rights='XXX'";
+// $inf_deldbrow[] = DB_COMMENTS." WHERE comment_type='XXX'"; // If the infusion has a enabled comments
+// $inf_deldbrow[] = DB_RATINGS." WHERE rating_type='XXX'"; // If the infusion has a enabled ratings
 $inf_deldbrow[] = DB_PANELS." WHERE panel_filename='new_infusion_panel'";
-$inf_deldbrow[] = DB_SITE_LINKS." WHERE link_url='infusions/infusionname/file.php'";
+$inf_deldbrow[] = DB_SITE_LINKS." WHERE link_url='infusions/infusion_name/file.php'";
 $inf_deldbrow[] = DB_SETTINGS_INF." WHERE settings_inf='".$inf_folder."'";

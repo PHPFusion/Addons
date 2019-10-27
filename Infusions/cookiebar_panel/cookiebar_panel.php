@@ -16,9 +16,7 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) {
-    die("Access Denied");
-}
+defined('IN_FUSION') || exit;
 
 if (!isset($_COOKIE[COOKIE_PREFIX.'cookieconsent'])) {
     $settings = fusion_get_settings();
@@ -52,8 +50,8 @@ if (!isset($_COOKIE[COOKIE_PREFIX.'cookieconsent'])) {
     echo "<a class='cookieoverlay' href='".INFUSIONS."cookiebar_panel/cookiesinfo.php'>".$locale['CBP102']."</a>\n";
     echo "</div>\n";
     echo "<div class='col-xs-12 col-sm-4 col-md-2 m-t-10 m-b-10'>\n";
-    echo openform('consentcookieform', 'post', FUSION_REQUEST, ['remote_url'=>fusion_get_settings('site_path').'infusions/cookiebar_panel/consentcookies.php', 'class'=>'pull-right m-l-15']);
-    echo form_button('consentcookies', $locale['CBP100'], 'consentcookies', ['class'=>'btn-primary', 'icon' => 'fa fa-check-circle']);
+    echo openform('consentcookieform', 'post', FUSION_REQUEST, ['remote_url' => fusion_get_settings('site_path').'infusions/cookiebar_panel/consentcookies.php', 'class' => 'pull-right m-l-15']);
+    echo form_button('consentcookies', $locale['CBP100'], 'consentcookies', ['class' => 'btn-primary', 'icon' => 'fa fa-check-circle']);
     echo closeform();
     echo "</div>\n";
     echo "</div>\n";

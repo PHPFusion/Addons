@@ -15,9 +15,7 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-if (!defined("IN_FUSION")) {
-    die("Access Denied");
-}
+defined('IN_FUSION') || exit;
 
 if (!defined("COOKIE_LOCALE")) {
     if (file_exists(INFUSIONS."cookiebar_panel/locale/".LANGUAGE.".php")) {

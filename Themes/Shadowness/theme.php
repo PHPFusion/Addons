@@ -283,8 +283,8 @@ class Producer {
         }
         $main_container_css .= " ".self::get_main_span();
 
-        echo $this->max_width ? "" : $this->display_mode == 'single' ? "" : '<div class="container">'; ?>
-        <div class='wrapper row equalize' <?php echo $this->max_width ? "style='width:95%'" : $this->display_mode == 'single' ? "style='max-width:640px'" : '' ?>>
+        echo ($this->max_width ? "" : $this->display_mode == 'single') ? "" : '<div class="container">'; ?>
+        <div class='wrapper row equalize' <?php echo ($this->max_width ? "style='width:95%'" : $this->display_mode == 'single') ? "style='max-width:640px'" : '' ?>>
             <?php
             echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
             echo showbanners(1);
@@ -323,7 +323,7 @@ class Producer {
             ?>
         </div>
 
-        <?php echo $this->max_width ? "" : $this->display_mode == 'single' ? "" : '</div>';
+        <?php echo ($this->max_width ? "" : $this->display_mode == 'single') ? "" : '</div>';
 
         echo '<div class="text-center">';
         echo showFooterErrors();

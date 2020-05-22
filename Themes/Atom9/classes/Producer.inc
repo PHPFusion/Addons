@@ -203,9 +203,9 @@ class Producer extends Core {
 
                 $left_side = TRUE;
                 $right_side = TRUE;
-                if ($theme_settings['2columns_layout'] == 1) {
-                    $left_side = $theme_settings['column_side'] == 'LEFT' ? TRUE : FALSE;
-                    $right_side = $theme_settings['column_side'] == 'RIGHT' ? TRUE : FALSE;
+                if (!empty($theme_settings['2columns_layout']) && $theme_settings['2columns_layout'] == 1) {
+                    $left_side = $theme_settings['column_side'] == 'LEFT';
+                    $right_side = $theme_settings['column_side'] == 'RIGHT';
                 }
 
                 if ($this->GetParam('panels') == TRUE) {

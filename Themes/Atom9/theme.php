@@ -60,7 +60,7 @@ function closeside() {
 }
 
 $theme_settings = get_theme_settings('Atom9');
-$ignition_pack = !empty($theme_settings['ignition_pack']) ? $theme_settings['ignition_pack'] : 'DefaultPack';
+$ignition_pack = !empty($theme_settings['ignition_pack']) ? $theme_settings['ignition_pack'] : 'StarCity';
 define('IGNITION_PACK', THEME.'IgnitionPacks/'.$ignition_pack.'/');
 
 Atom9Theme\Core::GetInstance()->GetIgnitionPacks($ignition_pack);

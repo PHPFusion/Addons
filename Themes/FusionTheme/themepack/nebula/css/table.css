@@ -6,8 +6,6 @@ table {
     background-color: #F2F3F5;
     border-spacing: 0;
     border: 1px solid #ccc;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 

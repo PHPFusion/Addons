@@ -6,7 +6,6 @@
 .fullform input[type=text] {
     border: 0;
     outline: none;
-    -webkit-box-shadow: none;
     box-shadow: none;
     font-size: 32px;
     padding: 0;
@@ -15,7 +14,6 @@
 .fullform textarea {
     border: 0;
     outline: none;
-    -webkit-box-shadow: none;
     box-shadow: none;
     padding: 0 !important;
     font-size: 17px;
@@ -113,7 +111,6 @@
     width: 65px;
     margin-top: -50px;
     background-color: #E4E4E4;
-    background-image: -moz-linear-gradient(top, #F7F7F7, #E4E4E4);
     background-image: -webkit-linear-gradient(top, #F7F7F7, #E4E4E4);
     background-image: linear, to bottom, #F7F7F7, #E4E4E4;
     background-repeat: repeat-x;
@@ -122,7 +119,6 @@
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     left: 50%;
-    -webkit-border-radius: 6px 6px 0 0;
     border-radius: 6px 6px 0 0;
 }
 
@@ -135,10 +131,8 @@
     font-size: 22px;
     line-height: 32px;
     display: block;
-    -webkit-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;
     background-color: #B8B8B8;
-    background-image: -moz-linear-gradient(top, #E4E4E4, #B8B8B8);
     background-image: -webkit-linear-gradient(top, #E4E4E4, #B8B8B8);
     background-image: linear, to bottom, #E4E4E4, #B8B8B8;
     background-repeat: repeat-x;

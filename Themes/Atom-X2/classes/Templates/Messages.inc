@@ -115,7 +115,7 @@ class Messages extends Core {
                 echo '<span>'.showdate(!empty($locale['date_day']) ? $locale['date_day'] : 'shortdate', $data['message_datestamp']).', '.timer($data['message_datestamp']).'</span>';
             echo '</div>';
 
-            echo nl2br(parse_textarea($data['message']['message_text'], TRUE, TRUE, FALSE));
+            echo $data['message']['message_text'];
             echo '<hr/>';
             echo $info['reply_form'];
         } else if (isset($_GET['msg_send'])) {

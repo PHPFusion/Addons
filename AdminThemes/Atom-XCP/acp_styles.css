@@ -22,9 +22,6 @@ body {
     font: 13px/1.5 'Lucida Grande', sans-serif;
     color: #333;
     background: #1B3A60 url("images/bg.jpg") no-repeat fixed center top;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
 }
 
@@ -40,9 +37,7 @@ a:focus {
 }
 
 .page-box {
-    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
-    -webkit-border-radius: 10px;
     border-radius: 10px;
     width: 95%;
     margin: 20px auto;
@@ -50,7 +45,6 @@ a:focus {
 
 #topcontent {
     background-color: #09111B;
-    -webkit-border-radius: 10px 10px 0 0;
     border-radius: 10px 10px 0 0;
 }
 
@@ -75,15 +69,11 @@ a:focus {
 #header .nav > li > a {
     text-shadow: none;
     color: #FFF;
-    -webkit-border-radius: 4px 4px 4px 4px;
-    -moz-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     border: 1px solid transparent;
     padding: 4px 10px;
     background: none;
     -webkit-transition: border-color 0.5s ease-out, color 0.5s ease-out;
-    -o-transition: border-color 0.5s ease-out, color 0.5s ease-out;
-    -moz-transition: border-color 0.5s ease-out, color 0.5s ease-out;
     transition: border-color 0.5s ease-out, color 0.5s ease-out;
     margin-top: 10px;
     margin-left: 3px;
@@ -119,8 +109,6 @@ a:focus {
 
 #header .navbar-collapse {
     border-top: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -136,10 +124,8 @@ a:focus {
 
 #banner {
     background: #1B3A60 url("images/banner.jpg") no-repeat fixed center;
-    -webkit-background-size: cover;
     background-size: cover;
     padding: 45px 40px;
-    -webkit-box-shadow: 0 0 130px 40px rgba(0, 0, 0, 0.55) inset;
     box-shadow: 0 0 130px 40px rgba(0, 0, 0, 0.55) inset;
     border-top: 1px solid rgba(255, 255, 255, 0.0);
     color: #fff;
@@ -152,7 +138,6 @@ a:focus {
 #banner h4 {
     background: rgba(0, 0, 0, 0.3);
     padding: 7px 30px;
-    -webkit-border-radius: 2px;
     border-radius: 2px;
 }
 
@@ -169,7 +154,6 @@ a:focus {
     font-weight: 400;
     text-shadow: none;
     -webkit-transition: color 0.5s ease-out;
-    -o-transition: color 0.5s ease-out;
     transition: color 0.5s ease-out;
 }
 
@@ -205,7 +189,6 @@ a:focus {
 #quicklaunch .links > li > a:not(.btn) {
     color: #fff;
     border: 1px solid transparent;
-    -webkit-border-radius: 3px;
     border-radius: 3px;
     padding: 6px 10px;
     margin: 0 5px;
@@ -225,7 +208,6 @@ a:focus {
     border-top: 1px solid #CCC;
     color: #4D4D4D;
     padding: 30px 40px;
-    -webkit-box-shadow: 0 14px 50px rgba(0, 0, 0, 0.2) inset;
     box-shadow: 0 14px 50px rgba(0, 0, 0, 0.2) inset;
 }
 
@@ -233,7 +215,6 @@ a:focus {
     background: #09111B;
     color: #B1B8BF;
     padding: 20px 10px;
-    -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
 }
 
@@ -260,8 +241,6 @@ a:focus {
     display: block;
     margin: 50px auto 40px;
     position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     text-align: center;
     max-width: 550px;
@@ -281,10 +260,7 @@ a:focus {
     vertical-align: middle;
     display: inline-block;
     background: #fff;
-    -webkit-box-shadow: 0 3px 100px 20px rgba(0, 0, 0, .27);
-    -moz-box-shadow: 0 3px 100px 20px rgba(0, 0, 0, .27);
     box-shadow: 0 3px 100px 20px rgba(0, 0, 0, .27);
-    -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
@@ -321,15 +297,11 @@ a:focus {
 
 .login-container .avatar,
 .login-container .avatar > svg {
-    -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
 .btn-default {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFF), to(#E0E0E0));
-    background-image: -webkit-linear-gradient(top, #FFF 0, #E0E0E0 100%);
-    background-image: -o-linear-gradient(top, #FFF 0, #E0E0E0 100%);
-    background-image: -moz-linear-gradient(top, #FFF 0, #E0E0E0 100%);
     background-image: linear-gradient(to bottom, #FFF 0, #E0E0E0 100%);
     background-repeat: repeat-x;
     text-shadow: 0 1px 0 #FFF;
@@ -346,9 +318,6 @@ a:focus {
 
 .btn-primary {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #428BCA), to(#2D6CA2));
-    background-image: -webkit-linear-gradient(top, #428BCA 0, #2D6CA2 100%);
-    background-image: -o-linear-gradient(top, #428BCA 0, #2D6CA2 100%);
-    background-image: -moz-linear-gradient(top, #428BCA 0, #2D6CA2 100%);
     background-image: linear-gradient(to bottom, #428BCA 0, #2D6CA2 100%);
     background-repeat: repeat-x;
     border-color: #2B669A;
@@ -364,9 +333,6 @@ a:focus {
 
 .btn-success {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5CB85C), to(#419641));
-    background-image: -webkit-linear-gradient(top, #5CB85C 0, #419641 100%);
-    background-image: -o-linear-gradient(top, #5CB85C 0, #419641 100%);
-    background-image: -moz-linear-gradient(top, #5CB85C 0, #419641 100%);
     background-image: linear-gradient(to bottom, #5CB85C 0, #419641 100%);
     background-repeat: repeat-x;
     border-color: #3E8F3E;
@@ -382,9 +348,6 @@ a:focus {
 
 .btn-warning {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #F0AD4E), to(#EB9316));
-    background-image: -webkit-linear-gradient(top, #F0AD4E 0, #EB9316 100%);
-    background-image: -o-linear-gradient(top, #F0AD4E 0, #EB9316 100%);
-    background-image: -moz-linear-gradient(top, #F0AD4E 0, #EB9316 100%);
     background-image: linear-gradient(to bottom, #F0AD4E 0, #EB9316 100%);
     background-repeat: repeat-x;
     border-color: #E38D13;
@@ -400,9 +363,6 @@ a:focus {
 
 .btn-danger {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #D9534F), to(#C12E2A));
-    background-image: -webkit-linear-gradient(top, #D9534F 0, #C12E2A 100%);
-    background-image: -o-linear-gradient(top, #D9534F 0, #C12E2A 100%);
-    background-image: -moz-linear-gradient(top, #D9534F 0, #C12E2A 100%);
     background-image: linear-gradient(to bottom, #D9534F 0, #C12E2A 100%);
     background-repeat: repeat-x;
     border-color: #B92C28;
@@ -418,9 +378,6 @@ a:focus {
 
 .btn-info {
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2eaed4), to(#1d7a96));
-    background-image: -webkit-linear-gradient(top, #2eaed4 0, #1d7a96 100%);
-    background-image: -o-linear-gradient(top, #2eaed4 0, #1d7a96 100%);
-    background-image: -moz-linear-gradient(top, #2eaed4 0, #1d7a96 100%);
     background-image: linear-gradient(to bottom, #2eaed4 0, #1d7a96 100%);
     background-repeat: repeat-x;
     border-color: #2f8da9;
@@ -472,8 +429,6 @@ select:focus {
     padding: 5px 10px;
     font-size: 12px;
     line-height: 1.5;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     border-radius: 2px;
 }
 
@@ -482,12 +437,8 @@ select:focus {
 }
 
 .panel-txtarea {
-    -webkit-box-shadow: initial;
-    -moz-box-shadow: initial;
     box-shadow: initial;
     border: 1px solid #ddd !important;
-    -webkit-border-radius: 2px !important;
-    -moz-border-radius: 2px !important;
     border-radius: 2px !important;
 }
 
@@ -516,11 +467,7 @@ select,
 }
 
 .select2-container-multi .select2-choices {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
     background-image: none !important;
 }

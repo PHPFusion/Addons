@@ -21,17 +21,11 @@
 
 #home_carousel .active .logo {
     -webkit-animation: fadeInUp 300ms linear 300ms both;
-    -moz-animation: fadeInUp 300ms linear 300ms both;
-    -o-animation: fadeInUp 300ms linear 300ms both;
-    -ms-animation: fadeInUp 300ms linear 300ms both;
     animation: fadeInUp 300ms linear 300ms both;
 }
 
 #home_carousel .active .screen img {
     -webkit-animation: fadeInUp 300ms linear 900ms both;
-    -moz-animation: fadeInUp 300ms linear 900ms both;
-    -o-animation: fadeInUp 300ms linear 900ms both;
-    -ms-animation: fadeInUp 300ms linear 900ms both;
     animation: fadeInUp 300ms linear 900ms both;
 }
 
@@ -70,14 +64,12 @@
 
 #support {
     background: url(../templates/images/bg04.jpg) fixed bottom;
-    -webkit-background-size: cover;
     background-size: cover;
     height: 600px;
 }
 
 #home_parallax {
     background: url(../templates/images/bg02.jpg) fixed;
-    -webkit-background-size: cover;
     background-size: cover;
     height: 750px;
 }

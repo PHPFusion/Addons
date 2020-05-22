@@ -25,7 +25,7 @@ $theme->show_menu = FALSE;
 $theme->grid = 12;
 
 opentable('About Shadowness Theme'); ?>
-    <div class="text-center"><img src="<?php echo THEME; ?>images/logo.png"></div>
+    <div class="text-center"><img src="<?php echo THEME; ?>images/logo.png" alt="Logo"></div>
     <p>
         Shadowness.com theme has been here since late year 2000, (2nd December 2000 to be exact).
         It started as a digital art showcase site, and became the one one of the first art online community before

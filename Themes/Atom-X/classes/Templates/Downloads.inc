@@ -197,7 +197,7 @@ class Downloads extends Core {
 
         if (!empty($info[$cat_id])) {
             foreach ($info[$cat_id] as $download_cat_id => $cdata) {
-                $active = !empty($_GET['cat_id']) && $_GET['cat_id'] == $download_cat_id ? TRUE : FALSE;
+                $active = !empty($_GET['cat_id']) && $_GET['cat_id'] == $download_cat_id;
                 $active = $active ? ' class="active"' : '';
                 $html .= str_repeat('&nbsp;', $level);
                 $html .= '<li'.$active.'><a href="'.DOWNLOADS.'downloads.php?cat_id='.$download_cat_id.'">'.$cdata['download_cat_name'].'</a></li>';

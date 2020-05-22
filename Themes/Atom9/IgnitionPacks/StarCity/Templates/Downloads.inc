@@ -107,6 +107,7 @@ class Downloads extends Core {
                         $page_nav_link = INFUSIONS.'downloads/downloads.php?author='.$_GET['author'].'&amp;';
                     }
 
+                    $_GET['rowstart'] = (isset($_GET['rowstart']) && isnum($_GET['rowstart']) && $_GET['rowstart'] <= $info['download_max_rows']) ? $_GET['rowstart'] : 0;
                     $pagenav = makepagenav($_GET['rowstart'], $dl_settings['download_pagination'], $info['download_max_rows'], 3, $page_nav_link, 'rowstart', TRUE);
 
                     echo strtr($pagenav, [
@@ -186,7 +187,7 @@ class Downloads extends Core {
 
         if (!empty($info[$cat_id])) {
             foreach ($info[$cat_id] as $download_cat_id => $cdata) {
-                $active = !empty($_GET['cat_id']) && $_GET['cat_id'] == $download_cat_id ? TRUE : FALSE;
+                $active = !empty($_GET['cat_id']) && $_GET['cat_id'] == $download_cat_id;
                 $active = $active ? ' class="active"' : '';
                 $html .= '<li'.$active.'><a href="'.DOWNLOADS.'downloads.php?cat_id='.$download_cat_id.'">'.$cdata['download_cat_name'].'</a></li>';
 

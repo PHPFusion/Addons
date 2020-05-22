@@ -34,7 +34,6 @@ class Producer {
     public $title_array = []; // set title array collection
     public $left_off = FALSE;
     public $right = TRUE;
-    public $tabbed_header = FALSE;
     public $grid = '';
 
     /** How to embed template ?
@@ -240,11 +239,11 @@ class Producer {
                         // if no request default is active
                         //$url = str_replace('../', '', $info['url']);
                         $url = str_replace($settings['site_path'], '', $info['url']);
-                        $default_active = !isset($_GET[$options['get']]) && $i == 0 ? TRUE : FALSE;
+                        $default_active = !isset($_GET[$options['get']]) && $i == 0;
                         // if request matches current url
-                        $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url ? TRUE : FALSE;
+                        $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url;
                         // has get but belogns to other set, set default active.
-                        $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0 ? TRUE : FALSE;
+                        $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0;
                         echo "<li><a ".($default_active || $secondary_active || $tertiary_active ? " class='active'" : "")." href='".$info['url']."' title='".$info['title']."'>".$info['title']."</a></li>\n";
                         $i++;
                     }
@@ -406,9 +405,7 @@ class Producer {
                 $sub_container_css = 'topic';
                 break;
             case 'single':
-                $sub_container_css = '';
-                break;
-            case 'view' :
+            case 'view':
                 $sub_container_css = '';
                 break;
             case 'comment':
@@ -445,11 +442,11 @@ class Producer {
                 // if no request default is active
                 // $url = str_replace('../', '', $info['url']);
                 $url = str_replace($settings['site_path'], '', $info['url']);
-                $default_active = !isset($_GET[$options['get']]) && $i == 0 ? TRUE : FALSE;
+                $default_active = !isset($_GET[$options['get']]) && $i == 0;
                 // if request matches current url
-                $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url ? TRUE : FALSE;
+                $secondary_active = $_SERVER['REQUEST_URI'] == $settings['site_path'].$url;
                 // has get but belogns to other set, set default active.
-                $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0 ? TRUE : FALSE;
+                $tertiary_active = isset($_GET[$options['get']]) && !in_array($_GET[$options['get']], $this->title_array) && $i == 0;
                 echo "<li><a ".($default_active || $secondary_active || $tertiary_active ? " class='active'" : "")." href='".$info['url']."' title='".$info['title']."'>".$info['title']."</a></li>\n";
                 $i++;
             }

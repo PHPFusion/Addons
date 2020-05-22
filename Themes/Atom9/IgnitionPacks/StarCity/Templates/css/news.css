@@ -17,8 +17,6 @@
 +--------------------------------------------------------*/
 .atom-banner {
     background-image: url("../../assets/images/bg_downtown.png");
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -36,15 +34,12 @@
     background-color: transparent;
     border: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    -webkit-border-radius: 0;
     border-radius: 0
 }
 
 .main-news-nav .news-cats .nav > li > a {
     background: transparent;
     -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     color: rgb(58, 214, 247);
     text-transform: uppercase;
@@ -99,8 +94,6 @@
 
 .main-news-nav .sub-nav > li > a {
     padding: 3px 15px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px
 }
 
@@ -206,8 +199,6 @@
     margin-right: 10px;
     line-height: 2;
     -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out
 }
 
@@ -225,13 +216,9 @@
 
 .news-container .image img {
     -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
     transform: scale(1.1);
     width: 100%;
     height: auto;
@@ -241,8 +228,6 @@
 .news-container:hover .image img {
     -webkit-transform: rotate(5deg) scale(1.5);
     -ms-transform: rotate(5deg) scale(1.5);
-    -moz-transform: rotate(5deg) scale(1.5);
-    -o-transform: rotate(5deg) scale(1.5);
     transform: rotate(5deg) scale(1.5)
 }
 

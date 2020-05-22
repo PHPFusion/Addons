@@ -99,7 +99,7 @@ class Messages extends Core {
                             echo '</div>';
                         echo '</div>';
 
-                        echo '<div class="message-detail">'.nl2br(parse_textarea($message['message']['message_text'], TRUE, TRUE, FALSE)).'</div>';
+                        echo '<div class="message-detail">'.$message['message']['message_text'].'</div>';
 
                         if (!empty($info['reply_form'])) {
                             echo '<div class="message-detail">'.$info['reply_form'].'</div>';
@@ -114,7 +114,7 @@ class Messages extends Core {
     private static function Inbox($info) {
         $locale = fusion_get_locale();
 
-        $is_inbox = isset($_GET['folder']) && $_GET['folder'] == 'inbox' ? TRUE : FALSE;
+        $is_inbox = isset($_GET['folder']) && $_GET['folder'] == 'inbox';
 
         if (!empty($info['items'])) {
             $unread = [];
@@ -219,7 +219,7 @@ class Messages extends Core {
                         echo '<ul class="mail-list" id="unread_tbl">';
                             $i = 0;
                             foreach ($unread as $id => $messageData) {
-                                $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id ? TRUE : FALSE;
+                                $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id;
 
                                 echo '<li class="item'.($active == TRUE ? ' active' : '').'">';
                                     echo '<a href="'.$messageData['message']['link'].'">';
@@ -252,7 +252,7 @@ class Messages extends Core {
                         echo '<ul class="mail-list m-b-0" id="read_tbl">';
                             $i = 0;
                             foreach ($read as $id => $messageData) {
-                                $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id ? TRUE : FALSE;
+                                $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id;
 
                                 echo '<li class="item'.($active == TRUE ? ' active' : '').'">';
                                     echo '<a href="'.$messageData['message']['link'].'">';
@@ -282,7 +282,7 @@ class Messages extends Core {
                     echo '<ul class="mail-list m-b-0" id="read_tbl">';
                         $i = 0;
                         foreach ($read as $id => $messageData) {
-                            $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id ? TRUE : FALSE;
+                            $active = !empty($_GET['msg_read']) && $_GET['msg_read'] == $id;
 
                             echo '<li class="item'.($active == TRUE ? ' active' : '').'">';
                                 echo '<a href="'.$messageData['message']['link'].'">';

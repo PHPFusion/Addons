@@ -80,7 +80,6 @@
     background-color: rgba(0, 0, 0, 0.8);
     top: 5px;
     right: 5px;
-    -webkit-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -117,7 +116,6 @@
 
 .starmail .dropdown-menu {
     background: rgba(0, 0, 0, 0.45);
-    -webkit-border-radius: 0;
     border-radius: 0;
 }
 

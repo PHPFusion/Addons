@@ -94,8 +94,8 @@ function render_page() {
                 $padding_left = defined('LEFT') && LEFT ? 'p-l-0 ' : '';
                 $padding_right = defined('RIGHT') && RIGHT ? 'p-r-0 ' : '';
                 if (ARISE_2COL == TRUE) {
-                    $left_side = ARISE_SIDE == 'LEFT' ? TRUE : FALSE;
-                    $right_side = ARISE_SIDE == 'RIGHT' ? TRUE : FALSE;
+                    $left_side = ARISE_SIDE == 'LEFT';
+                    $right_side = ARISE_SIDE == 'RIGHT';
                     $padding_left = $left_side == TRUE ? 'p-l-0 ' : '';
                     $padding_right = $right_side == TRUE ? 'p-r-0 ' : '';
                 }

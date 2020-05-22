@@ -52,7 +52,7 @@ function render_admin_panel() {
                         $admin_pages = Admins::getInstance()->getAdminPages();
 
                         foreach ($admin_sections as $i => $section_name) {
-                            $active = ((isset($_GET['pagenum']) && $pagenum === $i) || (!$pagenum && Admins::getInstance()->_isActive() === $i)) ? TRUE : FALSE;
+                            $active = ((isset($_GET['pagenum']) && $pagenum === $i) || (!$pagenum && Admins::getInstance()->_isActive() === $i));
 
                             $html .= '<li class="'.($i > 0 ? 'dropdown' : '').($active ? ' active' : '').'">';
                             if (!empty($admin_pages[$i])) {
@@ -67,7 +67,7 @@ function render_admin_panel() {
                                             $title = isset($locale[$data['admin_rights']]) ? $locale[$data['admin_rights']] : $title;
                                         }
 
-                                        $secondary_active = $data['admin_link'] == Admins::getInstance()->_currentPage() ? TRUE : FALSE;
+                                        $secondary_active = $data['admin_link'] == Admins::getInstance()->_currentPage();
                                         $icons = Admins::getInstance()->get_admin_icons($data['admin_rights']);
 
                                         if (!empty($admin_pages[$data['admin_rights']])) {

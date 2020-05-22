@@ -13,6 +13,5 @@
 }
 
 .list-group-item {
-    border-color: #dfe5e8;
-    -webkit-border-radius: 0 !important; -moz-border-radius: 0 !important; border-radius: 0 !important;
+    border-color: #dfe5e8; border-radius: 0 !important;
 }

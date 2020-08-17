@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Atom-X2/theme.php
+| Filename: theme.php
 | Author: PHP-Fusion Inc
 | Author: RobiNN
 +--------------------------------------------------------+

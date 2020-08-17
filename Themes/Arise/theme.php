@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Arise/theme.php
+| Filename: theme.php
 | Author: J. Falk (Falk)
 | Author: RobiNN
 +--------------------------------------------------------+

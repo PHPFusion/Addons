@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Atom9/classes/Footer/AboutUs.inc
+| Filename: AboutUs.inc
 | Author: Frederick MC Chan (Chan)
 | Author: RobiNN
 +--------------------------------------------------------+

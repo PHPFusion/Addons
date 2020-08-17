@@ -4,9 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Name: Septenary Theme
 | Filename: theme.php
-| Version: 1.00
 | Author: PHP-Fusion Mods UK
 | Developer & Designer: Craig, Chan
 | Site: http://www.phpfusionmods.co.uk

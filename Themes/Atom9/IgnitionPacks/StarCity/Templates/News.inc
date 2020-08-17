@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Atom9/IgnitionPacks/StarCity/Templates/News.inc
+| Filename: News.inc
 | Author: Frederick MC Chan (Chan)
 | Author: RobiNN
 +--------------------------------------------------------+

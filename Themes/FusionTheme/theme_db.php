@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Nebula/theme_db.php
+| Filename: theme_db.php
 | Author: PHP-Fusion Inc
 +--------------------------------------------------------+
 | This program is released as free software under the

@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: iTheme2/theme_db.php
+| Filename: theme_db.php
 | Author: Khalid545
 | Author: RobiNN
 +--------------------------------------------------------+

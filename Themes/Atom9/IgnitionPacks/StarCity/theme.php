@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Atom9/IgnitionPacks/StarCity/theme.php
+| Filename: theme.php
 | Author: Frederick MC Chan (Chan)
 | Author: RobiNN
 +--------------------------------------------------------+

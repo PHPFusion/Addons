@@ -5,7 +5,7 @@
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: cookiebar_panel.php
-| Author: PHP-Fusion Development Team
+| Author: Core Development Team (coredevs@phpfusion.com)
 | Co-Author: Joakim Falk (Domi)
 +--------------------------------------------------------+
 | This program is released as free software under the

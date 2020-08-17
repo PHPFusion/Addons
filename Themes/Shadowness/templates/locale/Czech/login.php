@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Czech/login.php
+| Filename: login.php
 | Author: RobiNN
 +--------------------------------------------------------+
 | This program is released as free software under the

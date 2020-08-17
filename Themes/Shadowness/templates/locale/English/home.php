@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: English/home.php
+| Filename: home.php
 | Author: Frederick MC Chan (Chan)
 | Co-Author: RobiNN
 +--------------------------------------------------------+

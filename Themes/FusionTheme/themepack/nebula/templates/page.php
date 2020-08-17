@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: /Nebula/Templates/Page.php
+| Filename: page.php
 | Author: Hien (Frederick MC Chan)
 +--------------------------------------------------------+
 | This program is released as free software under the

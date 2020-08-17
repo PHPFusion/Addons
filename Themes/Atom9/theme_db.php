@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Atom9/theme_db.php
+| Filename: theme_db.php
 | Author: Frederick MC Chan (Chan)
 | Author: RobiNN
 +--------------------------------------------------------+

@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: FusionTheme/theme.php
+| Filename: theme.php
 | Author: PHP-Fusion Inc
 +--------------------------------------------------------+
 | This program is released as free software under the

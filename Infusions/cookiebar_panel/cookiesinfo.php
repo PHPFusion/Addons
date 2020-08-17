@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: cookiebar_panel/cookiesinfo.php
+| Filename: cookiesinfo.php
 | Author: PHP-Fusion Development Team
 | Co-Author: Joakim Falk (Domi)
 +--------------------------------------------------------+

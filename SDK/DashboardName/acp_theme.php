@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: /acp_theme.php
+| Filename: acp_theme.php
 | Author: Your Name
 +--------------------------------------------------------+
 | This program is released as free software under the

@@ -4,7 +4,7 @@
 | Copyright (C) PHP-Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
-| Filename: Old_School/acp_theme.php
+| Filename: acp_theme.php
 | Author: PHP-Fusion Inc
 +--------------------------------------------------------+
 | This program is released as free software under the

@@ -8,7 +8,7 @@ $locale['AX9_006'] = 'لا توجد رسائل غير مقروءة.';
 $locale['AX9_007'] = 'انتقل إلى البريد';
 $locale['AX9_008'] = 'لم يتم العثور على مجموعات';
 $locale['AX9_009'] = 'Atom-X2 for PHP-Fusion v9<br/>'.date('Y').' جميع الحقوق محفوظة.';
-$locale['AX9_010'] = 'تصميم القالب من <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, الإصدار التاسع بواسطة <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['AX9_010'] = 'تصميم القالب من <a href="https://www.phpfusion.com" target="_blank">PHP-Fusion Inc</a>, الإصدار التاسع بواسطة <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'الصفحة الشخصية: ';
 $locale['AX9_012'] = 'إخفاء البريد الإلكتروني';
 $locale['AX9_013'] = 'الحساب';

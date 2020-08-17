@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: Old_School/acp_theme.php
 | Author: PHP-Fusion Inc
@@ -168,7 +168,7 @@ function render_admin_panel() {
     $html .= "<footer class='display-inline-block m-t-20'>\n";
 
     // Copyright
-    $html .= "Old_School Admin &copy; ".date("Y")." Created by <a href='https://www.php-fusion.co.uk'><strong>PHP-Fusion Inc.</strong></a>\n";
+    $html .= "Old_School Admin &copy; ".date("Y")." Created by <a href='https://www.phpfusion.com'><strong>PHP-Fusion Inc.</strong></a>\n";
     $html .= showcopyright();
 
     // Render time

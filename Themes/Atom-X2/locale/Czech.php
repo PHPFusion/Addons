@@ -8,7 +8,7 @@ $locale['AX9_006'] = 'Nemáte žádné nepřečtené zprávy.';
 $locale['AX9_007'] = 'Přejděte do své schránky';
 $locale['AX9_008'] = 'Nebyly nalezeny žádné skupiny';
 $locale['AX9_009'] = 'Atom-X2 pro PHP-Fusion v9<br/>'.date('Y').' Všechna práva vyhrazena.';
-$locale['AX9_010'] = 'Tému navrhol <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a> tým, Pro v9 portoval <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['AX9_010'] = 'Tému navrhol <a href="https://www.phpfusion.com" target="_blank">PHP-Fusion Inc</a> tým, Pro v9 portoval <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Stránka profilu: ';
 $locale['AX9_012'] = 'Skrytý e-mail';
 $locale['AX9_013'] = 'Účet';

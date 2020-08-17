@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: Atom-X/classes/Templates/News.inc
 | Author: PHP-Fusion Inc

@@ -14,7 +14,7 @@ $locale['A9_011'] = 'Blogmodul ikke installeret';
 $locale['A9_012'] = 'Nyeste brugere';
 $locale['A9_013'] = 'Vis flere brugere ...';
 $locale['A9_014'] = 'Ingen brugere fundet';
-$locale['A9_015'] = 'Atom9 Theme af <a href="https://www.php-fusion.co.uk" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['A9_015'] = 'Atom9 Theme af <a href="https://www.phpfusion.com" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 
 // IgnitionPacks
 $locale['A9_101'] = 'Læs mere';

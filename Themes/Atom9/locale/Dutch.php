@@ -14,7 +14,7 @@ $locale['A9_011'] = 'Blog module niet geïnstalleerd';
 $locale['A9_012'] = 'Laatst geregistreerde gebruikers';
 $locale['A9_013'] = 'Toon meer leden...';
 $locale['A9_014'] = 'Geen leden gevonden';
-$locale['A9_015'] = 'Atom9 thema ontworpen door <a href="https://www.php-fusion.co.uk" target="_blank">Frederick MC Chan (Chan)</a>&amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['A9_015'] = 'Atom9 thema ontworpen door <a href="https://www.phpfusion.com" target="_blank">Frederick MC Chan (Chan)</a>&amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 
 // IgnitionPacks
 $locale['A9_101'] = 'Lees meer';

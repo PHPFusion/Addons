@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme_db.php
 | Author: Frederick MC Chan (Chan)
@@ -22,7 +22,7 @@ $theme_title = 'Shadowness';
 $theme_description = '';
 $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Chan, RobiNN';
-$theme_web = 'https://www.php-fusion.co.uk';
+$theme_web = 'https://www.phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.4';
 $theme_folder = 'Shadowness';

@@ -14,7 +14,7 @@ $locale['A9_011'] = 'Blog modul Nincs telepítve';
 $locale['A9_012'] = 'Legújabb felhasználók';
 $locale['A9_013'] = 'További tagok megjelenítése...';
 $locale['A9_014'] = 'Nincs Felhasználó';
-$locale['A9_015'] = 'Atom9 Theme by <a href="https://www.php-fusion.co.uk" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['A9_015'] = 'Atom9 Theme by <a href="https://www.phpfusion.com" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 
 // IgnitionPacks
 $locale['A9_101'] = 'Olvass tovább';

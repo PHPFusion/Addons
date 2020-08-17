@@ -8,7 +8,7 @@ $locale['AX9_006'] = 'You have no unread messages.';
 $locale['AX9_007'] = 'Go to my mailbox';
 $locale['AX9_008'] = 'No groups found';
 $locale['AX9_009'] = 'Atom-X2 for PHP-Fusion v9<br/>'.date('Y').' All rights reserved.';
-$locale['AX9_010'] = 'Theme designed by <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['AX9_010'] = 'Theme designed by <a href="https://www.phpfusion.com" target="_blank">PHP-Fusion Inc</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Profile Page: ';
 $locale['AX9_012'] = 'Hidden Email';
 $locale['AX9_013'] = 'Account';

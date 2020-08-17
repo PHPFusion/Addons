@@ -14,7 +14,7 @@ $locale['A9_011'] = 'Modul blog nie je nainštalovaný';
 $locale['A9_012'] = 'Najnovší užívatelia';
 $locale['A9_013'] = 'Zobraziť viac členov...';
 $locale['A9_014'] = 'Nenašli sa žiadny užívatelia';
-$locale['A9_015'] = 'Atom9 téma od <a href="https://www.php-fusion.co.uk" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['A9_015'] = 'Atom9 téma od <a href="https://www.phpfusion.com" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 
 // IgnitionPacks
 $locale['A9_101'] = 'Čítať viac';

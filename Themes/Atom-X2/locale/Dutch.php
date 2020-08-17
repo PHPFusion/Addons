@@ -8,7 +8,7 @@ $locale['AX9_006'] = 'Je hebt geen ongelezen berichten.';
 $locale['AX9_007'] = 'Ga naar mijn inbox';
 $locale['AX9_008'] = 'Geen groepen gevonden';
 $locale['AX9_009'] = 'Atom-X voor PHP-Fusion v9<br/>'.date('Y').' Alle rechten voorbehouden.';
-$locale['AX9_010'] = 'Thema ontworpen door <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>, Aangepast aan v9 door <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['AX9_010'] = 'Thema ontworpen door <a href="https://www.phpfusion.com" target="_blank">PHP-Fusion Inc</a>, Aangepast aan v9 door <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 $locale['AX9_011'] = 'Profiel pagina: ';
 $locale['AX9_012'] = 'Verborgen e-mailadres';
 $locale['AX9_013'] = 'Account';

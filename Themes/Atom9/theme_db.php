@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: Atom9/theme_db.php
 | Author: Frederick MC Chan (Chan)
@@ -22,7 +22,7 @@ $theme_title = 'Atom9 - Ignition Pack';
 $theme_description = 'Atom Producer Engine for the PHP-Fusion Core 9 CMS.';
 $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Frederick MC Chan (Chan) & RobiNN';
-$theme_web = 'https://php-fusion.co.uk';
+$theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.4';
 $theme_folder = 'Atom9';

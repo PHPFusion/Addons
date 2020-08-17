@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: Atom-XCP/acp_theme.php
 | Author: RobiNN
@@ -208,7 +208,7 @@ function render_admin_panel() {
             $html .= '<div class="row">';
                 $html .= '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">';
                     $html .= '<i class="fa fa-rocket"></i> Atom-XCP Created by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
-                    $html .= ' Design by <a href="https://www.php-fusion.co.uk" target="_blank">PHP-Fusion Inc</a>';
+                    $html .= ' Design by <a href="https://www.phpfusion.com" target="_blank">PHP-Fusion Inc</a>';
 
                     if ($settings['rendertime_enabled']) {
                         $html .= '<br/>'.showrendertime().'<br/>'.showMemoryUsage();

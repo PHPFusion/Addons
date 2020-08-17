@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: Arise/theme_db.php
 | Author: J. Falk (Falk)
@@ -22,7 +22,7 @@ $theme_title = 'Arise';
 $theme_description = 'Ported Arise Theme for PHP Fusion 9.';
 $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'J. Falk (Falk) & RobiNN';
-$theme_web = 'https://php-fusion.co.uk';
+$theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.4';
 $theme_folder = 'Arise';

@@ -14,7 +14,7 @@ $locale['A9_011'] = 'لم يتم تثبيت المدونة';
 $locale['A9_012'] = 'الأعضاء الجدد';
 $locale['A9_013'] = 'عرض المزيد من الأعضاء...';
 $locale['A9_014'] = 'لا يوجد أعضاء';
-$locale['A9_015'] = 'قالب Atom9 من <a href="https://www.php-fusion.co.uk" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
+$locale['A9_015'] = 'قالب Atom9 من <a href="https://www.phpfusion.com" target="_blank">Frederick MC Chan (Chan)</a> &amp; <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
 
 // IgnitionPacks
 $locale['A9_101'] = 'قراءة المزيد';

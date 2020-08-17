@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
 | Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme.php
 | Author: Frederick MC Chan (Chan)
@@ -165,7 +165,7 @@ function render_page() {
     echo "<div class='row'>\n<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
     echo "<span>".nl2br(parse_textarea($settings['footer'], FALSE, TRUE))."</span><br/>\n";
     echo "<span>".showcopyright().showprivacypolicy()."</span><br/>\n";
-    echo "<span>Bootstrap Theme by <a href='http://www.php-fusion.co.uk' target='_blank'>PHP-Fusion Inc</a></span><br/>\n";
+    echo "<span>Bootstrap Theme by <a href='http://www.phpfusion.com' target='_blank'>PHP-Fusion Inc</a></span><br/>\n";
     echo "<span>";
     echo showcounter();
     if ($settings['rendertime_enabled'] == '1' || $settings['rendertime_enabled'] == '2') {

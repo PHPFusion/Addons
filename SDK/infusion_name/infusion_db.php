@@ -25,6 +25,10 @@ if (!defined('XXX_LOCALE')) {
     }
 }
 
+if (!defined('INFUSION_FOLDER_NAME')) {
+    define('INFUSION_FOLDER_NAME', INFUSIONS.'infusion_name/');
+}
+
 if (!defined('DB_INFUSION_TABLE')) {
     define('DB_INFUSION_TABLE', DB_PREFIX.'infusion_table');
 }
@@ -33,7 +37,6 @@ if (!defined('DB_INFUSION_TABLE')) {
 \PHPFusion\Admins::getInstance()->setAdminPageIcons('XXX', '<i class="admin-ico fa fa-fw fa-play"></i>'); // FontAwesomwe icon
 // \PHPFusion\Admins::getInstance()->setCommentType('XXX', fusion_get_locale('xxx_title', XXX_LOCALE)); // Comments
 // \PHPFusion\Admins::getInstance()->setLinkType('XXX', fusion_get_settings('siteurl').'infusions/infusion_name/infusion_name.php?item_id=%s'); // Ratings
-
 
 // Submissions
 /*$inf_settings = get_settings('infusion_name');
@@ -48,9 +51,19 @@ if (!empty($inf_settings['infusion_allow_submission']) && $inf_settings['infusio
     ]);
 }*/
 
-
 // Shows CHMOD in Admin Dashboard > System Admin > PHP Info: Folder Permissions
 /*\PHPFusion\Admins::getInstance()->setFolderPermissions('infusion_name', [
     'infusions/infusion_name/images/'      => TRUE,
     'infusions/infusion_name/submissions/' => TRUE
 ]);*/
+
+// Shows folder in File Manager
+/*if (method_exists(\PHPFusion\Admins::getInstance(), 'setCustomFolder')) {
+    \PHPFusion\Admins::getInstance()->setCustomFolder('XXX', [
+        [
+            'path'  => INFUSION_FOLDER_NAME.'infusion_name/',
+            'URL'   => fusion_get_settings('siteurl').'infusions/infusion_name/images/',
+            'alias' => 'infusion_name'
+        ],
+    ]);
+}*/

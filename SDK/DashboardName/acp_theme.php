@@ -73,7 +73,7 @@ function render_admin_panel() {
                     $i = 0;
 
                     foreach ($sections as $section_name) {
-                        $active = ((isset($_GET['pagenum']) && $pagenum === $i) || (!$pagenum && Admins::getInstance()->_isActive() === $i)) ? TRUE : FALSE;
+                        $active = (isset($_GET['pagenum']) && $pagenum === $i) || (!$pagenum && Admins::getInstance()->_isActive() === $i);
                         echo '<li'.($active ? ' class="active"' : '').'><a href="'.ADMIN.'index.php'.$aidlink.'&amp;pagenum='.$i.'" data-toggle="tooltip" data-placement="bottom" title="'.$section_name.'">'.Admins::getInstance()->get_admin_section_icons($i).'</a></li>';
                         $i++;
                     }

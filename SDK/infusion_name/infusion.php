@@ -70,7 +70,7 @@ $inf_mlt[] = [
 ];
 
 // Multilanguage links
-$enabled_languages = makefilelist(LOCALES, '.|..', TRUE, 'folders');
+$enabled_languages = makefilelist(LOCALE, '.|..', TRUE, 'folders');
 if (!empty($enabled_languages)) {
     foreach ($enabled_languages as $language) {
         if (file_exists($inf_folder.'locale/'.$language.'.php')) {
@@ -95,6 +95,6 @@ $inf_droptable[] = DB_INFUSION_TABLE;
 $inf_deldbrow[] = DB_ADMIN." WHERE admin_rights='XXX'";
 // $inf_deldbrow[] = DB_COMMENTS." WHERE comment_type='XXX'"; // If the infusion has a enabled comments
 // $inf_deldbrow[] = DB_RATINGS." WHERE rating_type='XXX'"; // If the infusion has a enabled ratings
-$inf_deldbrow[] = DB_PANELS." WHERE panel_filename='new_infusion_panel'";
+//$inf_deldbrow[] = DB_PANELS." WHERE panel_filename='new_infusion_panel'";
 $inf_deldbrow[] = DB_SITE_LINKS." WHERE link_url='infusions/infusion_name/file.php'";
 $inf_deldbrow[] = DB_SETTINGS_INF." WHERE settings_inf='".$inf_folder."'";

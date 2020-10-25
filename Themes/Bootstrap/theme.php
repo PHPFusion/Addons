@@ -18,7 +18,6 @@
 defined('IN_FUSION') || exit;
 
 define("THEME_BULLET", "&middot;");
-include "functions.php";
 
 define('BOOTSTRAP', TRUE);
 define('FONTAWESOME', TRUE);
@@ -165,7 +164,7 @@ function render_page() {
     echo "<div class='row'>\n<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
     echo "<span>".nl2br(parse_textarea($settings['footer'], FALSE, TRUE))."</span><br/>\n";
     echo "<span>".showcopyright().showprivacypolicy()."</span><br/>\n";
-    echo "<span>Bootstrap Theme by <a href='http://www.phpfusion.com' target='_blank'>PHP-Fusion Inc</a></span><br/>\n";
+    echo "<span>Theme by <a href='http://www.phpfusion.com' target='_blank'>PHP-Fusion Inc</a></span><br/>\n";
     echo "<span>";
     echo showcounter();
     if ($settings['rendertime_enabled'] == '1' || $settings['rendertime_enabled'] == '2') {
@@ -179,4 +178,55 @@ function render_page() {
     echo "</span>\n";
     echo "</div>\n</div>\n";
     echo "</div>\n";
+}
+
+function openside($title) {
+    echo "<h4>$title</h4>\n";
+    echo "<div class='list-group-item'>\n";
+}
+
+function closeside() {
+    echo "</div>\n";
+}
+
+function opentable($title) {
+    echo "<h3>$title</h3>\n";
+}
+
+function closetable() {
+    echo " ";
+}
+
+function html_prefix(array $array) {
+    $array['phone_size'] = ($array['phone_size'] == 0) ? 'hidden-xs' : 'col-xs-'.$array['phone_size'];
+    $array['tablet_size'] = ($array['tablet_size'] == 0) ? 'hidden-sm' : 'col-sm-'.$array['tablet_size'];
+    $array['laptop_size'] = ($array['laptop_size'] == 0) ? 'hidden-md' : 'col-md-'.$array['laptop_size'];
+    $array['desktop_size'] = ($array['desktop_size'] == 0) ? 'hidden-lg' : 'col-lg-'.$array['desktop_size'];
+
+    return "".$array['phone_size']." ".$array['tablet_size']." ".$array['laptop_size']." ".$array['desktop_size']."";
+}
+
+function total_side_span($value) {
+    $count = 0;
+    if (defined('LEFT') && LEFT) {
+        $count = $count + $value;
+    }
+    if (defined('RIGHT') && RIGHT) {
+        $count = $count + $value;
+    }
+    if ($count > 12) {
+        $count = 12;
+    }
+
+    return $count;
+}
+
+// Step 2 - get the balance out of max 12 for center settings after deduction of total side_length
+function center_grid_settings($side_grid_settings) {
+    return [
+        'desktop_size' => (12 - total_side_span($side_grid_settings['desktop_size'])) > 0 ? 12 - total_side_span($side_grid_settings['desktop_size']) : 12,
+        'laptop_size'  => (12 - total_side_span($side_grid_settings['laptop_size'])) > 0 ? 12 - total_side_span($side_grid_settings['laptop_size']) : 12,
+        'tablet_size'  => (12 - total_side_span($side_grid_settings['tablet_size'])) > 0 ? 12 - total_side_span($side_grid_settings['tablet_size']) : 12,
+        'phone_size'   => (12 - total_side_span($side_grid_settings['phone_size'])) > 0 ? 12 - total_side_span($side_grid_settings['phone_size']) : 12,
+    ];
 }

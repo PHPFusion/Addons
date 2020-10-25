@@ -24,7 +24,6 @@ use PHPFusion\Rewrite\Router;
 
 /**
  * Class SeptenaryComponents
- * Collections of 'functions_include.php'
  *
  * @package Septenary
  */
@@ -313,7 +312,6 @@ class SeptenaryComponents {
 
             $file_path = str_replace(ltrim(fusion_get_settings('site_path'), '/'), '', preg_replace('/^\//', '', FUSION_REQUEST));
             if ($settings['site_seo'] && defined('IN_PERMALINK')) {
-                require_once CLASSES.'PHPFusion/Rewrite/Router.inc';
                 $file_path = Router::getRouterInstance()->getCurrentURL();
             }
 

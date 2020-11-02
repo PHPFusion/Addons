@@ -1,0 +1,31 @@
+#error-page {
+    text-align: center;
+}
+
+.error-page {
+    line-height: 1.4;
+    text-align: center;
+    padding: 15px;
+}
+
+.error-page .error-page-code {
+    position: relative;
+    height: 220px;
+}
+
+.error-page .error-page-code h1 {
+    font-size: 186px;
+    font-weight: 200;
+    background: linear-gradient(130deg, #ffa34f, #ff6f68);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+.error-page p {
+    font-size: 16px;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 25px;
+}

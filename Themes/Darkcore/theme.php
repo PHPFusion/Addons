@@ -254,6 +254,9 @@ require_once THEME.'templates/gallery.php';
 // Our message system have been ported here as well to automatically override Core Private Messages system and use a more simple & readable html
 require_once THEME.'templates/messages.php';
 
+// Our custom pages system have been ported here as well to automatically override Core CP system
+require_once THEME.'templates/page.php';
+
 // Our page error reporting system have been ported here as well to automatically override Core error system and use a more simple & readable html
 require_once THEME.'templates/error.php';
 

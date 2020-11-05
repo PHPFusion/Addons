@@ -212,7 +212,7 @@ article.home-post.position-top .entry-content::before {
 article.home-post.position-bottom .entry-header {
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
-            order: 2;
+    order: 2;
 }
 
 article.home-post.position-bottom .entry-content::before {
@@ -291,7 +291,7 @@ article.home-post:hover img {
         display: -webkit-flex;
         display: flex;
         -webkit-flex-wrap: wrap;
-                flex-wrap: wrap;
+        flex-wrap: wrap;
     }
 }
 

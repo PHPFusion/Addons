@@ -5,7 +5,7 @@
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: messsages.php
-| Author: Core Development Team
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -29,7 +29,6 @@ function display_inbox($info) {
 
     $locale = fusion_get_locale('', LOCALE.LOCALESET.'messages.php');
     add_to_head("<link rel='stylesheet' href='".THEME."custom_css/messages.css?v=".filemtime(THEME.'custom_css/messages.css')."'>");
-
 
     echo '<div class="starmail">';
         echo '<div class="row equal-height mail-top">';

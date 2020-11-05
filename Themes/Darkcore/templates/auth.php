@@ -5,7 +5,7 @@
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: auth.php
-| Author: Core Development Team
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -17,36 +17,20 @@
 +--------------------------------------------------------*/
 defined('IN_FUSION') || exit;
 
-use \PHPFusion\Panels;
-
 function display_loginform($info) {
     $locale = fusion_get_locale();
     $aidlink = fusion_get_aidlink();
     $userdata = fusion_get_userdata();
     $settings = fusion_get_settings();
 
-    Panels::getInstance(TRUE)->hide_panel('RIGHT');
-    Panels::getInstance(TRUE)->hide_panel('LEFT');
-    Panels::getInstance(TRUE)->hide_panel('AU_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('U_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('L_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('BL_CENTER');
-
-    echo '<div class="panel panel-default" style="max-width: 500px; margin: 30px auto;">';
-        echo '<div class="panel-heading">';
-            echo '<h3 class="panel-title"><strong>'.$locale['global_100'].'</strong></h3>';
-
-            if (!iMEMBER) {
-                echo '<div class="pull-right" style="margin-top: -20px;">'.$info['forgot_password_link'].'</div>';
-            }
-        echo '</div>';
-
+    echo '<div class="panel panel-default">';
     echo '<div class="panel-body">';
+    echo '<h3 class="m-t-0">'.$locale['global_100'].'</h3>';
 
     if (iMEMBER) {
         $msg_count = dbcount("(message_id)", DB_MESSAGES, "message_to='".$userdata['user_id']."' AND message_read='0' AND message_folder='0'");
         echo '<h3 class="text-center">'.$userdata['user_name'].'</h3>';
-        echo '<div class="text-center"><br/>';
+        echo '<div class="text-center">';
         echo THEME_BULLET.' <a href="'.BASEDIR.'edit_profile.php" class="side">'.$locale['global_120'].'</a><br/>';
         echo THEME_BULLET.' <a href="'.BASEDIR.'messages.php" class="side">'.$locale['global_121'].'</a><br/>';
         echo THEME_BULLET.' <a href="'.BASEDIR.'members.php" class="side">'.$locale['global_122'].'</a><br/>';
@@ -68,9 +52,10 @@ function display_loginform($info) {
         echo $info['open_form'];
         echo $info['user_name'];
         echo $info['user_pass'];
+        echo '<div class="pull-right">'.$info['forgot_password_link'].'</div>';
         echo $info['remember_me'];
         echo $info['login_button'];
-        echo '<div class="display-block text-center m-t-10">'.$info['registration_link'].'</div>';
+        echo '<div class="m-t-10">'.$info['registration_link'].'</div>';
         echo $info['close_form'];
 
         if (!empty($info['connect_buttons'])) {
@@ -89,19 +74,9 @@ function display_loginform($info) {
 function display_register_form($info) {
     $locale = fusion_get_locale();
 
-    Panels::getInstance(TRUE)->hide_panel('RIGHT');
-    Panels::getInstance(TRUE)->hide_panel('LEFT');
-    Panels::getInstance(TRUE)->hide_panel('AU_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('U_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('L_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('BL_CENTER');
-
-    echo '<div class="panel panel-default" style="max-width: 650px; margin: 30px auto;">';
-        echo '<div class="panel-heading">';
-            echo '<h3 class="panel-title"><strong>'.$locale['global_107'].'</strong></h3>';
-        echo '</div>';
-
+    echo '<div class="panel panel-default">';
         echo '<div class="panel-body">';
+            echo '<h3 class="m-t-0">'.$locale['global_107'].'</h3>';
 
             $open = '';
             $close = '';
@@ -155,20 +130,10 @@ function display_register_form($info) {
 function display_lostpassword($content) {
     $locale = fusion_get_locale();
 
-    Panels::getInstance(TRUE)->hide_panel('RIGHT');
-    Panels::getInstance(TRUE)->hide_panel('LEFT');
-    Panels::getInstance(TRUE)->hide_panel('AU_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('U_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('L_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('BL_CENTER');
-
-    echo '<div class="panel panel-default" style="max-width: 500px; margin: 30px auto;">';
-        echo '<div class="panel-heading">';
-            echo '<h3 class="panel-title"><strong>'.$locale['400'].'</strong></h3>';
-        echo '</div>';
-
+    echo '<div class="panel panel-default">';
         echo '<div class="panel-body">';
-            echo $content;
+        echo '<h3 class="m-t-0">'.$locale['400'].'</h3>';
+        echo $content;
         echo '</div>';
     echo '</div>';
 }
@@ -176,32 +141,31 @@ function display_lostpassword($content) {
 function display_gateway($info) {
     global $locale;
 
-    Panels::getInstance(TRUE)->hide_panel('RIGHT');
-    Panels::getInstance(TRUE)->hide_panel('LEFT');
-    Panels::getInstance(TRUE)->hide_panel('AU_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('U_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('L_CENTER');
-    Panels::getInstance(TRUE)->hide_panel('BL_CENTER');
-
-    echo '<div style="max-width: 500px; margin: 30px auto;">';
+    echo '<div>';
     if ($info['showform'] == TRUE) {
-        opentable($locale['gateway_069']);
+        echo '<div class="panel panel-default">';
+        echo '<div class="panel-body">';
+        echo '<h3 class="m-t-0">'.$locale['gateway_069'].'</h3>';
         echo $info['openform'];
         echo $info['hiddeninput'];
         echo '<h3>'.$info['gateway_question'].'</h3>';
         echo $info['textinput'];
         echo $info['button'];
         echo $info['closeform'];
-        closetable();
+        echo '</div>';
+        echo '</div>';
     } else if (!isset($_SESSION["validated"])) {
         echo '<div class="well text-center"><h3 class="m-0">'.$locale['gateway_068'].'</h3></div>';
     }
 
     if (isset($info['incorrect_answer']) && $info['incorrect_answer'] == TRUE) {
-        opentable($locale['gateway_069']);
+        echo '<div class="panel panel-default">';
+        echo '<div class="panel-body">';
+        echo '<h3 class="m-t-0">'.$locale['gateway_069'].'</h3>';
         echo '<div class="well text-center"><h3 class="m-0">'.$locale['gateway_066'].'</h3></div>';
         echo '<input type="button" value="'.$locale['gateway_067'].'" class="text-center btn btn-info spacer-xs" onclick="location=\''.BASEDIR.'register.php\'"/>';
-        closetable();
+        echo '</div>';
+        echo '</div>';
     }
     echo '</div>';
 }

@@ -5,7 +5,7 @@
 | https://www.php-fusion.co.uk/
 +--------------------------------------------------------+
 | Filename: theme_db.php
-| Author: Core Development Team
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -20,7 +20,7 @@ defined('IN_FUSION') || exit;
 $theme_title = 'Darkcore';
 $theme_description = 'Darkcore Theme for PHP-Fusion 9';
 $theme_screenshot = 'screenshot.jpg';
-$theme_author = 'Core Development Team';
+$theme_author = 'PHP-Fusion Development Team';
 $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';
 $theme_version = '1.0';

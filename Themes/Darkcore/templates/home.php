@@ -5,7 +5,7 @@ w<?php
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: home.php
-| Author: Core Development Team
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -23,13 +23,8 @@ use PHPFusion\Panels;
 // Make sure Core´s default home modules are disabled before override
 define('DISABLE_HOME_MODULES', TRUE);
 
-
 // Override Core´s default home modules
 function display_home() {
-
-    // Set your google map key, see this guide https://setcompass.com/How-to-Get-Google-Maps-API-Key-Guide.htm
-    $googlemapkey = "";
-
     // Disable panels, see above for dependencies
     Panels::getInstance(TRUE)->hide_panel('RIGHT');
     Panels::getInstance(TRUE)->hide_panel('LEFT');
@@ -37,7 +32,6 @@ function display_home() {
     Panels::getInstance(TRUE)->hide_panel('U_CENTER');
     Panels::getInstance(TRUE)->hide_panel('L_CENTER');
     Panels::getInstance(TRUE)->hide_panel('BL_CENTER');
-
 
     // The concept home page starts here.
 }

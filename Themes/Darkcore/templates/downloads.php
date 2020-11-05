@@ -5,7 +5,7 @@
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: downloads.php
-| Author: Core Development Team
+| Author: PHP-Fusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -28,17 +28,17 @@ function render_downloads($info) {
 
     if (isset($_GET['download_id']) && !empty($info['download_item'])) {
         opentable($info['download_title']);
-        displayDownloadItem($info);
+        display_download_item($info);
         closetable();
     } else {
         opentable($locale['download_1000']);
-        displayDownloadIndex($info);
+        display_download_index($info);
         closetable();
     }
 
 }
 
-function displayDownloadIndex($info) {
+function display_download_index($info) {
     $locale = fusion_get_locale();
     $dl_settings = get_settings('downloads');
 
@@ -62,23 +62,13 @@ function displayDownloadIndex($info) {
                                     echo '<a href="'.$link.'"><img style="width: 180px;" class="img-responsive" src="'.$data['download_thumb'].'" alt="'.$data['download_title'].'"/></a>';
                                     echo "</div>";
                                 } else {
-                                    echo '.<a href="'.$link.'">'.get_image('imagenotfound', $data['download_title'], 'width: 140px;height: 140px;').'</a>';
+                                    echo '<a href="'.$link.'">'.get_image('imagenotfound', $data['download_title'], 'width: 140px;height: 140px;').'</a>';
                                 }
                             echo '</div>';
                         }
 
-                        echo '<div class="text-center">';
-                            echo '<a class="m-r-5" href="'.DOWNLOADS.'downloads.php?cat_id='.$data['download_cat_id'].'">'.$data['download_cat_name'].'</a>';
-                            echo '<br/><time>'.$data['download_post_time'].'</time>';
-                        echo '</div>';
-
-                        echo '<div class="publisher m-t-10 text-center">';
-                            echo !empty($data['user_id']) ? profile_link($data['user_id'], $data['user_name'], $data['user_status']) : $locale['user_na'];
-                        echo '</div>';
-
-                        echo '<a href="'.$link.'" class="btn btn-link btn-sm btn-block">';
-                            echo '<i class="fa fa-download fa-fw"></i> '.$locale['download_1007'];
-                        echo '</a>';
+                        echo '<div class="text-center"><time>'.$data['download_post_time'].'</time></div>';
+                        echo '<a href="'.$link.'" class="btn btn-link btn-sm btn-block">'.$locale['download_1007'].'</a>';
                     echo '</div>';
                 echo '</div>';
             }
@@ -90,27 +80,22 @@ function displayDownloadIndex($info) {
     }
 }
 
-function displayDownloadItem($info) {
+function display_download_item($info) {
     $locale = fusion_get_locale();
     $dl_settings = get_settings('downloads');
     $data = $info['download_item'];
 
-    if ($data['admin_link']) {
-        $admin_actions = $data['admin_link'];
-        echo '<div class="btn-group pull-right">';
-            echo '<a class="btn btn-primary btn-sm" href="'.$admin_actions['edit'].'">';
-                echo '<i class="fa fa-pencil"></i> '.$locale['edit'];
-            echo '</a>';
-
-            echo '<a class="btn btn-danger btn-sm" href="'.$admin_actions['delete'].'">';
-                echo '<i class="fa fa-trash"></i> '.$locale['delete'];
-            echo '</a>';
-        echo '</div>';
-    }
-
     echo '<h3 class="m-t-0 m-b-0">'.$data['download_title'].'</h3>';
     //echo $data['download_description_short'];
     echo '<hr/>';
+
+    if ($data['admin_link']) {
+        $admin_actions = $data['admin_link'];
+        echo '<div class="btn-group m-b-20">';
+        echo '<a class="btn btn-primary btn-sm" href="'.$admin_actions['edit'].'">'.$locale['edit'].'</a>';
+        echo '<a class="btn btn-danger btn-sm" href="'.$admin_actions['delete'].'">'.$locale['delete'].'</a>';
+        echo '</div>';
+    }
 
     echo '<div class="row m-b-20">';
         if ($dl_settings['download_screenshot'] == 1) {
@@ -143,6 +128,9 @@ function displayDownloadItem($info) {
 
     echo '</div>';
 
+    echo '<div class="row">';
+    echo '<div class="col-xs-12 col-sm-9">';
+
     if ($data['download_description']) {
         echo '<div class="p-15 m-b-20" style="border: 1px solid #000;">';
             echo $data['download_description'];
@@ -156,42 +144,39 @@ function displayDownloadItem($info) {
         echo '</div>';
     }
 
-    echo '<div class="p-15" style="border: 1px solid #000;">';
+    echo '</div>';
 
-        echo '<div class="row">';
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1011'].': </span>';
-                echo $data['download_version'];
-            echo '</div>';
-
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1012'].': </span>';
-                echo $data['download_count'];
-            echo '</div>';
-
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1021'].': </span>';
-                echo $data['download_post_time'];
-            echo '</div>';
+    echo '<div class="col-xs-12 col-sm-3">';
+        echo '<div class="m-b-10">';
+            echo '<span class="strong text-lighter">'.$locale['download_1011'].'</span><br>';
+            echo $data['download_version'];
         echo '</div>';
-        echo '<hr/>';
-        echo '<div class="row">';
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1013'].': </span>';
-                echo $data['download_license'];
-            echo '</div>';
 
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1014'].': </span>';
-                echo $data['download_os'];
-            echo '</div>';
+        echo '<div class="m-b-10">';
+            echo '<span class="strong text-lighter">'.$locale['download_1012'].'</span><br>';
+            echo $data['download_count'];
+        echo '</div>';
 
-            echo '<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">';
-                echo '<span class="strong text-lighter">'.$locale['download_1015'].': </span>';
-                echo $data['download_copyright'];
-            echo '</div>';
+        echo '<div class="m-b-10">';
+            echo '<span class="strong text-lighter">'.$locale['download_1021'].'</span><br>';
+            echo $data['download_post_time'];
+        echo '</div>';
+        echo '<div class="m-b-10">';
+            echo '<span class="strong text-lighter">'.$locale['download_1013'].'</span><br>';
+            echo $data['download_license'];
+        echo '</div>';
+
+        echo '<div class="m-b-10">';
+            echo '<span class="strong text-lighter">'.$locale['download_1014'].'</span><br>';
+            echo $data['download_os'];
+        echo '</div>';
+        echo '<div>';
+            echo '<span class="strong text-lighter">'.$locale['download_1015'].'</span>';
+            echo $data['download_copyright'];
         echo '</div>';
     echo '</div>';
+
+    echo '</div>'; // .row
 
     if ($data['download_allow_comments'] && fusion_get_settings('comments_enabled') == 1) {
         echo "<div class='m-t-20'></div>";

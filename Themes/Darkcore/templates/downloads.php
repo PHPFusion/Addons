@@ -171,7 +171,7 @@ function display_download_item($info) {
             echo $data['download_os'];
         echo '</div>';
         echo '<div>';
-            echo '<span class="strong text-lighter">'.$locale['download_1015'].'</span>';
+            echo '<span class="strong text-lighter">'.$locale['download_1015'].'</span><br>';
             echo $data['download_copyright'];
         echo '</div>';
     echo '</div>';

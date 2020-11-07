@@ -108,74 +108,75 @@ function user_menu() {
 
 // Latest News
 function render_latest_news() {
+    if (defined('NEWS_EXIST')) {
+        $result = dbquery("SELECT * FROM ".DB_NEWS." ".(multilang_table("NS") ? "WHERE news_language='".LANGUAGE."' AND" : "WHERE")."
+            ".groupaccess('news_visibility')." AND (news_start='0'||news_start<=".time().")
+            AND (news_end='0'||news_end>=".time().") AND news_draft='0' ORDER BY news_id DESC, news_datestamp DESC LIMIT 0,5
+        ");
 
-    $result = dbquery("SELECT * FROM ".DB_NEWS." ".(multilang_table("NS") ? "WHERE news_language='".LANGUAGE."' AND" : "WHERE")."
-        ".groupaccess('news_visibility')." AND (news_start='0'||news_start<=".time().")
-        AND (news_end='0'||news_end>=".time().") AND news_draft='0' ORDER BY news_id DESC, news_datestamp DESC LIMIT 0,5
-    ");
+        while ($data = dbarray($result)) {
+            $comment_counter = dbcount("('comment_id')", DB_COMMENTS, "comment_type='N' AND comment_item_id='".$data['news_id']."'");
 
-    while ($data = dbarray($result)) {
-        $comment_counter = dbcount("('comment_id')", DB_COMMENTS, "comment_type='N' AND comment_item_id='".$data['news_id']."'");
-
-        echo "<p><i class='fa fa-book'></i> <a style='font-size:13px; color: #428bca' href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."'>".trim_text($data['news_subject'],25)."</a><br /><small>";
-        echo showdate('shortdate', $data['news_datestamp'])." ".THEME_BULLET;
-        if ($data['news_allow_comments'] == '1') {
-            if ($comment_counter < 1) {
-                echo "<a href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."#comments'>Leave a comment</a>";
-            } else {
-                echo "<a href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."#comments'> $comment_counter ".(($comment_counter == 1) ? "Comment" : "Comments")."</a>";
-            }
-        } else {
-            echo "Comments Disabled";
-        }
-    echo THEME_BULLET." ".$data['news_reads']." ".(($data['news_reads'] == 1) ? "View" : "Views")."";
-    echo "</small></p>";
-    }
-
-}
-
-// Latest Blogs
-function render_latest_blogs() {
-
-    $result = dbquery("SELECT * FROM ".DB_BLOG." ".(multilang_table("BL") ? "WHERE blog_language='".LANGUAGE."' AND" : "WHERE")."
-        ".groupaccess('blog_visibility')." AND (blog_start='0'||blog_start<=".time().")
-        AND (blog_end='0'||blog_end>=".time().") AND blog_draft='0' ORDER BY blog_id DESC, blog_datestamp DESC LIMIT 0,5
-    ");
-
-    while ($data = dbarray($result)) {
-        $comment_counter = dbcount("('comment_id')", DB_COMMENTS, "comment_type='B' AND comment_item_id='".$data['blog_id']."'");
-
-        echo "<p><i class='fa fa-book'></i> <a style='font-size:13px; color: #428bca' href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."'>".trim_text($data['blog_subject'],25)."</a><br /><small>";
-        echo showdate('shortdate', $data['blog_datestamp'])." ".THEME_BULLET;
-            if ($data['blog_allow_comments'] == '1') {
+            echo "<p><i class='fa fa-book'></i> <a style='font-size:13px; color: #428bca' href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."'>".trim_text($data['news_subject'],25)."</a><br /><small>";
+            echo showdate('shortdate', $data['news_datestamp'])." ".THEME_BULLET;
+            if ($data['news_allow_comments'] == '1') {
                 if ($comment_counter < 1) {
-                    echo "<a href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."#comment'>Leave a comment</a>";
+                    echo "<a href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."#comments'>Leave a comment</a>";
                 } else {
-                    echo "<a href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."#comment'> $comment_counter ".(($comment_counter == 1) ? "Comment" : "Comments")."</a>";
+                    echo "<a href='".INFUSIONS."news/news.php?readmore=".$data['news_id']."#comments'> $comment_counter ".(($comment_counter == 1) ? "Comment" : "Comments")."</a>";
                 }
             } else {
                 echo "Comments Disabled";
             }
-        echo THEME_BULLET." ".$data['blog_reads']." ".(($data['blog_reads'] == 1) ? "View" : "Views")."";
-        echo "</small></p>";
-    }
 
+            echo THEME_BULLET." ".$data['news_reads']." ".(($data['news_reads'] == 1) ? "View" : "Views")."";
+            echo "</small></p>";
+        }
+    }
+}
+
+// Latest Blogs
+function render_latest_blogs() {
+    if (defined('BLOG_EXIST')) {
+        $result = dbquery("SELECT * FROM ".DB_BLOG." ".(multilang_table("BL") ? "WHERE blog_language='".LANGUAGE."' AND" : "WHERE")."
+            ".groupaccess('blog_visibility')." AND (blog_start='0'||blog_start<=".time().")
+            AND (blog_end='0'||blog_end>=".time().") AND blog_draft='0' ORDER BY blog_id DESC, blog_datestamp DESC LIMIT 0,5
+        ");
+
+        while ($data = dbarray($result)) {
+            $comment_counter = dbcount("('comment_id')", DB_COMMENTS, "comment_type='B' AND comment_item_id='".$data['blog_id']."'");
+
+            echo "<p><i class='fa fa-book'></i> <a style='font-size:13px; color: #428bca' href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."'>".trim_text($data['blog_subject'],25)."</a><br /><small>";
+            echo showdate('shortdate', $data['blog_datestamp'])." ".THEME_BULLET;
+                if ($data['blog_allow_comments'] == '1') {
+                    if ($comment_counter < 1) {
+                        echo "<a href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."#comment'>Leave a comment</a>";
+                    } else {
+                        echo "<a href='".INFUSIONS."blog/blog.php?readmore=".$data['blog_id']."#comment'> $comment_counter ".(($comment_counter == 1) ? "Comment" : "Comments")."</a>";
+                    }
+                } else {
+                    echo "Comments Disabled";
+                }
+            echo THEME_BULLET." ".$data['blog_reads']." ".(($data['blog_reads'] == 1) ? "View" : "Views")."";
+            echo "</small></p>";
+        }
+    }
 }
 
 // Latest Photos
 function render_latest_photos() {
+    if (defined('GALLERY_EXIST')) {
+        $result = dbquery(
+            "SELECT tp.photo_id, tp.photo_title, tp.photo_description, tp.photo_filename, tp.photo_thumb2, tp.photo_datestamp, tp.photo_views,
+            tp.photo_order, tp.photo_allow_comments, tp.photo_allow_ratings, ta.album_id, ta.album_title, ta.album_access
+            FROM ".DB_PHOTOS." tp
+            LEFT JOIN ".DB_PHOTO_ALBUMS." ta USING (album_id)
+            ".(multilang_table("PG") ? "WHERE album_language='".LANGUAGE."' AND" : "WHERE")." ".groupaccess('album_access')."
+            GROUP BY tp.photo_id ORDER BY tp.photo_id DESC LIMIT 8"
+        );
 
-    $result = dbquery(
-        "SELECT tp.photo_id, tp.photo_title, tp.photo_description, tp.photo_filename, tp.photo_thumb2, tp.photo_datestamp, tp.photo_views,
-        tp.photo_order, tp.photo_allow_comments, tp.photo_allow_ratings, ta.album_id, ta.album_title, ta.album_access
-        FROM ".DB_PHOTOS." tp
-        LEFT JOIN ".DB_PHOTO_ALBUMS." ta USING (album_id)
-        ".(multilang_table("PG") ? "WHERE album_language='".LANGUAGE."' AND" : "WHERE")." ".groupaccess('album_access')."
-        GROUP BY tp.photo_id ORDER BY tp.photo_id DESC LIMIT 8"
-    );
-
-    while ($data = dbarray($result)) {
-        echo "<a href='".INFUSIONS."gallery/gallery.php?photo_id=".$data['photo_id']."'><img src='".INFUSIONS."gallery/photos/thumbs/".$data['photo_thumb2']."' alt='".$data['photo_description']."' style='width:100px;' /></a>";
-   }
-
+        while ($data = dbarray($result)) {
+            echo "<a href='".INFUSIONS."gallery/gallery.php?photo_id=".$data['photo_id']."'><img src='".INFUSIONS."gallery/photos/thumbs/".$data['photo_thumb2']."' alt='".$data['photo_description']."' style='width:100px;' /></a>";
+        }
+    }
 }

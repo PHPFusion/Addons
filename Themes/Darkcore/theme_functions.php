@@ -36,13 +36,13 @@ function user_menu() {
     echo '<ul class="nav navbar-nav navbar-right secondary m-r-0">';
         if (count($languages) > 1) {
             echo '<li class="nav-item dropdown">';
-                echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown" title="'.LANGUAGE.'">';
+                echo '<a id="ddlangs" href="#" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="'.LANGUAGE.'">';
                     echo '<i class="fa fa-globe"></i> ';
-                    echo '<img src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'-s.png" alt="'.translate_lang_names(LANGUAGE).'"/>';
+                    echo translate_lang_names(LANGUAGE);
                     echo '<span class="caret"></span>';
                 echo '</a>';
 
-                echo '<ul class="dropdown-menu">';
+                echo '<ul class="dropdown-menu" aria-labelledby="ddlangs">';
                     foreach ($languages as $language_folder => $language_name) {
                         echo '<li class="dropdown-item"><a class="display-block" href="'.clean_request('lang='.$language_folder, ['lang'], FALSE).'">';
                             echo '<img class="m-r-5" src="'.BASEDIR.'locale/'.$language_folder.'/'.$language_folder.'-s.png" alt="'.$language_folder.'"/> ';
@@ -54,7 +54,7 @@ function user_menu() {
         }
 
         echo '<li id="user-info" class="dropdown">';
-            echo '<a href="#" id="user-menu" class="dropdown-toggle" data-toggle="dropdown">'.$name.' <span class="caret"></span></a>';
+            echo '<a href="#" id="user-menu" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$name.' <span class="caret"></span></a>';
 
             if (iMEMBER) {
 

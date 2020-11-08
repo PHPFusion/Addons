@@ -224,8 +224,8 @@ class SeptenaryComponents {
         if (count(fusion_get_enabled_languages()) > 1) {
 
             $language_opts = "<li class='dropdown'>\n";
-            $language_opts .= "<a class='dropdown-toggle pointer' data-toggle='dropdown' title='".fusion_get_locale('UM101')."'><i class='fa fa-globe fa-lg'></i> ".translate_lang_names(LANGUAGE)." <span class='caret'></span></a>\n";
-            $language_opts .= "<ul class='dropdown-menu' role='menu'>\n";
+            $language_opts .= "<a id='ddlangs' class='dropdown-toggle pointer' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' title='".fusion_get_locale('UM101')."'><i class='fa fa-globe fa-lg'></i> ".translate_lang_names(LANGUAGE)." <span class='caret'></span></a>\n";
+            $language_opts .= "<ul class='dropdown-menu' aria-labelledby='ddlangs' role='menu'>\n";
             $language_switch = fusion_get_language_switch();
             if (!empty($language_switch)) {
                 foreach ($language_switch as $folder => $langData) {

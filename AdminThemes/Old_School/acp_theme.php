@@ -100,7 +100,7 @@ function render_admin_panel() {
         $html .= '<nav id="acp-header" class="navbar navbar-default m-r-15 m-l-15">';
             $html .= '<div class="container-fluid">';
                 $html .= '<div class="navbar-header">';
-                    $html .= '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">';
+                    $html .= '<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false" aria-controls="main-menu">';
                         $html .= '<span class="sr-only">Toggle navigation</span>';
                         $html .= '<span class="icon-bar"></span>';
                         $html .= '<span class="icon-bar"></span>';
@@ -123,8 +123,8 @@ function render_admin_panel() {
 
                     $html .= '<ul class="nav navbar-nav navbar-right">';
                         $html .= "<li class='dropdown'>\n";
-                            $html .= "<a class='dropdown-toggle pointer' data-toggle='dropdown'>".display_avatar($userdata, '18px', '', '', 'img-rounded')." ".$locale['logged']."<strong>".$userdata['user_name']."</strong> <span class='caret'></span>\n</a>\n";
-                            $html .= "<ul class='dropdown-menu' role='menu'>\n";
+                            $html .= "<a id='dduser' class='dropdown-toggle pointer' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>".display_avatar($userdata, '18px', '', '', 'img-rounded')." ".$locale['logged']."<strong>".$userdata['user_name']."</strong> <span class='caret'></span>\n</a>\n";
+                            $html .= "<ul class='dropdown-menu' aria-labelledby='dduser' role='menu'>\n";
                             $html .= "<li><a class='display-block' href='".BASEDIR."edit_profile.php'>".$locale['edit']." ".$locale['profile']."</a></li>\n";
                             $html .= "<li><a class='display-block' href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['view']." ".$locale['profile']."</a></li>\n";
                             $html .= "<li class='divider'> </li>\n";
@@ -133,8 +133,8 @@ function render_admin_panel() {
                             $html .= "</ul>\n";
                             $html .= "</li>\n";
                             if (count($languages) > 1) {
-                                $html .= "<li class='dropdown'><a class='dropdown-toggle pointer' data-toggle='dropdown' title='".$locale['282']."'><i class='fa fa-globe fa-lg fa-fw'></i> ".translate_lang_names(LANGUAGE)."<span class='caret'></span></a>\n";
-                                $html .= "<ul class='dropdown-menu'>\n";
+                                $html .= "<li class='dropdown'><a id='ddlangs' class='dropdown-toggle pointer' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' title='".$locale['282']."'><i class='fa fa-globe fa-lg fa-fw'></i> ".translate_lang_names(LANGUAGE)."<span class='caret'></span></a>\n";
+                                $html .= "<ul class='dropdown-menu' aria-labelledby='ddlangs'>\n";
                                 foreach ($languages as $language_folder => $language_name) {
                                     $html .= "<li><a class='display-block' href='".clean_request("lang=".$language_folder, array("lang"),FALSE)."'><img class='m-r-5' alt='$language_name' src='".BASEDIR."locale/$language_folder/$language_folder-s.png'> $language_name</a></li>\n";
                                 }

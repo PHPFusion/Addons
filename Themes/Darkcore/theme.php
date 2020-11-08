@@ -56,7 +56,7 @@ function render_page() {
 
     // Fusions Menu & links function, top header hack
     echo '<header class="'.($is_home ? 'main-header' : 'sub-header').'">';
-        $collapse_icon = '<center><button type="button" class="btn btn-navbar navbar-toggle visible-xs" data-toggle="collapse" data-target="#menu_menu"><i class="fa fa-bars"></i></button></center>';
+        $collapse_icon = '<center><button type="button" class="btn btn-navbar navbar-toggle visible-xs" data-toggle="collapse" data-target="#menu_menu" aria-expanded="false" aria-controls="menu_menu"><i class="fa fa-bars"></i></button></center>';
         echo showsublinks('', '', [
             'id'               => 'menu',
             'container'        => TRUE,

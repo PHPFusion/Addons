@@ -171,8 +171,8 @@ class Producer {
                     if (iMEMBER) {
                         echo "<li class='menu-2'><a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['profile']."</a></li>";
                         ?>
-                        <li class='dropdown menu-3'><a class='dropdown-toggle' data-toggle='dropdown'><i class='fa fa-star text-smaller'></i></a>
-                            <ul class='dropdown-menu'>
+                        <li class='dropdown menu-3'><a id='dduser' class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-star text-smaller'></i></a>
+                            <ul class='dropdown-menu' aria-labelledby='dduser'>
                                 <?php if (iMEMBER) {
                                     echo "<li><a href='".BASEDIR."edit_profile.php'>".$locale['UM080']."</a></li>";
                                 } ?>
@@ -188,13 +188,13 @@ class Producer {
 
                     if (count($languages) > 1) {
                         echo '<li class="dropdown language-switcher">';
-                            echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown" title="'.LANGUAGE.'">';
+                            echo '<a id="ddlangs" href="#" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="'.LANGUAGE.'">';
                                 echo '<i class="fa fa-globe"></i> ';
-                                echo '<img src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'-s.png" alt="'.translate_lang_names(LANGUAGE).'"/>';
+                                echo translate_lang_names(LANGUAGE);
                                 echo '<span class="caret"></span>';
                             echo '</a>';
 
-                            echo '<ul class="dropdown-menu">';
+                            echo '<ul class="dropdown-menu" aria-labelledby="ddlangs">';
                                 foreach ($languages as $language_folder => $language_name) {
                                     echo '<li><a class="display-block" href="'.clean_request('lang='.$language_folder, ['lang'], FALSE).'">';
                                         echo '<img class="m-r-5" src="'.BASEDIR.'locale/'.$language_folder.'/'.$language_folder.'-s.png" alt="'.$language_folder.'"/> ';

@@ -57,11 +57,11 @@ function render_admin_panel() {
                 <div class="hidden-md">'.\PHPFusion\Admins::getInstance()->horizontal_admin_nav(TRUE).'</div>
                 <ul class="top-right-menu pull-right m-r-15">
                     <li class="dropdown">
-                        <a class="dropdown-toggle pointer" data-toggle="dropdown">
+                        <a id="dduser" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             '.display_avatar($userdata, '25px', '', FALSE, 'img-circle').' <span class="hidden-xs">'.$locale['logged'].' <strong>'.$userdata['user_name'].'</strong></span>
                             <span class="caret"></span>
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu" aria-labelledby="dduser" role="menu">
                             <li><a class="display-block" href="'.BASEDIR.'edit_profile.php">'.$locale['UM080'].'</a></li>
                             <li><a class="display-block" href="'.BASEDIR.'profile.php?lookup='.$userdata['user_id'].'">'.$locale['view']." ".$locale['profile'].'</a></li>
                             <li class="divider"></li>
@@ -74,8 +74,8 @@ function render_admin_panel() {
 
                     if (count($languages) > 1) :
                         $html .= "<li class='dropdown'>";
-                            $html .= "<a class='dropdown-toggle pointer' data-toggle='dropdown' title='".$locale['282']."'><i class='fa fa-fw fa-globe'></i> ".translate_lang_names(LANGUAGE)."<span class='caret'></span></a>\n";
-                            $html .= "<ul class='dropdown-menu'>\n";
+                            $html .= "<a id='ddlangs' class='dropdown-toggle pointer' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' title='".$locale['282']."'><i class='fa fa-fw fa-globe'></i> ".translate_lang_names(LANGUAGE)."<span class='caret'></span></a>\n";
+                            $html .= "<ul class='dropdown-menu' aria-labelledby='ddlangs'>\n";
                             foreach ($languages as $language_folder => $language_name) {
                                 $html .= "<li><a class='display-block' href='".clean_request("lang=".$language_folder, array("lang"), FALSE)."'><img class='m-r-5' alt='$language_name' src='".BASEDIR."locale/$language_folder/$language_folder-s.png'> $language_name</a></li>\n";
                             }

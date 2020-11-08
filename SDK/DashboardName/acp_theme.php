@@ -84,8 +84,8 @@ function render_admin_panel() {
                 $languages = fusion_get_enabled_languages();
                 if (count($languages) > 1) {
                     echo '<li class="dropdown languages-switcher">';
-                        echo '<a class="dropdown-toggle pointer" data-toggle="dropdown" title="'.$locale['282'].'"><i class="fa fa-globe"></i><img class="current" src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'.png" alt="'.translate_lang_names(LANGUAGE).'"/><span class="caret"></span></a>';
-                        echo '<ul class="dropdown-menu">';
+                        echo '<a id="ddlangs" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="'.$locale['282'].'"><i class="fa fa-globe"></i><img class="current" src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'.png" alt="'.translate_lang_names(LANGUAGE).'"/><span class="caret"></span></a>';
+                        echo '<ul class="dropdown-menu" aria-labelledby="ddlangs">';
                             foreach ($languages as $language_folder => $language_name) {
                                 echo '<li><a class="display-block" href="'.clean_request('lang='.$language_folder, ['lang'], FALSE).'"><img class="m-r-5" src="'.BASEDIR.'locale/'.$language_folder.'/'.$language_folder.'-s.png" alt="'.$language_folder.'"/> '.$language_name.'</a></li>';
                             }
@@ -94,8 +94,8 @@ function render_admin_panel() {
                 }
 
                 echo '<li class="dropdown user-s">';
-                    echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown">'.display_avatar($userdata, '30px', '', FALSE, 'img-rounded').' <strong>'.$userdata['user_name'].'</strong><span class="caret"></span></a>';
-                    echo '<ul class="dropdown-menu" role="menu">';
+                    echo '<a id="dduser" href="#" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.display_avatar($userdata, '30px', '', FALSE, 'img-rounded').' <strong>'.$userdata['user_name'].'</strong><span class="caret"></span></a>';
+                    echo '<ul class="dropdown-menu" aria-labelledby="dduser" role="menu">';
                         echo '<li><a href="'.BASEDIR.'edit_profile.php"><i class="fa fa-pencil fa-fw"></i> '.$locale['UM080'].'</a></li>';
                         echo '<li><a href="'.BASEDIR.'profile.php?lookup='.$userdata['user_id'].'"><i class="fa fa-eye fa-fw"></i> '.$locale['view'].' '.$locale['profile'].'</a></li>';
                         echo '<li class="divider"></li>';
@@ -112,7 +112,7 @@ function render_admin_panel() {
             echo '<div class="col-xs-12 col-sm-3">';
                 echo '<div class="dropdown nav-search-dropdown">';
                     echo '<div class="navbar-form 10 m-b-20"><input class="form-control input-sm" type="text" id="search_pages" name="search_pages" placeholder="'.$locale['search'].'"/></div>';
-                    echo '<ul class="dropdown-menu m-l-15" id="search_result"></ul>';
+                    echo '<ul class="dropdown-menu m-l-15" aria-labelledby="search_pages" id="search_result"></ul>';
                 echo '</div>';
 
                 echo Admins::getInstance()->vertical_admin_nav(TRUE);

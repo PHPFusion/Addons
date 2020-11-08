@@ -76,8 +76,8 @@ function display_inbox($info) {
                                 echo '</div>';
                             } else {
                                 echo '<div class="dropdown display-inline-block m-r-10">';
-                                    echo '<a href="#" data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle"><i id="chkv" class="fa fa-square-o"></i><span class="caret m-l-5"></span></a>';
-                                    echo '<ul class="dropdown-menu">';
+                                    echo '<a id="ddactions" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-sm dropdown-toggle"><i id="chkv" class="fa fa-square-o"></i><span class="caret m-l-5"></span></a>';
+                                    echo '<ul class="dropdown-menu" aria-labelledby="ddactions">';
                                         foreach ($info['actions_form']['check'] as $id => $title) {
                                             echo '<li><a id="'.$id.'" data-action="check" class="pointer">'.$title.'</a></li>';
                                         }
@@ -94,8 +94,8 @@ function display_inbox($info) {
                                 echo '</div>';
 
                                 echo '<div class="dropdown display-inline-block m-r-10">';
-                                    echo '<a href="#" data-toggle="dropdown" class="btn btn-default btn-sm dropdown-toggle">'.$locale['444'].'&hellip; <span class="caret"></span></a>';
-                                    echo '<ul class="dropdown-menu">';
+                                    echo '<a id="ddactions2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-sm dropdown-toggle">'.$locale['444'].'&hellip; <span class="caret"></span></a>';
+                                    echo '<ul class="dropdown-menu" aria-labelledby="ddactions2">';
                                         echo '<li>'.$info['actions_form']['mark_all'].'</li>';
                                         echo '<li>'.$info['actions_form']['mark_read'].'</li>';
                                         echo '<li>'.$info['actions_form']['mark_unread'].'</li>';
@@ -264,7 +264,7 @@ function pm_inbox($info) {
 
         if ($is_inbox) {
             // Inbox
-            echo '<a data-target="#unread_inbox" class="pointer mail-list-title" data-toggle="collapse">'.$locale['446'].' <span class="caret"></span></a>';
+            echo '<a data-target="#unread_inbox" class="pointer mail-list-title" data-toggle="collapse" aria-expanded="false" aria-controls="unread_inbox">'.$locale['446'].' <span class="caret"></span></a>';
             echo '<div id="unread_inbox" class="collapse in">';
                 if (!empty($unread)) {
                     echo '<ul class="mail-list" id="unread_tbl">';
@@ -297,7 +297,7 @@ function pm_inbox($info) {
                 }
             echo '</div>';
 
-            echo '<a data-target="#read_inbox" class="pointer mail-list-title" data-toggle="collapse">'.$locale['447'].' <span class="caret"></span></a>';
+            echo '<a data-target="#read_inbox" class="pointer mail-list-title" data-toggle="collapse" aria-expanded="false" aria-controls="read_inboxd">'.$locale['447'].' <span class="caret"></span></a>';
             echo '<div id="read_inbox" class="collapse in">';
                 if (!empty($read)) {
                     echo '<ul class="mail-list m-b-0" id="read_tbl">';

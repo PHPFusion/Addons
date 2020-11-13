@@ -75,14 +75,3 @@ function opentable($title = FALSE) {
 function closetable() {
     \PHPFusion\SeptenaryTheme::closetable();
 }
-
-/**
- * Legacy output replacement function
- *
- * @param $output
- *
- * @return array
- */
-function theme_output($output) {
-    return \PHPFusion\SeptenaryTheme::theme_output($output);
-}

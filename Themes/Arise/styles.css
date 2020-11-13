@@ -231,6 +231,10 @@ a:active {
     display: none;
 }
 
+.select2-container {
+    width: 100% !important;
+}
+
 .panel-txtarea > .panel-heading {
     border-radius: 0;
 }

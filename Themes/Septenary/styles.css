@@ -1445,6 +1445,14 @@ body .mceToolbar div {
     width: 12px !important;
 }
 
+.select2-offscreen {
+    display: none;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
 .forum-subject {
     font-family: Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;

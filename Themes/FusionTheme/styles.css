@@ -78,3 +78,11 @@ Morphs Mobile Icons
     background: #3875D7;
     color: #fff !important;
 }
+
+.select2-offscreen {
+    display: none;
+}
+
+.select2-container {
+    width: 100% !important;
+}

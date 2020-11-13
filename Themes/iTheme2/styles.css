@@ -254,6 +254,10 @@ a:active {
     display: none;
 }
 
+.select2-container {
+    width: 100% !important;
+}
+
 input[type=text],
 input[type=password],
 textarea {

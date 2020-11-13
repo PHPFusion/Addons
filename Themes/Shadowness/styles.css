@@ -113,6 +113,10 @@ input:focus, textarea:active, textarea:focus {
     display: none;
 }
 
+.select2-container {
+    width: 100% !important;
+}
+
 /* Custom selection colors */
 ::-moz-selection {
     color: #000;

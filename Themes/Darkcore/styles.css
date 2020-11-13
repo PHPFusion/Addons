@@ -127,6 +127,14 @@ textarea, .form-control, select, .textbox {
     background: #080808 !important;
 }
 
+.select2-offscreen {
+    display: none;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
 /* helper */
 .center-all {
     display: -webkit-box;

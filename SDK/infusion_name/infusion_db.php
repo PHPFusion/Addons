@@ -47,7 +47,7 @@ if (!empty($inf_settings['infusion_allow_submission']) && $inf_settings['infusio
         'submit_link'   => 'submit.php?stype=x',
         'submit_locale' => fusion_get_locale('xxx_title', XXX_LOCALE),
         'title'         => fusion_get_locale('Submit', XXX_LOCALE),
-        'admin_link'    => INFUSIONS.'infusion_name/admin.php'.fusion_get_aidlink().'&amp;section=submissions&amp;submit_id=%s'
+        'admin_link'    => INFUSIONS.'infusion_name/admin.php'.fusion_get_aidlink().'&section=submissions&submit_id=%s'
     ]);
 }*/
 

@@ -65,7 +65,7 @@ function render_admin_panel() {
                             <li><a class="display-block" href="'.BASEDIR.'edit_profile.php">'.$locale['UM080'].'</a></li>
                             <li><a class="display-block" href="'.BASEDIR.'profile.php?lookup='.$userdata['user_id'].'">'.$locale['view']." ".$locale['profile'].'</a></li>
                             <li class="divider"></li>
-                            <li><a class="display-block" href="'.FUSION_REQUEST.'&amp;logout">'.$locale['admin-logout'].'</a></li>
+                            <li><a class="display-block" href="'.FUSION_REQUEST.'&logout">'.$locale['admin-logout'].'</a></li>
                             <li><a class="display-block" href="'.BASEDIR.'index.php?logout=yes">'.$locale['logout'].'</a></li>
                         </ul>
                     </li>
@@ -158,7 +158,7 @@ function render_admin_login() {
     $html .= "<p class='fusion-version text-right mid-opacity text-smaller'>".$locale['version'].fusion_get_settings('version')."</p>";
     $html .= "<div class='row m-0'>\n<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
 
-    $form_action = FUSION_SELF.$aidlink == ADMIN."index.php".$aidlink ? FUSION_SELF.$aidlink."&amp;pagenum=0" : FUSION_SELF."?".FUSION_QUERY;
+    $form_action = FUSION_SELF.$aidlink == ADMIN."index.php".$aidlink ? FUSION_SELF.$aidlink."&pagenum=0" : FUSION_SELF."?".FUSION_QUERY;
 
     // Get all notices
     $html .= renderNotices(getNotices());

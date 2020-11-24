@@ -215,7 +215,7 @@ class SeptenaryComponents {
             echo $language_opts;
         } else {
             if (iADMIN) {
-                echo "<li>\n<a href='".ADMIN.$aidlink."&amp;pagenum=0'>".$locale['sept_003']."</a>\n</li>\n";
+                echo "<li>\n<a href='".ADMIN.$aidlink."&pagenum=0'>".$locale['sept_003']."</a>\n</li>\n";
             }
             echo "<li>\n<a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['sept_004']."</a>\n</li>\n";
             echo $language_opts;

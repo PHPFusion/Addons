@@ -38,7 +38,7 @@ function render_admin_login() {
 
         // Get all notices
         $html .= renderNotices(getNotices());
-        $form_action = FUSION_SELF.$aidlink == ADMIN."index.php".$aidlink ? FUSION_SELF.$aidlink."&amp;pagenum=0" : FUSION_SELF."?".FUSION_QUERY;
+        $form_action = FUSION_SELF.$aidlink == ADMIN."index.php".$aidlink ? FUSION_SELF.$aidlink."&pagenum=0" : FUSION_SELF."?".FUSION_QUERY;
         $html .= openform('admin-login-form', 'post', $form_action);
 
         $html .= fusion_get_function('openside', '');
@@ -115,7 +115,7 @@ function render_admin_panel() {
 
                             foreach ($sections as $section_name) {
                                 $active = (isset($_GET['pagenum']) && $_GET['pagenum'] == $i || !isset($_GET['pagenum']) && \PHPFusion\Admins::getInstance()->_isActive() == $i) ? ' class="active"' : '';
-                                $html .= '<li'.$active.'><a href="'.ADMIN.'index.php'.$aidlink.'&amp;pagenum='.$i.'">'.$section_name.'</a></li>';
+                                $html .= '<li'.$active.'><a href="'.ADMIN.'index.php'.$aidlink.'&pagenum='.$i.'">'.$section_name.'</a></li>';
                                 $i++;
                             }
                         }
@@ -128,7 +128,7 @@ function render_admin_panel() {
                             $html .= "<li><a class='display-block' href='".BASEDIR."edit_profile.php'>".$locale['edit']." ".$locale['profile']."</a></li>\n";
                             $html .= "<li><a class='display-block' href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['view']." ".$locale['profile']."</a></li>\n";
                             $html .= "<li class='divider'> </li>\n";
-                            $html .= "<li><a class='display-block' href='".FUSION_REQUEST."&amp;logout'>".$locale['admin-logout']."</a></li>\n";
+                            $html .= "<li><a class='display-block' href='".FUSION_REQUEST."&logout'>".$locale['admin-logout']."</a></li>\n";
                             $html .= "<li><a class='display-block' href='".BASEDIR."index.php?logout=yes'>".$locale['logout']."</a></li>\n";
                             $html .= "</ul>\n";
                             $html .= "</li>\n";

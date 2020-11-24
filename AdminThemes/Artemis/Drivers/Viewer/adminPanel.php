@@ -159,7 +159,7 @@ class adminPanel extends resource {
                 if ($has_page) {
                     $href_src = "data-load=\"$i\"";
                 } else if (!$is_menu_action) {
-                    $href_src = "href=\"".ADMIN.$aidlink."&amp;pagenum=$i\"";
+                    $href_src = "href=\"".ADMIN.$aidlink."&pagenum=$i\"";
                 }
 
                 $acpState = isset($_COOKIE['acpState']) && $_COOKIE['acpState'] == 0 ? ' style="display:none;"' : '';
@@ -329,7 +329,7 @@ class adminPanel extends resource {
                 while ($data = dbarray($msg_result)) {
 
                     $messages[] = [
-                        "link"      => BASEDIR."messages.php?folder=inbox&amp;msg_read=".$data['message_id'],
+                        "link"      => BASEDIR."messages.php?folder=inbox&msg_read=".$data['message_id'],
                         "title"     => $data['message_subject'],
                         "sender"    => [
                             "user_id"     => $data['sender_id'],
@@ -394,7 +394,7 @@ class adminPanel extends resource {
         if (!empty($sections)) {
             $i = 0;
             foreach ($sections as $section_name) {
-                echo "<li><a href='".ADMIN."index.php".$aidlink."&amp;pagenum=".$i."'>".$section_name."</a></li>\n";
+                echo "<li><a href='".ADMIN."index.php".$aidlink."&pagenum=".$i."'>".$section_name."</a></li>\n";
                 $i++;
             }
         }

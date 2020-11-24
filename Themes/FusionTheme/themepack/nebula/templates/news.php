@@ -70,8 +70,8 @@ class News extends Core {
         }
 
         if ($info['news_total_rows'] > $news_settings['news_pagination']) {
-            $type_start = isset($_GET['type']) ? "type=".$_GET['type']."&amp;" : '';
-            $cat_start = isset($_GET['cat_id']) ? "cat_id=".$_GET['cat_id']."&amp;" : '';
+            $type_start = isset($_GET['type']) ? "type=".$_GET['type']."&" : '';
+            $cat_start = isset($_GET['cat_id']) ? "cat_id=".$_GET['cat_id']."&" : '';
             echo "<div class='text-center m-t-10 m-b-10'>".makepagenav($_GET['rowstart'],
                     $news_settings['news_pagination'],
                     $info['news_total_rows'], 3,

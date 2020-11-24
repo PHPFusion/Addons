@@ -137,7 +137,7 @@ abstract class resource extends Admins {
             BASEDIR."edit_profile.php"                               => self::$locale['edit']." ".self::$locale['profile'],
             BASEDIR."profile.php?lookup=".self::$userdata['user_id'] => self::$locale['view']." ".self::$locale['profile'],
             "---"                                                    => "---",
-            FUSION_REQUEST."&amp;logout"                             => self::$locale['admin-logout'],
+            FUSION_REQUEST."&logout"                             => self::$locale['admin-logout'],
             BASEDIR."index.php?logout=yes"                           => self::$locale['logout']
         ];
     }

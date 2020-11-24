@@ -222,8 +222,8 @@ if (!function_exists('render_main_news')) {
                 echo "</div>\n";
 
                 if ($info['news_total_rows'] > $news_settings['news_pagination']) {
-                    $type_start = isset($_GET['type']) ? "type=".$_GET['type']."&amp;" : '';
-                    $cat_start = isset($_GET['cat_id']) ? "cat_id=".$_GET['cat_id']."&amp;" : '';
+                    $type_start = isset($_GET['type']) ? "type=".$_GET['type']."&" : '';
+                    $cat_start = isset($_GET['cat_id']) ? "cat_id=".$_GET['cat_id']."&" : '';
                     echo "<div class='text-center m-t-10 m-b-10'>".makepagenav($_GET['rowstart'],
                             $news_settings['news_pagination'],
                             $info['news_total_rows'], 3,
@@ -301,7 +301,7 @@ if (!function_exists('render_news')) {
 
             <div class="news-description-info">
                 <?php echo ucwords($locale['in']) ?>
-                <?php echo $info['news_cat_name'] ? "<a href='".INFUSIONS."news/news.php?cat_id=".$info['news_cat_id']."'>".$info['news_cat_name']."</a>" : "<a href='".INFUSIONS."news/news.php?cat_id=0&amp;filter=false'>".$locale['news_0006']."</a>&nbsp;";
+                <?php echo $info['news_cat_name'] ? "<a href='".INFUSIONS."news/news.php?cat_id=".$info['news_cat_id']."'>".$info['news_cat_name']."</a>" : "<a href='".INFUSIONS."news/news.php?cat_id=0&filter=false'>".$locale['news_0006']."</a>&nbsp;";
                 ?>
                 <br/>
                 <?php echo trim_text(strip_tags($info['news_news']), 250) ?>

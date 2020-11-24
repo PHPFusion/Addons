@@ -48,7 +48,7 @@ class adminDashboard extends resource {
 
         $html .= '<div class="row">';
         foreach ($panels as $panel => $block) {
-            $block['link'] = empty($block['link']) ? $block['link'] : '&amp;'.$block['link'];
+            $block['link'] = empty($block['link']) ? $block['link'] : '&'.$block['link'];
             $html .= '<div class="col-xs-'.$grid['mobile'].' col-sm-'.$grid['tablet'].' col-md-'.$grid['laptop'].' col-lg-'.$grid['desktop'].'">';
             $html .= fusion_get_function('openside', '');
             $html .= '<img class="pull-left m-r-10 dashboard-icon" src="'.get_image('ac_M').'" alt="'.$locale['M'].'"/>';
@@ -173,9 +173,9 @@ class adminDashboard extends resource {
                         $html .= "<div data-id='$i' class='comment_content clearfix p-t-10 p-b-10' ".($i > 0 ? "style='border-top:1px solid #ddd;'" : '')." >";
                         $html .= "<div class='pull-left display-inline-block' style='margin-top:5px; margin-bottom:10px;'>".display_avatar($comment_data, "25px", "", FALSE, "img-rounded m-r-5")."</div>";
                         $html .= "<div id='comment_action-$i' class='btn-group pull-right' style='position:absolute; right: 30px; margin-top:25px; display:none;'>
-                                            <a class='btn btn-xs btn-default' title='".$locale['274']."' href='".ADMIN."comments.php".$aidlink."&amp;ctype=".$comment_data['comment_type']."&amp;comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-eye'></i></a>
-                                            <a class='btn btn-xs btn-default' title='".$locale['275']."' href='".ADMIN."comments.php".$aidlink."&amp;action=edit&amp;comment_id=".$comment_data['comment_id']."&amp;ctype=".$comment_data['comment_type']."&amp;comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-pencil'></i></a>
-                                            <a class='btn btn-xs btn-default' title='".$locale['276']."' href='".ADMIN."comments.php".$aidlink."&amp;action=delete&amp;comment_id=".$comment_data['comment_id']."&amp;ctype=".$comment_data['comment_type']."&amp;comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-trash'></i></a></div>";
+                                            <a class='btn btn-xs btn-default' title='".$locale['274']."' href='".ADMIN."comments.php".$aidlink."&ctype=".$comment_data['comment_type']."&comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-eye'></i></a>
+                                            <a class='btn btn-xs btn-default' title='".$locale['275']."' href='".ADMIN."comments.php".$aidlink."&action=edit&comment_id=".$comment_data['comment_id']."&ctype=".$comment_data['comment_type']."&comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-pencil'></i></a>
+                                            <a class='btn btn-xs btn-default' title='".$locale['276']."' href='".ADMIN."comments.php".$aidlink."&action=delete&comment_id=".$comment_data['comment_id']."&ctype=".$comment_data['comment_type']."&comment_item_id=".$comment_data['comment_item_id']."'><i class='fa fa-trash'></i></a></div>";
                         $html .= "<strong>".(!empty($comment_data['user_id']) ? profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']) : $comment_data['comment_name'])." </strong>";
                         $html .= "<span class='text-lighter'>".$locale['273']."</span> <a href='".sprintf($link_type[$comment_data['comment_type']], $comment_data['comment_item_id'])."'><strong>".$comments_type[$comment_data['comment_type']]."</strong></a>";
                         $html .= "<br/>".timer($comment_data['comment_datestamp'])."<br/>";

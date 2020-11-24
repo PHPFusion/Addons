@@ -98,7 +98,7 @@ function render_page() {
                 echo $language_opts;
             } else {
                 if (iADMIN) {
-                    echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".ADMIN.$aidlink."&amp;pagenum=0'>".$locale['global_123']."</a>\n</li>\n";
+                    echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".ADMIN.$aidlink."&pagenum=0'>".$locale['global_123']."</a>\n</li>\n";
                 }
                 echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['profile']."</a>\n</li>\n";
                 echo $language_opts;

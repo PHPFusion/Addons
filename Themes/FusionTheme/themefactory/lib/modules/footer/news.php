@@ -26,7 +26,6 @@ class News {
 
         if (defined('NEWS_EXIST')) :
             // Latest News
-            require_once INFUSIONS."news/infusion_db.php";
             require_once NEWS_CLASS."autoloader.php";
             $data = NewsView::News()->get_NewsItem(["limit" => "0,3", "order" => "news_datestamp DESC"]);
             if (!empty($data['news_items'])) : ?>

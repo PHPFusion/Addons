@@ -6,6 +6,7 @@
 +--------------------------------------------------------+
 | Filename: simple_panel.php
 | Author: Your Name
+| Version: 1.0.0
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

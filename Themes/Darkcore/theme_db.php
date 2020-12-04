@@ -23,7 +23,7 @@ $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'PHP-Fusion Development Team';
 $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';
-$theme_version = '1.0';
+$theme_version = '1.0.1';
 $theme_folder = 'Darkcore';
 
 // Optional for theme settings, Widget to add Phone in footer.

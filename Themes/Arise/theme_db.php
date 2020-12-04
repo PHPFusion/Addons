@@ -24,5 +24,5 @@ $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'J. Falk (Falk) & RobiNN';
 $theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
-$theme_version = '1.5';
+$theme_version = '1.5.1';
 $theme_folder = 'Arise';

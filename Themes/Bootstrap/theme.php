@@ -6,6 +6,7 @@
 +--------------------------------------------------------+
 | Filename: theme.php
 | Author: Frederick MC Chan (Chan)
+| Version: 1.4.1
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

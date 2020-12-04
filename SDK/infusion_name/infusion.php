@@ -22,7 +22,7 @@ $locale = fusion_get_locale('', XXX_LOCALE);
 // Infusion general information
 $inf_title = $locale['xxx_title'];
 $inf_description = $locale['xxx_desc'];
-$inf_version = '1.0';
+$inf_version = '1.0.0';
 $inf_developer = 'YOUR NAME HERE';
 $inf_email = 'YOUR EMAIL HERE (optional)';
 $inf_weburl = 'YOUR WEBSITE HERE (optional)';

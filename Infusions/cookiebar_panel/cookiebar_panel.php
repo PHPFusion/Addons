@@ -7,6 +7,7 @@
 | Filename: cookiebar_panel.php
 | Author: Core Development Team (coredevs@phpfusion.com)
 | Co-Author: Joakim Falk (Domi)
+| Version: 1.0.1
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

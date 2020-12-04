@@ -24,5 +24,5 @@ $theme_screenshot = 'screenshot.jpg';
 $theme_author = 'Khalid545 & RobiNN';
 $theme_web = 'https://themify.me/';
 $theme_license = 'AGPL3';
-$theme_version = '1.5';
+$theme_version = '1.5.1';
 $theme_folder = 'iTheme2';

@@ -39,7 +39,7 @@ function render_main_blog($info) {
 }
 
 function display_blog_index($info) {
-    $locale = fusion_get_locale();
+    $locale = fusion_get_locale('', DARKCORE_LOCALE);
 
     if (!empty($info['blog_item'])) {
         foreach ($info['blog_item'] as $blog_id => $data) {
@@ -83,7 +83,7 @@ function display_blog_index($info) {
                                 }
                             echo '</span>';
 
-                            echo '<a class="btn btn-md btn-primary pull-right" href="'.$data['blog_link'].'">Read More</a>';
+                            echo '<a class="btn btn-md btn-primary pull-right" href="'.$data['blog_link'].'">'.$locale['drk_001'].'</a>';
                         echo '</div>';
                     echo '</div></article>';
                 echo '</div>';

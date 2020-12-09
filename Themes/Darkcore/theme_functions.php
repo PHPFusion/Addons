@@ -108,6 +108,8 @@ function user_menu() {
 
 // Latest News
 function render_latest_news() {
+    $locale = fusion_get_locale();
+
     if (defined('NEWS_EXIST')) {
         $result = dbquery("SELECT * FROM ".DB_NEWS." ".(multilang_table("NS") ? "WHERE news_language='".LANGUAGE."' AND" : "WHERE")."
             ".groupaccess('news_visibility')." AND (news_start='0'||news_start<=".time().")
@@ -129,7 +131,7 @@ function render_latest_news() {
                 echo "Comments Disabled";
             }
 
-            echo THEME_BULLET." ".$data['news_reads']." ".(($data['news_reads'] == 1) ? "View" : "Views")."";
+            echo THEME_BULLET." ".$data['news_reads']." ".format_word($data['news_reads'], $locale['fmt_views']);
             echo "</small></p>";
         }
     }
@@ -137,6 +139,7 @@ function render_latest_news() {
 
 // Latest Blogs
 function render_latest_blogs() {
+    $locale = fusion_get_locale();
     if (defined('BLOG_EXIST')) {
         $result = dbquery("SELECT * FROM ".DB_BLOG." ".(multilang_table("BL") ? "WHERE blog_language='".LANGUAGE."' AND" : "WHERE")."
             ".groupaccess('blog_visibility')." AND (blog_start='0'||blog_start<=".time().")
@@ -157,7 +160,7 @@ function render_latest_blogs() {
                 } else {
                     echo "Comments Disabled";
                 }
-            echo THEME_BULLET." ".$data['blog_reads']." ".(($data['blog_reads'] == 1) ? "View" : "Views")."";
+            echo THEME_BULLET." ".$data['blog_reads']." ".format_word($data['blog_reads'], $locale['fmt_views']);
             echo "</small></p>";
         }
     }

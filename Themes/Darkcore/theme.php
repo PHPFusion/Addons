@@ -19,6 +19,14 @@ defined('IN_FUSION') || exit;
 
 require_once INCLUDES.'theme_functions_include.php';
 
+if (!defined('DARKCORE_LOCALE')) {
+    if (file_exists(THEMES.'Darkcore/locale/'.LANGUAGE.'.php')) {
+        define('DARKCORE_LOCALE', THEMES.'Darkcore/locale/'.LANGUAGE.'.php');
+    } else {
+        define('DARKCORE_LOCALE', THEMES.'Darkcore/locale/English.php');
+    }
+}
+
 // Definitions
 
 define('BOOTSTRAP', TRUE); // Enable Bootstrap, to turn it off set FALSE
@@ -38,6 +46,8 @@ require_once THEME.'theme_functions.php';
 
 // Init the content rendering engine
 function render_page() {
+    // Load Locales
+    $locale = fusion_get_locale('', DARKCORE_LOCALE);
     // Load Fusion Core Settings
     $settings = fusion_get_settings();
 
@@ -150,7 +160,7 @@ function render_page() {
 
             echo '<div class="row">';
                 echo '<div class="col-footer footer-1 col-md-3">';
-                    echo '<h2 class="footer-title">About Us</h2>';
+                    echo '<h2 class="footer-title">'.$locale['drk_005'].'</h2>';
                     echo '<div class="footer-content">';
 
                         echo nl2br($settings['description']);
@@ -168,7 +178,7 @@ function render_page() {
 
                 // List sites gallery instead of non site content
                 echo '<div class="col-footer footer-3 col-md-3">';
-                    echo '<h2 class="footer-title">OUR Gallery</h2>';
+                    echo '<h2 class="footer-title">'.$locale['drk_006'].'</h2>';
                         echo '<div class="footer-content">';
                                 render_latest_photos();
                     echo '</div>';
@@ -176,14 +186,14 @@ function render_page() {
 
                 // List blogs instead of non site content
                 echo '<div class="col-footer footer-2 col-md-3">';
-                    echo '<h2 class="footer-title">Recent Blogs</h2>';
+                    echo '<h2 class="footer-title">'.$locale['drk_007'].'</h2>';
                     echo '<div class="footer-content">';
                         render_latest_blogs();
                     echo '</div>';
                 echo '</div>';
 
                 echo '<div class="col-footer footer-2 col-md-3">';
-                    echo '<h2 class="footer-title">Latest News</h2>';
+                    echo '<h2 class="footer-title">'.$locale['drk_008'].'</h2>';
                         echo '<div class="footer-content">';
                             render_latest_news();
                         echo '</div>';
@@ -193,7 +203,7 @@ function render_page() {
 
         // Add PHP-Fusion´s Core functions to footer.
         echo '<div class="bottom-footer"><div class="container"><div class="copyright text-center">';
-            echo nl2br(parse_textarea($settings['footer'], FALSE, TRUE));
+            echo nl2br(parse_textarea($settings['footer'], FALSE));
             echo showFooterErrors();
             echo showcopyright('', TRUE).showprivacypolicy();
             echo '<br /><span>Darkcore by <a href="https://www.php-fusion.co.uk/" target="_blank">PHP-Fusion Development Team</a></span>';

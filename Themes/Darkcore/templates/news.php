@@ -153,7 +153,7 @@ function render_news_item($info) {
                 echo '<div class="overflow-hide m-b-20">';
                     foreach ($data['news_gallery'] as $id => $image) {
                         echo '<div class="pull-left overflow-hide" style="width: 250px; height: 120px;">';
-                            echo colorbox(IMAGES_N.$image['news_image'], 'Image #'.$id, TRUE);
+                            echo colorbox(IMAGES_N.$image['news_image'], 'Image #'.$id);
                         echo '</div>';
                     }
 

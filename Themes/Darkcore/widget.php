@@ -16,7 +16,16 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 $settings = get_theme_settings('Darkcore');
-$locale = fusion_get_locale();
+
+if (!defined('DARKCORE_LOCALE')) {
+    if (file_exists(THEMES.'Darkcore/locale/'.LANGUAGE.'.php')) {
+        define('DARKCORE_LOCALE', THEMES.'Darkcore/locale/'.LANGUAGE.'.php');
+    } else {
+        define('DARKCORE_LOCALE', THEMES.'Darkcore/locale/English.php');
+    }
+}
+
+$locale = fusion_get_locale('', DARKCORE_LOCALE);
 
 if (isset($_POST['save_settings'])) {
     $settings = [
@@ -34,14 +43,14 @@ if (isset($_POST['save_settings'])) {
             dbquery_insert(DB_SETTINGS_THEME, $db, 'update');
         }
 
-        addNotice('success', 'Settings has been updated');
+        addNotice('success', $locale['drk_003']);
         redirect(FUSION_REQUEST);
     }
 }
 
 echo openform('main_settings', 'post', FUSION_REQUEST);
 openside('');
-echo form_text('phone_number', 'Phone Number', $settings['phone_number'], ['inline' => TRUE]);
+echo form_text('phone_number', $locale['drk_004'], $settings['phone_number'], ['inline' => TRUE]);
 closeside();
 
 echo form_button('save_settings', $locale['save_changes'], 'save', ['class' => 'btn-primary']);

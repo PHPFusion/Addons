@@ -123,7 +123,7 @@ function display_download_item($info) {
             echo '<a href="'.$link.'">'.$data['download_cat_name'].'</a>';
         echo '</div>';
         echo '<div class="col-xs-12 col-sm-3 col-md-9 col-lg-12 center-all">';
-            echo '<a href="'.$data['download_file_link'].'" target="blank" class="btn btn-success btn-md">Download <i class="fa fa-download"></i> '.setLocale('09','DOWNLOADS_LOCALE').($data['download_filesize'] ? ' ('.$data['download_filesize'].')' : '').'</a>';
+            echo '<a href="'.$data['download_file_link'].'" target="blank" class="btn btn-success btn-md">'.$locale['drk_002'].' <i class="fa fa-download"></i> '.setLocale('09','DOWNLOADS_LOCALE').($data['download_filesize'] ? ' ('.$data['download_filesize'].')' : '').'</a>';
         echo '</div>';
 
     echo '</div>';
@@ -140,7 +140,7 @@ function display_download_item($info) {
     if ($dl_settings['download_screenshot'] == 1 && $data['download_image'] && file_exists(DOWNLOADS.'images/'.$data['download_image'])) {
         echo '<div class="center-all p-10 m-b-20" style="border: 1px solid #000;">';
             $link = DOWNLOADS.'images/'.$data['download_image'];
-            echo '<img src="'.$link.'" alt="'.$data['download_title'].'" class="img-responsive"  />';
+            echo '<img src="'.$link.'" alt="'.$data['download_title'].'" class="img-responsive"/>';
         echo '</div>';
     }
 

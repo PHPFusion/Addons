@@ -19,7 +19,7 @@ defined('IN_FUSION') || exit;
 
 $theme_title       = 'ThemeName';
 $theme_description = 'Description';
-$theme_screenshot  = 'screenshot.jpg';
+$theme_screenshot  = 'screenshot.png';
 $theme_author      = 'Your Name';
 $theme_web         = 'https://yoursite.com/';
 $theme_license     = 'AGPL3';

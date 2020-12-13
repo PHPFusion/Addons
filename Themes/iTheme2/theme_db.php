@@ -20,7 +20,7 @@ defined('IN_FUSION') || exit;
 
 $theme_title = 'iTheme2';
 $theme_description = 'iTheme2 Theme for PHP Fusion 9.';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'Khalid545 & RobiNN';
 $theme_web = 'https://themify.me/';
 $theme_license = 'AGPL3';

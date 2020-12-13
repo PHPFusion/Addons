@@ -19,7 +19,7 @@ defined('IN_FUSION') || exit;
 
 $theme_title = 'Darkcore';
 $theme_description = 'Darkcore Theme for PHP-Fusion 9';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'PHP-Fusion Development Team';
 $theme_web = 'https://php-fusion.co.uk';
 $theme_license = 'AGPL3';

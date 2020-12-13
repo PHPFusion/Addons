@@ -51,11 +51,6 @@ function render_page() {
     // Load Fusion Core Settings
     $settings = fusion_get_settings();
 
-    // add to head function when adding override styles,in the Demo we use a modified dark bootstrap base as replacement. Clear file if no larger custom BS elements is needed.
-    // Default styles and smaller adjustments is to be done in styles.css that belongs to any given theme.
-
-    add_to_head("<link rel='stylesheet' href='".THEME."custom_css/custom.css?v=".filemtime(THEME.'custom_css/custom.css')."'>");
-
     // Adjust for SEO
     $file_path = str_replace(ltrim($settings['site_path'], '/'), '', preg_replace('/^\//', '', FUSION_REQUEST));
     if ($settings['site_seo'] && defined('IN_PERMALINK')) {
@@ -84,8 +79,7 @@ function render_page() {
 
     echo '</header>';
 
-    echo '<div class="p-l-10 p-r-10">';
-    echo '<div class="container spacer-sm"><section>';
+    echo '<div class="container p-t-10"><section>';
 
         echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
 
@@ -141,7 +135,6 @@ function render_page() {
         echo '</div>';
 
     echo '</section></div>';
-    echo '</div>';
 
     // Footer Content starts here
     echo '<footer>';

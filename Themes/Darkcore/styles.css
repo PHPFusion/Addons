@@ -156,23 +156,6 @@ textarea, .form-control, select, .textbox {
 /* ---------------------------------Breadcrumb--------------------------------- */
 /* ---------------------------------------------------------------------------- */
 
-.breadcrumb {
-    background: #c8c8c8;
-}
-
-.breadcrumb > li + li::before {
-    color: #c8c8c8;
-    content: "/ ";
-    padding: 0 12px;
-}
-
-.breadcrumb li a {
-    font-size: 18px;
-}
-
-.breadcrumb li a:hover {
-    color: #337ab7;
-}
 
 /* ---------------------------------------------------------------------------- */
 /* ------------------------------------Html-Body------------------------------- */
@@ -181,16 +164,13 @@ textarea, .form-control, select, .textbox {
 body {
     font-family: 'Raleway', sans-serif;
     font-weight: 300;
-    color: #666;
-    background-color: #fff;
-    font-size: 15px;
-    line-height: 1.75;
+    font-size: 14px;
+    line-height: 1.42857143;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
     overflow-wrap: break-word;
 }
-
 
 /* ---------------------------------------------------------------------------- */
 /* ------------------------------------Menu------------------------------------ */
@@ -362,37 +342,6 @@ body {
     }
 }
 
-h1 {
-    font-size: 38px;
-}
-
-h2 {
-    font-size: 36px;
-}
-
-h3 {
-    font-size: 32px;
-}
-
-h4 {
-    font-size: 28px;
-}
-
-h5 {
-    font-size: 24px;
-}
-
-h6 {
-    font-size: 20px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    color: #111;
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
 
 a {
     -webkit-transition: all .2s ease-in-out;

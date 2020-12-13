@@ -20,7 +20,7 @@ defined('IN_FUSION') || exit;
 
 $theme_title = 'Arise';
 $theme_description = 'Arise Theme for PHP Fusion 9.';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'J. Falk (Falk) & RobiNN';
 $theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';

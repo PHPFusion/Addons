@@ -20,7 +20,7 @@ defined('IN_FUSION') || exit;
 $theme_readme = '';
 $theme_folder = 'Septenary';
 $theme_title = 'Septenary';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'Craig, Chan';
 $theme_web = 'http://www.phpfusionmods.co.uk';
 $theme_license = 'AGPL3';

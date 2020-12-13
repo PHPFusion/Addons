@@ -17,7 +17,7 @@
 +--------------------------------------------------------*/
 $theme_folder = 'FusionTheme';
 $theme_title = 'FusionTheme';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'PHP-Fusion Inc';
 $theme_web = 'https://www.phpfusion.com';
 $theme_license = 'AGPL3';

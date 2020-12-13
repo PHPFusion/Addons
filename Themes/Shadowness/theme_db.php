@@ -20,7 +20,7 @@ defined('IN_FUSION') || exit;
 
 $theme_title = 'Shadowness';
 $theme_description = '';
-$theme_screenshot = 'screenshot.jpg';
+$theme_screenshot = 'screenshot.png';
 $theme_author = 'Chan, RobiNN';
 $theme_web = 'https://www.phpfusion.com';
 $theme_license = 'AGPL3';

@@ -1,4 +1,3 @@
-# Addons
-Development for PHP-Fusion 9 Addons
+# PHPFusion Addons
 
 No Warranty & No Support Our admins will not answer any questions on the repositories.

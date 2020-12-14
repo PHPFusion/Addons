@@ -1,7 +1,7 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright (C) PHP-Fusion Inc
+| Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme.php
@@ -199,7 +199,7 @@ function render_page() {
             echo nl2br(parse_textarea($settings['footer'], FALSE));
             echo showFooterErrors();
             echo showcopyright('', TRUE).showprivacypolicy();
-            echo '<br /><span>Darkcore by <a href="https://www.php-fusion.co.uk/" target="_blank">PHP-Fusion Development Team</a></span>';
+            echo '<br /><span>Darkcore by <a href="https://www.phpfusion.com/" target="_blank">PHP-Fusion Development Team</a></span>';
             if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {
                 echo '<br /><small>'.showrendertime().showMemoryUsage().'</small>';
             }

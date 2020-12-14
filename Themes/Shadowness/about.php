@@ -1,7 +1,7 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright (C) PHP-Fusion Inc
+| Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: about.php
@@ -78,7 +78,7 @@ opentable('About Shadowness Theme'); ?>
         engineer and theme designer for PHP-Fusion Open Source Content Management System.
     </p>
     <p>
-        <strong>Copyright Notice:</strong> This showcase is brought to you by PHP-Fusion Inc. The original art,
+        <strong>Copyright Notice:</strong> This showcase is brought to you by PHP Fusion Inc. The original art,
         combination, design and work belongs to Shadowness.com and its owner.
     </p>
 <?php

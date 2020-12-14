@@ -1,7 +1,7 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright (C) PHP-Fusion Inc
+| Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme.php
@@ -356,7 +356,7 @@ class Producer {
                     <li><a href="<?php echo BASEDIR."contact.php" ?>"><?php echo $contact; ?></a></li>
                 </ul>
                 <small class="display-inline-block">
-                    <span>PHP-Fusion Inc & Shadowness &copy; 2013 - <?php echo date('Y'); ?></span> |
+                    <span>PHP Fusion Inc & Shadowness &copy; 2013 - <?php echo date('Y'); ?></span> |
                     <?php echo showcopyright('', TRUE).showprivacypolicy(); ?>
                 </small>
             </div>

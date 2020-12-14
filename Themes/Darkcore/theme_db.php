@@ -1,8 +1,8 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| Copyright (C) PHP Fusion Inc
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme_db.php
 | Author: PHP-Fusion Development Team
@@ -21,7 +21,7 @@ $theme_title = 'Darkcore';
 $theme_description = 'Darkcore Theme for PHP-Fusion 9';
 $theme_screenshot = 'screenshot.png';
 $theme_author = 'PHP-Fusion Development Team';
-$theme_web = 'https://php-fusion.co.uk';
+$theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.0.1';
 $theme_folder = 'Darkcore';

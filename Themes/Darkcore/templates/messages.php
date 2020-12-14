@@ -1,8 +1,8 @@
 <?php
 /*-------------------------------------------------------+
 | PHP-Fusion Content Management System
-| Copyright (C) PHP-Fusion Inc
-| https://www.php-fusion.co.uk/
+| Copyright (C) PHP Fusion Inc
+| https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: messsages.php
 | Author: PHP-Fusion Development Team

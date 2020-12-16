@@ -110,7 +110,7 @@ function render_admin_panel() {
         echo '</div>';
 
         echo '<div class="row">';
-            echo '<div class="col-xs-12 col-sm-3">';
+            echo '<div class="col-xs-12 col-sm-2">';
                 echo '<div class="dropdown nav-search-dropdown">';
                     echo '<div class="navbar-form 10 m-b-20"><input class="form-control input-sm" type="text" id="search_pages" name="search_pages" placeholder="'.$locale['search'].'"/></div>';
                     echo '<ul class="dropdown-menu m-l-15" aria-labelledby="search_pages" id="search_result"></ul>';
@@ -119,7 +119,7 @@ function render_admin_panel() {
                 echo Admins::getInstance()->vertical_admin_nav(TRUE);
             echo '</div>';
 
-            echo '<div class="col-xs-12 col-sm-9">';
+            echo '<div class="col-xs-12 col-sm-10">';
                 echo renderNotices(getNotices());
 
                 echo CONTENT;
@@ -318,7 +318,7 @@ function render_admin_dashboard() {
                                 $html .= '<img class="img-responsive pull-right dashboard-icon" src="'.$module['image'].'" alt="'.$module['title'].'"/>';
                                 if (!empty($module['stats'])) {
                                     foreach ($module['stats'] as $stat) {
-                                        $html .= '<div class="pull-left display-inline-block m-r-15">';
+                                        $html .= '<div class="pull-left display-inline-block m-r-10">';
                                             $html .= '<span class="text-smaller">'.$stat['title'].'</span><br/>';
                                             $html .= '<h4 class="m-t-0">'.number_format($stat['count']).'</h4>';
                                         $html .= '</div>';

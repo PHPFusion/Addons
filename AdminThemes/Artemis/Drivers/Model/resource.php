@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -69,7 +69,7 @@ abstract class resource extends Admins {
 
         return [
             "title" => self::get_locale('artemis_admin'),
-            "icon"  => "<img class='img-responsive' alt='PHP-Fusion 9' src='".IMAGES."php-fusion-icon.png'/>",
+            "icon"  => "<img class='img-responsive' alt='PHPFusion 9' src='".IMAGES."php-fusion-icon.png'/>",
         ];
     }
 

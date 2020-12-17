@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -58,24 +58,24 @@ opentable('About Shadowness Theme'); ?>
         and to preserve legacy and memories for a dear friend. May his work last forever throughout all times.
     </p>
     <p>
-        The theme's art and css were originally from Shadowness.com itself, and was ported into the latest PHP-Fusion
+        The theme's art and css were originally from Shadowness.com itself, and was ported into the latest PHPFusion
         version 9 standards to illustrate
         the capabilities of our latest operating system. Due to copyrights of the original authors, the
-        unreleased <strong>PHP-Fusion Core 9</strong>..
+        unreleased <strong>PHPFusion Core 9</strong>..
     </p>
     <p>
         The Shadowness.com site was very unique because the table header changes its layout when different CSS classes
         wrapper are used - full, single and topic.
         To tackle this situation, I coded a flexible controller class for the different purpose to re-instanced table
         headers to adapt to
-        Shadowness design, concept and visualization required. Finally, Shadowness.com is fully ported into PHP-Fusion
+        Shadowness design, concept and visualization required. Finally, Shadowness.com is fully ported into PHPFusion
         49 hours 33 minutes
-        because the robusity of PHP-Fusion 9.00 Core. It would be by all means a lot more harder with next closest
+        because the robusity of PHPFusion 9.00 Core. It would be by all means a lot more harder with next closest
         publishing platform.. not that I would bother to try.
     </p>
     <p>
         <strong>About the author:</strong> Frederick MC Chan (Chan) is the lead developer, application and sofware
-        engineer and theme designer for PHP-Fusion Open Source Content Management System.
+        engineer and theme designer for PHPFusion Open Source Content Management System.
     </p>
     <p>
         <strong>Copyright Notice:</strong> This showcase is brought to you by PHP Fusion Inc. The original art,

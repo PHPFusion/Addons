@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "Nebula este prima tematic&#259; cadru pentru PHP-Fusion v9 facut&#259; s&#259; ofere multe elemente de con&#355;inut, stiluri &#351;i caracteristici pentru o mai bun&#259; &#238;ntegere &#351;i pentru a construi con&#355;inut folosind PHP-Fusion v9, f&#259;r&#259; codare.";
+$locale['NB_000'] = "Nebula este prima tematic&#259; cadru pentru PHPFusion v9 facut&#259; s&#259; ofere multe elemente de con&#355;inut, stiluri &#351;i caracteristici pentru o mai bun&#259; &#238;ntegere &#351;i pentru a construi con&#355;inut folosind PHPFusion v9, f&#259;r&#259; codare.";
 $locale['NB_001'] = "Despre noi";
 // Nebula Submissions Template
 $locale['NB_100'] = "Cele ai noi &#351;tiri";

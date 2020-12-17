@@ -1,11 +1,11 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme.php
-| Author: PHP-Fusion Development Team
+| Author: PHPFusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -194,12 +194,12 @@ function render_page() {
             echo '</div>';
         echo '</div>';
 
-        // Add PHP-Fusion´s Core functions to footer.
+        // Add PHPFusion´s Core functions to footer.
         echo '<div class="bottom-footer"><div class="container"><div class="copyright text-center">';
             echo nl2br(parse_textarea($settings['footer'], FALSE));
             echo showFooterErrors();
             echo showcopyright('', TRUE).showprivacypolicy();
-            echo '<br /><span>Darkcore by <a href="https://www.phpfusion.com/" target="_blank">PHP-Fusion Development Team</a></span>';
+            echo '<br /><span>Darkcore by <a href="https://www.phpfusion.com/" target="_blank">PHPFusion Development Team</a></span>';
             if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {
                 echo '<br /><small>'.showrendertime().showMemoryUsage().'</small>';
             }

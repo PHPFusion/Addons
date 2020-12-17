@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -25,4 +25,4 @@ $theme_author = 'Craig, Chan';
 $theme_web = 'http://www.phpfusionmods.co.uk';
 $theme_license = 'AGPL3';
 $theme_version = '1.4.1';
-$theme_description = 'Named after the word 9, Septenary boosts a simple, modern, flat outlook. Septenary is also the current PHP-Fusion Core 9.00 default theme in distributed package.';
+$theme_description = 'Named after the word 9, Septenary boosts a simple, modern, flat outlook. Septenary is also the current PHPFusion Core 9.00 default theme in distributed package.';

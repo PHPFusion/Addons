@@ -1,11 +1,11 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme.php
-| Author: PHP-Fusion Mods UK
+| Author: PHPFusion Mods UK
 | Developer & Designer: Craig, Chan
 | Site: http://www.phpfusionmods.co.uk
 +--------------------------------------------------------+

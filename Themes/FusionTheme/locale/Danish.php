@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "Nebula er PHP-Fusion 9s første FusionTheme Theme Framework der tilbyder mange indholdselementer, styles og funktioner der lettere sætter dig i stand til at opbygge PHP-Fusion 9 uden kodning.";
+$locale['NB_000'] = "Nebula er PHPFusion 9s første FusionTheme Theme Framework der tilbyder mange indholdselementer, styles og funktioner der lettere sætter dig i stand til at opbygge PHPFusion 9 uden kodning.";
 $locale['NB_001'] = "Om os";
 // Nebula Submissions Template
 $locale['NB_100'] = "Nyhedsoverskrift";

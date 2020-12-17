@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "A NEBULA egy PHP-Fusion 9, FusionTheme keret, ahol számos tartalmi elemek, stílusok és funkciók találhatók, hogy jobban megértsék és megtanulják kódolás nélkül a PHP-Fusion 9 használatát.";
+$locale['NB_000'] = "A NEBULA egy PHPFusion 9, FusionTheme keret, ahol számos tartalmi elemek, stílusok és funkciók találhatók, hogy jobban megértsék és megtanulják kódolás nélkül a PHPFusion 9 használatát.";
 $locale['NB_001'] = "Rólunk";
 // Nebula Submissions Template
 $locale['NB_100'] = "Főcím";

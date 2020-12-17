@@ -7,7 +7,7 @@ $locale['homeSetup_0202'] = 'Nie, ďakujem';
 * Home setup
 */
 $locale['homeSetup_0100'] = 'Domov';
-$locale['homeSetup_0101'] = 'Vitajte na Vašej PHP-Fusion 9 stránke';
+$locale['homeSetup_0101'] = 'Vitajte na Vašej PHPFusion 9 stránke';
 $locale['homeSetup_0102'] = '[b]Blahoželáme k vašej prvej inštalácii[/b]';
 $locale['homeSetup_0103'] = 'Najjednoduchší spôsob, ako vytvoriť webovú stránku [i]na úrovni[/i]. [b]Začať teraz[/b]';
 $locale['homeSetup_0104'] = "Karusel";
@@ -16,10 +16,10 @@ $locale['homeSetup_0106'] = "Panel";
 $locale['homeSetup_0107'] = "Blok";
 $locale['homeSetup_0112'] = "Témy";
 $locale['homeSetup_0113'] = "Naše témy prinášajú úžasný dizajn a výkonné funkcie pre vaše webové stránky. Na pixel dokonalé preukázanie všestrannosti funkcií vašich webových stránok.";
-$locale['homeSetup_0114'] = "Prečo budete milovať PHP-Fusion 9";
-$locale['homeSetup_0115'] = "S viac ako miliónom riadkov prepísaných kódov, ktoré modernizujú systém správy obsahu tak, ako nikdy predtým, PHP-Fusion 9 zostáva ľahký rýchly, šikovný a je oveľa krásnejší ako kedykoľvek predtým.";
+$locale['homeSetup_0114'] = "Prečo budete milovať PHPFusion 9";
+$locale['homeSetup_0115'] = "S viac ako miliónom riadkov prepísaných kódov, ktoré modernizujú systém správy obsahu tak, ako nikdy predtým, PHPFusion 9 zostáva ľahký rýchly, šikovný a je oveľa krásnejší ako kedykoľvek predtým.";
 $locale['homeSetup_0116'] = "Svetové fórum vývojárov";
-$locale['homeSetup_0117'] = "[h4]PHP-Fusion Developers Network[/h4]";
+$locale['homeSetup_0117'] = "[h4]PHPFusion Developers Network[/h4]";
 $locale['homeSetup_0118'] = "[p]Pomôžte pri vývoji kódu, hľadanie vývojárov alebo nápady na financovanie a cestné mapy, ktoré by sa mali opäť zaväzovať otvorene, je to všetko čo sa deje.
 Zapojte sa dnes do celosvetového úsilia o spoluprácu s otvoreným zdrojom.[/p]";
 $locale['homeSetup_0119'] = "Úžasne jednoduché pre každého";

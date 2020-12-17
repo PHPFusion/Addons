@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -94,7 +94,7 @@ function render_page() {
             echo '<div class="row copyright m-b-20">';
                 echo '<div class="col-xs-12 col-sm-6">';
                     echo showcopyright();
-                    echo '<br/>Theme by <a href="https://themify.me">Themify.me</a>. Converted to PHP-Fusion by: Khalid';
+                    echo '<br/>Theme by <a href="https://themify.me">Themify.me</a>. Converted to PHPFusion by: Khalid';
                     echo '<br/>Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
                 echo '</div>';
                 echo '<div class="col-xs-12 col-sm-6">';

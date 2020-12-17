@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -197,7 +197,7 @@ class HomeInstall {
             'page_widget'        => 'block'
         ];
 
-        // Why you'll love PHP-Fusion
+        // Why you'll love PHPFusion
         $colData[5] = [
             'page_id'            => $page_id,
             'page_grid_id'       => $row_id[4],

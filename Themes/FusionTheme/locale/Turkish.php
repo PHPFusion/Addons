@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "Nebula, bir çok içerik öğesi, stil ve özellik sunan, kodlama yapmadan PHP-Fusion 9'u kullanarak daha iyi anlamak ve öğrenmek için yapılan bir PHP-Fusion 9'un ilk FusionTheme Tema Çerçevesidir.";
+$locale['NB_000'] = "Nebula, bir çok içerik öğesi, stil ve özellik sunan, kodlama yapmadan PHPFusion 9'u kullanarak daha iyi anlamak ve öğrenmek için yapılan bir PHPFusion 9'un ilk FusionTheme Tema Çerçevesidir.";
 $locale['NB_001'] = "Hakkımızda";
 // Nebula Submissions Template
 $locale['NB_100'] = "Haber Başlığı";

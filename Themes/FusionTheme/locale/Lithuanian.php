@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "Nebula yra pirmasis PHP-Fusion 9 FusionTheme Theme Framework pagrindu veikiantis dizainas, siūlantis daugybė turinio elementų, stilių ir kt. ypatybių, skirtų geriau suvokti ir išmokti kurti turinį be programavimo naudojant PHP-Fusion 9.";
+$locale['NB_000'] = "Nebula yra pirmasis PHPFusion 9 FusionTheme Theme Framework pagrindu veikiantis dizainas, siūlantis daugybė turinio elementų, stilių ir kt. ypatybių, skirtų geriau suvokti ir išmokti kurti turinį be programavimo naudojant PHPFusion 9.";
 $locale['NB_001'] = "Apie mus";
 // Nebula Submissions Template
 $locale['NB_100'] = "Naujienų antraštė";

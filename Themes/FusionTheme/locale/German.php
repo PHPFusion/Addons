@@ -1,6 +1,6 @@
 <?php
 // Nebula
-$locale['NB_000'] = "Das Nebula-theme von PHP-Fusion 9.";
+$locale['NB_000'] = "Das Nebula-theme von PHPFusion 9.";
 $locale['NB_001'] = "&Uuml;ber uns";
 // Nebula Submissions Template
 $locale['NB_100'] = "News Schlagzeile";

@@ -1,14 +1,14 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: components.php
-| Author: PHP-Fusion Mods UK
+| Author: PHPFusion Mods UK
 | Developer & Designer:
 | Craig (http://www.phpfusionmods.co.uk),
-| Chan (Lead developer of PHP-Fusion)
+| Chan (Lead developer of PHPFusion)
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

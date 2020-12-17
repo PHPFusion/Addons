@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -23,7 +23,7 @@ define('FONTAWESOME', TRUE);
  * SiteLinks Documentation
  *
  * Developer's can now access and adjust the navigation bar in theme file through code now.
- * Theme.php is the most important file in PHP-Fusion because it loads before everything else.
+ * Theme.php is the most important file in PHPFusion because it loads before everything else.
  * i.e. core files, functions and always listens to theme.php's declarations.
  *
  * So in this file, let's inject the following -- (uncomment to test)

@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -22,7 +22,7 @@ $theme_author = 'PHP Fusion Inc';
 $theme_web = 'https://www.phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.4.1';
-$theme_description = 'Official theme release for PHP-Fusion 9 RC5';
+$theme_description = 'Official theme release for PHPFusion 9 RC5';
 
 $theme_insertdbrow[] = DB_SETTINGS_THEME." (settings_name, settings_value, settings_theme) VALUES ('theme_pack', 'Nebula', '".$theme_folder."')";
 $theme_deldbrow[] = DB_SETTINGS_THEME." WHERE settings_theme='".$theme_folder."'";

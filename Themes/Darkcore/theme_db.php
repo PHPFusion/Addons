@@ -1,11 +1,11 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme_db.php
-| Author: PHP-Fusion Development Team
+| Author: PHPFusion Development Team
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -18,9 +18,9 @@
 defined('IN_FUSION') || exit;
 
 $theme_title = 'Darkcore';
-$theme_description = 'Darkcore Theme for PHP-Fusion 9';
+$theme_description = 'Darkcore Theme for PHPFusion 9';
 $theme_screenshot = 'screenshot.png';
-$theme_author = 'PHP-Fusion Development Team';
+$theme_author = 'PHPFusion Development Team';
 $theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.0.1';

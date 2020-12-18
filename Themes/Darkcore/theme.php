@@ -28,17 +28,15 @@ if (!defined('DARKCORE_LOCALE')) {
 }
 
 // Definitions
-
 define('BOOTSTRAP', TRUE); // Enable Bootstrap, to turn it off set FALSE
-// define('BOOTSTRAP4', TRUE); // Uncomment if using a BS4 Based template
-
 define('FONTAWESOME', TRUE); // Enabled Font Awesome, Comment to disable
 // define('ENTYPO', TRUE); // Uncomment to enable Entypo
 
 // Setting to enable only 2 columns layout ( 2 Panels ) // We set this TRUE for most theme ports for now
 define('THEME_2COL', TRUE); // Set TRUE to enable
 define('THEME_SIDE', 'RIGHT'); // Enable LEFT or RIGHT side when 2COL is set to TRUE
-define('THEME_BULLET', '&middot;'); // Compability for old panels, used here and there.
+
+define('THEME_BULLET', '&middot;'); // Compability for old panels, used here and there
 
 
 // Ready to use functions for content injections in menu, footers and/or panels as seen in this theme

@@ -136,7 +136,7 @@ function render_page() {
 
     // Footer Content starts here
     echo '<footer>';
-        echo '<div class="container spacer-md">';
+        echo '<div class="container">';
 
             // Load the widget setting ( We have Phone default for showcase, not required )
             $theme_settings = get_theme_settings('Darkcore');

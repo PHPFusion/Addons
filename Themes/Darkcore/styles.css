@@ -434,3 +434,7 @@ footer .bottom-footer span {
         padding-bottom: 18px
     }
 }
+
+.navbar .navbar-nav > li > a {
+    border: 0;
+}

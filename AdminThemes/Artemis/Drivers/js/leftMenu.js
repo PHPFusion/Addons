@@ -15,7 +15,7 @@ function menuToggle(locale) {
         // close menu
         $('.admin-menu-item .section_name').hide();
         $('.admin-menu-item .caret-icon').hide();
-        menu_header.html('<h4 class=\"php-fusion text-white text-center\"></h4>');
+        menu_header.html('<h4 class=\"phpfusion-icon text-white text-center\"></h4>');
         $('.menu-action').html('<i class=\"fa fa-chevron-circle-right hidden-xs\"></i>');
         Cookies.set('acpState', 0);
     } else {

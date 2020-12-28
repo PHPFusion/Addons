@@ -155,7 +155,7 @@ function render_admin_login() {
     $html .= "<div class='block'>\n";
     $html .= "<div class='block-content clearfix' style='font-size:13px;'>\n";
     $html .= "<h6><strong>".$locale['280']."</strong></h6>\n";
-    $html .= "<img src='".IMAGES."php-fusion-icon.png' class='pf-logo position-absolute' alt='PHPFusion'/>";
+    $html .= "<img src='".IMAGES."phpfusion-icon.png' class='pf-logo position-absolute' alt='PHPFusion'/>";
     $html .= "<p class='fusion-version text-right mid-opacity text-smaller'>".$locale['version'].fusion_get_settings('version')."</p>";
     $html .= "<div class='row m-0'>\n<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
 

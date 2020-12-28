@@ -787,7 +787,7 @@ nav ul > li.open > a {
 }
 
 .brand {
-    background: #fff url("../../../images/php-fusion-icon.png") no-repeat scroll -24px 1px;
+    background: #fff url("../../../images/phpfusion-icon.png") no-repeat scroll -24px 1px;
     background-size: 100px;
     width: 250px;
     height: 60px;
@@ -1058,7 +1058,7 @@ html[dir="rtl"] .admin-vertical-link svg {
 }
 
 html[dir="rtl"] .brand {
-    background: #ffffff url("../../../images/php-fusion-icon.png") no-repeat scroll 155px -24px;
+    background: #ffffff url("../../../images/phpfusion-icon.png") no-repeat scroll 155px -24px;
     float: right;
 }
 

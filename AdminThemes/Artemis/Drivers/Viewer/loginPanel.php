@@ -1,6 +1,6 @@
 <?php
 /*-------------------------------------------------------+
-| PHP-Fusion Content Management System
+| PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
 | https://www.phpfusion.com/
 +--------------------------------------------------------+
@@ -38,7 +38,7 @@ class loginPanel extends resource {
                 <div class="login_wrapper">
                     <div class="login_logo">
                         <img alt="<?php echo fusion_get_settings("sitename") ?>"
-                             src="<?php echo IMAGES."php-fusion-logo.png" ?>"/>
+                             src="<?php echo IMAGES."phpfusion-logo.png" ?>"/>
 
                         <h2>Artemis</h2>
 

@@ -69,7 +69,7 @@ abstract class resource extends Admins {
 
         return [
             "title" => self::get_locale('artemis_admin'),
-            "icon"  => "<img class='img-responsive' alt='PHPFusion 9' src='".IMAGES."php-fusion-icon.png'/>",
+            "icon"  => "<img class='img-responsive' alt='PHPFusion 9' src='".IMAGES."phpfusion-icon.png'/>",
         ];
     }
 

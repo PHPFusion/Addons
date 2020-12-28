@@ -144,7 +144,7 @@ class HomeInstall {
         $sliderDesc .= str_replace(["[b]", "[/b]", "[i]", "[/i]"], ["<strong>", "</strong>", "<i>", "</i>"],
             self::$locale['homeSetup_0103']);
         $sliderDesc .= "\n";
-        $sliderDesc .= "<div class='logo'><img src='images/php-fusion-icon.png' alt='Logo'></div>";
+        $sliderDesc .= "<div class='logo'><img src='images/phpfusion-icon.png' alt='Logo'></div>";
         $slider_array[0] = [
             'slider_title'          => self::$locale['homeSetup_0101'],
             'slider_description'    => form_sanitizer($sliderDesc),

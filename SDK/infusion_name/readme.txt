@@ -1,8 +1,8 @@
 ---------------------------------------------------------
-PHP-FUSION 9 - INFUSION DEVELOPMENT KIT
+PHPFUSION 9 - INFUSION DEVELOPMENT KIT
 ---------------------------------------------------------
 
-PHP-Fusion 9 has an add-in system called Infusions. An infusion provides
+PHPFusion 9 has an add-in system called Infusions. An infusion provides
 a one-click installation which requires absolutely no coding skills from the
 end user.
 
@@ -18,7 +18,7 @@ need to do this if your infusion does not utilise a panel.
 
 The one important file that must be present in any infusion is the installation
 information file 'infusion.php'. This file is automatically detected by the
-Infusion admin panel in PHP-Fusion's admin panel. You'll find a descriptive copy
+Infusion admin panel in PHPFusion's admin panel. You'll find a descriptive copy
 of the infusion.php file in this development kit.
 
 ---------------------------------------------------------

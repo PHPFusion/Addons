@@ -28,6 +28,7 @@ class News extends Core {
 
     /**
      * News Main Page
+     *
      * @param $info
      */
     public static function display_news($info) {
@@ -69,15 +70,11 @@ class News extends Core {
             echo "<div class='well text-center'>".fusion_get_locale('news_0005')."</div>\n";
         }
 
-        if ($info['news_total_rows'] > $news_settings['news_pagination']) {
+        if (!empty($info['news_total_rows']) && $info['news_total_rows'] > $news_settings['news_pagination']) {
             $type_start = isset($_GET['type']) ? "type=".$_GET['type']."&" : '';
             $cat_start = isset($_GET['cat_id']) ? "cat_id=".$_GET['cat_id']."&" : '';
-            echo "<div class='text-center m-t-10 m-b-10'>".makepagenav($_GET['rowstart'],
-                    $news_settings['news_pagination'],
-                    $info['news_total_rows'], 3,
-                    INFUSIONS."news/news.php?".$cat_start.$type_start)."</div>\n";
+            echo "<div class='text-center m-t-10 m-b-10'>".makepagenav($_GET['rowstart'], $news_settings['news_pagination'], $info['news_total_rows'], 3, INFUSIONS."news/news.php?".$cat_start.$type_start)."</div>\n";
         }
-
 
         // Send categories to the right panel
         ob_start();
@@ -114,24 +111,24 @@ class News extends Core {
 
     /**
      * News Item Container
+     *
      * @param $info
      */
     public static function render_news($info) {
         ?>
         <div class='news_item wow fadeInDown' data-wow-duration='700ms' data-wow-delay='200ms'>
             <article id='news_<?php echo $info['news_id'] ?>'>
-                <div class='post-image'>
-                    <?php if (!empty($info['news_image_src']) && strpos($info['news_image_src'], '.svg') == FALSE) : ?>
+                <?php if (!empty($info['news_image_src']) && strpos($info['news_image_src'], '.svg') == FALSE) : ?>
+                    <div class='post-image'>
                         <a href='<?php echo $info['news_link'] ?>'>
-                            <img class='img-responsive' src='<?php echo $info['news_image_src']; ?>'
-                                 alt='<?php echo $info['news_subject']; ?>'>
-                        </a>
-                    <?php endif; ?>
-                </div>
+                            <img class='img-responsive' src='<?php echo $info['news_image_src']; ?>' alt='<?php echo $info['news_subject']; ?>'>
+                        </a></div>
+                <?php endif; ?>
+
                 <div class='post-title'>
                     <h3>
                         <a href='<?php echo $info['news_url'] ?>' rel='bookmark'>
-                            <strong><?php echo showdate(fusion_get_locale('date_day'), $info['news_datestamp']) ?>: </strong><?php echo $info['news_subject'] ?>
+                            <strong><?php echo showdate('%d %b', $info['news_datestamp']) ?>: </strong><?php echo $info['news_subject'] ?>
                         </a>
                     </h3>
                 </div>
@@ -148,10 +145,10 @@ class News extends Core {
                     </ul>
                     <ul class='meta-right'>
                         <?php if ($info['news_allow_comments'] && fusion_get_settings('comments_enabled') == 1) { ?>
-                        <li><i class='fa fa-comment-o'></i> <?php echo $info['news_display_comments'] ?></li>
+                            <li><i class='fa fa-comment-o'></i> <?php echo $info['news_display_comments'] ?></li>
                         <?php }
                         if ($info['news_allow_ratings'] && fusion_get_settings('ratings_enabled') == 1) { ?>
-                        <li> <?php echo $info['news_display_ratings'] ?></li>
+                            <li> <?php echo $info['news_display_ratings'] ?></li>
                         <?php }
 
                         if (!empty($info['news_admin_actions'])) : ?>
@@ -190,6 +187,7 @@ class News extends Core {
 
     /**
      * Full News
+     *
      * @param $info
      */
     public static function render_news_item($info) {

@@ -103,7 +103,7 @@ class MainFrame extends Core {
         echo "<div class='container'>\n";
         echo "<div id='headerBar' class='row hidden-print hidden-xs'>\n";
         echo "<div class='col-xs-12 col-sm-3 center'>\n";
-        showlogo();
+        echo showlogo();
         echo "</div>\n";
         echo "<div class='col-xs-12 col-sm-9 center-y'>\n";
         echo "<div class='navbar-header navbar-right'>\n";

@@ -1,3 +1,5 @@
 # PHPFusion Addons
 
-No Warranty & No Support Our admins will not answer any questions on the repositories.
+No Warranty & no support our admins will not answer any questions on the repositories.
+
+> Compatibility with older versions is not guaranteed.

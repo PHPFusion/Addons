@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
-| https://www.phpfusion.com/
+| https://phpfusion.com/
 +--------------------------------------------------------+
 | Filename: components.php
 | Author: PHPFusion Mods UK
@@ -403,7 +403,7 @@ class SeptenaryComponents {
         echo "</div>\n";
         echo "<p class='text-left'>".nl2br(parse_textarea($settings['footer'], FALSE, TRUE))."</p>
         <p>".showcopyright().showprivacypolicy()."</p>
-        <p>Septenary Theme by <a href='https://www.phpfusion.com/profile.php?lookup=3674' target='_blank'>Craig</a> and <a href='https://www.phpfusion.com/profile.php?lookup=16331' target='_blank'>Chan</a></p>
+        <p>Septenary Theme by <a href='https://phpfusion.com/profile.php?lookup=3674' target='_blank'>Craig</a> and <a href='https://phpfusion.com/profile.php?lookup=16331' target='_blank'>Chan</a></p>
         <p>";
         if ($settings['visitorcounter_enabled']) {
             echo "<p>".showcounter()."</p>\n";

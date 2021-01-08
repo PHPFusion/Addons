@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
-| https://www.phpfusion.com/
+| https://phpfusion.com/
 +--------------------------------------------------------+
 | Filename: theme_db.php
 | Author: PHP Fusion Inc
@@ -19,7 +19,7 @@ $theme_folder = 'FusionTheme';
 $theme_title = 'FusionTheme';
 $theme_screenshot = 'screenshot.png';
 $theme_author = 'PHP Fusion Inc';
-$theme_web = 'https://www.phpfusion.com';
+$theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
 $theme_version = '1.4.1';
 $theme_description = 'Official theme release for PHPFusion 9 RC5';

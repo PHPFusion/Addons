@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
-| https://www.phpfusion.com/
+| https://phpfusion.com/
 +--------------------------------------------------------+
 | Filename: mainframe.php
 | Author: Hien (Frederick MC Chan)
@@ -326,7 +326,7 @@ class MainFrame extends Core {
         echo "</section>\n";
         echo "<section class='nebulaCopyright'>\n";
         echo "<div class='container'>\n";
-        echo "<div class='col-xs-12 col-sm-4'><h4 class='m-b-0'>Nebula Theme by <a href='https://www.phpfusion.com/profile.php?lookup=16331' target='_blank'>PHP Fusion Inc</a></h4>\n";
+        echo "<div class='col-xs-12 col-sm-4'><h4 class='m-b-0'>Nebula Theme by <a href='https://phpfusion.com/' target='_blank'>PHP Fusion Inc</a></h4>\n";
         if (fusion_get_settings('visitorcounter_enabled')) :
             echo "<small>".showcounter()."</small>\n";
         endif;

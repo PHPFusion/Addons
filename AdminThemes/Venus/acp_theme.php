@@ -2,7 +2,7 @@
 /*-------------------------------------------------------+
 | PHPFusion Content Management System
 | Copyright (C) PHP Fusion Inc
-| https://www.phpfusion.com/
+| https://phpfusion.com/
 +--------------------------------------------------------+
 | Filename: acp_theme.php
 | Author: PHP Fusion Inc
@@ -101,7 +101,7 @@ function render_admin_panel() {
                     $html .= '</div>
                 </div>
                 <footer>';
-                    $html .= "Venus Admin Theme &copy; ".date("Y")." created by <a href='https://www.phpfusion.com'><strong>PHP Fusion Inc.</strong></a>\n";
+                    $html .= "Venus Admin Theme &copy; ".date("Y")." created by <a href='https://phpfusion.com'><strong>PHP Fusion Inc.</strong></a>\n";
                     $html .= showcopyright();
                     // Render time
                     if (fusion_get_settings('rendertime_enabled')) {

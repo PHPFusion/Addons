@@ -290,7 +290,7 @@ class News extends Core {
             </div>
         </article>
 
-        <?php if (!empty($news['news_gallery'])) :
+        <?php if (!empty($data['news_gallery']) && count($data['news_gallery']) > 1) :
             ?>
             <hr/>
             <?php openside(fusion_get_locale('news_0019')) ?>

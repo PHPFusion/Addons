@@ -190,7 +190,7 @@ if (!function_exists('render_main_news')) {
             <?php
             $categories = is_multidimensiona_array($info['news_categories'][0]) ? $info['news_categories'][0] : $info['news_categories'];
             foreach ($categories as $cat) {
-                echo '<li><a'.($cat['active'] ? ' class="text-dark"' : '').' href="'.$cat['link'].'">'.$cat['name'].'</a></li>';
+                echo '<li><a'.(!empty($cat['active']) && $cat['active'] ? ' class="text-dark"' : '').' href="'.$cat['link'].'">'.$cat['name'].'</a></li>';
 
                 if (!empty($cat['sub'])) {
                     foreach ($cat['sub'] as $sub_cat) {

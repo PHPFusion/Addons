@@ -44,7 +44,7 @@ define('FONTAWESOME', TRUE);
  * this is the ONLY way to insert a calculated menu... Like:
  *
  * Idea Example:
- * if (defined('NEWS_EXIST')) {
+ * if (defined('NEWS_EXISTS')) {
  *      $news_megamenu = "<div class='row'>....</div>\n";
  *      \PHPFusion\SiteLinks::addOptionalMenuLink(6, $news_megamenu, 'find-news-id', '', '');
  * }

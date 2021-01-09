@@ -100,7 +100,7 @@ function render_dashboard() {
     $html .= '<div class="row" id="overview">';
     $modules = [];
 
-    if (defined('FORUM_EXIST')) {
+    if (defined('FORUM_EXISTS')) {
         $modules['forum'] = [
             'title' => $locale['265'],
             'image' => get_image('ac_F'),
@@ -113,7 +113,7 @@ function render_dashboard() {
         ];
     }
 
-    if (defined('DOWNLOADS_EXIST')) {
+    if (defined('DOWNLOADS_EXISTS')) {
         $modules['downloads'] = [
             'title' => $locale['268'],
             'image' => get_image('ac_D'),
@@ -125,7 +125,7 @@ function render_dashboard() {
         ];
     }
 
-    if (defined('NEWS_EXIST')) {
+    if (defined('NEWS_EXISTS')) {
         $modules['news'] = [
             'title' => $locale['269'],
             'image' => get_image('ac_N'),
@@ -137,7 +137,7 @@ function render_dashboard() {
         ];
     }
 
-    if (defined('ARTICLES_EXIST')) {
+    if (defined('ARTICLES_EXISTS')) {
         $modules['articles'] = [
             'title' => $locale['270'],
             'image' => get_image('ac_A'),
@@ -149,7 +149,7 @@ function render_dashboard() {
         ];
     }
 
-    if (defined('WEBLINKS_EXIST')) {
+    if (defined('WEBLINKS_EXISTS')) {
         $modules['weblinks'] = [
             'title' => $locale['271'],
             'image' => get_image('ac_W'),
@@ -160,7 +160,7 @@ function render_dashboard() {
         ];
     }
 
-    if (defined('GALLERY_EXIST')) {
+    if (defined('GALLERY_EXISTS')) {
         $modules['gallery'] = [
             'title' => $locale['272'],
             'image' => get_image('ac_PH'),

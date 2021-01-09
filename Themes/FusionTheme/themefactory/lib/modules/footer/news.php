@@ -24,7 +24,7 @@ class News {
     public function __construct() {
         echo "<h4>".fusion_get_locale('NEWS_001', THEME.'locale/'.LANGUAGE.'.php')."</h4>";
 
-        if (defined('NEWS_EXIST')) :
+        if (defined('NEWS_EXISTS')) :
             // Latest News
             require_once NEWS_CLASS."autoloader.php";
             $data = NewsView::News()->get_NewsItem(["limit" => "0,3", "order" => "news_datestamp DESC"]);

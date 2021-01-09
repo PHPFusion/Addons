@@ -17,7 +17,7 @@
 +--------------------------------------------------------*/
 require_once __DIR__.'/../../maincore.php';
 
-if (!defined('INFUSION_FOLDER_EXIST')) {
+if (!defined('INFUSION_FOLDER_EXISTS')) {
     redirect(BASEDIR.'error.php?code=404');
 }
 

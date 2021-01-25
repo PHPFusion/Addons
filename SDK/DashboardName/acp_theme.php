@@ -120,6 +120,7 @@ function render_admin_panel() {
             echo '</div>';
 
             echo '<div class="col-xs-12 col-sm-10">';
+                echo '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
                 echo renderNotices(getNotices());
 
                 echo CONTENT;

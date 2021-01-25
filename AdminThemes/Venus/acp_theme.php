@@ -95,6 +95,7 @@ function render_admin_panel() {
                 <div class="panel panel-default">
                     <div class="panel-body">';
                         $html .= render_breadcrumbs();
+                        $html .= '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
                         $html .= renderNotices(getNotices());
                         $html .= CONTENT;
 

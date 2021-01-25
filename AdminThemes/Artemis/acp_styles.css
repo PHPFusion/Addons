@@ -1258,27 +1258,9 @@ input[type="submit"].btn.btn-mini {
 }
 
 /** Admin Messages */
-.admin-message.alert-success {
+.alert-success {
+    color: #fff;
     background-color: #1BB934;
-}
-
-.admin-message.alert-danger {
-    background-color: #F05352;
-}
-
-.admin-message.alert-warning {
-    background-color: #FF9300;
-}
-
-.admin-message.alert-info {
-    background-color: #2E87C1;
-}
-
-/* Alerts ! */
-.alert-warning {
-    color: #735c0f;
-    background-color: #ffea7f;
-    border-color: rgba(176, 136, 0, 0.3);
 }
 
 .alert-danger {
@@ -1287,21 +1269,19 @@ input[type="submit"].btn.btn-mini {
     border: 1px solid #9e1c23;
 }
 
-.admin-message {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: #FFF;
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 27px;
-    z-index: 120;
-    border: 0;
-    border-radius: 0;
-    padding-top: 25px;
-    margin: 0 !important;
+.alert-warning {
+    color: #fff;
+    background-color: #ffea7f;
+    border-color: rgba(176, 136, 0, 0.3);
+}
+
+.alert-info {
+    color: #fff;
+    background-color: #2E87C1;
+}
+
+.alert a {
+    color: #cfcfcf;
 }
 
 /* List groups */

@@ -32,12 +32,6 @@ class adminPanel extends resource {
 
         $this->do_interface_js();
 
-        $notices = getNotices();
-
-        if (!empty($notices)) {
-            echo renderNotices($notices);
-        }
-
         $collapsed = isset($_COOKIE['acpState']) && $_COOKIE['acpState'] == 0 ? ' collapsed' : '';
         ?>
         <section id="devlpr" class="adminPanel">
@@ -65,6 +59,10 @@ class adminPanel extends resource {
                 <aside class="header">
                     <?php $this->display_admin_pages(); ?>
                 </aside>
+                <?php
+                echo '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
+                echo renderNotices(getNotices());
+                ?>
                 <div class="content">
                     <?php echo CONTENT; ?>
                     <div class="copyright clearfix">

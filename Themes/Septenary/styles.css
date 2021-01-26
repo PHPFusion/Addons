@@ -1449,10 +1449,6 @@ body .mceToolbar div {
     display: none;
 }
 
-.select2-container {
-    width: 100% !important;
-}
-
 .forum-subject {
     font-family: Helvetica, Arial, Verdana, sans-serif;
     font-size: 16px;
@@ -1660,18 +1656,6 @@ blockquote {
     margin: 0 0 20px;
     font-size: 17.5px;
     border-left: 5px solid #eee;
-}
-
-#error_logform {
-    margin-bottom: 20px !important;
-    padding-bottom: 10px;
-}
-
-#error_logform #delete_entries {
-    font-size: 13px;
-    line-height: 1.5;
-    border-radius: 3px;
-    padding: 3px 10px;
 }
 
 .maintenance {

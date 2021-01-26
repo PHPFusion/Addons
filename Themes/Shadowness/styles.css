@@ -113,10 +113,6 @@ input:focus, textarea:active, textarea:focus {
     display: none;
 }
 
-.select2-container {
-    width: 100% !important;
-}
-
 /* Custom selection colors */
 ::-moz-selection {
     color: #000;
@@ -128,21 +124,6 @@ input:focus, textarea:active, textarea:focus {
     color: #000;
     background: #fff;
     text-shadow: none;
-}
-
-#error_logform {
-    margin-bottom: 20px !important;
-}
-
-#error_logform #delete_entries {
-    font-size: 13px;
-    line-height: 1.5;
-    border-radius: 3px;
-    padding: 3px 10px;
-}
-
-#error_logform #delete_status-field {
-    margin-top: 1.5px;
 }
 
 .album_thumbnail {

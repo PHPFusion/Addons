@@ -471,10 +471,6 @@
     display: none;
 }
 
-.select2-container {
-    width: 100% !important;
-}
-
 .file-footer-caption, .file-thumbnail-footer {
     display: none !important;
 }

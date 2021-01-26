@@ -212,27 +212,8 @@ a:active {
     text-align: center;
 }
 
-#error_logform {
-    margin-bottom: 20px !important;
-}
-
-#error_logform #delete_entries {
-    font-size: 13px;
-    line-height: 1.5;
-    border-radius: 3px;
-    padding: 3px 10px;
-}
-
-#error_logform #delete_status-field {
-    margin-top: 1.5px;
-}
-
 .select2-offscreen {
     display: none;
-}
-
-.select2-container {
-    width: 100% !important;
 }
 
 .panel-txtarea > .panel-heading {

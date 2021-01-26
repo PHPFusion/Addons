@@ -286,12 +286,12 @@ class SeptenaryComponents {
             if ($settings['opening_page'] == $file_path) {
                 echo "<div class='text-center logo'>\n";
                 if ($settings['sitebanner']) {
-                    echo "<a href='".BASEDIR."'><img class='img-responsive' src='".BASEDIR.$settings['sitebanner']."' alt='".$settings['sitename']."' style='border: 0;' /></a>\n";
+                    echo "<a href='".BASEDIR."'><img class='img-responsive' src='".BASEDIR.$settings['sitebanner']."' alt='".$settings['sitename']."' style='width:25%;border: 0;' /></a>\n";
                 } else {
                     echo "<a href='".BASEDIR."'>".$settings['sitename']."</a>\n";
                 }
                 echo "</div>\n";
-                echo "<h2 class='text-center text-uppercase' style='letter-spacing:10px; font-weight:300; font-size:36px;'>".$settings['sitename']."</h2>\n";
+                echo "<h2 class='text-center text-uppercase' style='letter-spacing:10px; font-weight:300; font-size:26px;'>".$settings['sitename']."</h2>\n";
                 //echo "<div class='text-center' style='font-size:19.5px; line-height:35px; font-weight:300; color:rgba(255,255,255,0.8'>".stripslashes($settings['siteintro'])."</div>\n";
                 $modules = [
                     DB_PREFIX.'news'      => defined('NEWS_EXISTS'),

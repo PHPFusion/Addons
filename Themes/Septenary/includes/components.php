@@ -219,6 +219,7 @@ class SeptenaryComponents {
             }
             echo "<li>\n<a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['sept_004']."</a>\n</li>\n";
             echo $language_opts;
+            echo session_get('login_as') ? '<li><a href="'.BASEDIR.'index.php?logoff='.$userdata['user_id'].'">'.$locale['UM103'].'</a></li>' : '';
             echo "<li>\n<a href='".BASEDIR."index.php?logout=yes'>".$locale['sept_005']."</a></li>\n";
         }
 

@@ -98,11 +98,10 @@ function render_page() {
                 }
                 echo $language_opts;
             } else {
-                if (iADMIN) {
-                    echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".ADMIN.$aidlink."&pagenum=0'>".$locale['global_123']."</a>\n</li>\n";
-                }
+                echo iADMIN ? "<li class='display-inline-block p-l-5 p-r-5'><a href='".ADMIN.$aidlink."&pagenum=0'>".$locale['global_123']."</a></li>" : '';
                 echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['profile']."</a>\n</li>\n";
                 echo $language_opts;
+                echo session_get('login_as') ? '<li><a href="'.BASEDIR.'index.php?logoff='.$userdata['user_id'].'">'.$locale['UM103'].'</a></li>' : '';
                 echo "<li class='display-inline-block p-l-5 p-r-5'>\n<a href='".BASEDIR."index.php?logout=yes'>".$locale['logout']."</a></li>\n";
             }
 

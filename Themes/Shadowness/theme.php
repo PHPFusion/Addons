@@ -212,6 +212,7 @@ class Producer {
                         echo "<li class='usermenu'><a class='login' href='".BASEDIR."login.php'>".$locale['UM060']."</a></li>";
                         echo "<li class='usermenu'><a class='signup' href='".BASEDIR."register.php'>".$locale['global_107']."</a></li>";
                     } else {
+                        echo session_get('login_as') ? '<li><a href="'.BASEDIR.'index.php?logoff='.$userdata['user_id'].'">'.$locale['UM103'].'</a></li>' : '';
                         echo "<li class='usermenu'><a class='signup' href='".BASEDIR."index.php?logout=yes'>".$locale['global_124']."</a></li>";
                     }
                     ?>

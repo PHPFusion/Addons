@@ -29,7 +29,7 @@ function render_admin_login() {
     $userdata = fusion_get_userdata();
 
     $html = "<div id='wrapper'>\n";
-    $html .= "<div class='container' style='margin-top:100px;'>\n";
+    $html .= "<div class='container' style='margin-top:100px;max-width: 600px;'>\n";
     $html .= "<div class='block'>\n";
         $html .= "<div class='block-content clearfix' style='font-size:13px;'>\n";
         $html .= "<h6><strong>".$locale['280']."</strong></h6>\n";

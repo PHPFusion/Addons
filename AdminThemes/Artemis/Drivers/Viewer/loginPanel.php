@@ -37,11 +37,7 @@ class loginPanel extends resource {
             <div class="login_bg">
                 <div class="login_wrapper">
                     <div class="login_logo">
-                        <img alt="<?php echo fusion_get_settings("sitename") ?>"
-                             src="<?php echo IMAGES."phpfusion-logo.png" ?>"/>
-
                         <h2>Artemis</h2>
-
                         <h3><?php echo $locale['280'] ?></strong></h3>
                     </div>
                     <div class="login_panel">

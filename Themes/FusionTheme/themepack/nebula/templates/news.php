@@ -76,32 +76,13 @@ class News extends Core {
             echo "<div class='text-center m-t-10 m-b-10'>".makepagenav($_GET['rowstart'], $news_settings['news_pagination'], $info['news_total_rows'], 3, INFUSIONS."news/news.php?".$cat_start.$type_start)."</div>\n";
         }
 
-        /**
-         * Check if array is multidimensional
-         *
-         * @param array $array
-         *
-         * @return bool
-         */
-        function is_multidimensiona_array($array) {
-            if (!is_array($array)) {
-                return FALSE;
-            }
-            foreach ($array as $elm) {
-                if (!is_array($elm)) {
-                    return FALSE;
-                }
-            }
-            return TRUE;
-        }
-
         // Send categories to the right panel
         ob_start();
         openside(fusion_get_locale('news_0009'));
         ?>
         <ul>
             <?php
-            $categories = is_multidimensiona_array($info['news_categories'][0]) ? $info['news_categories'][0] : $info['news_categories'];
+            $categories = self::is_multidimensiona_array($info['news_categories'][0]) ? $info['news_categories'][0] : $info['news_categories'];
             foreach ($categories as $cat) {
                 echo '<li class="list-group-item p-t-5 p-b-5'.(!empty($cat['active']) && $cat['active'] ? ' active' : '').'"><a href="'.$cat['link'].'">'.$cat['name'].'</a></li>';
 
@@ -336,7 +317,9 @@ class News extends Core {
         openside(fusion_get_locale('news_0009'));
         ?>
         <ul>
-            <?php foreach ($info['news_categories'][0] as $category_id => $category) : ?>
+            <?php
+            $categories = self::is_multidimensiona_array($info['news_categories'][0]) ? $info['news_categories'][0] : $info['news_categories'];
+            foreach ($categories as $category_id => $category) : ?>
                 <li class='list-group-item'>
                     <a href='<?php echo $category['link'] ?>'>
                         <h5 class='text-uppercase m-0 p-t-10 p-b-5'>
@@ -351,5 +334,24 @@ class News extends Core {
         $news_category_html = ob_get_contents();
         ob_end_clean();
         self::setParam('right_post_content', $news_category_html);
+    }
+
+    /**
+     * Check if array is multidimensional
+     *
+     * @param array $array
+     *
+     * @return bool
+     */
+    public static function is_multidimensiona_array($array) {
+        if (!is_array($array)) {
+            return FALSE;
+        }
+        foreach ($array as $elm) {
+            if (!is_array($elm)) {
+                return FALSE;
+            }
+        }
+        return TRUE;
     }
 }

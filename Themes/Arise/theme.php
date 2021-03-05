@@ -148,7 +148,7 @@ function render_page() {
 
         echo '<footer id="main-footer" class="text-center">';
             echo '<div class="footer clearfix">';
-                echo '<span class="pull-left">Arise Theme by <a href="https://phpfusion.com" target="_blank">J. Falk (Falk)</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a></span>';
+                echo '<span class="pull-left">Arise Theme by <a href="https://venue.nu/" target="_blank">J. Falk</a>, Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a></span>';
 
                 if ($settings['rendertime_enabled'] == 1 || $settings['rendertime_enabled'] == 2) {
                     echo '<small>'.showrendertime().showMemoryUsage().'</small>';

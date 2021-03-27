@@ -25,8 +25,8 @@ function opentable($title, $class = FALSE) {
     \Artemis\Viewer\adminPanel::opentable($title, $class);
 }
 
-function closetable($title = FALSE, $class = FALSE) {
-    \Artemis\Viewer\adminPanel::closetable($title, $class);
+function closetable() {
+    \Artemis\Viewer\adminPanel::closetable();
 }
 
 function openside($title = FALSE, $class = FALSE) {

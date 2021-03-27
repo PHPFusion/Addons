@@ -412,12 +412,8 @@ class adminPanel extends resource {
         echo '<div class="app_table '.$class.'">';
     }
 
-    public static function closetable($title = FALSE, $class = NULL) {
+    public static function closetable() {
         echo '</div>';
-
-        if (!empty($title)) {
-            echo "<footer".($class ? " class=\"$class\"": '').">$title</footer>";
-        }
         echo '</div>';
     }
 

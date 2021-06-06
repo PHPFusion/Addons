@@ -47,7 +47,7 @@ section.login-bg {
     box-shadow: 0 0 0.8em rgba(255, 255, 255, 0.5);
     border-radius: 6px;
     padding: 1.667em;
-    background: none repeat scroll 0% 0% white;
+    background: none repeat scroll 0 0 white;
     position: relative;
     border: 1px solid rgb(153, 153, 153);
     color: rgb(51, 51, 51);
@@ -63,14 +63,7 @@ section.login-bg {
     border-radius: 0.278em;
     color: #fff;
     font-size: 20px;
-    border: 0px solid;
-    -moz-border-top-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -webkit-border-image: none;
-    -o-border-image: none;
-    border-image: none;
+    border: 0 solid;
     background: rgb(167, 207, 223);
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 207, 223, 1)), to(rgba(35, 83, 138, 1)));
     background: linear-gradient(to bottom, rgba(167, 207, 223, 1) 0%, rgba(35, 83, 138, 1) 100%);
@@ -589,7 +582,6 @@ nav ul > li.open > a {
 
 #acp-left {
     color: rgb(101, 107, 147);
-    background-color: rgb(34, 43, 45);
     border-right: 1px solid #ccc;
     width: 250px;
     z-index: 10;
@@ -635,6 +627,7 @@ nav ul > li.open > a {
 
 @media (min-width: 900px) {
     #acp-header {
+        width: -webkit-calc(100% - 250px);
         width: calc(100% - 250px);
         margin-left: 250px;
     }
@@ -645,6 +638,7 @@ nav ul > li.open > a {
 
     #acp-content {
         margin-left: 250px;
+        width: -webkit-calc(100% - 250px);
         width: calc(100% - 250px);
     }
 
@@ -907,6 +901,10 @@ footer {
     -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
     justify-content: flex-end;
+}
+
+.select2-container {
+    width: 100% !important;
 }
 
 html[dir="rtl"] .pf-logo {

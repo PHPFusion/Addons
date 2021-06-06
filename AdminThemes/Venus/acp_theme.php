@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: acp_theme.php
 | Author: PHP Fusion Inc
-| Version: 1.5.1
+| Version: 1.5.2
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -18,10 +18,10 @@
 +--------------------------------------------------------*/
 defined('IN_FUSION') || exit;
 
-require_once THEMES."admin_themes/Venus/includes/functions.php";
+require_once 'includes/functions.php';
 
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 function render_admin_panel() {
     $locale = fusion_get_locale();

@@ -1,5 +1,6 @@
 .panel.panel-home {
-    border: 0; box-sizing: border-box;
+    border: 0;
+    box-sizing: border-box;
 }
 
 .panel.panel-home > .panel-heading {
@@ -33,7 +34,7 @@ figure img {
 
 .panel.panel-home > .panel-body {
     color: #444;
-    text-indent: 0px;
+    text-indent: 0;
     display: block;
     background-color: rgba(0, 0, 0, 0.02);
     overflow: hidden;
@@ -46,7 +47,8 @@ figure img {
 .panel.panel-home > .panel-body a {
     color: #01ACDE;
     text-decoration: none;
-    -webkit-transition: color 0.2s ease-in-out; transition: color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
 }
 
 .panel.panel-home > .panel-body a:hover,
@@ -126,7 +128,8 @@ figure img {
     box-shadow: none;
     text-shadow: none;
     text-align: left;
-    -webkit-transition: background 0.3s ease-in-out; transition: background 0.3s ease-in-out;
+    -webkit-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
 }
 
 .panel.panel-home > .panel-footer:hover,

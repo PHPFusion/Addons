@@ -23,7 +23,7 @@ Gallery CSS for FusionTheme
     bottom: 10px;
     right: 10px;
     background: rgba(0, 0, 0, 0.9);
-    padding: 0px 10px;
+    padding: 0 10px;
 }
 
 .gallery_item .panel-default .album_title {

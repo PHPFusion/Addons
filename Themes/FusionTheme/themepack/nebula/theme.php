@@ -15,9 +15,9 @@
 | copyright header is strictly prohibited without
 | written permission from the original author(s).
 +--------------------------------------------------------*/
-define("THEME_BULLET", "<i class='fa fa-list'></i>");
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const THEME_BULLET = "<i class='fa fa-list'></i>";
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 /*
  * SiteLinks Documentation
@@ -62,19 +62,25 @@ function render_page() {
 }
 
 function opentable($title = FALSE) {
-    ThemePack\Nebula\Components::opentable($title);
+    echo "<div class='openTable'>\n";
+    if ($title) :
+        echo "<div class='title'>".$title."</div>\n";
+    endif;
 }
 
 function closetable() {
-    ThemePack\Nebula\Components::closetable();
+    echo "</div>\n";
 }
 
 function openside($title) {
-    ThemePack\Nebula\Components::openside($title);
+    echo "<div class='openSide'>\n";
+    if ($title) :
+        echo "<div class='title'>".$title."</div>\n";
+    endif;
 }
 
 function closeside() {
-    ThemePack\Nebula\Components::closeside();
+    echo "</div>\n";
 }
 
 function display_loginform($info) {
@@ -91,9 +97,9 @@ function display_register_form($info) {
     ThemePack\Nebula\Templates\Login::register_form($info);
 }
 
-function display_page($info) {
+/*function display_page($info) {
     ThemePack\Nebula\Templates\Page::display_page($info);
-}
+}*/
 
 /**
  * News - News Home

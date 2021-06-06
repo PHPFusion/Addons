@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: theme.php
 | Author: Frederick MC Chan (Chan)
-| Version: 1.4.1
+| Version: 1.5.2
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -18,10 +18,9 @@
 +--------------------------------------------------------*/
 defined('IN_FUSION') || exit;
 
-define("THEME_BULLET", "&middot;");
-
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const THEME_BULLET = "&middot;";
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 function render_page() {
     $locale = fusion_get_locale();
@@ -81,7 +80,7 @@ function render_page() {
                 $language_opts .= "<ul class='dropdown-menu' aria-labelledby='ddlangs' role='menu'>\n";
                 $language_switch = fusion_get_language_switch();
                 if (!empty($language_switch)) {
-                    foreach ($language_switch as $folder => $langData) {
+                    foreach ($language_switch as $langData) {
                         $language_opts .= "<li class='text-left'><a href='".$langData['language_link']."'>\n";
                         $language_opts .= "<img alt='".$langData['language_name']."' class='m-r-5' src='".$langData['language_icon_s']."'/>\n";
                         $language_opts .= $langData['language_name'];
@@ -162,7 +161,7 @@ function render_page() {
     echo "<hr>\n";
     echo showbanners(2);
     echo "<div class='row'>\n<div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>";
-    echo "<span>".nl2br(parse_textarea($settings['footer'], FALSE, TRUE))."</span><br/>\n";
+    echo "<span>".nl2br(parse_textarea($settings['footer'], FALSE))."</span><br/>\n";
     echo "<span>".showcopyright().showprivacypolicy()."</span><br/>\n";
     echo "<span>Theme by <a href='http://www.phpfusion.com' target='_blank'>PHP Fusion Inc</a></span><br/>\n";
     echo "<span>";

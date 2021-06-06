@@ -72,7 +72,7 @@ embed {
     vertical-align: top;
 }
 
-article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
+article, aside, audio, canvas, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {
     display: block;
     image-rendering: optimizespeed;
 }
@@ -100,7 +100,7 @@ iframe {
 
 input, textarea, select {
     margin: 0;
-    padding: 0px;
+    padding: 0;
 }
 
 hr.side-hr {
@@ -183,7 +183,7 @@ a.button {
 input.button {
     margin-top: 2px;
     height: 24px;
-    padding: 0px 12px 0px 12px;
+    padding: 0 12px 0 12px;
 }
 
 /* Section 1 */
@@ -334,14 +334,13 @@ User Info Panel CSS
 }
 
 nav {
-    margin-top: 0px !important;
+    margin-top: 0 !important;
 }
 
 .nav {
     list-style: none;
     margin: 0 auto;
     padding-top: 15px;
-    margin-top: 0px !important;
 }
 
 .navbar-default {
@@ -540,14 +539,14 @@ nav {
 .leftbar .heading {
     font-size: 15px !important;
     padding: 0 !important;
-    margin: 10px 0px !important;
+    margin: 10px 0 !important;
     text-transform: uppercase;
 }
 
 .leftbar .content {
     background-color: rgb(58, 68, 75);
     padding: 20px 20px 20px;
-    margin: 0px -15px 0px;
+    margin: 0 -15px 0;
 }
 
 .leftbar .panel {
@@ -568,9 +567,9 @@ nav {
 
 #navigation ul,
 #navigation-user ul {
-    padding: 20px 0px 20px 18px;
+    padding: 20px 0 20px 18px;
     list-style-type: none;
-    background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.5) !important;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5) !important;
     margin: 0 -20px;
 }
 
@@ -648,7 +647,7 @@ nav {
 }
 
 .block {
-    padding: 5px 0px;
+    padding: 5px 0;
     border-radius: 6px;
 }
 
@@ -671,8 +670,7 @@ nav {
 .main-content {
     background: #FFF;
     display: block;
-    padding: 15px;
-    padding-bottom: 30px;
+    padding: 15px 15px 30px;
 }
 
 .fa {
@@ -683,7 +681,7 @@ nav {
     font-size: 25px;
     line-height: 35px;
     font-weight: 600;
-    margin: 25px 0px;
+    margin: 25px 0;
 }
 
 .main-content h3 {
@@ -709,7 +707,7 @@ nav {
 }
 
 .main-content .content img {
-    border: 0px;
+    border: 0;
 }
 
 .main-content .footer {
@@ -728,7 +726,7 @@ nav {
 }
 
 .sidebar .heading {
-    font-family: 'ColaborateRegular';
+    font-family: 'ColaborateRegular', sans-serif;
     color: #FFF;
     background: #606C88; /* Old browsers */
     /* IE9 SVG, needs conditional override of 'filter' to 'none' */
@@ -752,17 +750,17 @@ nav {
 
 .sidebar .content img {
     margin: 5px;
-    border: 0px;
+    border: 0;
 }
 
 ol, ul {
     margin: 0;
-    padding: 0px 0px 0px 15px;
+    padding: 0 0 0 15px;
     line-height: 20px;
 }
 
 ul.list li {
-    padding: 0px 0 5px 12px;
+    padding: 0 0 5px 12px;
     line-height: 25px;
 }
 
@@ -813,15 +811,14 @@ ul.list li a:hover {
 }
 
 .tab-content {
-    padding: 0px 0px;
+    padding: 0 0;
 }
 
 /* Login Form */
 #login_form {
     width: 100%;
-    margin: 40px auto 0;
-    box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.6);
-    margin-bottom: 50px;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+    margin: 40px auto 50px;
     padding: 58px 50px 40px;
 }
 
@@ -971,7 +968,7 @@ ul.list li a:hover {
 
 div.emulated-fieldset {
     position: relative;
-    margin: 20px 0px 10px 0px;
+    margin: 20px 0 10px 0;
     border: 1px solid #CCC;
     width: 320px;
     background: inherit;
@@ -1079,7 +1076,7 @@ div.emulated-fieldset div.attachments-list {
     background-color: #F9F9F9;
     border-left: 8px solid #BFCADA;
     padding: 15px;
-    margin: 0px 22px 0px 22px;
+    margin: 0 22px 0 22px;
 }
 
 .poll {
@@ -1125,7 +1122,7 @@ div.emulated-fieldset div.attachments-list {
     color: rgb(116, 151, 184);
     padding: 10px !important;
     margin-bottom: 10px;
-    border-bottom: 0px !important;
+    border-bottom: 0 !important;
     border-top: 1px solid #CCC !important;
     font-weight: normal !important;
 }
@@ -1149,7 +1146,7 @@ div.emulated-fieldset div.attachments-list {
 }
 
 .forum_idx_table td:first-child, .forum_idx_table th:first-child, .forum_table th:first-child, .forum_table td:first-child {
-    padding: 10px 0px 10px 15px !important;
+    padding: 10px 0 10px 15px !important;
 }
 
 .forum_idx_table th:first-child, .forum_table th:first-child {
@@ -1291,7 +1288,6 @@ div.emulated-fieldset div.attachments-list {
     font-weight: normal;
     color: #999;
     text-decoration: none;
-    text-decoration: none;
     cursor: default;
     padding: 4px 4px 4px 4px;
     margin: 2px;
@@ -1299,7 +1295,6 @@ div.emulated-fieldset div.attachments-list {
 
 .pagenav a {
     color: #999;
-    text-decoration: none;
     text-decoration: none;
     cursor: pointer;
     padding: 4px 4px 4px 4px; /* top right bottom left*/
@@ -1407,7 +1402,7 @@ body .mceToolbar div {
 /* side css menu */
 .fusion_css_navigation_panel {
     margin: -20px;
-    background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.5);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
     padding-top: 20px;
     padding-bottom: 21px;
 }

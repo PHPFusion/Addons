@@ -114,11 +114,6 @@ input:focus, textarea:active, textarea:focus {
 }
 
 /* Custom selection colors */
-::-moz-selection {
-    color: #000;
-    background: #fff;
-    text-shadow: none;
-}
 
 ::selection {
     color: #000;

@@ -20,9 +20,9 @@ defined('IN_FUSION') || exit;
 
 require_once INCLUDES.'theme_functions_include.php';
 
-define('THEME_BULLET', '&middot;');
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const THEME_BULLET = '&middot;';
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 function render_page() {
     $settings = fusion_get_settings();
@@ -98,7 +98,7 @@ function render_page() {
                     echo '<br/>Ported for v9 by <a href="https://github.com/RobiNN1" target="_blank">RobiNN</a>';
                 echo '</div>';
                 echo '<div class="col-xs-12 col-sm-6">';
-                    echo nl2br(parse_textarea($settings['footer'], FALSE, TRUE)).'<br/>';
+                    echo nl2br(parse_textarea($settings['footer'], FALSE)).'<br/>';
                     echo showprivacypolicy();
                     echo '<br/>';
                     echo showcounter();

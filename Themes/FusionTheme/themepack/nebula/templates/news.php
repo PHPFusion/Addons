@@ -63,7 +63,7 @@ class News extends Core {
 
         <?php
         if (!empty($info['news_items'])) {
-            foreach ($info['news_items'] as $news_id => $data) {
+            foreach ($info['news_items'] as $data) {
                 self::render_news($data);
             }
         } else {
@@ -277,7 +277,7 @@ class News extends Core {
             <?php openside(fusion_get_locale('news_0019')) ?>
             <div class='post-gallery'>
                 <?php $animate_delay = 200; ?>
-                <?php foreach ($news['news_gallery'] as $news_image_id => $news_image) : ?>
+                <?php foreach ($news['news_gallery'] as $news_image) : ?>
                     <div class='post-gallery-item wow overflow-hide fadeInUp'
                          style='margin: -1px; width: 270px; height: 200px;' data-wow-duration='700ms'
                          data-wow-delay='<?php echo $animate_delay ?>ms'>
@@ -319,7 +319,7 @@ class News extends Core {
         <ul>
             <?php
             $categories = self::is_multidimensiona_array($info['news_categories'][0]) ? $info['news_categories'][0] : $info['news_categories'];
-            foreach ($categories as $category_id => $category) : ?>
+            foreach ($categories as $category) : ?>
                 <li class='list-group-item'>
                     <a href='<?php echo $category['link'] ?>'>
                         <h5 class='text-uppercase m-0 p-t-10 p-b-5'>

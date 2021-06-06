@@ -19,8 +19,8 @@
 +--------------------------------------------------------*/
 defined('IN_FUSION') || exit;
 
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 // Load Septenary Parts
 include THEME."theme_autoloader.php";
@@ -32,9 +32,7 @@ $septenary = PHPFusion\SeptenaryTheme::Factory();
 include THEME."templates/custom_news.php";
 
 // Definition of Constant
-if (!defined("THEME_BULLET")) {
-    define("THEME_BULLET", "<img src='".THEME."images/bullet.png' class='bullet'  alt='&raquo;' />");
-}
+const THEME_BULLET = "<img src='".THEME."images/bullet.png' class='bullet'  alt='&raquo;' />";
 
 /**
  * Legacy Render Page Function

@@ -13,5 +13,6 @@
 }
 
 .list-group-item {
-    border-color: #dfe5e8; border-radius: 0 !important;
+    border-color: #dfe5e8;
+    border-radius: 0 !important;
 }

@@ -24,5 +24,5 @@ $theme_screenshot = 'screenshot.png';
 $theme_author = 'Craig, Chan';
 $theme_web = 'http://www.phpfusionmods.co.uk';
 $theme_license = 'AGPL3';
-$theme_version = '1.4.1';
+$theme_version = '1.5.2';
 $theme_description = 'Named after the word 9, Septenary boosts a simple, modern, flat outlook. Septenary is also the current PHPFusion Core 9.00 default theme in distributed package.';

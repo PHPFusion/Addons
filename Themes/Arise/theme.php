@@ -20,14 +20,14 @@ defined('IN_FUSION') || exit;
 
 require_once INCLUDES.'theme_functions_include.php';
 
-define('THEME_BULLET', '&middot;');
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
-define('HEADER_LINKS', TRUE);
+const THEME_BULLET = '&middot;';
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
+const HEADER_LINKS = TRUE;
 
 // Settings for 2 columns layout
-define('ARISE_2COL', FALSE); // Set TRUE to enable
-define('ARISE_SIDE', 'LEFT'); // Keep LEFT or RIGHT side
+const ARISE_2COL = FALSE; // Set TRUE to enable
+const ARISE_SIDE = 'LEFT'; // Keep LEFT or RIGHT side
 
 function render_page() {
     $settings = fusion_get_settings();
@@ -158,7 +158,7 @@ function render_page() {
             echo '</div>';
 
             echo '<div class="copyright">';
-                echo nl2br(parse_textarea($settings['footer'], FALSE, TRUE)).'<br/>';
+                echo nl2br(parse_textarea($settings['footer'], FALSE)).'<br/>';
                 echo showcopyright();
                 echo showprivacypolicy();
             echo '</div>';

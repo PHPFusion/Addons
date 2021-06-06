@@ -18,6 +18,8 @@
 +--------------------------------------------------------*/
 require_once INCLUDES."theme_functions_include.php";
 
+const BOOTSTRAP = TRUE;
+
 /**
  * Class Producer
  */
@@ -157,7 +159,9 @@ class Producer {
             <div class='menu'>
                 <span class='menu-light' style='left:15px;'></span>
                 <ul>
-                    <li><a class='logo' href='<?php echo BASEDIR.'index.php'; ?>'><img src='<?php echo BASEDIR.$settings['sitebanner'] ?>' alt='<?php echo $settings['sitename'] ?>'></a></li>
+                    <li>
+                        <a class='logo' href='<?php echo BASEDIR.'index.php'; ?>'><img src='<?php echo BASEDIR.$settings['sitebanner'] ?>' alt='<?php echo $settings['sitename'] ?>'></a>
+                    </li>
                     <li class='search'><?php
                         echo openform('searchform', 'post', BASEDIR.'search.php?stype=all', [
                             'class'      => '',
@@ -171,7 +175,8 @@ class Producer {
                     if (iMEMBER) {
                         echo "<li class='menu-2'><a href='".BASEDIR."profile.php?lookup=".$userdata['user_id']."'>".$locale['profile']."</a></li>";
                         ?>
-                        <li class='dropdown menu-3'><a id='dduser' class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-star text-smaller'></i></a>
+                        <li class='dropdown menu-3'>
+                            <a id='dduser' class='dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-star text-smaller'></i></a>
                             <ul class='dropdown-menu' aria-labelledby='dduser'>
                                 <?php if (iMEMBER) {
                                     echo "<li><a href='".BASEDIR."edit_profile.php'>".$locale['UM080']."</a></li>";
@@ -188,23 +193,23 @@ class Producer {
 
                     if (count($languages) > 1) {
                         echo '<li class="dropdown language-switcher">';
-                            echo '<a id="ddlangs" href="#" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="'.LANGUAGE.'">';
-                                echo '<i class="fa fa-globe"></i> ';
-                                echo translate_lang_names(LANGUAGE);
-                                echo '<span class="caret"></span>';
-                            echo '</a>';
+                        echo '<a id="ddlangs" href="#" class="dropdown-toggle pointer" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="'.LANGUAGE.'">';
+                        echo '<i class="fa fa-globe"></i> ';
+                        echo translate_lang_names(LANGUAGE);
+                        echo '<span class="caret"></span>';
+                        echo '</a>';
 
-                            echo '<ul class="dropdown-menu" aria-labelledby="ddlangs">';
-                                foreach ($languages as $language_folder => $language_name) {
-                                    echo '<li><a class="display-block" href="'.clean_request('lang='.$language_folder, ['lang'], FALSE).'">';
-                                        echo '<img class="m-r-5" src="'.BASEDIR.'locale/'.$language_folder.'/'.$language_folder.'-s.png" alt="'.$language_folder.'"/> ';
-                                        echo $language_name;
-                                    echo '</a></li>';
-                                }
-                            echo '</ul>';
+                        echo '<ul class="dropdown-menu" aria-labelledby="ddlangs">';
+                        foreach ($languages as $language_folder => $language_name) {
+                            echo '<li><a class="display-block" href="'.clean_request('lang='.$language_folder, ['lang'], FALSE).'">';
+                            echo '<img class="m-r-5" src="'.BASEDIR.'locale/'.$language_folder.'/'.$language_folder.'-s.png" alt="'.$language_folder.'"/> ';
+                            echo $language_name;
+                            echo '</a></li>';
+                        }
+                        echo '</ul>';
                         echo '</li>';
                     }
-                ?>
+                    ?>
                 </ul>
                 <ul style="left: inherit;right: 0;" class="pull-right">
                     <?php
@@ -296,15 +301,15 @@ class Producer {
                 ?>
                 <div class='overflow-hide'>
                     <?php
-                        echo CONTENT;
+                    echo CONTENT;
                     ?>
                 </div>
             </div>
             <?php
             if ((defined('RIGHT') && RIGHT !== '') && $this->right == TRUE) {
                 echo "<div class='sidebar home col-xs-".$this->xs_width." col-sm-".$this->sm_width." col-md-".$this->md_width." col-lg-".$this->lg_width."'>";
-                    echo RIGHT;
-                    echo defined('LEFT') && LEFT ? LEFT : '';
+                echo RIGHT;
+                echo defined('LEFT') && LEFT ? LEFT : '';
                 echo "</div>";
             }
 
@@ -312,7 +317,7 @@ class Producer {
             echo defined('BL_CENTER') && BL_CENTER ? BL_CENTER : '';
             echo showbanners(2);
 
-            if ((defined('USER1') && USER1) ||(defined('USER2') && USER2) || (defined('USER3') && USER3) || (defined('USER4') && USER4)) {
+            if ((defined('USER1') && USER1) || (defined('USER2') && USER2) || (defined('USER3') && USER3) || (defined('USER4') && USER4)) {
                 echo '<div class="row">';
                 echo defined('USER1') && USER1 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER1.'</div>' : '';
                 echo defined('USER2') && USER2 ? '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">'.USER2.'</div>' : '';
@@ -386,15 +391,6 @@ class Producer {
 
     public function closeside() {
         echo "</div>\n";
-    }
-
-    public function opensidex() {
-        echo "<ul class='albums' style='margin-right:-15px;'>\n";
-        echo "<li>\n";
-    }
-
-    public function closesidex() {
-        echo "</li></ul>\n";
     }
 
     public function opentable($title = FALSE, $class = '') {
@@ -481,14 +477,6 @@ class Producer {
     }
 
     /*
-     * List breaker <li>
-     */
-    public function tablebreak() {
-        if ($this->display_mode !== 'single')
-            echo "</li><li>\n";
-    }
-
-    /*
      * Closing of opentable
      */
     public function closetable() {
@@ -524,25 +512,9 @@ function closeside() {
     $theme->closeside();
 }
 
-function opensidex() {
-    global $theme;
-    $theme->opensidex();
-}
-
-function closesidex() {
-    global $theme;
-    $theme->closesidex();
-}
-
-
 function opentable($title, $class = '') {
     global $theme;
     $theme->opentable($title, $class);
-}
-
-function tablebreak() {
-    global $theme;
-    $theme->tablebreak();
 }
 
 function closetable() {

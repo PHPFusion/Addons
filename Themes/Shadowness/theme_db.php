@@ -24,6 +24,6 @@ $theme_screenshot = 'screenshot.png';
 $theme_author = 'Chan, RobiNN';
 $theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
-$theme_version = '1.5.1';
+$theme_version = '1.5.2';
 $theme_folder = 'Shadowness';
 $theme_readme = 'about.php';

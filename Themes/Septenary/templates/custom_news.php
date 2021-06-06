@@ -211,7 +211,7 @@ if (!function_exists('render_main_news')) {
         // Build filters
         $i = 0;
         $tab_title = [];
-        foreach ($info['news_filter'] as $link => $title) {
+        foreach ($info['news_filter'] as $title) {
             $tab_title['title'][] = $title;
             $tab_title['id'][] = $i;
             $i++;

@@ -19,7 +19,7 @@ namespace ThemePack\Nebula;
 
 use PHPFusion\SiteLinks;
 use ThemeFactory\Core;
-use ThemeFactory\Lib\Installer\HomeInstall;
+//use ThemeFactory\Lib\Installer\HomeInstall;
 
 /**
  * Nebula Theme Package
@@ -36,7 +36,7 @@ class MainFrame extends Core {
          * First time installation on default install.
          * Install Page Composer Data Request
          */
-        if (iSUPERADMIN) {
+        /*if (iSUPERADMIN) {
             $theme_settings = get_theme_settings('FusionTheme');
             if (!isset($theme_settings['home_installed'])) {
 
@@ -69,7 +69,7 @@ class MainFrame extends Core {
                 $form .= "</div>\n";
                 addNotice('warning', $form);
             }
-        }
+        }*/
 
         if ($this->getParam('header') === TRUE) {
             $this->NebulaHeader();
@@ -315,7 +315,7 @@ class MainFrame extends Core {
         //$this->get_Modules('footer\\contact');
         echo "<h4>".self::$locale['NB_001']."</h4>\n";
         echo "<p>".fusion_get_settings('description')."</p>\n";
-        echo nl2br(parse_textarea(fusion_get_settings('footer'), FALSE, TRUE));
+        echo nl2br(parse_textarea(fusion_get_settings('footer'), FALSE));
         echo "<p>".showcopyright()."</p>\n";
         echo "</div>\n";
         echo "<a href='#' id='top' class='pull-right'><i class='fa fa-chevron-up fa-3x'></i></a>\n";

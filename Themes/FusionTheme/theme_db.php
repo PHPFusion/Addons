@@ -21,7 +21,7 @@ $theme_screenshot = 'screenshot.png';
 $theme_author = 'PHP Fusion Inc';
 $theme_web = 'https://phpfusion.com';
 $theme_license = 'AGPL3';
-$theme_version = '1.4.1';
+$theme_version = '1.5.2';
 $theme_description = 'Official theme release for PHPFusion 9 RC5';
 
 $theme_insertdbrow[] = DB_SETTINGS_THEME." (settings_name, settings_value, settings_theme) VALUES ('theme_pack', 'Nebula', '".$theme_folder."')";

@@ -196,7 +196,7 @@ class SeptenaryComponents {
             $language_opts .= "<ul class='dropdown-menu' aria-labelledby='ddlangs' role='menu'>\n";
             $language_switch = fusion_get_language_switch();
             if (!empty($language_switch)) {
-                foreach ($language_switch as $folder => $langData) {
+                foreach ($language_switch as $langData) {
                     $language_opts .= "<li class='text-left'><a href='".$langData['language_link']."'>\n";
                     $language_opts .= "<img alt='".$langData['language_name']."' class='m-r-5' src='".$langData['language_icon_s']."'/>\n";
                     $language_opts .= $langData['language_name'];
@@ -402,7 +402,7 @@ class SeptenaryComponents {
         echo "<a href='#' id='top'><i style='font-size:50px;' class='fa fa-arrow-circle-o-up mid-opacity'></i></a>\n";
         add_to_jquery('$("#top").on("click",function(e){e.preventDefault();$("html, body").animate({scrollTop:0},800);});');
         echo "</div>\n";
-        echo "<p class='text-left'>".nl2br(parse_textarea($settings['footer'], FALSE, TRUE))."</p>
+        echo "<p class='text-left'>".nl2br(parse_textarea($settings['footer'], FALSE))."</p>
         <p>".showcopyright().showprivacypolicy()."</p>
         <p>Septenary Theme by <a href='https://phpfusion.com/profile.php?lookup=3674' target='_blank'>Craig</a> and <a href='https://phpfusion.com/profile.php?lookup=16331' target='_blank'>Chan</a></p>
         <p>";

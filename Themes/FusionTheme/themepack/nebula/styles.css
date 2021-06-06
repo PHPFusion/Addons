@@ -19,9 +19,6 @@ h1, h2, h3, h4, h5, h6 {
 a, h4 a:hover, a:hover h5, h5 > a:hover, a:hover h6, h6 > a:hover {
     color: #0061D5;
     -webkit-transition: color 0.15s ease-out;
-    -moz-transition: color 0.15s ease-out;
-    -ms-transition: color 0.15s ease-out;
-    -o-transition: color 0.15s ease-out;
     transition: color 0.15s ease-out;
     outline: 0;
 }
@@ -54,7 +51,6 @@ header .navbar-default {
 
 header .navbar-default .navbar-collapse {
     background: #fff;
-    -webkit-border-radius: 0;
     border-radius: 0;
     color: #444;
     padding: 15px 15px 12px 15px;
@@ -125,21 +121,14 @@ header .navbar-default .navbar-nav > li > a {
     text-align: center;
     display: -webkit-flex;
     display: -moz-flex;
-    display: -ms-flexbox;
     display: -ms-flex;
     display: -webkit-box;
     display: flex;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -ms-flex-align: center;
     -webkit-box-align: center;
+    -webkit-align-items: center;
     align-items: center;
     -webkit-align-content: center;
-    -moz-align-content: center;
-    -ms-align-content: center;
     align-content: center;
-    -ms-flex-line-pack: stretch;
 }
 
 header .navbar-default .navbar-nav > li > a:before {
@@ -148,11 +137,7 @@ header .navbar-default .navbar-nav > li > a:before {
     display: block;
     width: 20px;
     -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    left: 0;
     height: 3px;
     bottom: 5px;
     left: 50%;
@@ -168,14 +153,9 @@ header .navbar-default .navbar-nav > li > a:hover:before {
 }
 
 header .navbar-default .navbar-nav > li > .dropdown-menu {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background: #23262D;
-    -webkit-border-radius: 0;
-    border-radius: 0;
     top: 66px;
-    -webkit-box-shadow: none;
     box-shadow: none;
     border-radius: 0;
 }
@@ -197,7 +177,6 @@ header .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
 header .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 header .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
     color: #1ebbf0;
-    background: -webkit-gradient(linear, left top, right top, color-stop(32%, #1ebbf0), color-stop(100%, #39dfaa));
     background: -webkit-linear-gradient(left, #1ebbf0 32%, #39dfaa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -236,11 +215,7 @@ header .navbar.affix {
     z-index: 701;
     opacity: .97;
     filter: alpha(opacity=97);
-    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -271,7 +246,7 @@ header h1 {
 .nebulaSubheader h4 {
     font-size: 25px;
     line-height: 25px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #3c3950;
     font-weight: 700;
     text-transform: uppercase;
@@ -320,7 +295,6 @@ header h1 {
 
 .nebulaFooter .form-control:focus, .nebulaFooter .form-control:active {
     border: 2px solid #4268A7;
-    -webkit-box-shadow: none;
     box-shadow: none;
 }
 
@@ -350,7 +324,6 @@ header h1 {
     background: #fff;
     z-index: 21;
     -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
 
@@ -447,19 +420,12 @@ Panels
 ********************/
 .panel {
     border-width: 1px;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
     border-color: #EBEBEB;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 
 .panel .panel-default {
     border: 2px solid #b6c6c9;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -497,7 +463,6 @@ Buttons
 ********************/
 .btn {
     -webkit-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
     transition: all 0.3s ease-out;
 }
 
@@ -528,20 +493,17 @@ Buttons
     outline: none;
     margin: 0 0 20px;
     max-width: 100%;
-    display: block;
     font-size: 13px;
-    -webkit-border-radius: 0;
     border-radius: 0;
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-appearance: none;
     border: 1px solid #CCC;
-    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.08);
-    -webkit-box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.08);
+    -webkit-box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.08);
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
-    text-indent: 0px;
+    text-indent: 0;
     text-shadow: none;
     display: inline-block;
     text-align: start;
@@ -676,7 +638,6 @@ Alert
     margin: 0;
     font-weight: 600;
     z-index: 1;
-    -webkit-border-radius: 0;
     border-radius: 0;
     position: relative;
     border: 0;
@@ -687,13 +648,8 @@ Alert
 .admin-message.alert-danger {
     background-color: #c9342f;
     background-repeat: no-repeat;
-    background: -webkit-linear-gradient(top, #dd5959 0%, #c15252 100%);
-    background: -moz-linear-gradient(top, #dd5959 0%, #c15252 100%);
-    background: -o-linear-gradient(top, #dd5959 0%, #c15252 100%);
     background: -webkit-gradient(linear, left top, left bottom, from(#dd5959), to(#c15252));
     background: linear-gradient(top, #dd5959 0%, #c15252 100%);
-    -webkit-box-shadow: 0 0 0 1px #c15252, 0 1px 2px rgba(0, 0, 0, 0.45);
-    -moz-box-shadow: 0 0 0 1px #c15252, 0 1px 2px rgba(0, 0, 0, 0.45);
     box-shadow: 0 0 0 1px #c15252, 0 1px 2px rgba(0, 0, 0, 0.45);
     overflow: hidden;
     display: block;
@@ -731,7 +687,6 @@ Login
 
 .login-bg {
     background-image: url(assets/images/loginBG.jpg);
-    -webkit-background-size: cover;
     background-size: cover;
     text-align: center;
     display: block;
@@ -789,19 +744,16 @@ News
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0;
     z-index: 5;
     width: 100%;
     height: 100%;
     opacity: 0;
-    -o-transition: all .3s linear;
-    transition: all .3s linear;
     -webkit-transition: all .3s linear;
+    transition: all .3s linear;
 }
 
 .news_item .post-image:hover > a:before {
     opacity: 1;
-    -o-transition: all .3s linear;
     transition: all .3s linear;
     -webkit-transition: all .3s linear;
     background: rgba(255, 255, 255, 0.7);
@@ -809,7 +761,7 @@ News
 
 .news_item .post-image > a:after {
     content: "\f0f7";
-    font-family: "FontAwesome";
+    font-family: "FontAwesome", sans-serif;
     background: #384554;
     color: #fff;
     position: absolute;
@@ -817,7 +769,6 @@ News
     left: 50%;
     width: 100px;
     height: 100px;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
     font-size: 45px;
     line-height: 100px;
@@ -830,7 +781,6 @@ News
     transform: scale(0);
     -webkit-transition: top .4s, opacity .4s, -webkit-transform 0s .4s;
     transition: top .4s, opacity .4s, -webkit-transform 0s .4s;
-    -o-transition: top .4s, opacity .4s, transform 0s .4s;
     transition: top .4s, opacity .4s, transform 0s .4s;
     transition: top .4s, opacity .4s, transform 0s .4s, -webkit-transform 0s .4s;
     z-index: 10;
@@ -844,7 +794,6 @@ News
     transform: scale(1);
     -webkit-transition: top 0s, opacity .4s, -webkit-transform .4s;
     transition: top 0s, opacity .4s, -webkit-transform .4s;
-    -o-transition: top 0s, opacity .4s, transform .4s;
     transition: top 0s, opacity .4s, transform .4s;
     transition: top 0s, opacity .4s, transform .4s, -webkit-transform .4s;
 }
@@ -980,9 +929,8 @@ Articles
 
 .article_search_header #search-article-btn {
     margin-left: -9px;
-    -webkit-border-radius: 0 6px 6px 0;
     border-radius: 0 6px 6px 0;
-    padding: 0px 22px;
+    padding: 0 22px;
     height: 46px;
     text-transform: uppercase;
     margin-top: -5px;
@@ -995,11 +943,7 @@ Well
     background-color: #f4f6f7;
     padding: 33px 40px;
     border: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
 }
 
@@ -1030,7 +974,7 @@ Comments
 }
 
 .comments-header:before, .comments-form-header i {
-    font-family: "Glyphicons Halflings";
+    font-family: "Glyphicons Halflings", sans-serif;
     left: -15px;
     top: 0;
     font-weight: normal;
@@ -1069,8 +1013,7 @@ Comments
 
 .comment-head h4.comment-name {
     text-transform: uppercase;
-    margin: 0;
-    margin-top: 10px;
+    margin: 10px 0 0;
     display: block;
 }
 
@@ -1110,8 +1053,6 @@ Comments
 .sub-comment-item.well .comment-user-avatar img {
     height: 40px;
     width: 40px;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
     margin-top: 8px;
 }
@@ -1140,16 +1081,12 @@ Editor Navs
     vertical-align: middle;
     cursor: pointer;
     -webkit-user-select: none;
-    -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     background-color: #eee;
-    background-image: -webkit-linear-gradient(#fcfcfc, #eee);
     background-image: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#eee));
-    background-image: -o-linear-gradient(#fcfcfc, #eee);
     background-image: linear-gradient(#fcfcfc, #eee);
     border: 1px solid #d5d5d5;
-    -webkit-border-radius: 3px;
     border-radius: 3px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1161,9 +1098,7 @@ Editor Navs
     color: #444;
     text-decoration: none;
     background-color: #ddd;
-    background-image: -webkit-linear-gradient(#eee, #ddd);
     background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));
-    background-image: -o-linear-gradient(#eee, #ddd);
     background-image: linear-gradient(#eee, #ddd);
     border-color: #ccc;
 }
@@ -1173,7 +1108,6 @@ Editor Navs
     background-color: #dcdcdc;
     background-image: none;
     border-color: #b5b5b5;
-    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -1261,7 +1195,6 @@ Cellphones
     #top {
         margin-top: 15px;
         margin-right: 30px;
-        -webkit-border-radius: 50%;
         border-radius: 50%;
         background: #fff;
         padding: 1% 2.8% 3.5%;
@@ -1318,6 +1251,7 @@ Cellphones
 .select2-result-unselectable.select2-disabled > .select2-result-label:hover {
     color: inherit !important;
 }
+
 .search table {
     background-color: inherit;
     border: none;
@@ -1331,6 +1265,7 @@ html[dir="rtl"] header .fa.fa-angle-down {
     margin-left: inherit !important;
     margin-right: 5px;
 }
+
 html[dir="rtl"] header .navbar-default .navbar-nav > li > a:before {
     left: inherit !important;
     right: 50%;
@@ -1338,40 +1273,49 @@ html[dir="rtl"] header .navbar-default .navbar-nav > li > a:before {
     -ms-transform: translateX(50%);
     transform: translateX(50%);
 }
+
 html[dir="rtl"] header .headerContent {
     text-align: right;
 }
+
 html[dir="rtl"] header .navbar.affix {
     left: inherit !important;
     right: 0;
 }
+
 html[dir="rtl"] .nebulaCanvas {
     left: inherit !important;
     border-right: inherit !important;
     border-left: 1px solid #ccc;
 }
+
 html[dir="rtl"] .canvas-toggle {
     margin-left: inherit !important;
     margin-right: 100%;
 }
+
 html[dir="rtl"] .nebulaCanvas.off {
     left: inherit !important;
     right: -300px;
 }
+
 html[dir="rtl"] .nebulaCanvas > .canvas-toggle {
     border-left: inherit !important;
     border-right: none;
 }
+
 html[dir="rtl"] .control-label > img {
     margin-right: inherit !important;
     margin-left: 5px;
 }
+
 html[dir="rtl"] .news_item .post-image > a:after {
     left: inherit !important;
     margin-left: inherit !important;
     right: 50%;
     margin-right: -50px;
 }
+
 html[dir="rtl"] .news_item .post-meta > ul.meta-left > li {
     border-right: inherit !important;
     margin-right: inherit !important;
@@ -1380,13 +1324,16 @@ html[dir="rtl"] .news_item .post-meta > ul.meta-left > li {
     margin-left: 10px;
     padding-left: 10px;
 }
+
 html[dir="rtl"] .news_item .post-meta > ul.meta-left > li:last-child {
     border-right: inherit !important;
     border-left: 0;
 }
+
 html[dir="rtl"] .news_item .post-meta > ul.meta-right {
     float: left;
 }
+
 html[dir="rtl"] .news_item .post-meta > ul.meta-right > li {
     border-left: inherit !important;
     margin-left: inherit !important;
@@ -1395,72 +1342,87 @@ html[dir="rtl"] .news_item .post-meta > ul.meta-right > li {
     margin-right: 10px;
     padding-right: 10px;
 }
+
 html[dir="rtl"] .news_item .post-meta > ul.meta-right > li:first-child {
     border-left: inherit !important;
     border-right: 0;
 }
+
 html[dir="rtl"] #article_search {
     margin-right: inherit !important;
     margin-left: 0;
 }
+
 html[dir="rtl"] .article_search_header .search-addon {
     margin-left: inherit !important;
     margin-right: -23px;
 }
+
 html[dir="rtl"] .article_search_header #stype-field {
     text-align: right;
 }
+
 html[dir="rtl"] .article_search_header #search-article-btn {
     margin-left: inherit !important;
     margin-right: -9px;
-    -webkit-border-radius: 6px 0 0 6px;
     border-radius: 6px 0 0 6px;
 }
+
 html[dir="rtl"] .comments-form-header {
     padding-left: inherit !important;
     padding-right: 0;
 }
+
 html[dir="rtl"] .comments-header:before,
 html[dir="rtl"] .comments-form-header i {
     left: inherit !important;
     right: -15px;
 }
+
 html[dir="rtl"] .comment-head > .comment-head-action {
     text-align: left;
 }
+
 html[dir="rtl"] .sub-comments {
     margin-left: inherit !important;
     margin-right: 45px;
 }
+
 html[dir="rtl"] .sub-comments:before {
     margin-left: inherit !important;
     left: inherit !important;
     border-right: 1px solid #dfe5e8;
     right: -45px;
 }
+
 html[dir="rtl"] .sub-comment-item.well:before {
     left: inherit !important;
     right: -45px;
 }
+
 html[dir="rtl"] .bbcode_input > div input[type=image] {
     margin-right: inherit !important;
     margin-left: 8px;
 }
+
 html[dir="rtl"] .sub_comments {
     border-left: inherit !important;
     padding-left: inherit !important;
     border-right: 1px solid #ccc;
     padding-right: 15px;
 }
+
 @media only screen and (max-width: 767px) {
     html[dir="rtl"] header .navbar-default {
         margin: 0;
         background: #fff;
     }
+
     html[dir="rtl"] header .navbar-default .navbar-brand {
         margin-left: inherit !important;
         margin-right: 15px;
     }
+
     html[dir="rtl"] #top {
         margin-right: inherit !important;
         margin-left: 30px;

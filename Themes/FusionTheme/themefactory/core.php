@@ -172,7 +172,7 @@ class Core {
      *
      * @return mixed
      */
-    protected function get_Modules($modules = 'footer\\news') {
+    protected function get_Modules($modules) {
         if (!isset(self::$module_instance[$modules]) or self::$module_instance[$modules] === NULL) {
             if (!empty(self::$module_list)) {
                 $module_ = array_flip(self::$module_list);

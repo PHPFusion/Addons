@@ -350,7 +350,7 @@ function render_admin_dashboard() {
                                                 $html .= '<strong>'.(!empty($comment_data['user_id']) ? profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']) : $comment_data['comment_name']).' </strong>';
                                                 $html .= $locale['273'].' <a href="'.sprintf($link_type[$comment_data['comment_type']], $comment_data['comment_item_id']).'"><strong>'.$comments_type[$comment_data['comment_type']].'</strong></a> ';
                                                 $html .= timer($comment_data['comment_datestamp']).'<br/>';
-                                            $html .= '<span class="text-smaller">'.trimlink(strip_tags(parse_textarea($comment_data['comment_message'], FALSE)), 130).'</span>';
+                                                $html .= '<span class="text-smaller">'.trimlink(strip_tags(parse_textarea($comment_data['comment_message'], FALSE)), 130).'</span>';
                                             $html .= '</div>';
                                         }
                                     }

@@ -18,10 +18,10 @@
 +--------------------------------------------------------*/
 defined('IN_FUSION') || exit;
 
-require_once THEMES."admin_themes/Old_School/includes/functions.php";
+require_once 'includes/functions.php';
 
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 function render_admin_login() {
     $locale = fusion_get_locale();

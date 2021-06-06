@@ -19,7 +19,7 @@
 }
 
 .body-inner-wrap {
-    border-top: 0px solid #FFF;
+    border-top: 0 solid #FFF;
     padding: 5px 10px;
     background: #FFF;
     box-shadow: 0 5px 5px #C8C8C8 inset;
@@ -60,18 +60,17 @@
 .block {
     padding: 40px 20px 20px 20px;
     border: 1px solid rgba(255, 255, 255, 0.75);
-    box-shadow: 0px 0px 4px rgba(50, 50, 50, 0.5);
-    background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 4px rgba(50, 50, 50, 0.5);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.2);
     border-radius: 0.8em 0.8em 0.8em 0.8em;
-    margin: 0px;
+    margin: 0;
 }
 
 .block-content {
-    box-shadow: 0px 0px 0.8em rgba(255, 255, 255, 0.5);
-    padding-top: 2.833em;
+    box-shadow: 0 0 0.8em rgba(255, 255, 255, 0.5);
     border-radius: 6px;
     padding: 1.667em;
-    background: none repeat scroll 0% 0% white;
+    background: none repeat scroll 0 0 white;
     position: relative;
     border: 1px solid rgb(153, 153, 153);
     color: rgb(51, 51, 51);
@@ -81,21 +80,13 @@
     position: absolute;
     left: 15px;
     top: -60px;
-    margin: 0px;
+    margin: 0;
     z-index: 0;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
     border-radius: 0.278em;
     color: rgb(255, 255, 255);
     font-size: 20px;
-    border-width: 0px;
-    border-style: solid;
-    -moz-border-top-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -webkit-border-image: none;
-    -o-border-image: none;
-    border-image: none;
+    border-width: 0;
     background: rgb(167, 207, 223);
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 207, 223, 1)), to(rgba(35, 83, 138, 1)));
     background: linear-gradient(to bottom, rgba(167, 207, 223, 1) 0%, rgba(35, 83, 138, 1) 100%);
@@ -123,8 +114,8 @@ footer {
 }
 
 .breadcrumb > li {
-    text-shadow: 0px 1px 0px rgb(255, 255, 255);
-    padding: 0px 20px;
+    text-shadow: 0 1px 0 rgb(255, 255, 255);
+    padding: 0 20px;
     position: relative;
     white-space: nowrap;
     display: inline-block;
@@ -132,7 +123,7 @@ footer {
 
 .breadcrumb > li + li:before {
     content: "";
-    padding: 0px;
+    padding: 0;
 }
 
 .breadcrumb > li:after {
@@ -249,7 +240,7 @@ h3 {
 }
 
 .panel {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .box-shadow {
@@ -328,13 +319,13 @@ fieldset {
     border: 1px solid #d9deeb !important;
     width: 99% !important;
     margin: 0 auto !important;
-    padding: 0px !important;
+    padding: 0 !important;
     margin-top: 5px !important;
     margin-bottom: 10px !important;
     /* -- CSS3 - define rounded corners -- */
     border-radius: 10px;
     /* -- CSS3 - add a drop shadow -- */
-    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 legend {
@@ -342,25 +333,14 @@ legend {
     padding: 0 !important;
     line-height: 16px !important;
     color: #333 !important;
-    border: 0px solid #d9deeb !important;
+    border: 0 solid #d9deeb !important;
     background-color: #F7F7F7 !important;
     margin-left: 20px !important;
     font-size: 13px !important;
     width: 95% !important;
     margin-bottom: 5px !important;
-    box-shadow: 0px 0 4px #ccc;
-    -webkit-border-bottom-right-radius: 5px;
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    box-shadow: 0 0 4px #ccc;
+    border-radius: 5px;
 }
 
 /* Site Information */
@@ -402,7 +382,6 @@ legend {
 #site-links {
     list-style: none;
     min-height: 20px;
-    height: auto !important;
     height: 20px;
 }
 
@@ -434,7 +413,6 @@ legend {
 #panel-side6 {
     list-style: none;
     min-height: 20px;
-    height: auto !important;
     height: 20px;
 }
 
@@ -547,7 +525,7 @@ legend {
     overflow: hidden;
     background-color: rgb(255, 255, 255);
     color: rgb(117, 127, 140);
-    text-shadow: 0px 1px rgb(255, 255, 255);
+    text-shadow: 0 1px rgb(255, 255, 255);
 }
 
 #acp-toolkit nav > ul > li > a:hover {
@@ -661,13 +639,17 @@ div.mce-edit-area {
     justify-content: flex-end;
 }
 
+.select2-container {
+    width: 100% !important;
+}
+
 html[dir="rtl"] .pf-logo {
     margin-left: inherit !important;
     margin-right: -65px;
 }
 
 html[dir="rtl"] .block-content {
-    background: none repeat scroll 100% 0% white;
+    background: none repeat scroll 100% 0 white;
 }
 
 html[dir="rtl"] .block-content h6 {

@@ -1973,6 +1973,10 @@ div.mce-edit-area {
     padding: 0;
 }
 
+.select2-container {
+    width: 100% !important;
+}
+
 .file-footer-caption, .file-thumbnail-footer {
     display: none !important;
 }

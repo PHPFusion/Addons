@@ -201,7 +201,7 @@ class adminPanel extends resource {
 
                 echo "<ul id=\"ap-$i\" class=\"app_page_list\" style=\"display:none;\">\n";
 
-                foreach ($pages[$i] as $key => $data) :
+                foreach ($pages[$i] as $data) :
 
                     $secondary_active = $data['admin_link'] == $is_current_page ? "class='active'" : '';
 
@@ -351,7 +351,7 @@ class adminPanel extends resource {
                 <i class="fa fa-envelope-o"></i>
                 <span class="badge message_alert">'.count($messages).'</span>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="ddmsg">
+            <ul class="dropdown-menu messages" aria-labelledby="ddmsg">
             ';
             foreach ($messages as $message_data) {
 

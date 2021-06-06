@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: acp_theme.php
 | Author: Core Development Team (coredevs@phpfusion.com)
-| Version: 1.5.1
+| Version: 1.5.2
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or
@@ -18,8 +18,8 @@
 +--------------------------------------------------------*/
 require_once THEMES."admin_themes/Artemis/autoloader.php";
 
-define('BOOTSTRAP', TRUE);
-define('FONTAWESOME', TRUE);
+const BOOTSTRAP = TRUE;
+const FONTAWESOME = TRUE;
 
 function opentable($title, $class = FALSE) {
     \Artemis\Viewer\adminPanel::opentable($title, $class);

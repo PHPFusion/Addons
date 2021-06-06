@@ -179,8 +179,7 @@ class adminDashboard extends resource {
                         $html .= "<strong>".(!empty($comment_data['user_id']) ? profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']) : $comment_data['comment_name'])." </strong>";
                         $html .= "<span class='text-lighter'>".$locale['273']."</span> <a href='".sprintf($link_type[$comment_data['comment_type']], $comment_data['comment_item_id'])."'><strong>".$comments_type[$comment_data['comment_type']]."</strong></a>";
                         $html .= "<br/>".timer($comment_data['comment_datestamp'])."<br/>";
-                        $comment = trimlink(strip_tags(parse_textarea($comment_data['comment_message'], FALSE, TRUE)), 70);
-                        $html .= "<span class='text-smaller text-lighter'>".parse_textarea($comment, TRUE, FALSE)."</span>";
+                        $html .= '<span class="text-smaller">'.trimlink(strip_tags(parse_textarea($comment_data['comment_message'], FALSE)), 130).'</span>';
                         $html .= "</div>";
                     }
                 }
@@ -259,7 +258,7 @@ class adminDashboard extends resource {
         if (checkrights('I')) {
             $html .= '<div class="col-xs-12 co-sm-6 col-md-6 col-lg-3">';
             $html .= '<div id="infusions">';
-            $html .= fusion_get_function('openside', '<strong class="text-uppercase">'.$locale['283'].'</strong><span class="pull-right badge">'.number_format((int)$infusions_count).'</span>');
+            $html .= fusion_get_function('openside', '<strong class="text-uppercase">'.$locale['283'].'</strong><span class="pull-right badge">'.number_format($infusions_count).'</span>');
             $content = '';
             if ($infusions_count > 0) {
                 if (!empty($global_infusions)) {
@@ -304,7 +303,7 @@ class adminDashboard extends resource {
         $html = fusion_get_function('opentable', $locale['admin_apps']);
         $html .= "<div class='row'>\n";
         if (count($admin_icons['data']) > 0) {
-            foreach ($admin_icons['data'] as $i => $data) {
+            foreach ($admin_icons['data'] as $data) {
                 $html .= "<div class='display-table col-xs-12 col-sm-3 col-md-2' style='height:140px;'>\n";
                 if ($admin_images) {
                     $html .= "<div class='panel-body align-middle text-center' style='width:100%;'>\n";

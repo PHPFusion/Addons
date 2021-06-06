@@ -98,7 +98,7 @@ abstract class resource extends Admins {
             $language_opts .= "<ul class='dropdown-menu' aria-labelledby='ddlangs' role='menu'>\n";
             $language_switch = fusion_get_language_switch();
             if (!empty($language_switch)) {
-                foreach ($language_switch as $folder => $langData) {
+                foreach ($language_switch as $langData) {
                     $language_opts .= "<li class='text-left'><a href='".$langData['language_link']."'>\n";
                     $language_opts .= "<img alt='".$langData['language_name']."' class='m-r-5' src='".$langData['language_icon_s']."'/>\n";
                     $language_opts .= $langData['language_name'];

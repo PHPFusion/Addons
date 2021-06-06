@@ -6,7 +6,7 @@
 +--------------------------------------------------------+
 | Filename: acp_theme.php
 | Author: PHP Fusion Inc
-| Version: 1.5.1
+| Version: 1.5.2
 +--------------------------------------------------------+
 | This program is released as free software under the
 | Affero GPL license. You can redistribute it and/or

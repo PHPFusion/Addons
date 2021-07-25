@@ -565,14 +565,6 @@ nav {
     margin: auto;
 }
 
-#navigation ul,
-#navigation-user ul {
-    padding: 20px 0 20px 18px;
-    list-style-type: none;
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5) !important;
-    margin: 0 -20px;
-}
-
 * html #navigation ul li,
 * html #navigation-user ul li {
     height: 1%;
@@ -587,6 +579,11 @@ nav {
     text-decoration: none;
     -webkit-transition: 0.1s ease-in-out;
     transition: 0.1s ease-in-out;
+}
+
+.content #navigation a,
+.content #navigation-user a {
+    color: inherit;
 }
 
 #navigation span,
@@ -648,7 +645,6 @@ nav {
 
 .block {
     padding: 5px 0;
-    border-radius: 6px;
 }
 
 .au-content, .bl-content {

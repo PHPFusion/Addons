@@ -61,7 +61,7 @@ class adminPanel extends resource {
                 </aside>
                 <?php
                 echo '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
-                echo renderNotices(getNotices());
+                echo renderNotices(getnotices());
                 ?>
                 <div class="content">
                     <?php echo CONTENT; ?>

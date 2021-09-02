@@ -41,7 +41,7 @@ class FusionThemeAdmin {
                         "settings_theme" => "FusionTheme",
                     ];
                     dbquery_insert(DB_SETTINGS_THEME, $sqlArray, "update", ["primary_key" => "settings_name"]);
-                    addNotice("success", fusion_get_locale('WIDGET_001', THEME.'locale/'.LANGUAGE.'.php'));
+                    addnotice("success", fusion_get_locale('WIDGET_001', THEME.'locale/'.LANGUAGE.'.php'));
                 }
                 if (defender::safe()) {
                     redirect(FUSION_REQUEST);

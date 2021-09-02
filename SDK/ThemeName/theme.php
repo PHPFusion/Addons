@@ -36,7 +36,7 @@ function render_page() {
         echo '</header>';
 
         echo '<div class="notices">';
-            echo renderNotices(getNotices(['all', FUSION_SELF]));
+            echo renderNotices(getnotices(['all', FUSION_SELF]));
         echo '</div>';
 
         echo '<section class="main-content">';

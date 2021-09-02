@@ -39,7 +39,7 @@ function render_admin_login() {
 
         // Get all notices
         $html .= '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
-        $html .= renderNotices(getNotices());
+        $html .= renderNotices(getnotices());
         $form_action = FUSION_SELF.$aidlink == ADMIN."index.php".$aidlink ? FUSION_SELF.$aidlink."&pagenum=0" : FUSION_SELF."?".FUSION_QUERY;
         $html .= openform('admin-login-form', 'post', $form_action);
 
@@ -160,7 +160,7 @@ function render_admin_panel() {
 
     // Get and render notices
     $html .= '<div id="updatechecker_result" class="alert alert-info" style="display:none;"></div>';
-    $html .= renderNotices(getNotices());
+    $html .= renderNotices(getnotices());
 
     // Render the content
     $html .= CONTENT;

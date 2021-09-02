@@ -53,7 +53,7 @@ class Contact {
                 include INCLUDES."captchas/".$settings['captcha']."/captcha_check.php"; // Dynamics need to develop Captcha. Before that, use method 2.
                 if ($_CAPTCHA_IS_VALID == FALSE) {
                     \defender::stop();
-                    addNotice('warning', $locale['424']);
+                    addnotice('warning', $locale['424']);
                 }
             }
 
@@ -72,14 +72,14 @@ class Contact {
                             $template_data['template_sender_email'], $input['mailname'], $input['email'])
                         ) {
                             \defender::stop();
-                            addNotice('warning', $locale['425']);
+                            addnotice('warning', $locale['425']);
                         }
                     } else {
                         if (!sendemail($settings['siteusername'], $settings['siteemail'], $input['mailname'], $input['email'], $input['subject'],
                             $input['message'])
                         ) {
                             \defender::stop();
-                            addNotice('warning', $locale['425']);
+                            addnotice('warning', $locale['425']);
                         }
                     }
                 } else {
@@ -87,12 +87,12 @@ class Contact {
                         $input['message'])
                     ) {
                         \defender::stop();
-                        addNotice('warning', $locale['425']);
+                        addnotice('warning', $locale['425']);
                     }
                 }
 
                 if (\defender::safe()) {
-                    addNotice('warning', $locale['425']);
+                    addnotice('warning', $locale['425']);
                     redirect(FORM_REQUEST);
                 }
 

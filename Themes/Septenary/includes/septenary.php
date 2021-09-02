@@ -83,7 +83,7 @@ class SeptenaryTheme extends SeptenaryComponents {
         echo "<div class='".self::col_span()." main-content'>\n";
         echo showbanners(1);
         // Get all notices, we also include notices that are meant to be displayed on all pages
-        echo renderNotices(getNotices(['all', FUSION_SELF]));
+        echo renderNotices(getnotices(['all', FUSION_SELF]));
         echo $this->upper_html;
         echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
         echo CONTENT;

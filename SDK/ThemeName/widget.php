@@ -34,7 +34,7 @@ if (isset($_POST['save_settings'])) {
             dbquery_insert(DB_SETTINGS_THEME, $db, 'update');
         }
 
-        addNotice('success', 'Settings has been updated');
+        addnotice('success', 'Settings has been updated');
         redirect(FUSION_REQUEST);
     }
 }

@@ -67,7 +67,7 @@ class MainFrame extends Core {
                 $form .= form_button('install_default_homepage', $locale['homeSetup_0202'], 'no');
                 $form .= closeform();
                 $form .= "</div>\n";
-                addNotice('warning', $form);
+                addnotice('warning', $form);
             }
         }*/
 
@@ -95,7 +95,7 @@ class MainFrame extends Core {
     }
 
     private function NebulaHeader() {
-        echo renderNotices(getNotices(['all', FUSION_SELF]));
+        echo renderNotices(getnotices(['all', FUSION_SELF]));
         $defaultBg = ($this->getParam('headerBg') === TRUE ? " class=\"headerBg\"" : "");
         $headerBg = ($this->getParam('headerBg_class') ? " class=\"".$this->getParam('headerBg_class')."\"" : $defaultBg);
         echo "<header ".$headerBg.">\n";

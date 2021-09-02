@@ -26,7 +26,7 @@ use ThemeFactory\Core;
 class Login {
 
     public static function login_form($info) {
-        echo renderNotices(getNotices(['all', FUSION_SELF]));
+        echo renderNotices(getnotices(['all', FUSION_SELF]));
         $locale = fusion_get_locale();
         $userdata = fusion_get_userdata();
         $aidlink = fusion_get_aidlink();
@@ -101,7 +101,7 @@ class Login {
             <div class="container">
                 <div class="col-xs-12 text-center">
                     <div class="text-center display-block"><?php echo $banner ?></div>
-                    <?php $notices = getNotices();
+                    <?php $notices = getnotices();
                     if ($notices) {
                         echo renderNotices($notices);
                     } ?>

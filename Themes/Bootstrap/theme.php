@@ -122,7 +122,7 @@ function render_page() {
         echo "<div class='".html_prefix($side_grid_settings)." hidden-xs'>\n".LEFT."</div>\n";
     } // column left
     echo "<div class='".html_prefix(center_grid_settings($side_grid_settings))."'>\n";
-    echo renderNotices(getNotices(['all', FUSION_SELF]));
+    echo renderNotices(getnotices(['all', FUSION_SELF]));
     echo defined("U_CENTER") && U_CENTER ? U_CENTER : '';
     echo CONTENT; // column center
     echo defined("L_CENTER") && L_CENTER ? L_CENTER : '';

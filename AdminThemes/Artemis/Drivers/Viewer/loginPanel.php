@@ -31,7 +31,7 @@ class loginPanel extends resource {
 
         $userdata = self::get_userdata();
 
-        echo renderNotices(getNotices(['all', FUSION_SELF]));
+        echo renderNotices(getnotices(['all', FUSION_SELF]));
         ?>
         <section id="devlpr" class="login_page">
             <div class="login_bg">

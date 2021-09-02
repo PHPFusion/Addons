@@ -18,7 +18,7 @@
 require_once '../../maincore.php';
 require_once THEMES.'templates/admin_header.php';
 
-pageAccess('XXX');
+pageaccess('XXX');
 
 $locale = fusion_get_locale('', XXX_LOCALE);
 

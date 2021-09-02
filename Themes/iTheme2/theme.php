@@ -42,7 +42,7 @@ function render_page() {
         echo '</div>';
 
         echo '<div id="main-box">';
-            echo renderNotices(getNotices(['all', FUSION_SELF]));
+            echo renderNotices(getnotices(['all', FUSION_SELF]));
 
             echo defined('AU_CENTER') && AU_CENTER ? AU_CENTER : '';
             echo showbanners(1);

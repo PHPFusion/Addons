@@ -143,9 +143,6 @@ class Login {
                                 if (!empty($info['user_email'])) {
                                     echo $info['user_email'];
                                 }
-                                if (!empty($info['user_hide_email'])) {
-                                    echo $info['user_hide_email'];
-                                }
                                 if (!empty($info['user_avatar'])) {
                                     echo $info['user_avatar'];
                                 }

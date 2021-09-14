@@ -26,8 +26,12 @@ class News {
 
         if (defined('NEWS_EXISTS')) :
             // Latest News
-            require_once NEWS_CLASS."autoloader.php";
-            $data = NewsView::News()->get_NewsItem(["limit" => "0,3", "order" => "news_datestamp DESC"]);
+            require_once INFUSIONS."news/classes/autoloader.php";
+            if (IS_V910) {
+                $data = NewsView::News()->getNewsItem(["limit" => "0,3", "order" => "news_datestamp DESC"]);
+            } else {
+                $data = NewsView::News()->get_NewsItem(["limit" => "0,3", "order" => "news_datestamp DESC"]);
+            }
             if (!empty($data['news_items'])) : ?>
                 <ul class="list-style-none">
                 <?php foreach ($data['news_items'] as $news_id => $news_data) : ?>

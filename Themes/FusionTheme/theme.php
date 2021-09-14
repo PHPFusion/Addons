@@ -16,6 +16,11 @@
 | written permission from the original author(s).
 +--------------------------------------------------------*/
 require_once THEME."autoloader.php";
+
+if (!defined('IS_V910')) {
+    define('IS_V910', (bool)version_compare(fusion_get_settings('version'), '9.03', (strpos(fusion_get_settings('version'), '9.10') === 0 ? '>' : '<')));
+}
+
 $theme_settings = get_theme_settings('FusionTheme');
 $theme_package = !empty($theme_settings['theme_pack']) ? $theme_settings['theme_pack'] : 'nebula';
 define("THEME_PACK", THEME."themepack/".$theme_package."/");

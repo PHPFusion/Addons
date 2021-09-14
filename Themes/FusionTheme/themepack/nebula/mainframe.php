@@ -138,7 +138,7 @@ class MainFrame extends Core {
         ];
         echo SiteLinks::setSubLinks($menu_config)->showSubLinks();
         add_to_jquery("
-            $('#".SiteLinks::MenuDefaultID."').affix({
+            $('#DefaultMenu').affix({
                 offset: {
                     top: $('#DefaultMenu').offset().top,
                     bottom: function () {

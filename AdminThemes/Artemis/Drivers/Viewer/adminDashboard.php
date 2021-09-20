@@ -295,7 +295,7 @@ class adminDashboard extends resource {
     }
 
     public static function do_admin_icons() {
-        global $admin_icons, $admin_images;
+        global $admin_icons;
 
         $aidlink = self::get_aidlink();
         $locale = parent::get_locale();
@@ -305,16 +305,12 @@ class adminDashboard extends resource {
         if (count($admin_icons['data']) > 0) {
             foreach ($admin_icons['data'] as $data) {
                 $html .= "<div class='display-table col-xs-12 col-sm-3 col-md-2' style='height:140px;'>\n";
-                if ($admin_images) {
-                    $html .= "<div class='panel-body align-middle text-center' style='width:100%;'>\n";
-                    $html .= "<a href='".$data['admin_link'].$aidlink."'><img style='max-width:48px;' alt='".$data['admin_title']."' src='".get_image("ac_".$data['admin_rights'])."'/>\n</a>\n";
-                    $html .= "<div class='overflow-hide'>\n";
-                    $html .= "<a class='icon_title' href='".$data['admin_link'].$aidlink."'>".$data['admin_title']."</a>\n";
-                    $html .= "</div>\n";
-                    $html .= "</div>\n";
-                } else {
-                    $html .= "<span class='small'>".THEME_BULLET." <a href='".$data['admin_link'].$aidlink."'>".$data['admin_title']."</a></span>";
-                }
+                $html .= "<div class='panel-body align-middle text-center' style='width:100%;'>\n";
+                $html .= "<a href='".$data['admin_link'].$aidlink."' class='icon-wrapper'><img alt='".$data['admin_title']."' src='".get_image("ac_".$data['admin_rights'])."'/>\n</a>\n";
+                $html .= "<div class='overflow-hide'>\n";
+                $html .= "<a class='icon_title' href='".$data['admin_link'].$aidlink."'>".$data['admin_title']."</a>\n";
+                $html .= "</div>\n";
+                $html .= "</div>\n";
                 $html .= "</div>\n";
             }
         }

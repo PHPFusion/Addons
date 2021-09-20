@@ -581,6 +581,7 @@ nav ul > li.open > a {
 }
 
 #acp-left {
+    background-color: #fff;
     color: rgb(101, 107, 147);
     border-right: 1px solid #ccc;
     width: 250px;
@@ -650,7 +651,7 @@ nav ul > li.open > a {
     }
 
     .in #acp-left {
-        background-color: #fff !important;
+        background-color: transparent;
         border: none;
         margin-top: 0;
     }
@@ -823,7 +824,6 @@ div.mce-edit-area {
 }
 
 .icon-container > a > img {
-    max-width: 50px;
     margin-bottom: 20px;
     border: 0;
     outline: 0;
